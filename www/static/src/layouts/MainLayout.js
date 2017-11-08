@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { NavBar, Icon, TabBar } from 'antd-mobile';
+import { Icon, TabBar } from 'antd-mobile';
+import AppNavBar from './AppNavBar';
 import createHistory from 'history/createHashHistory'
 import Gun from 'gun';
 const history = createHistory()
@@ -36,29 +37,9 @@ class MainLayout extends React.Component{
   render(){
     return(
         <div>
-        <div style={{ position: 'fixed', width: '100%', top: 0 }}>
-          <NavBar
-              mode="light"
-              icon={<Icon type="left" />}
-              onLeftClick={() => {
 
-                this.gun.get('mark').put({
-                  name: "Mark",
-                  email: "mark@sa33333wae.io",
-                  number: Math.random().toString(),
-                });
-
-                console.log('onLeftClick')}}
-              rightContent={[
-                <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                <Icon key="1" type="ellipsis" />,
-              ]}
-            >NavBar
-          </NavBar>
-        </div>
-
+        <AppNavBar />
         <div style={{marginTop: "20%", marginBottom: "30%"}}>
-          {this.state.name} | {this.state.email} | {this.state.number}
         {this.props.children}
         </div>
 
@@ -113,12 +94,12 @@ class MainLayout extends React.Component{
                 background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
               />
             }
-            title="热门"
+            title="消息"
             key="Koubei"
             badge={'new'}
             selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
-              history.push("/sale");
+              history.push("/messages");
               this.setState({
                 selectedTab: 'redTab',
               });

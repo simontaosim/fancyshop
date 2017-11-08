@@ -6,19 +6,14 @@ import {
 } from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout.js'
+import MessageBox from './messages'
+import configureStore from "../stores/";
+import { Provider, connect } from 'react-redux';
+const store = configureStore();
 
 const Home = () => (
   <div>
-    <h2>Home</h2><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <ul>
-      <li><Link to="/">首页</Link></li>
-      <li><Link to="/about">购物车</Link></li>
-      <li><Link to="/topics">我的</Link></li>
-    </ul>
+    <h1>此处是首页</h1>
   </div>
 )
 
@@ -63,12 +58,15 @@ const Topics = ({ match }) => (
 )
 
 const Routes = () => (
-  <Router>
-      <MainLayout>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-        <Route path="/topics" component={Topics}/>
-      </MainLayout>
-  </Router>
+  <Provider store={store}>
+    <Router>
+        <MainLayout>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/messages" component={MessageBox}/>
+          <Route path="/about" component={About}/>
+          <Route path="/topics" component={Topics}/>
+        </MainLayout>
+    </Router>
+  </Provider>
 )
 export default Routes
