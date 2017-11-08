@@ -2,19 +2,37 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { NavBar, Icon, TabBar } from 'antd-mobile';
 import createHistory from 'history/createHashHistory'
-
+import Gun from 'gun';
 const history = createHistory()
 class MainLayout extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      selectedTab: 'redTab',
-      hidden: false,
-      fullScreen: false,
-    };
+    this.gun = Gun('http://localhost:8080/gun');
+    let self = this;
+    this.gun.get('mark').on(function(data, key){
+      self.state = {
+        selectedTab: 'redTab',
+        hidden: false,
+        fullScreen: false,
+        name: data.name,
+        email: data.email,
+        number: data.number,
+      };
+    });
+
+
   }
   componentDidMount(){
-    console.log(this.props);
+    let self = this;
+    this.gun.get('mark').on(function(data, key){
+      self.setState({
+        name: data.name,
+        email: data.email,
+        number: data.number
+
+      })
+    });
+
   }
 
   render(){
@@ -24,7 +42,15 @@ class MainLayout extends React.Component{
           <NavBar
               mode="light"
               icon={<Icon type="left" />}
-              onLeftClick={() => console.log('onLeftClick')}
+              onLeftClick={() => {
+
+                this.gun.get('mark').put({
+                  name: "Mark",
+                  email: "mark@sa33333wae.io",
+                  number: Math.random().toString(),
+                });
+
+                console.log('onLeftClick')}}
               rightContent={[
                 <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                 <Icon key="1" type="ellipsis" />,
@@ -32,7 +58,11 @@ class MainLayout extends React.Component{
             >NavBar
           </NavBar>
         </div>
-        <div style={{marginTop: "20%", marginBottom: "30%"}}>{this.props.children}</div>
+
+        <div style={{marginTop: "20%", marginBottom: "30%"}}>
+          {this.state.name} | {this.state.email} | {this.state.number}
+        {this.props.children}
+        </div>
 
         <div style={{ position: 'fixed', height: '10%', width: '100%', bottom: 0 }}>
 
