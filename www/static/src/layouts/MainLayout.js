@@ -8,17 +8,15 @@ class MainLayout extends React.Component{
   constructor(props){
     super(props);
     this.gun = Gun('http://localhost:8080/gun');
-    let self = this;
-    this.gun.get('mark').on(function(data, key){
-      self.state = {
-        selectedTab: 'redTab',
-        hidden: false,
-        fullScreen: false,
-        name: data.name,
-        email: data.email,
-        number: data.number,
-      };
-    });
+    this.state = {
+      selectedTab: 'redTab',
+      hidden: false,
+      fullScreen: false,
+      name: "",
+      email: "",
+      number: "",
+    };
+
 
 
   }
