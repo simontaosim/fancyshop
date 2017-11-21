@@ -1,14 +1,23 @@
+/*
+  Author @Simon xsqfeather@gmail.com
+  这个文件处理消息盒子
+*/
 import React from 'react'
-import {
-  HashRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { appInfo } from '../../map_props.js';
+
+//redux actions
+import {setAppTitle} from '../../actions/app.js';
 
 
 class MessageBox extends React.Component{
   constructor(props) {
     super(props);
+  }
+  componentDidMount(){
+    const { dispatch } = this.props;
+    dispatch(setAppTitle(this.props.path));
   }
   render(){
     return (
@@ -18,4 +27,4 @@ class MessageBox extends React.Component{
 }
 
 
-export default MessageBox;
+export default connect(appInfo)(MessageBox);

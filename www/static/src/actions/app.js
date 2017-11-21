@@ -1,8 +1,8 @@
 export const SET_APP_TIILE = "SET_APP_TIILE";
 
-export function setAppTitle(){
+export function setAppTitle(path){
   return {
     type: SET_APP_TIILE,
-    title: "万人车会"
+    path
   }
 }

@@ -7,20 +7,31 @@ import {
 
 import MainLayout from '../layouts/MainLayout.js'
 import MessageBox from './messages'
+import AppHome from './home';
 import configureStore from "../stores/";
 import { Provider, connect } from 'react-redux';
+
+
+
+import createHistory from 'history/createHashHistory';
+const history = createHistory();
+
+
 const store = configureStore();
 
-const Home = () => (
-  <div>
-    <h1>此处是首页</h1>
-  </div>
-)
+
+const Home = ({ match }) => (
+    <AppHome path={match.path} />
+  )
 
 const About = () => (
   <div>
     <h2>About</h2>
   </div>
+)
+
+const Messages = ({match}) => (
+  <MessageBox path={match.path} />
 )
 
 const Topic = ({ match }) => (
@@ -60,9 +71,9 @@ const Topics = ({ match }) => (
 const Routes = () => (
   <Provider store={store}>
     <Router>
-        <MainLayout>
+        <MainLayout history={history}>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/messages" component={MessageBox}/>
+          <Route exact path="/messages" component={Messages}/>
           <Route path="/about" component={About}/>
           <Route path="/topics" component={Topics}/>
         </MainLayout>
