@@ -8,6 +8,7 @@ import {
 import MainLayout from '../layouts/MainLayout.js'
 import MessageBox from './messages'
 import AppHome from './home';
+import AppMy from './my';
 import configureStore from "../stores/";
 import { Provider, connect } from 'react-redux';
 
@@ -32,6 +33,10 @@ const About = () => (
 
 const Messages = ({match}) => (
   <MessageBox path={match.path} />
+)
+
+const My =  ({match}) => (
+  <AppMy path={match.path} />
 )
 
 const Topic = ({ match }) => (
@@ -74,8 +79,8 @@ const Routes = () => (
         <MainLayout history={history}>
           <Route exact path="/" component={Home}/>
           <Route exact path="/messages" component={Messages}/>
-          <Route path="/about" component={About}/>
-          <Route path="/topics" component={Topics}/>
+          <Route path="/shop_cart" component={About}/>
+          <Route exact path="/my" component={My}/>
         </MainLayout>
     </Router>
   </Provider>

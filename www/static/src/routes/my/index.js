@@ -11,22 +11,22 @@ import { appInfo } from '../../map_props.js';
 import {setAppTitle} from '../../actions/app.js';
 
 
-class AppHome extends React.Component{
+class AppMy extends React.Component{
   constructor(props) {
     super(props);
   }
   componentDidMount(){
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
-    
+
 
   }
   render(){
     return (
-      <div>此处是首页</div>
+      <div>个人中心</div>
     )
   }
 }
 
 
-export default connect(appInfo)(AppHome);
+export default connect(appInfo)(AppMy);

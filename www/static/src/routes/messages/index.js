@@ -18,6 +18,8 @@ class MessageBox extends React.Component{
   componentDidMount(){
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
+    
+
   }
   render(){
     return (
