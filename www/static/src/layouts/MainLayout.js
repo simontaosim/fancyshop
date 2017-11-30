@@ -31,7 +31,7 @@ class MainLayout extends React.Component{
     return(
       <div>
         <AppNavBar history={this.props.history} />
-        <div style={{marginTop: "20%", marginBottom: "30%"}}>
+        <div style={{marginTop: "11%", marginBottom: "30%"}}>
           {this.props.children}
         </div>
         <BottomMenu history={this.props.history} />

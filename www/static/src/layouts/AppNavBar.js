@@ -74,7 +74,7 @@ class AppNavBar extends React.Component{
          maskClosable={false}
          animationType="slide-up"
        >
-         <List renderHeader={() => <div>选择城市</div>} className="popup-list">
+         <List renderHeader={() => (<div>选择城市</div>)} className="popup-list">
            {['北京市', '成都市'].map((i, index) => (
              <List.Item arrow="horizontal" multipleLine onClick={() => {
                dispatch(setAppCity(i));
