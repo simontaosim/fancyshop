@@ -70,13 +70,13 @@ class BottomMenu extends React.Component{
             icon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+              background: 'url(http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom33.png) center center /  21px 21px no-repeat' }}
             />
             }
             selectedIcon={<div style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+              background: 'url(http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom3.png) center center /  21px 21px no-repeat' }}
             />
             }
             selected={this.state.selectedTab === 'blueTab'}
@@ -147,8 +147,8 @@ class BottomMenu extends React.Component{
           >
           </TabBar.Item>
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+            icon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom44.png' }}
+            selectedIcon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom4.png' }}
             title="我的"
             key="my"
             selected={this.state.selectedTab === 'yellowTab'}
