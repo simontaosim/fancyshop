@@ -35,6 +35,7 @@ class ShopTagMenu extends React.Component{
 
   render(){
     return (
+      <WingBlank>
       <Flex className="shop-tag-menu"  direction="row" align="stretch">
         <WingBlank>
           <Flex justify="center" direction="column" style={{background: this.state.tagMenuClick[0] ? "lightgray" : "none"}} onClick={()=>{this.handleTagMenuClick(0)}} >
@@ -60,13 +61,14 @@ class ShopTagMenu extends React.Component{
             机油超市
           </Flex>
         </WingBlank>
-        <WingBlank  style={{width: "15%"}}>
+        <WingBlank>
           <Flex justify="center" direction="column" style={{background: this.state.tagMenuClick[4] ? "lightgray" : "none"}} onClick={()=>{this.handleTagMenuClick(4)}}>
             <WingBlank size="lg"><img src="http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/service5.png" alt=""/></WingBlank>
             新车
           </Flex>
         </WingBlank>
       </Flex>
+      </WingBlank>
     )
   }
 }

@@ -6,10 +6,15 @@
   line-height: 20px!important;
 }
 .shop-tag-menu img{
-  width: 30px;
+  width: 2.5rem;
 }
 .shop-tag-menu{
-  font-size: 15px;
+  font-size: 0.1rem;
+  width: 100%;
+}
+.shop-tag-menu > .am-wingblank.am-wingblank-lg {
+  width: auto;
+  margin: auto;
 }
 .my-carousel .v-item {
   height: 36px;
