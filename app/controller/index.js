@@ -5,4 +5,3 @@ module.exports = class extends Base {
     return this.display();
   }
 };
-//# sourceMappingURL=index.js.map
