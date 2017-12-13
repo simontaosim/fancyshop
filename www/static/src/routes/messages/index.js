@@ -10,8 +10,9 @@ import { Flex, WhiteSpace, WingBlank  } from 'antd-mobile';
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
+import Horizon from '@horizon/client'
 
-
+  const horizon = Horizon({host: 'localhost:8181'});
 class MessageBox extends React.Component{
   constructor(props) {
     super(props);
@@ -20,12 +21,17 @@ class MessageBox extends React.Component{
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
 
+      horizon.onReady(function() {
+        document.querySelector('h1').innerHTML = 'App works!'
+      });
+      horizon.connect();
 
   }
   render(){
     return (
       <WingBlank justify="center" direction="column">
         <WhiteSpace />
+        <h1></h1>
         <Flex  direction="row" align="stretch">
           <Flex>商城</Flex>
           <Flex  direction="column">

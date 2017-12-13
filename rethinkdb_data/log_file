@@ -1,0 +1,29 @@
+2017-12-01T16:09:56.846368981 0.296963s notice: Recursively removing directory /home/simon/fancyshop/rethinkdb_data/tmp
+2017-12-01T16:09:56.853744101 0.304337s notice: Initializing directory /home/simon/fancyshop/rethinkdb_data
+2017-12-01T16:09:56.853858287 0.304451s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/home/simon/fancyshop/rethinkdb_data' did not already exist or is empty.)
+2017-12-01T16:09:56.853911083 0.304504s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2017-12-01T16:09:56.858793607 0.309389s notice: Running on Linux 4.8.0-53-generic x86_64
+2017-12-01T16:09:56.858870676 0.309463s notice: Loading data from directory /home/simon/fancyshop/rethinkdb_data
+2017-12-01T16:09:56.902582571 0.353176s info: Cache size is set to 200 MB
+2017-12-01T16:09:56.902973959 0.353567s warn: Cache size does not leave much memory for server and query overhead (available memory: 736 MB).
+2017-12-01T16:09:56.903929737 0.354522s notice: Listening for intracluster connections on port 36285
+2017-12-01T16:09:56.906251244 0.356844s notice: Listening for client driver connections on port 38933
+2017-12-01T16:09:56.906506485 0.357099s notice: Listening for administrative HTTP connections on port 33745
+2017-12-01T16:09:56.906551808 0.357144s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-12-01T16:09:56.906581914 0.357174s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-12-01T16:09:56.906587785 0.357180s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-12-01T16:09:56.906604264 0.357197s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-12-01T16:09:56.906626492 0.357219s notice: Server ready, "simon_System_Product_Name_yi3" 3345b6c2-aafe-40bb-a7e4-1ae37b964b43
+2017-12-01T16:09:57.030075633 0.480668s info: Table d6953015-f031-47a9-87be-9fd62a47e4a8: Starting a new Raft election for term 1.
+2017-12-01T16:09:57.030396937 0.480990s info: Table d6953015-f031-47a9-87be-9fd62a47e4a8: Added replica on this server.
+2017-12-01T16:09:57.039975197 0.490568s info: Table abce9183-20cd-4ad2-926d-cdaf42c44106: Starting a new Raft election for term 1.
+2017-12-01T16:09:57.040189239 0.490782s info: Table abce9183-20cd-4ad2-926d-cdaf42c44106: Added replica on this server.
+2017-12-01T16:09:57.048050724 0.498644s info: Table 2ae5569a-1eac-45e6-9d89-4be1ee133e1b: Starting a new Raft election for term 1.
+2017-12-01T16:09:57.048409698 0.499002s info: Table 2ae5569a-1eac-45e6-9d89-4be1ee133e1b: Added replica on this server.
+2017-12-01T16:09:57.053943471 0.504536s info: Table d6953015-f031-47a9-87be-9fd62a47e4a8: This server is Raft leader for term 1. Latest log index is 0.
+2017-12-01T16:09:57.055302289 0.505895s info: Table abce9183-20cd-4ad2-926d-cdaf42c44106: This server is Raft leader for term 1. Latest log index is 0.
+2017-12-01T16:09:57.055361035 0.505954s info: Table 2ae5569a-1eac-45e6-9d89-4be1ee133e1b: This server is Raft leader for term 1. Latest log index is 0.
+2017-12-01T16:09:57.629917589 1.080510s info: Table c44cb74a-fb6c-4ccc-8c9c-c278a56fffe5: Starting a new Raft election for term 1.
+2017-12-01T16:09:57.630146212 1.080739s info: Table c44cb74a-fb6c-4ccc-8c9c-c278a56fffe5: Added replica on this server.
+2017-12-01T16:09:57.633546954 1.084140s info: Table c44cb74a-fb6c-4ccc-8c9c-c278a56fffe5: This server is Raft leader for term 1. Latest log index is 0.
+2017-12-04T13:55:57.265157600 251160.715751s warn: Some RethinkDB data on this server has been placed into swap memory. This may impact performance.

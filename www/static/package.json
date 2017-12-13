@@ -16,6 +16,7 @@
     "copy-html": "node -e \"const fs = require('fs');fs.createReadStream('build/index.html').pipe(fs.createWriteStream('../../view/index_index.html'));\""
   },
   "dependencies": {
+    "@horizon/client": "^2.0.0",
     "antd": "^2.13.9",
     "antd-mobile": "^2.0.2",
     "gun": "^0.8.9",

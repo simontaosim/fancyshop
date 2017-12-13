@@ -9,6 +9,9 @@ import BottomMenu from './BottomMenu';
 import {appInfo} from '../map_props.js';
 import {connect} from 'react-redux';
 
+import Horizon from '@horizon/client'
+
+  const horizon = Horizon({host: 'localhost:8181'});
 class MainLayout extends React.Component{
   constructor(props){
     super(props);
