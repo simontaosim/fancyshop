@@ -1,0 +1,11 @@
+button [disabled] {
+    cursor:wait;
+    /* > * {
+        pointer-events: none;
+    } */
+}
+
+
+button [disabled] > * {
+    pointer-events:none;
+}
