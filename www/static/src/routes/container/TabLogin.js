@@ -16,14 +16,14 @@ const tabs = [
 class TabLogin  extends React.Component {
   constructor(props) {
     super(props)
-    
+
    }
    compoentDidMount () {
 
-   
+
    console.log(this.props.history)
    }
-   render() { 
+   render() {
     const authenticated = this.props.user.authenticated
     if(authenticated){
       return (

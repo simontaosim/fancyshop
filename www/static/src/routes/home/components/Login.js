@@ -4,21 +4,24 @@ import { asteroid } from '../../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { login, loginOut } from '../../../reducers/user.redux.js'
 import {  Redirect } from 'react-router-dom'
-
-
+import "./MobileLogin.css"
+import "./Login.css"
+import backImg from './back.png'
+import backgroundImg from './background.jpg'
+import userImg from './people.png'
+import validateImg from './validate.png'
 
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       user:'',
       pwd:'',
       count: 10,
       liked: true,
       disabled: false,
-
     }
     this.register = this.register.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
@@ -43,36 +46,7 @@ class Login extends React.Component {
         console.log("Error");
         console.error(error);
     });
-  
-    // const methodId = ddp.method("get.phonesms", [mobile]);
-    // console.log(`id: ${methodId}`);
-    // ddp.on("result", message => {
-    //   console.log(message);
-    //     if (message.id === methodId && !message.error) {
-    //         Toast.info('验证码成功发送!');
-    //     }else{
-    //       console.log(message.error);
-    //     }
-    // });
-//      if(this.state.liked){
-//           this.timer = setInterval(function () {
-//             var count = this.state.count;
-//             this.state.liked = false;
-//             this.state.disabled = true;
-//             count -= 1;
-//             if (count < 1) {
-//               this.setState({
-//                 liked: true,
-//                 disabled: false
-//               });
-//               count = 10;
-// 　　　　　　　　clearInterval(this.timer);
-//             }
-//             this.setState({
-//               count: count
-//             });
-//           }.bind(this), 1000);
-//         }
+
   }
 
   register() {
@@ -89,7 +63,7 @@ class Login extends React.Component {
   handleLogout() {
     this.props.loginOut();
   }
-  
+
   handleChange(key,value){
     this.setState({
       [key]:value
@@ -98,7 +72,8 @@ class Login extends React.Component {
   render() {
     // var code = this.state.liked ? '获取验证码' : this.state.count + '秒后重发';
     // var disabled = this.state.disabled ? "disabled" : ""
-    const authenticated = this.props.user.authenticated
+    const authenticated = this.props.user.authenticated;
+
     if(authenticated){
       return (
         <Redirect to="/"/>
@@ -106,6 +81,8 @@ class Login extends React.Component {
     }
     return(
       <div>
+  {/*
+      <div >
       <WingBlank>
       <List renderHeader={() => '进入万车汇'}>
         <InputItem
@@ -117,7 +94,7 @@ class Login extends React.Component {
           type="password"
           placeholder="输入您的密码"
           onChange={v=>this.handleChange('pwd',v)}
-          
+
       >密码
       </InputItem>
       </List>
@@ -129,13 +106,32 @@ class Login extends React.Component {
         <Button onClick={this.register} type='primary' >注册</Button>
       </WingBlank>
 
-    </div> 
+    </div>
+  */}
+  <div className = "layout">
+    <div className = "head">
+      <img className = "back" src = {backImg}/>
+      <span　className="user-login-span">用户登陆</span>
+      <span className="number-login-span">密码登陆</span>
+    </div>
+    <div className = "login-body">
+      <div className = "login-user">
+        <img src = {userImg} alt = "小图标"/>
+        <input type =　"text"/>
+      </div>
+      <div className = "login-validate">
+        <img src = {validateImg} alt = "小图标"/>
+        <input type = "text"/>
+      </div>
+    </div>
 
+  </div>
+
+</div>
     )
   }
-  
-}
 
+}
 
 
 function mapStateToProps(state) {
