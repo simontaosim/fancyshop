@@ -6,6 +6,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import { Flex, WingBlank  } from 'antd-mobile';
+import {getStore} from '../../../config/mUtils'
 
 
 class ShopTagMenu extends React.Component{
@@ -34,6 +35,7 @@ class ShopTagMenu extends React.Component{
   }
 
   render(){
+    console.log(getStore("authenticated"));
     return (
       <WingBlank>
       <Flex className="shop-tag-menu"  direction="row" align="stretch">

@@ -1,7 +1,8 @@
 import React from 'react'
 import { List, InputItem, Toast ,WingBlank, Button, WhiteSpace} from 'antd-mobile';
-import { register } from '../../../reducers/user.redux.js'
+import { register,getLocation } from '../../../reducers/user.redux.js'
 import { connect } from 'react-redux'
+import { getAddress } from '../../../service/amap/api/getCurrentLocationByIP'
 
 
 class Register extends React.Component {
@@ -24,8 +25,13 @@ class Register extends React.Component {
     this.props.history.goBack()
   }
 
+  
+
   register(){
+    let self = this;
+    getAddress()
     console.log(this.state)
+    // this.props.getAddress()
      this.props.register(this.state.user,this.state.pwd,this.state.mobile)
   }
 

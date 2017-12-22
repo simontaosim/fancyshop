@@ -51,9 +51,9 @@ class MobileLogin extends React.Component {
   sendCode() {
     let timer = null;
     
-    if(count < 10 && count >= 1){
-      sendBtnDisabled = true;
-    }
+    // if(count < 10 && count >= 1){
+    //   sendBtnDisabled = true;
+    // }
     if(count === 10 && !sendBtnDisabled){
       sendBtnDisabled = true;
       count = 10;

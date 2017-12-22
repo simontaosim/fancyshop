@@ -96,7 +96,7 @@ class App extends React.Component {
               <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/>
-              {/* <PrivateRoute path="/my" component={My} authenticated={authenticated}/> */}
+              <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
               <Route path="/login" component={Login}/>
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
