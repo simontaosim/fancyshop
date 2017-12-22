@@ -8,11 +8,17 @@ import { connect } from 'react-redux';
 import { appInfo } from '../../map_props.js';
 import ShopTagMenu from "./components/ShopTagMenu.js"
 
-import { Flex, Carousel, WhiteSpace, WingBlank, Grid  } from 'antd-mobile';
+import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
+import goodsImg from './one.jpg'
+import addImg from './add.png'
+import barImg from './bar.png'
+import beautyImg from './beauty.png'
+import runImg from './run.png'
+import shopImg from './shop.png'
 
 class AppHome extends React.Component{
   constructor(props) {
@@ -36,7 +42,7 @@ class AppHome extends React.Component{
   render(){
 
     return (
-        <Flex justify="center" direction="column" className="flex-container ">
+        <Flex  direction="column" className="flex-container ">
             <Carousel
               autoplay={false}
               infinite
@@ -72,16 +78,104 @@ class AppHome extends React.Component{
             </Flex>
           </Flex>
           <WhiteSpace/>
-          <Flex>商品推荐</Flex>
+          <span style = {{float:'left',borderLeft:'2px solid #aaa',paddingLeft:'10px'}} >火爆推荐</span>
+          <WhiteSpace size="sm" />
+          <Flex >
+
+            <Flex.Item align="center" style = {{position:'relative'}}>
+              <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              <span style = {{position:'absolute',backgroundColor:'#ff5b05',borderRadius:'12px',top:'0px',left:'80px',padding:'3px',color:'white'}}>火</span>
+              <span style = {{color:'red'}}>现价：￥330</span><br/>
+              <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+            </Flex.Item>
+            <Flex.Item align="center">
+              <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              <span style = {{color:'red'}}>现价：￥330</span><br/>
+              <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+            </Flex.Item>
+            <Flex.Item align="center" style = {{position:'relative'}}>
+              <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              <span  style = {{position:'absolute',backgroundColor:'#05ff37',borderRadius:'12px',top:'0px',left:'80px',padding:'3px',color:'white'}} >新</span>
+              <span style = {{color:'red'}}>现价：￥330</span><br/>
+              <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+            </Flex.Item>
+          </Flex>
           <WhiteSpace/>
-          <ShopTagMenu/>
+            {/*<ShopTagMenu/>
           <WhiteSpace/>
 
+
+            <Flex>
+          <Flex.Item align="center">
+          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+          <span style = {{color:'red'}}>现价：￥330</span><br/>
+          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+          </Flex.Item>
+          <Flex.Item align="center">
+          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+          <span style = {{color:'red'}}>现价：￥330</span><br/>
+          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+          </Flex.Item>
+          <Flex.Item align="center">
+          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+          <span style = {{color:'red'}}>现价：￥330</span><br/>
+          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+          </Flex.Item>
+          <Flex.Item align="center">
+          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+          <span style = {{color:'red'}}>现价：￥330</span><br/>
+          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+          </Flex.Item>
+          <Flex.Item align="center">
+          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+          <span style = {{color:'red'}}>现价：￥330</span><br/>
+          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
+          </Flex.Item>
+          </Flex>
+        */}
+          <Flex>
+            <Flex.Item  align="center">
+              <WingBlank size = "lg"><img src = {addImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              <span>4s保养</span>
+            </Flex.Item>
+            <Flex.Item  align="center">
+              <WingBlank size = "lg"><img src = {barImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              油卡充值
+            </Flex.Item>
+            <Flex.Item  align="center">
+              <WingBlank size = "lg"><img src = {beautyImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              喷漆
+            </Flex.Item>
+            <Flex.Item  align="center">
+              <WingBlank size = "lg"><img src = {shopImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              机油超市
+            </Flex.Item>
+            <Flex.Item  align="center">
+              <WingBlank size = "lg"><img src = {runImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
+              新车
+            </Flex.Item>
+          </Flex>
           <Flex>另外一栏商品推荐</Flex>
+          <div className = "back-img">
+            <WingBlank/>
+            <Flex>
+                <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><br/><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
+                <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
+                <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
+                <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
+
+            </Flex>
+            <WhiteSpace/>
+            <Flex>
+              <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
+              <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
+              <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
+              <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
+            </Flex>
+          </div>
         </Flex>
     )
   }
 }
-
 
 export default connect(appInfo)(AppHome);

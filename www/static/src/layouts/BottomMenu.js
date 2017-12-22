@@ -151,6 +151,7 @@ class BottomMenu extends React.Component{
             selectedIcon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom4.png' }}
             title="我的"
             key="my"
+            badge = {'爆'}
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
               history.push("/my");

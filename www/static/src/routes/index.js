@@ -93,17 +93,20 @@ class App extends React.Component {
     return (
       <Router>
           <MainLayout history={history}>
+          {/*
               <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/>
-              {/* <PrivateRoute path="/my" component={My} authenticated={authenticated}/> */}
+              <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
+              <Route path="/tablogin" component={TabLogin} />
+          */}
+              <Route path="/" component={Home}/>
               <Route path="/login" component={Login}/>
               <Route path="/register" component={Register}/>
-              <Route path="/tablogin" component={TabLogin} />
               <Route path="/map" component={Map} />
               <Route path="/reactmap" component={ReactMap} />
               <Route path="/my" component={My} />
-          </MainLayout>    
+          </MainLayout>
       </Router>
     )
   }
@@ -118,5 +121,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(App);
-
-

@@ -4,12 +4,19 @@ import { asteroid } from '../../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { login, loginOut } from '../../../reducers/user.redux.js'
 import {  Redirect } from 'react-router-dom'
+import { Flex } from 'antd-mobile';
+import { Icon, Grid } from 'antd-mobile';
+
 import "./MobileLogin.css"
 import "./Login.css"
 import backImg from './back.png'
 import backgroundImg from './background.jpg'
 import userImg from './people.png'
 import validateImg from './validate.png'
+
+const PlaceHolder = ({ className = '', ...restProps }) => (
+  <div className={`${className} placeholder`} {...restProps}>Block</div>
+);
 
 
 class Login extends React.Component {
@@ -80,58 +87,69 @@ class Login extends React.Component {
       );
     }
     return(
-      <div>
-  {/*
-      <div >
-      <WingBlank>
-      <List renderHeader={() => '进入万车汇'}>
-        <InputItem
-          type="text"
-          placeholder="输入您的账户"
-          onChange={v=>this.handleChange('user',v)}
-        >账户</InputItem>
-        <InputItem
-          type="password"
-          placeholder="输入您的密码"
-          onChange={v=>this.handleChange('pwd',v)}
+    <div className = "all-mobile">
+      <div className="flex-container">
+        <Flex>
 
-      >密码
-      </InputItem>
-      </List>
-      <WhiteSpace />
-        <Button onClick={this.handleLogin} type='primary' >登录</Button>
-        <WhiteSpace />
-        <Button onClick={this.handleLogout} type='primary' >退出</Button>
-        <WhiteSpace />
-        <Button onClick={this.register} type='primary' >注册</Button>
-      </WingBlank>
+          <InputItem className = "input-item"
+            type="phone"
+            placeholder="input your phone"
+            error={this.state.hasError}
+            onErrorClick={this.onErrorClick}
+            onChange={this.onChange}
+            value={this.state.value}
+            >
+              <img src = {userImg}/>
+            </InputItem>
+        </Flex>
+        <Flex>
 
-    </div>
-  */}
-  <div className = "layout">
-    <div className = "head">
-      <img className = "back" src = {backImg}/>
-      <span　className="user-login-span">用户登陆</span>
-      <span className="number-login-span">密码登陆</span>
-    </div>
-    <div className = "login-body">
-      <div className = "login-user">
-        <img src = {userImg} alt = "小图标"/>
-        <input type =　"text"/>
+          <InputItem className = "input-item"
+            type="phone"
+            placeholder="input your phone"
+            error={this.state.hasError}
+            onErrorClick={this.onErrorClick}
+            onChange={this.onChange}
+            value={this.state.value}
+            >
+              <img src = {userImg}/>
+            </InputItem>
+        </Flex>
+        <Button type = "primary" className = "psw-btn btn-active">登陆</Button>
+        <Flex>
+          <span className = "forget-pwd" >忘记密码？</span>
+        </Flex>
+
+        {/*
+        <Flex>
+          <Button type = "primary">登陆</Button>
+        </Flex>
+
+        <Flex>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+        </Flex>
+        <WhiteSpace size="lg" />
+        <Flex>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+        </Flex>
+        <WhiteSpace size="lg" />
+        <Flex>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+          <Flex.Item><PlaceHolder /></Flex.Item>
+        </Flex>
+        */}
+        <WhiteSpace size="lg" />
       </div>
-      <div className = "login-validate">
-        <img src = {validateImg} alt = "小图标"/>
-        <input type = "text"/>
-      </div>
     </div>
-
-  </div>
-
-</div>
-    )
-  }
-
+  )
 }
+}
+
 
 
 function mapStateToProps(state) {
