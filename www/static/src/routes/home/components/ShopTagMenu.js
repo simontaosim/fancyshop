@@ -35,7 +35,6 @@ class ShopTagMenu extends React.Component{
   }
 
   render(){
-    console.log(getStore("authenticated"));
     return (
       <WingBlank>
       <Flex className="shop-tag-menu"  direction="row" align="stretch">

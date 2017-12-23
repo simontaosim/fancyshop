@@ -35,7 +35,7 @@ export function user(state=initState,action) {
       // return {}
       let userId = action.payload;
       let authenticated = true;
-      setStore('authenticate','true')
+      setStore('authenticated','true')
       return Object.assign({}, state, {
         userId,
         authenticated,
@@ -48,7 +48,7 @@ export function user(state=initState,action) {
         authenticated,
       });
     case LOGIN_OUT:
-      removeStore('authenticate')
+      removeStore('authenticated')
       return {user: '',authenticated: false}
     case USER_LOCALTION:
       return Object.assign({},state,{
@@ -71,9 +71,6 @@ export function login(user,pwd) {
       })
       .catch(error => {
         Toast.fail('账户或者密码错误', 1);
-        console.log(123);
-          console.log("Error");
-          console.error(error);
       });
   }
 }
@@ -92,13 +89,9 @@ export function loginOut() {
 }
 
 export function register(username,password,mobile) {
-  // let address = getStore('address');
-  // console.log(address);
   return dispatch=> {
-    console.log(mobile);
       asteroid.call('users.mobile.exist',mobile)
       .then(result => {
-        console.log('走这里')
         if(result){
           asteroid.call('createUser',{username,password})
           .then(result => {
@@ -125,28 +118,5 @@ export function register(username,password,mobile) {
           Toast.info("手机已被使用") 
         }
       })
-    
-     
-    // console.log(username);
-    // asteroid.call('createUser', {username, password})
-    // .then(result => {
-    //   console.log(result.id);
-    //   let userId = result.id
-    //   asteroid.call('users.update',userId,mobile)
-    //   .then(result => {
-    //       console.log(result);
-    //   })
-    //   .catch(error => {
-    //       console.log(error);
-    //   })
-    //   // Toast.success('注册成功',1)
-    //   // dispatch(registerSuccess(result))
-    // })
-    // .catch(error => {
-    //   console.log(error.reason);
-    //   if(error.reason=="Username already exists."){
-    //     Toast.fail("用户名已存在")
-    //   }
-    // }) 
   }
 }

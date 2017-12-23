@@ -18,6 +18,7 @@ import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './container/TabLogin';
 import ReactMap from './container/ReactMap';
 import Map from './container/Map';
+import { getStore } from '../config/mUtils';
 
 
 
@@ -88,8 +89,13 @@ const Topics = ({ match }) => (
 )
 
 class App extends React.Component {
+  componentDidMount() {
+    console.log('authenticate123');
+    console.log(getStore('authenticate'))
+  }
   render() {
-    const authenticated = this.props.user.authenticated
+    // const authenticated = this.props.user.authenticated
+    const authenticated = getStore('authenticated');
     return (
       <Router>
           <MainLayout history={history}>

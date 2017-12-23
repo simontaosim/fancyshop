@@ -66,7 +66,23 @@ class MobileLogin extends React.Component {
     }
     
     
-    
+    if(this.state.liked){
+      this.timer = setInterval(function () {
+        var count = this.state.count;
+        this.state.liked = false;
+        count -= 1;
+        if (count < 1) {
+          this.setState({
+            liked: true
+          });
+          count = 10;
+　　　　　　　　clearInterval(this.timer);
+        }
+        this.setState({
+          count: count
+        });
+      }.bind(this), 1000);
+    }
     
       
     // let mobile = this.state.user.replace(/\s|\xA0/g,"")
