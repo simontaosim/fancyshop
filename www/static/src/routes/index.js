@@ -3,22 +3,20 @@ import {
   HashRouter as Router,
   Route,
   Link,
-  Switch,
 } from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout.js'
 import MessageBox from './messages'
 import AppHome from './home';
-import AppMy from './my';
-import Login from './home/components/Login';
+import My from './my';
 import Register from './home/components/Register';
-import configureStore from "../stores/";
-import { Provider,  connect } from 'react-redux';
+import {  connect } from 'react-redux';
 import PrivateRoute from './container/PrivateRoute';
-import TabLogin from './container/TabLogin';
-import ReactMap from './container/ReactMap';
-import Map from './container/Map';
+import TabLogin from './login/TabLogin';
+import MyOrders from './orders/MyOrder'
 import { getStore } from '../config/mUtils';
+
+
 
 
 
@@ -26,7 +24,6 @@ import createHistory from 'history/createHashHistory';
 const history = createHistory();
 
 
-const store = configureStore();
 
 
 const Home = ({ match }) => (
@@ -43,9 +40,9 @@ const Messages = ({match}) => (
   <MessageBox path={match.path} />
 )
 
-const My =  ({match}) => (
-  <AppMy path={match.path} />
-)
+// const My =  ({match}) => (
+//   <AppMy path={match.path} />
+// )
 
 const Topic = ({ match }) => (
   <div>
@@ -54,11 +51,7 @@ const Topic = ({ match }) => (
 )
 
 
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>No match for <code>{location.pathname}</code></h3>
-  </div>
-)
+
 
 const Topics = ({ match }) => (
   <div>
@@ -89,26 +82,20 @@ const Topics = ({ match }) => (
 )
 
 class App extends React.Component {
-  componentDidMount() {
-    console.log('authenticate123');
-    console.log(getStore('authenticate'))
-  }
   render() {
     // const authenticated = this.props.user.authenticated
     const authenticated = getStore('authenticated');
     return (
-      <Router>
+      <Router >
           <MainLayout history={history}>
               <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/>
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
-              <Route path="/login" component={Login}/>
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
-              <Route path="/map" component={Map} />
-              <Route path="/reactmap" component={ReactMap} />
-              <Route path="/my" component={My} />
+              {/* <Route path="/my" component={My}  /> */}
+              <Route path="/myorders" component={MyOrders}  />
           </MainLayout>    
       </Router>
     )

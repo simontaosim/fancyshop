@@ -1,6 +1,6 @@
 // import React from 'react';
 import axios from 'axios';
-import {setStore, getStore} from '../../../config/mUtils'
+import {setStore} from '../../../config/mUtils'
 
 function  initMap(){
     let amap = new window.AMap.Map('', {

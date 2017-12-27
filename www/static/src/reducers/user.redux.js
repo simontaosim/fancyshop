@@ -1,6 +1,10 @@
 import { asteroid } from '../config/asteroid.config.js'
 import { Toast } from 'antd-mobile';
 import {getStore, setStore,removeStore} from '../config/mUtils';
+import createHistory from 'history/createHashHistory';
+
+const history = createHistory();
+
 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 const LOGIN_SUCESS = 'LOGIN_SUCESS';
@@ -49,7 +53,9 @@ export function user(state=initState,action) {
       });
     case LOGIN_OUT:
       removeStore('authenticated')
-      return {user: '',authenticated: false}
+      return Object.assign({},state,{
+        authenticate: false
+      })
     case USER_LOCALTION:
       return Object.assign({},state,{
 
@@ -66,6 +72,8 @@ export function login(user,pwd) {
     return dispatch=>{
       asteroid.loginWithPassword({username:user,password:pwd})
       .then(result => {
+        console.log('登陆后:')
+        console.log(result);
        Toast.success('登陆成功', 1);
        dispatch(loginSuccess(result))
       })
@@ -76,14 +84,17 @@ export function login(user,pwd) {
 }
 
 
-export function loginOut() {
+export function loginOut(fn) {
+  console.log(`退出`)
   return dispatch=> {
      asteroid.logout()
      .then(result => {
          dispatch(loginOutSuccess(result))
+        history.push('/tablogin')
+         
+        
      })
      .catch(error => {
-        // console.log('')
      })
   }
 }
@@ -108,7 +119,7 @@ export function register(username,password,mobile) {
               })
           })
           .catch(error => {
-                if(error.reason=="Username already exists."){
+                if(error.reason==="Username already exists."){
                   Toast.fail("用户名已存在")
                 } 
           })
@@ -118,5 +129,27 @@ export function register(username,password,mobile) {
           Toast.info("手机已被使用") 
         }
       })
+  }
+}
+
+
+export function mobileRegister(mobile,verify){
+  return dispatch => {
+    let code = getStore('verify')
+    if(verify===code){
+      console.log(`mobile: ${mobile} verify: ${verify}`)
+      asteroid.call('login.mobie',mobile)
+      .then(result => {
+        console.log(result);
+        removeStore('verify')
+        dispatch(loginSuccess(result))
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }else{
+      Toast.info('验证码错误');
+    }
+   
   }
 }

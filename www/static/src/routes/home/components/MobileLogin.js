@@ -4,6 +4,7 @@ import { asteroid } from '../../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { login } from '../../../reducers/user.redux.js'
 import "./MobileLogin.css"
+import Count from './Count'
 
 let self = this;
 let sendBtnDisabled = false;
@@ -34,12 +35,15 @@ class MobileLogin extends React.Component {
       liked: true,
       disabled: false,
       hasError: false,
+      countingDone:false,
+      status: 'able'
 
     }
     this.register = this.register.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
     this.sendCode = this.sendCode.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
+    this.onChildChange = this.onChildChange.bind(this)
   }
 
   onErrorClick = () => {
@@ -48,28 +52,47 @@ class MobileLogin extends React.Component {
     }
   }
 
+  onChildChange(tips,status){
+	  if(tips){
+		  this.setState({
+			tips:tips,
+			class2:'show shake',
+			class1:''
+		  });
+	  }
+	  if(status)
+		  this.setState({
+			status:status
+      })
+    }
+
   sendCode() {
-    let timer = null;
     
-    // if(count < 10 && count >= 1){
-    //   sendBtnDisabled = true;
-    // }
-    if(count === 10 && !sendBtnDisabled){
-      sendBtnDisabled = true;
-      count = 10;
-      timer = setInterval(smsCounter, 1000)
-    }
-    if(count === 0 ){
-      sendBtnDisabled = true;
-      count = 10;
-      window.clearInterval(timer);
-    }
+//     let timer = null;
+    
+//     // if(count < 10 && count >= 1){
+//     //   sendBtnDisabled = true;
+//     // }
+//     if(count === 10 && !sendBtnDisabled){
+//       sendBtnDisabled = true;
+//       count = 10;
+//       timer = setInterval(smsCounter, 1000)
+//     }
+//     if(count === 0 ){
+//       sendBtnDisabled = true;
+//       count = 10;
+//       window.clearInterval(timer);
+//     }
     
     
     if(this.state.liked){
+      console.log(123);
       this.timer = setInterval(function () {
         var count = this.state.count;
-        this.state.liked = false;
+        // this.state.liked = false;
+        this.setState({
+          liked: false,
+        })
         count -= 1;
         if (count < 1) {
           this.setState({
@@ -82,7 +105,11 @@ class MobileLogin extends React.Component {
           count: count
         });
       }.bind(this), 1000);
+    }else{
+      console.log(222);
     }
+
+   
     
       
     // let mobile = this.state.user.replace(/\s|\xA0/g,"")
@@ -168,6 +195,10 @@ class MobileLogin extends React.Component {
 //         }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   register() {
     console.log('resgiter');
     this.props.history.push('/register')
@@ -225,16 +256,7 @@ class MobileLogin extends React.Component {
             placeholder="input your phone"
             onChange={v=>this.handleChange('pwd',v)}
          >密码
-         <button   onClick={this.sendCode} style={{
-              fontSize: "15px",
-              position: "absolute",
-              top: 0,
-              right: 0,
-              padding: "0 0 7px 0",
-              lineHeight: "42px",
-              border: "none",
-              background: "#fff"
-  }} >{code}</button>
+        <Count status={this.state.status} nums={this.state.count} callback={this.onChildChange}/>
          </InputItem>
         </List>
         <WhiteSpace />

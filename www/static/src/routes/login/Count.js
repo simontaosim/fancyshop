@@ -11,7 +11,17 @@ class Count extends React.Component {
             nums: props.nums,
         }
     }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+          status:nextProps.status
+           });
+      }
+      componentWillUnmount() {
+          clearInterval(this.clock);
+      }
     handleSend=(event)=>{
+        console.log(`计时器获取父状态${this.state.status}`)
         switch(this.state.status){
             // 按钮处于可发送状态发送并倒计时
             case 'able':
@@ -25,15 +35,14 @@ class Count extends React.Component {
                 status:'sending',
                 countdown:'重新发送(' + this.state.nums + 's)',
               });
+              this.props.sendCode()
            
               break;
             // 按钮处于不可点击状态，点击后提示
             case 'disable':
-                this.setState({
-                tips:this.props.disableClick
-              });
+           
               // 通知父组件
-              this.props.callback(this.props.disableClick,false);
+              this.props.callback('',false);
               break;
             // 按钮处发送状态，点击后提示
             case 'sending':

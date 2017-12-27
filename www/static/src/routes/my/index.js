@@ -20,13 +20,14 @@ class AppMy extends React.Component{
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
 
-
+    console.log(this.props)
   }
   render(){
+    
     return (
       <div>
-        <div>个人中心</div>
-        <MyList />
+        <div>个人中心111</div>
+        <MyList  history={this.props.history} />
       </div>
     )
   }
