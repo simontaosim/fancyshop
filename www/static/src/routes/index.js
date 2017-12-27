@@ -18,6 +18,7 @@ import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './container/TabLogin';
 import ReactMap from './container/ReactMap';
 import Map from './container/Map';
+import About from './home/shop_cart';
 
 
 
@@ -32,11 +33,11 @@ const Home = ({ match }) => (
     <AppHome path={match.path} />
   )
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
+// const About = () => (
+//   <div>
+//     <h2>About</h2>
+//   </div>
+// )
 
 const Messages = ({match}) => (
   <MessageBox path={match.path} />
@@ -101,11 +102,13 @@ class App extends React.Component {
               <Route path="/tablogin" component={TabLogin} />
           */}
               <Route path="/" component={Home}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/register" component={Register}/>
+              <PrivateRoute path="/login" component={Login}/>
+              <PrivateRoute path="/register" component={Register}/>
               <Route path="/map" component={Map} />
               <Route path="/reactmap" component={ReactMap} />
               <Route path="/my" component={My} />
+              <Route path="/messages" component={MessageBox}/>
+              <Route path="/shop_cart" component = {About}/>
           </MainLayout>
       </Router>
     )
