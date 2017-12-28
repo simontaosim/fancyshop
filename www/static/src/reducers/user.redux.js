@@ -1,9 +1,6 @@
 import { asteroid } from '../config/asteroid.config.js'
 import { Toast } from 'antd-mobile';
 import {getStore, setStore,removeStore} from '../config/mUtils';
-import createHistory from 'history/createHashHistory';
-
-const history = createHistory();
 
 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -13,7 +10,7 @@ const USER_LOCALTION = 'USER_LOCATION';
 
 const initState = {
   userId: '',
-  authenticated: false 
+  authenticated: false,
 }
 
 function loginSuccess(data) {
@@ -52,9 +49,9 @@ export function user(state=initState,action) {
         authenticated,
       });
     case LOGIN_OUT:
-      removeStore('authenticated')
+      // removeStore('authenticated')
       return Object.assign({},state,{
-        authenticate: false
+        authenticated: false
       })
     case USER_LOCALTION:
       return Object.assign({},state,{
@@ -90,8 +87,6 @@ export function loginOut(fn) {
      asteroid.logout()
      .then(result => {
          dispatch(loginOutSuccess(result))
-        history.push('/tablogin')
-         
         
      })
      .catch(error => {

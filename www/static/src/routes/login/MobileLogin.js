@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { mobileRegister } from '../../reducers/user.redux'
 import Count from './Count'
 import { setStore } from '../../config/mUtils'
+import { testPhone } from '../../config/reg'
 
 
 
@@ -16,7 +17,7 @@ class MobileLogin extends React.Component {
     this.state = {
       user:'',
       pwd:'',
-      count: 10,
+      count: 60,
       countingDone:false,
       status: 'disable'
 
@@ -42,14 +43,6 @@ sendCode() {
 }
 
 
-// 手机号验证
-testPhone(phone){
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-    if(myreg.test(phone))
-        return true;
-    else
-        return false;
-}
 
 
 
@@ -72,7 +65,7 @@ testPhone(phone){
     let phone = this.state.user;
     let pwd = this.state.pwd
 
-    if(!this.testPhone(phone)){
+    if(!testPhone(phone)){
       Toast.info("手机格式不正确")
     }else{
       console.log(`走这了`)
@@ -93,7 +86,7 @@ testPhone(phone){
        user: phone
     });
     // 验证手机号
-    if(this.testPhone(phone)){ 
+    if(testPhone(phone)){ 
       console.log(`手机验证成功`)
         this.setState({
           status:'able'	 
@@ -134,8 +127,6 @@ testPhone(phone){
         </List>
         <WhiteSpace />
           <Button onClick={this.handleLogin} type='primary' >登录</Button>
-          <WhiteSpace />
-           <Button onClick={this.handleLogout} type='primary' >退出</Button>
           <WhiteSpace />
           <Button onClick={this.register} type='primary' >注册</Button>
         </WingBlank>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Toast} from 'antd-mobile'
 
 class Count extends React.Component {
     constructor(props){
@@ -40,6 +40,7 @@ class Count extends React.Component {
               break;
             // 按钮处于不可点击状态，点击后提示
             case 'disable':
+              Toast.info('请输入手机号码')
            
               // 通知父组件
               this.props.callback('',false);

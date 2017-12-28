@@ -9,7 +9,7 @@ import MainLayout from '../layouts/MainLayout.js'
 import MessageBox from './messages'
 import AppHome from './home';
 import My from './my';
-import Register from './home/components/Register';
+import Register from './register/Register';
 import {  connect } from 'react-redux';
 import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';

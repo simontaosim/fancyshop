@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from "./stores/index";
 import createHistory from 'history/createHashHistory';
+import { ConnectedRouter } from 'react-router-redux'
 
 const history = createHistory();
 

@@ -2,13 +2,13 @@
  * 存储localStorage
  */
 export const setStore = (name, content) => {
-    console.log(name);
+    // console.log(name);
     if (!name) return;
     if (typeof content !== 'string') {
       content = JSON.stringify(content);
     }
     window.localStorage.setItem(name, content);
-    console.log(`${name},${content}`);
+    // console.log(`${name},${content}`);
   }
   
   /**

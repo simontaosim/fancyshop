@@ -2,6 +2,7 @@ import React from 'react';
 import { List, Button, WhiteSpace, Modal} from 'antd-mobile';
 import{ loginOut } from '../../reducers/user.redux'
 import { connect } from 'react-redux'
+import { log } from 'util';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -25,6 +26,12 @@ class MyList extends React.Component {
         }},
         { text: '取消', onPress: () => console.log('取消了') },
       ])
+    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
+        if(!nextProps.user.authenticated){
+            nextProps.history.push('/tablogin');
+        }
     }
     
     render() {
