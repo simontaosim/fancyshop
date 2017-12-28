@@ -49,7 +49,7 @@ export function user(state=initState,action) {
         authenticated,
       });
     case LOGIN_OUT:
-      // removeStore('authenticated')
+      removeStore('authenticated')
       return Object.assign({},state,{
         authenticated: false
       })
@@ -69,8 +69,6 @@ export function login(user,pwd) {
     return dispatch=>{
       asteroid.loginWithPassword({username:user,password:pwd})
       .then(result => {
-        console.log('登陆后:')
-        console.log(result);
        Toast.success('登陆成功', 1);
        dispatch(loginSuccess(result))
       })
@@ -82,7 +80,6 @@ export function login(user,pwd) {
 
 
 export function loginOut(fn) {
-  console.log(`退出`)
   return dispatch=> {
      asteroid.logout()
      .then(result => {
@@ -94,36 +91,39 @@ export function loginOut(fn) {
   }
 }
 
-export function register(username,password,mobile) {
+export function register(username,password,mobile,verify) {
   return dispatch=> {
-      asteroid.call('users.mobile.exist',mobile)
-      .then(result => {
-        if(result){
-          asteroid.call('createUser',{username,password})
-          .then(result => {
-              let userId = result.id
-              let address = JSON.parse(getStore('address'));
-              asteroid.call('users.update',userId,mobile,address)
-              .then(result => {
-                Toast.success('注册成功',1)
-                dispatch(registerSuccess(result))
-              })
-              .catch(error => {
-                console.log('注册失败')
-                  console.log(error);
-              })
-          })
-          .catch(error => {
-                if(error.reason==="Username already exists."){
-                  Toast.fail("用户名已存在")
-                } 
-          })
-        }
-        else
-        {
-          Toast.info("手机已被使用") 
-        }
-      })
+    let code = getStore('verify')
+    if(verify===code){
+        asteroid.call('users.mobile.exist',mobile)
+        .then(result => {
+          if(result){
+            asteroid.call('createUser',{username,password})
+            .then(result => {
+                let userId = result.id
+                let address = JSON.parse(getStore('address'));
+                asteroid.call('users.update',userId,mobile,address)
+                .then(result => {
+                  Toast.success('注册成功',1)
+                  dispatch(registerSuccess(result))
+                })
+                .catch(error => {
+                })
+            })
+            .catch(error => {
+                  if(error.reason==="Username already exists."){
+                    Toast.fail("用户名已存在")
+                  } 
+            })
+          }
+          else
+          {
+            Toast.info("手机已被使用") 
+          }
+        })
+    }else{
+      Toast.info('验证码错误')
+    }
   }
 }
 
@@ -135,7 +135,6 @@ export function mobileRegister(mobile,verify){
       console.log(`mobile: ${mobile} verify: ${verify}`)
       asteroid.call('login.mobie',mobile)
       .then(result => {
-        console.log(result);
         removeStore('verify')
         dispatch(loginSuccess(result))
       })

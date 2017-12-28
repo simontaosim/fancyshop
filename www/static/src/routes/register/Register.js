@@ -15,6 +15,7 @@ class Register extends React.Component {
     this.state = {
       user: '',
       pwd: '',
+      mobile: '',
       verify: '',
       count: 60,
       countingDone:false,
@@ -69,7 +70,9 @@ onChildChange(tips,status){
   register(){
     console.log(`regsiter`)
     let self = this;
-    let {user, pwd, mobile} = this.state
+    let {user, pwd, mobile,verify} = this.state
+    console.log(`mobile`)
+    console.log(mobile)
     if(!testUser(user)){
       Toast.info('账户格式错误')
       return 
@@ -83,7 +86,7 @@ onChildChange(tips,status){
       return
     }
     getAddress()
-     this.props.register(user,pwd,mobile)
+     this.props.register(user,pwd,mobile,verify)
   }
 
   handlePhone=(event)=>{
@@ -94,7 +97,7 @@ onChildChange(tips,status){
         return false;
     // 同步input值
     this.setState({
-       user: phone
+       mobile: phone
     });
     // 验证手机号
     if(testPhone(phone)){ 

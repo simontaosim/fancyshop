@@ -1,5 +1,7 @@
 import React from 'react';
 import { Tabs, WhiteSpace } from 'antd-mobile';
+import '../../service/data/datasource';
+import axios from 'axios'
 
 const tabs = [
   { title: '全部' },
@@ -9,28 +11,17 @@ const tabs = [
   { title: '无效' },
 ];
 
-const TabExample = () => (
-  <div>
-    <WhiteSpace />
-    <Tabs tabs={tabs} initialPage={2} animated={false} useOnPan={false}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#fff' }}>
-        Content of first tab
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#fff' }}>
-        Content of second tab
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#fff' }}>
-        Content of third tab
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#fff' }}>
-        Content of third tab1
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#fff' }}>
-        Content of third tab2
-      </div>
-    </Tabs>
-    <WhiteSpace />
-  </div>
-);
 
+class TabExample extends React.Component {
+    componentDidMount(){
+        axios.get('/myWallet').then(res => {
+            console.log(res);
+        })
+    }
+    render(){
+        return(
+            <div>123</div>
+        )
+    }
+}
 export default TabExample;
