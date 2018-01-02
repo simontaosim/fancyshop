@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Flex, WhiteSpace, WingBlank} from 'antd-mobile';
-import goodsImg from './one.jpg'
+import goodsImg from './one.jpg';
 
 
 class Recommend extends React.Component {
