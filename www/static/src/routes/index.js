@@ -15,6 +15,7 @@ import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';
 import MyOrders from './orders/MyOrder'
 import { getStore } from '../config/mUtils';
+import Test from './checkbox'
 
 
 
@@ -96,6 +97,7 @@ class App extends React.Component {
               <Route path="/tablogin" component={TabLogin} />
               {/* <Route path="/my" component={My}  /> */}
               <Route path="/myorders" component={MyOrders}  />
+              <Route path="/test" component={Test}  />
           </MainLayout>    
       </Router>
     )
