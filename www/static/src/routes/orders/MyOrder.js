@@ -1,7 +1,8 @@
 import React from 'react';
 import { Tabs, WhiteSpace } from 'antd-mobile';
-import '../../service/data/datasource';
-import axios from 'axios'
+// import '../../service/data/datasource';
+// import axios from 'axios'
+import style from './order.css'
 
 const tabs = [
   { title: '全部' },
@@ -13,14 +14,15 @@ const tabs = [
 
 
 class TabExample extends React.Component {
-    componentDidMount(){
-        axios.get('/myWallet').then(res => {
-            console.log(res);
-        })
-    }
+    // componentDidMount(){
+    //     axios.get('/myWallet').then(res => {
+    //         console.log(res);
+    //     })
+    // }
     render(){
+        // console.log(style)
         return(
-            <div>123</div>
+            <div className={style.App}>123</div>
         )
     }
 }

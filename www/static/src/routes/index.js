@@ -13,7 +13,8 @@ import Register from './register/Register';
 import {  connect } from 'react-redux';
 import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';
-import MyOrders from './orders/MyOrder'
+// import MyOrders from './orders/MyOrder'
+import MyOrders from './Orders/MyOrder';
 import { getStore } from '../config/mUtils';
 import Test from './checkbox'
 
