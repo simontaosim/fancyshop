@@ -14,20 +14,12 @@ import {  connect } from 'react-redux';
 import PrivateRoute from './container/PrivateRoute';
 
 import TabLogin from './login/TabLogin';
-// import MyOrders from './orders/MyOrder'
+
 import { getStore } from '../config/mUtils';
 import Test from './checkbox'
 import About from './home/shop_cart';
-
-
-
-
-
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
-
-
-
 
 const Home = ({ match }) => (
     <AppHome path={match.path} />
@@ -98,9 +90,8 @@ class App extends React.Component {
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
 <<<<<<< HEAD
                 */}
-              <Route path="/tablogin" component={TabLogin} />
-
               <Route path="/" component={Home}/>
+              <Route path="/tablogin" component={TabLogin} />
               {/* <PrivateRoute path="/login" component={Login}/> */}
               <PrivateRoute path="/register" component={Register}/>
               {/* <Route path="/map" component={Map} />

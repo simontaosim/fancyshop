@@ -11,7 +11,7 @@ class Recommend extends React.Component {
 
   render(){
     return(
-      <div  style = {{backgroundColor:'#fff'}}>
+      <div  style = {{backgroundColor:'#fff',padding:'10px'}}>
         <div >
           <span style = {{borderLeft:'2px solid #aaa',paddingLeft:'10px',display:'block'}}>火爆推荐</span>
         </div>

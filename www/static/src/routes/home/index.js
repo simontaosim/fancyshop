@@ -11,6 +11,7 @@ import { appInfo } from '../../map_props.js';
 import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
+import GoodsList from "./GoodsList";
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
@@ -81,65 +82,12 @@ class AppHome extends React.Component{
             </Flex>
           </Flex>
           <WhiteSpace/>
+          <WhiteSpace/>
           <Recommend/>
           <WhiteSpace/>
           <ShopTagMenu/>
-            {/*<ShopTagMenu/>
-          <WhiteSpace/>
+          <GoodsList/>
 
-
-            <Flex>
-          <Flex.Item align="center">
-          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
-          <span style = {{color:'red'}}>现价：￥330</span><br/>
-          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
-          </Flex.Item>
-          <Flex.Item align="center">
-          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
-          <span style = {{color:'red'}}>现价：￥330</span><br/>
-          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
-          </Flex.Item>
-          <Flex.Item align="center">
-          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
-          <span style = {{color:'red'}}>现价：￥330</span><br/>
-          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
-          </Flex.Item>
-          <Flex.Item align="center">
-          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
-          <span style = {{color:'red'}}>现价：￥330</span><br/>
-          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
-          </Flex.Item>
-          <Flex.Item align="center">
-          <WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%"}}/></WingBlank>
-          <span style = {{color:'red'}}>现价：￥330</span><br/>
-          <span　style = {{color:'#0e80d2'}}>佣金：2％</span>
-          </Flex.Item>
-          </Flex>
-        */}
-
-
-          {/* <Flex>另外一栏商品推荐</Flex> */}
-          <div className = "back-img">
-            <WingBlank/>
-            <Flex justify = "end" >
-                {/* <Flex.Item  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"120%",height:"120%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><br/><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item> */}
-                <Flex.Item  align="center"><WingBlank size = "sm"><img src = {goodsImg} alt = "商品图片" style = {{width:"50%",height:"50%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
-                <Flex.Item  align="center"><WingBlank size = "sm"><img src = {goodsImg} alt = "商品图片" style = {{width:"60%",height:"60%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
-                <Flex.Item  align="center"><WingBlank size = "sm"><img src = {goodsImg} alt = "商品图片" style = {{width:"60%",height:"60%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
-            </Flex>
-            <WhiteSpace/>
-            <Flex justify = "end">
-              <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-              <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-              <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-              <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-            </Flex>
-            {/* <Flex>
-              <Flex.Item><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
-              <Flex.Item><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex.Item>
-              <Flex><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></Flex>
-            </Flex> */}
-          </div>
         </Flex>
     )
   }
