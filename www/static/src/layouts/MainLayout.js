@@ -8,7 +8,7 @@ import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
 import {appInfo} from '../map_props.js';
 import {connect} from 'react-redux';
-// import {isLogin} from '../reducers/user.redux'
+
 
 class MainLayout extends React.Component{
   constructor(props){

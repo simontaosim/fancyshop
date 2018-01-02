@@ -1,11 +1,41 @@
 import React from 'react';
-import { List, Button, WhiteSpace} from 'antd-mobile';
+import { List, Button, WhiteSpace, Modal} from 'antd-mobile';
+import{ loginOut } from '../../reducers/user.redux'
+import { connect } from 'react-redux'
+import { log } from 'util';
+
 const Item = List.Item;
 const Brief = Item.Brief;
 
-
+const alert = Modal.alert;
 class MyList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.ConfirmWindow = this.ConfirmWindow.bind(this);
+        // this.register = this.register.bind(this);
+    }
+
+ 
+
+    ConfirmWindow() {
+       alert('123','321',[
+        { text: '确定', onPress: () => {
+            // console.log(this.props)
+            // this.props.history.push('/tablogin') 
+            this.props.loginOut()
+        }},
+        { text: '取消', onPress: () => console.log('取消了') },
+      ])
+    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps);
+        if(!nextProps.user.authenticated){
+            nextProps.history.push('/tablogin');
+        }
+    }
+    
     render() {
+        
         return(
             <div>
                 <List renderHeader={() => 'Basic Style'} className="my-list">
@@ -59,11 +89,18 @@ class MyList extends React.Component {
                 </List>
                 <WhiteSpace />
                 <WhiteSpace />
-                <Button type="warning">退出当前账户</Button>
+                <Button type="warning" onClick={this.ConfirmWindow}>退出当前账户</Button>
 
             </div>
         )
     }
 }
 
-export default MyList;
+function mapStateToProps(state) {
+    return {
+      user: state.user
+    }
+  }
+  
+  
+export default connect(mapStateToProps,{loginOut})(MyList);

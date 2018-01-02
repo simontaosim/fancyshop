@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from "./stores/index";
 import createHistory from 'history/createHashHistory';
+import { ConnectedRouter } from 'react-router-redux'
+
 const history = createHistory();
 
 
@@ -13,7 +15,7 @@ const store = configureStore();
 // ReactDOM.render(<Routes />, document.getElementById('root'));
 ReactDOM.render( 
    <Provider store={store}>
-    <App />
+      <App />
   </Provider>, 
   document.getElementById('root'));
 registerServiceWorker();

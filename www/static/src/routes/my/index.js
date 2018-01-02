@@ -23,7 +23,7 @@ class AppMy extends React.Component{
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
 
-
+    console.log(this.props)
   }
   // render(){
   //   return (
@@ -34,8 +34,9 @@ class AppMy extends React.Component{
   //   )
   // }
   render(){
+
     return (
-      <div>
+        <div>
         <div style = {{backgroundColor:'#fff',backgroundImage:"url()"}}>
           <Flex>
             <Flex.Item align = "center"><img style = {{height:'40px',width:'40px',borderRadius:'20px'}}/></Flex.Item>
@@ -142,6 +143,9 @@ class AppMy extends React.Component{
         <WingBlank>
           <Button>退出当前帐号</Button>
         </WingBlank>
+
+        <MyList  history={this.props.history} />
+
       </div>
     )
   }
