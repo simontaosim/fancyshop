@@ -12,31 +12,18 @@ import {setAppTitle} from '../../actions/app.js';
 import MyList from './MyList';
 import { Flex } from 'antd-mobile';
 import { List, Badge,Button,WhiteSpace,WingBlank } from 'antd-mobile';
-
+import MyItem from './MyItem';
 
 
 class AppMy extends React.Component{
   constructor(props) {
     super(props);
   }
-  componentDidMount(){
-    const { dispatch } = this.props;
-    dispatch(setAppTitle(this.props.path));
 
-    console.log(this.props)
-  }
-  // render(){
-  //   return (
-  //     <div>
-  //       <div>哈哈哈哈</div>
-  //       <MyList />
-  //     </div>
-  //   )
-  // }
   render(){
 
     return (
-        <div>
+      <div>
         <div style = {{backgroundColor:'#fff',backgroundImage:"url()"}}>
           <Flex>
             <Flex.Item align = "center"><img style = {{height:'40px',width:'40px',borderRadius:'20px'}}/></Flex.Item>
@@ -52,21 +39,8 @@ class AppMy extends React.Component{
             我的口号是，让世界和平
           </Flex>
         </div>
-        <div className = "flex-container" style = {{border:'1px solid #f1f1f1',borderRadius:'8px',backgroundColor:'#fefefe'}}>
-          {/* <Flex justify = "center" >
-            <div style = {{marginRight:'50px'}}>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-            <div style = {{marginRight:'50px'}}>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-            <div style = {{marginRight:'50px'}}>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-          </Flex> */}
+
+        {/* <div className = "flex-container" style = {{border:'1px solid #f1f1f1',borderRadius:'8px',backgroundColor:'#fefefe'}}>
           <Flex justify = "center" >
             <Flex.Item align = "center">
               <img style = {{height:'50px',width:'50px'}}/>
@@ -81,41 +55,12 @@ class AppMy extends React.Component{
               <p>优惠券</p>
             </Flex.Item>
           </Flex>
-          {/* <Flex>
-            <div>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-          </Flex>
-          <Flex>
-            <div>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-          </Flex>
-            <div>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-            <div>
-              <img style = {{height:'50px',width:'50px'}}/>
-              <p>我的钱包</p>
-            </div>
-
-          <Flex></Flex>
-          <Flex></Flex> */}
         </div>
         <div className = "flex-container" style = {{border:'1px solid #f1f1f1',borderRadius:'8px',backgroundColor:'#fefefe'}}>
-          {/* <Flex style = {{borderBottom:'1px dolid #fefefe'}}>
-            <img src = {{}} style = {{height:'25px',width:'25px'}}/>
-            <span style = {{lineHeight:'15px'}}>我的订单</span>
-            <a>全部订单</a>
-          </Flex> */}
-
           <List.Item extra="extra" arrow="horizontal">
             <Badge text={0} style={{ marginLeft:" 12 "}}>
               <img src = {{}} style = {{height:'20px',width:'20px'}}/>我的订单</Badge>
-            {/* <Badge text={'new'} style={{ marginLeft:" 12 "}} /> */}
+            {/* <Badge text={'new'} style={{ marginLeft:" 12 "}} />
           </List.Item>
           <List.Item>
             <img src = {{}} style = {{height:'12px',width:'12px'}}/>
@@ -127,19 +72,13 @@ class AppMy extends React.Component{
             <img src = {{}} style = {{height:'15px',width:'15px'}}/>
             <span>已失效</span>
           </List.Item>
-
-          {/* <Flex>
-            <span>待付款</span>
-            <span>未处理</span>
-            <span>已完成</span>
-            <span>已失效</span>
-          </Flex> */}
         </div>
-        <div className = "flex-container" style = {{border:'1px solid #f1f1f1',borderRadius:'10px',backgroundColor:'#fefefe'}}>
+        <List style = {{border:'1px solid #aaa',borderRadius:'10px',backgroundColor:'#fefefe',margin:'10px'}}>
           <List.Item>
             <img/>新手指导
           </List.Item>
-        </div>
+        </List> */}
+        <MyItem/>
         <WingBlank>
           <Button>退出当前帐号</Button>
         </WingBlank>

@@ -20,6 +20,7 @@ import Test from './checkbox';
 import About from './home/shop_cart';
 import MyOrders from './orders/index';
 import Goods from './product/index';
+import ShopCart from './shop_cart/index';
 
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
@@ -100,6 +101,7 @@ class App extends React.Component {
               <Route path="/test" component={Test}  />
               <Route path = "/orders" component={MyOrders}/>
               <Route path = "/product" component={Goods}/>
+              <Route path = "/cart" component={ShopCart}/>
           </MainLayout>
       </Router>
     )
