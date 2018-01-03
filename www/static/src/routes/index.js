@@ -12,14 +12,20 @@ import My from './my';
 import Register from './register/Register';
 import {  connect } from 'react-redux';
 import PrivateRoute from './container/PrivateRoute';
-
 import TabLogin from './login/TabLogin';
-
+// import MyOrders from './orders/MyOrder'
+//import MyOrders from './Orders/MyOrder';
 import { getStore } from '../config/mUtils';
-import Test from './checkbox'
+import Test from './checkbox';
 import About from './home/shop_cart';
+import MyOrders from './orders/index';
+import Goods from './product/index';
+
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
+
+
+
 
 const Home = ({ match }) => (
     <AppHome path={match.path} />
@@ -83,31 +89,18 @@ class App extends React.Component {
     return (
       <Router >
           <MainLayout history={history}>
-          {/*
               <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/>
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
-<<<<<<< HEAD
-                */}
-              <Route path="/" component={Home}/>
-              <Route path="/tablogin" component={TabLogin} />
-              {/* <PrivateRoute path="/login" component={Login}/> */}
-              <PrivateRoute path="/register" component={Register}/>
-              {/* <Route path="/map" component={Map} />
-              <Route path="/reactmap" component={ReactMap} /> */}
-              <Route path="/my" component={My} />
-              <Route path="/messages" component={MessageBox}/>
-              <Route path="/shop_cart" component = {About}/>
-          </MainLayout>
-{/* =======
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
-              {/* <Route path="/my" component={My}  /> *}
-              <Route path="/myorders" component={MyOrders}  />
+              {/* <Route path="/my" component={My}  /> */}
+              {/* <Route path="/myorders" component={MyOrders}  /> */}
               <Route path="/test" component={Test}  />
+              <Route path = "/orders" component={MyOrders}/>
+              <Route path = "/product" component={Goods}/>
           </MainLayout>
->>>>>>> ac4af22e0c865ba1ea490a3d5f278ebecb2c9645 */}
       </Router>
     )
   }
