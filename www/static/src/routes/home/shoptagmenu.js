@@ -18,28 +18,27 @@ class ShopTagMenu extends React.Component {
 render(){
   return(
   <div>
-    <Flex style = {{backgroundColor:'white',padding:'15px',marginTop:'10px'}}>
+    <Flex className = {styles['main']}>
       <Flex.Item  align="center">
         <img src = {addImg} alt = "商品图片" className = {styles['Img-size']}/>
-        <span style = {{textAlign:'center'}}>4s保养</span>
+        <p>4s保养</p>
       </Flex.Item>
       <Flex.Item  align="center">
       <img src = {barImg} alt = "商品图片" className = {styles['Img-size']}/>
-        充值
+        <p>充值</p>
       </Flex.Item>
       <Flex.Item  align="center">
-        <WingBlank size = "lg"><img src = {beautyImg} alt = "商品图片" style = {{width:"150%",height:"150%"}}/></WingBlank>
-        喷漆
+        <img src = {beautyImg} alt = "商品图片" className = {styles['Img-size']}/>
+        <p>喷漆</p>
       </Flex.Item>
       <Flex.Item  align="center">
-        <img src = {shopImg} alt = "商品图片" style = {{width:"75%",height:"75%"}}/>
-        <span align = "center">超市</span>
+        <img src = {shopImg} alt = "商品图片" className = {styles['Img-size']}/>
+        <p>超市</p>
       </Flex.Item>
       <Flex.Item  align="center">
         <img src = {runImg} alt = "商品图片" className = {styles['Img-size']}/>
-        新车
+        <p>新车</p>
       </Flex.Item>
-      {/* <h1 className = {styles.test}>zheshiyigeceshi</h1> */}
     </Flex>
   </div>
     )

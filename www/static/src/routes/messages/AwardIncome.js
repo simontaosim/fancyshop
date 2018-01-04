@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from 'antd-mobile';
+import { Flex, Icon } from 'antd-mobile';
 import styles from './AwardDetail.css';
 
 class AwardIncome extends React.Component {
@@ -10,10 +10,15 @@ class AwardIncome extends React.Component {
 render(){
   return(
     <div className = {styles['Award-frame']}>
-      <Flex><img src = {{}}/><span>收益</span></Flex>
-      <table style = {{border:'1px solid #108ee9',borderRadius:'6px',width:'100%',align:'center'}}>
-        <tbody>
-          <tr style = {{backgroundColor:'#108ee9',color:'#fff',borderRadius:'6px',height:'30px'}}>
+      {/* 111
+      <img src={require('../svg/income.svg')} /> */}
+      <Flex>
+          <img src={require('../svg/income.svg')} style = {{height:'28px',width:'28px'}}/>
+         {/* <Icon type={require('../svg/income.svg')} /> */}
+      <span>收益</span></Flex>
+      <table style = {{border:'1px solid #00b7ee',borderRadius:'6px',width:'100%',align:'center'}}>
+        <tbody style = {{border:'1px solid #00b7ee'}}>
+          <tr style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'6px',height:'30px'}}>
             <th>今日</th>
             <th>一周</th>
             <th>30天</th>

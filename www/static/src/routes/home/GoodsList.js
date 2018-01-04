@@ -13,18 +13,37 @@ class GoodsList extends React.Component {
   render(){
     return(
       <div className = {styles['back-img']}>
-        <WingBlank/>
-        <Flex justify = "end" >
-            <Flex.Item  align="center"><WingBlank size = "sm"><img src = {goodsImg} alt = "商品图片" style = {{width:"50%",height:"50%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
-            <Flex.Item  align="center"><WingBlank size = "sm"><img src = {goodsImg} alt = "商品图片" style = {{width:"60%",height:"60%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
-            <Flex.Item  align="center"><WingBlank size = "sm"><img src = {goodsImg} alt = "商品图片" style = {{width:"60%",height:"60%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span></Flex.Item>
+        <Flex justify = "end" className = {styles['main-top']}>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
         </Flex>
-        <WhiteSpace/>
-        <Flex justify = "end">
-          <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-          <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-          <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
-          <div  align="center"><WingBlank size = "lg"><img src = {goodsImg} alt = "商品图片" style = {{width:"100%",height:"100%",borderRadius:'6px'}}/></WingBlank><span style = {{color:'#fff'}}>嘉实多</span><span style = {{color:'#fff'}}>HX8 5W40</span></div>
+        <Flex justify = "end" className = {styles['main-end']}>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
+          <div style = {{textAlign:'center'}}>
+            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
+            <p className = {styles['goods-name']}>嘉实多</p>
+          </div>
         </Flex>
       </div>
     )

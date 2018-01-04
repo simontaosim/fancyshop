@@ -1,6 +1,10 @@
+element.style {
+  margin-top: 50px;
+}
 .Head-frame {
-  background-image: url(./blue.png);
+  background-image: url(./awardbg.png);
+  background-size: cover;
   margin: 10px;
   border-radius: 5px;
-  padding: 15px 0 10px 10px; 
+  padding: 20px;
 }
