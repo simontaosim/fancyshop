@@ -13,7 +13,7 @@ import { Flex, Carousel, WhiteSpace, WingBlank, Grid  } from 'antd-mobile';
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
-
+import Good from './good'
 class AppHome extends React.Component{
   constructor(props) {
     super(props);
@@ -78,6 +78,8 @@ class AppHome extends React.Component{
           <WhiteSpace/>
 
           <Flex>另外一栏商品推荐</Flex>
+          <h1>12312321</h1>
+          <Good></Good>
         </Flex>
     )
   }

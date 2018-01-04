@@ -60,7 +60,7 @@ class BottomMenu extends React.Component{
 
         <TabBar
           unselectedTintColor="#949494"
-          tintColor="#33A3F4"
+          tintColor="#FECE42"
           barTintColor="white"
           hidden={this.state.hidden}
         >

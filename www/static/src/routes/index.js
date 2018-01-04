@@ -17,6 +17,8 @@ import TabLogin from './login/TabLogin';
 import MyOrders from './Orders/MyOrder';
 import { getStore } from '../config/mUtils';
 import Test from './checkbox'
+import ForgotPassword from './password/'
+import ResetPassword from './password/ResetPassword'
 
 
 
@@ -99,6 +101,8 @@ class App extends React.Component {
               {/* <Route path="/my" component={My}  /> */}
               <Route path="/myorders" component={MyOrders}  />
               <Route path="/test" component={Test}  />
+              <Route path="/forgotpassword" component={ForgotPassword}  />
+              <Route path="/resetpassword" component={ResetPassword}  />
           </MainLayout>    
       </Router>
     )
