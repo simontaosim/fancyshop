@@ -3,7 +3,8 @@ import { Flex, Tabs, Button } from 'antd-mobile';
 // import { Goods, ShopName } from './OrdersCommon';
 import ShopName from './ShopName';
 import Goods from './Goods';
-import OrdersItem from './OrdersDetail'
+import OrdersItem from './OrdersDetail';
+import Paid from './paid';
 
 class MyOrders extends React.Component {
   constructor() {
@@ -20,10 +21,8 @@ class MyOrders extends React.Component {
     return(
     <div>
       <Tabs tabs = {tabs} initialPage = {5} animated = {false} useOnPan = {false} >
-        <div>
-          <div style = {{paddingTop:'20px'}}>
-            <ShopName/>
-          </div>
+        <div style = {{backgroundColor:'#fff',paddingBottom:'10px'}}>
+          <ShopName/>
           <Goods/>
           <Goods/>
         </div>
@@ -35,36 +34,64 @@ class MyOrders extends React.Component {
             合计：<span style = {{color:'red'}}> ￥500</span>
           </Flex>
           <Flex justify = "end" style = {{margin:'10px'}}>
-            <Button><a href = '#/details'>详情</a></Button>
+            <a href = '#/details'><Button>详情</Button></a>
             <Button>取消订单</Button>
-            <Button>支付</Button>
+            <a href = "#/paid"><Button>支付</Button></a>
           </Flex>
           <Flex justify = "end" style = {{width:'150px',borderBottom:'3px solid red',marginLeft:'150px'}}></Flex>
         </div>
-        <div style = {{backgroundColor:'#fff',marginBottom:'10px'}}>
+        <div style = {{backgroundColor:'#fff'}}>
           <ShopName/>
           <Goods/>
           <Flex justify = "end" style = {{marginRight:'10px'}}>
             合计：<span style = {{color:'red'}}> ￥500</span>
           </Flex>
-          <Flex justify = "end" style = {{}}>
+          <Flex justify = "end" style = {{margin:'10px'}}>
             <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'15px',width:'70px',padding:'6px'}}>详情</button>
-            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'15px',width:'80px',padding:'6px'}}>申请退款</button>
+            <a href = "#/refund">
+              <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'15px',width:'80px',padding:'6px'}}>申请退款</button>
+            </a>
             <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'15px',width:'70px',padding:'6px'}}>二维码</button>
           </Flex>
+          <Flex justify = "end" style = {{width:'150px',borderBottom:'3px solid red',marginLeft:'150px'}}></Flex>
         </div>
-        <div>
-          <h2>已完成</h2>
+        <div style = {{backgroundColor:'#fff'}}>
           <ShopName/>
           <Goods/>
+          <Flex justify = "end" style = {{marginRight:'10px'}}>
+            合计：<span style = {{color:'red'}}> ￥500</span>
+          </Flex>
+          <Flex justify = "end" style = {{margin:'10px'}}>
+            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'70px',padding:'6px'}}>详情</button>
+            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'80px',padding:'6px'}}>删除订单</button>
+          </Flex>
+          <Flex justify = "end" style = {{width:'150px',borderBottom:'3px solid red',marginLeft:'150px'}}></Flex>
         </div>
-        <div>
-          <h2>无效</h2>
+      <div>
+        <div style = {{backgroundColor:'#fff'}}>
           <ShopName/>
           <Goods/>
+          <Flex justify = "end" style = {{marginRight:'10px'}}>
+            合计：<span style = {{color:'red'}}> ￥500</span>
+          </Flex>
+          <Flex justify = "end" style = {{margin:'10px'}}>
+            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'70px',padding:'6px'}}>详情</button>
+            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'80px',padding:'6px'}}>删除订单</button>
+          </Flex>
+          <Flex justify = "end" style = {{width:'150px',borderBottom:'3px solid red',marginLeft:'160px',marginBottom:'10px'}}></Flex>
+          </div>
+          <div style = {{backgroundColor:'#fff'}} >
           <ShopName/>
           <Goods/>
-        </div>
+          <Flex justify = "end" style = {{marginRight:'10px'}}>
+            合计：<span style = {{color:'red'}}> ￥500</span>
+          </Flex>
+          <Flex justify = "end" style = {{margin:'10px'}}>
+            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'70px',padding:'6px'}}>详情</button>
+            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'80px',padding:'6px'}}>撤销退款</button>
+          </Flex>
+          </div>
+      </div>
       </Tabs>
     </div>
     )
