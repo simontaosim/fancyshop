@@ -12,7 +12,6 @@ const history = createHistory();
 
 const store = configureStore();
 
-// ReactDOM.render(<Routes />, document.getElementById('root'));
 ReactDOM.render(
    <Provider store={store}>
       <App />

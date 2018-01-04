@@ -37,7 +37,7 @@ sendCode() {
         setStore('verify', result)
     })
     .catch(error => {
-
+      console.log(error);
     })
 }
 

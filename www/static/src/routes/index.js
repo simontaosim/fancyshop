@@ -16,12 +16,16 @@ import TabLogin from './login/TabLogin';
 // import MyOrders from './orders/MyOrder'
 //import MyOrders from './Orders/MyOrder';
 import { getStore } from '../config/mUtils';
-import Test from './checkbox';
+//import Test from './checkbox';
 import About from './home/shop_cart';
 import MyOrders from './orders/index';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
 import WaitDetails from './orders/waitdetails';
+
+import ForgotPassword from './password/'
+import ResetPassword from './password/ResetPassword'
+
 
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
@@ -99,12 +103,16 @@ class App extends React.Component {
               <Route path="/tablogin" component={TabLogin} />
               {/* <Route path="/my" component={My}  /> */}
               {/* <Route path="/myorders" component={MyOrders}  /> */}
-              <Route path="/test" component={Test}  />
+              {/* <Route path="/test" component={Test}  /> */}
+
               <Route path = "/orders" component={MyOrders}/>
               <Route path = "/product" component={Goods}/>
               <Route path = "/cart" component={ShopCart}/>
               <Route path = "/details" component={WaitDetails}/>
+              <Route path="/forgotpassword" component={ForgotPassword}  />
+              <Route path="/resetpassword" component={ResetPassword}  />
           </MainLayout>
+
       </Router>
     )
   }

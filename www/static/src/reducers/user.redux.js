@@ -7,6 +7,8 @@ const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 const LOGIN_SUCESS = 'LOGIN_SUCESS';
 const LOGIN_OUT = 'LOGIN_OUT';
 const USER_LOCALTION = 'USER_LOCATION';
+const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
+const RET_PASSWORD = 'RET_PASSWORD';
 
 const initState = {
   userId: '',
@@ -24,9 +26,14 @@ function registerSuccess(data){
   return { type: REGISTER_SUCCESS, payload: data}
 }
 
-export function getLocation(data){
-  return { type: USER_LOCALTION, payload: data }
+function forgotPassword(data){
+  return { type: FORGOT_PASSWORD, payload: data}
 }
+
+function resPwd(data) {
+  return { type: RET_PASSWORD, payload: data}
+}
+
 
 
 
@@ -52,11 +59,29 @@ export function user(state=initState,action) {
       removeStore('authenticated')
       return Object.assign({},state,{
         authenticated: false
-      })
+      });
     case USER_LOCALTION:
       return Object.assign({},state,{
 
-      })
+      });
+    case FORGOT_PASSWORD:
+      var userId = action.payload;
+      var authenticated = true;
+      setStore('authenticated','true')
+      setStore('userId',userId)
+      return Object.assign({},state,{
+        userId,
+        authenticated,
+      });
+    case RET_PASSWORD:
+     var userId = action.payload;
+     var authenticated = true;
+     setStore('authenticated','true')
+    setStore('userId',userId)
+     return Object.assign({},state,{
+        userId,
+        authenticated,
+      });
     default:
       return state
   }
@@ -145,5 +170,48 @@ export function mobileRegister(mobile,verify){
       Toast.info('验证码错误');
     }
    
+  }
+}
+
+
+//忘记密码
+
+export function forgotPwd(mobile,verify){
+  return dispatch => {
+    console.log(verify)
+    console.log(mobile)
+    let code = getStore('verify')
+    console.log(code);
+    if(verify===code){
+      console.log(123)
+      asteroid.call('forgot.mobile',mobile)
+      .then(result => {
+        // removeStore('verify')
+        // console.log(`result: ${result}`)
+        dispatch(forgotPassword(result))
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }else{
+      Toast.info('验证码错误');
+    }
+  }
+}
+
+//重置密码
+
+export function resetPWd(user,pwd) {
+  return dispatch => {
+    console.log(user);
+    console.log(`pwd: ${pwd}`)
+    asteroid.call('set.password',user,pwd)
+    .then(result => {
+      console.log(`result: ${result}`)
+      dispatch(resPwd(result))
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 }

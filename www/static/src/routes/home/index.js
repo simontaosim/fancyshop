@@ -16,6 +16,7 @@ import GoodsList from "./GoodsList";
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
+
 import addImg from './add.png'
 import barImg from './bar.png'
 import beautyImg from './beauty.png'
@@ -23,6 +24,8 @@ import runImg from './run.png'
 import shopImg from './shop.png'
 import goodsImg from './one.jpg';
 
+
+import Good from './good'
 
 class AppHome extends React.Component{
   constructor(props) {
@@ -87,7 +90,6 @@ class AppHome extends React.Component{
           <WhiteSpace/>
           <ShopTagMenu/>
           <GoodsList/>
-
         </Flex>
     )
   }

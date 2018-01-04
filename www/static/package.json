@@ -20,6 +20,7 @@
     "antd-mobile": "^2.1.1",
     "asteroid": "git+https://github.com/shindouhiro/asteroid.git",
     "axios": "^0.17.1",
+    "file-saver": "^1.3.3",
     "gun": "^0.8.9",
     "gun-server": "^1.0.0",
     "history": "^4.7.2",
@@ -43,7 +44,8 @@
     "think-session-file": "^1.0.6",
     "think-view": "^1.0.0",
     "think-view-nunjucks": "^1.0.1",
-    "thinkjs": "^3.2.5"
+    "thinkjs": "^3.2.5",
+    "xlsx": "^0.11.16"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -80,5 +82,6 @@
     "cacheTemplatePath": "/home/simon/.think-templates/react",
     "clone": false,
     "isMultiModule": false
-  }
+  },
+  "theme": {}
 }
