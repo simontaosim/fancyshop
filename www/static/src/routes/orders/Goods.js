@@ -14,8 +14,8 @@ class Goods extends React.Component {
           <img src = { goodImg } style = {{height:'60px',width:'60px'}}/>
         </div>
         <div style = {{paddingLeft:'8px'}}>
-          <span style = {{paddingBottom:'10px'}}>我是商品的长名字占位符占位符占位符哈哈哈哈哈哈</span><br/>
-          <span style = {{color:'#a1a1a1'}}>类型：4L 自喜力     <span style = {{float:'right'}}>￥250 &nbsp;&nbsp; ×1</span></span>
+          <Flex style = {{marginBottom:'10px'}}><span style = {{fontSize:'14px'}}>我是商品的长名字占位符占位符占位符哈哈哈哈哈哈</span></Flex>
+          <span style = {{color:'#666',fontSize:'13px'}}>类型：4L 自喜力     <span style = {{float:'right'}}>￥250 &nbsp;&nbsp; ×1</span></span>
         </div>
       </Flex>
     )

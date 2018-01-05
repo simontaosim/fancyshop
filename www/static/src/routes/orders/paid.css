@@ -15,3 +15,17 @@
           height: 100%;
           background: #fff;
       }
+.check-frame {
+  background-color: #fff;
+  padding-bottom: 1000px;
+}
+.check-item {
+  background-color: #eee;
+  margin: 15px 0;
+}
+.check-text {
+  color: #888;
+}
+.check-code {
+  color:#333;
+}

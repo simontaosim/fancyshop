@@ -24,6 +24,9 @@ import ShopCart from './shop_cart/index';
 import WaitDetails from './orders/waitdetails';
 import Paid from './orders/paid';
 import Refund from './orders/Refund';
+import UntreatedDetail from './orders/UntreatedDetail';
+import QrCode from './orders/qrcode';
+
 
 
 import ForgotPassword from './password/'
@@ -116,6 +119,10 @@ class App extends React.Component {
               <Route path = "/details" component={WaitDetails}/>
               <Route path = "/paid" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
+              <Route path = "/untreated" component={UntreatedDetail}/>
+              <Route path = "/qrcode" component={QrCode}/>
+
+
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
           </MainLayout>

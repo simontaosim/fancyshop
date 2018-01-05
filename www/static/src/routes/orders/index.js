@@ -9,6 +9,7 @@ import UnTreated from './UnTreated';
 import WaitPay from './WaitPay';
 import Finish from './Finish';
 import Invalid from './Invalid';
+import styles from './Common.css';
 
 class MyOrders extends React.Component {
   constructor() {
@@ -48,11 +49,11 @@ class MyOrders extends React.Component {
           <ShopName/>
           <Goods/>
           <Flex justify = "end" style = {{marginRight:'10px'}}>
-            合计：<span style = {{color:'red'}}> ￥500</span>
+            合计：<span className = {styles['total-font']}> ￥500</span>
           </Flex>
           <Flex justify = "end" style = {{margin:'10px'}}>
-            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'70px',padding:'6px'}}>详情</button>
-            <button style = {{backgroundColor:'#fff',border:'1px solid #aaa',borderRadius:'8px',width:'80px',padding:'6px'}}>撤销退款</button>
+            <button className = {styles['detail-btn']}>详情</button>
+            <button className = {styles['revoke-btn']}>撤销退款</button>
           </Flex>
           </div>
       </div>
