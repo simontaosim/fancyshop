@@ -13,21 +13,38 @@ class ShopCart extends React.Component{
   render(){
     return(
       <div>
-        <Flex>
-          <input type = "checkbox" style = {{width:'20px'}}/>
-          <ShopName/>
-        </Flex>
-        <Flex>
-          <input type = "checkbox" style = {{width:'20px'}}/>
-          <GoodsItem/>
-          <img src = {{}} style = {{height:'20px',width:'20px'}}/>
-        </Flex>
-        <Flex>
-          <input type = "checkbox" style = {{width:'20px'}}/>
-          <GoodsItem/>
-          <img src = {{}} style = {{height:'20px',width:'20px'}}/>
-        </Flex>
-        <h1>我是分隔符哈哈哈哈</h1>
+        <div style = {{backgroundColor:'#fff'}}>
+          <Flex style = {{backgroundColor:'#fff'}}>
+            <input type = "checkbox" style = {{width:'20px'}}/>
+            <ShopName/>
+          </Flex>
+          <Flex>
+            <input type = "checkbox" style = {{width:'20px'}}/>
+            <GoodsItem/>
+            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
+          </Flex>
+          <Flex>
+            <input type = "checkbox" style = {{width:'20px'}}/>
+            <GoodsItem/>
+            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
+          </Flex>
+        </div>
+        <div style = {{backgroundColor:'#fff'}}>
+          <Flex style = {{backgroundColor:'#fff'}}>
+            <input type = "checkbox" style = {{width:'20px'}}/>
+            <ShopName/>
+          </Flex>
+          <Flex>
+            <input type = "checkbox" style = {{width:'20px'}}/>
+            <GoodsItem/>
+            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
+          </Flex>
+          <Flex>
+            <input type = "checkbox" style = {{width:'20px'}}/>
+            <GoodsItem/>
+            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
+          </Flex>
+        </div>
         <Flex>
           <div>
             <input type = "checkbox" style = {{width:'20px'}}/>

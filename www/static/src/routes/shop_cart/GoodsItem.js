@@ -8,17 +8,18 @@ class GoodsItem extends React.Component{
 
   render(){
     return (
+    <div>
       <Flex>
       {/* <input type = "checkbox" style = {{width:'20px'}}/> */}
-        <img src = {{}} style = {{height:'30px',width:'40px'}}/>
-        <div>
-          <span>我是商品的名称123456565545665占位符占位</span><br/>
-          <span>规格</span>
-          <span align = "left">￥262.9</span>
-          <span align = "right">×1</span>
+        <img src = {{}} style = {{height:'30px',width:'40px',marginTop:'-25px'}}/>
+        <div style = {{marginLeft:'10px',padding:'10px'}}>
+          <span>我是商品的名称1254565占位符</span><br/>
+          <span style = {{color:"#aaa"}}>规格:4L蓝喜力</span><br/>
+          <span align = "left" style = {{color:"red"}}>￥262.9</span>
+          <span align = "right" style = {{float:'right'}}>×1</span>
         </div>
-        {/* <img src = {{}} style = {{height:'20px',width:'20px'}}/> */}
       </Flex>
+    </div>
     )
   }
 }

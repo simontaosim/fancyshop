@@ -22,6 +22,9 @@ import MyOrders from './orders/index';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
 import WaitDetails from './orders/waitdetails';
+import Paid from './orders/paid';
+import Refund from './orders/Refund';
+
 
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
@@ -97,8 +100,10 @@ class App extends React.Component {
           <MainLayout history={history}>
               <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
-              <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/>
+              {/* <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/> */}
+              <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/>
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
+              {/* <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/> */}
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               {/* <Route path="/my" component={My}  /> */}
@@ -107,8 +112,10 @@ class App extends React.Component {
 
               <Route path = "/orders" component={MyOrders}/>
               <Route path = "/product" component={Goods}/>
-              <Route path = "/cart" component={ShopCart}/>
+              {/* <Route path = "/cart" component={ShopCart}/> */}
               <Route path = "/details" component={WaitDetails}/>
+              <Route path = "/paid" component={Paid}/>
+              <Route path = "/refund" component={Refund}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
           </MainLayout>
