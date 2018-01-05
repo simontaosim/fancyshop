@@ -8,7 +8,7 @@ class Refund extends React.Component {
   }
   render(){
     return(
-      <div style = {{backgroundColor:'#333',marginTop:'48px'}}>
+      <div style = {{backgroundColor:'#333',marginTop:'50px'}}>
         <div style = {{backgroundColor:'#f6f6f6',margin:'8px'}}>
         <Flex justify = "center" style = {{backgroundColor:'#f6f6f6',height:'auto',margin:'15px 10px'}}>
           <div>
