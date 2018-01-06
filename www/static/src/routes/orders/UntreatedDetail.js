@@ -3,9 +3,10 @@ import { List, Icon, Flex, Button } from 'antd-mobile';
 import goodImg from './good.jpg';
 import styles from './waitdetails.css';
 import stylec from './Common.css';
+import QrCode from './qrcode.js';
 
 
-class WaitDetails extends React.Component {
+class UntreatedDetail extends React.Component {
   constructor() {
     super();
   }
@@ -54,13 +55,15 @@ render(){
         </Flex>
         <Flex justify = "end" style = {{margin:'10px'}}>
           <button className = {stylec['cancel-btn']} style = {{marginRight:'15px'}}>取消订单</button>
-          <button  className = {stylec['pay-btn']}>支付</button>
+          <a href = "/#/qrcode"><button  className = {stylec['qr-btn']}>二维码</button>
+          </a>
         </Flex>
       </div>
 
       <div className = {styles['item-orders']}>
       订单号：12346578154<br/>
       下单时间： 2017/5/13 10：15
+      付款时间： 2017/5/13 10：15
       </div>
 
     </div>
@@ -68,4 +71,4 @@ render(){
 }
 }
 
-export default WaitDetails;
+export default UntreatedDetail;

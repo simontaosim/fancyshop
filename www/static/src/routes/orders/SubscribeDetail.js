@@ -5,7 +5,7 @@ import styles from './waitdetails.css';
 import stylec from './Common.css';
 
 
-class WaitDetails extends React.Component {
+class SubscribeDetail extends React.Component {
   constructor() {
     super();
   }
@@ -17,6 +17,7 @@ render(){
         <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
         <div><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span></div>
         <div><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123456789</span></div>
+        <div><img src={require('../svg/subscribe.svg')} className = {styles['item-icon']}/>预约时间:<span style = {{color:'#888'}}>2018年1月4日&nbsp;15:00</span></div>
       </div>
 
       <div className = {styles['item-user']}>
@@ -39,16 +40,6 @@ render(){
             <span className = {styles['type-color']}>类型：4L 自喜力 </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥250 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×1</span>
           </div>
         </Flex>
-
-        <Flex justify = "center" style = {{backgroundColor:'#f6f6f6',height:'auto',margin:'15px 10px'}}>
-          <div style = {{backgroundColor:'#5e0f0f',padding:'2px 8px 8px 3px'}}>
-            <img src = {goodImg} style = {{height:'50px',width:'50px'}}/>
-          </div>
-          <div style ={{paddingLeft:'10px'}}>
-            我是商品的长名字占位符占位符占位符哈哈哈哈哈哈<br/>
-            <span style = {{color:'#888'}}>类型：4L 自喜力 </span>   <span style= {{float:'right'}}> <span style = {{color:'red'}}> ￥250 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ×1</span>
-          </div>
-        </Flex>
         <Flex justify = "end" style = {{marginRight:'10px'}}>
           应付款：<span style = {{color:'red'}}> ￥500</span>
         </Flex>
@@ -68,4 +59,4 @@ render(){
 }
 }
 
-export default WaitDetails;
+export default SubscribeDetail;
