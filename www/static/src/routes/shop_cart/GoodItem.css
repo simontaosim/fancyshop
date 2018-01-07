@@ -1,0 +1,29 @@
+.good-item {
+  /*padding-top: 10px;*/
+}
+.good-img {
+  width: 40px;
+  height: 40px;
+  background-color: #5e0f0f;
+  padding: 2px 7px 7px 3px;
+  margin-right: 8px;
+}
+.decribe-frame {
+  margin-left: 10px;
+  padding: 10px;
+}
+.good-type {
+  color: #aaa;
+  font-size: 14px;
+}
+.good-price {
+  color: red;
+  font-size: 14px;
+}
+.good-num {
+  float: right;
+  color: #aaa;
+}
+.am-list-item,.am-checkbox-item, .am-list-item-middle,.am-list-thumb {
+  padding-left: 3px;
+}

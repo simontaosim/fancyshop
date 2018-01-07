@@ -1,9 +1,14 @@
 import React from 'react';
-import { Flex, Button } from 'antd-mobile';
+import { Flex, Button, Checkbox } from 'antd-mobile';
 
 import ShopEdit from './ShopEdit';
 import GoodsItem from './GoodsItem';
-import ShopName from '../orders/ShopName';
+import ShopName from './ShopName';
+import Edit from './Edit';
+import goodsImg from './good.jpg';
+
+const CheckboxItem = Checkbox.CheckboxItem;
+
 
 class ShopCart extends React.Component{
   constructor() {
@@ -14,38 +19,35 @@ class ShopCart extends React.Component{
     return(
       <div>
         <div style = {{backgroundColor:'#fff'}}>
-          <Flex style = {{backgroundColor:'#fff'}}>
-            <input type = "checkbox" style = {{width:'20px'}}/>
+          <Flex>
             <ShopName/>
           </Flex>
           <Flex>
-            <input type = "checkbox" style = {{width:'20px'}}/>
             <GoodsItem/>
-            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
+            <GoodsItem/>
           </Flex>
           <Flex>
-            <input type = "checkbox" style = {{width:'20px'}}/>
             <GoodsItem/>
-            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
           </Flex>
         </div>
         <div style = {{backgroundColor:'#fff'}}>
-          <Flex style = {{backgroundColor:'#fff'}}>
-            <input type = "checkbox" style = {{width:'20px'}}/>
+          <Flex>
             <ShopName/>
           </Flex>
           <Flex>
-            <input type = "checkbox" style = {{width:'20px'}}/>
             <GoodsItem/>
-            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
+            <GoodsItem/>
           </Flex>
           <Flex>
-            <input type = "checkbox" style = {{width:'20px'}}/>
             <GoodsItem/>
-            <img src = {{}} style = {{height:'20px',width:'20px'}}/>
           </Flex>
         </div>
-        <Flex>
+        <div style = {{backgroundColor:'#fff'}}>
+          <Flex>
+            <ShopName/>
+          </Flex>
+        </div>
+        {/* <Flex>
           <div>
             <input type = "checkbox" style = {{width:'20px'}}/>
             <img src = {{}} style = {{height:'30px',width:'40px'}}/>
@@ -53,21 +55,9 @@ class ShopCart extends React.Component{
           <div>
             <ShopEdit/>
           </div>
-        </Flex>
-        <h1>我是分隔符哈哈哈哈</h1>
-        <Flex>
-          <Flex.Item>
-            <input type = "checkbox" style = {{width:'20px'}}/>
-            <img src = {{}} style = {{height:'30px',width:'40px'}}/>
-          </Flex.Item>
-          <Flex.Item>
-            <ShopEdit/>
-          </Flex.Item>
-          <Flex.Item>
-            <Button size="small" style = {{border:'1px solid #111'}} >确定</Button>
-            <Button size="small" style = {{backgroundColor:'red',color:'white'}}>删除</Button>
-          </Flex.Item>
-        </Flex>
+        </Flex> */}
+
+        <Edit/>
       </div>
     )
   }
