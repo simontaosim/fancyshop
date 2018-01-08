@@ -6,6 +6,7 @@ import GoodsItem from './GoodsItem';
 import ShopName from './ShopName';
 import Edit from './Edit';
 import goodsImg from './good.jpg';
+import Change from './Change';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
@@ -17,8 +18,9 @@ class ShopCart extends React.Component{
 
   render(){
     return(
-      <div>
-        <div style = {{backgroundColor:'#fff'}}>
+      <div style = {{backgroundColor:'#eee',paddingBottom:'1000px'}}>
+        <Change/>
+        <div style = {{backgroundColor:'#fff',marginBottom:'14px'}}>
           <Flex>
             <ShopName/>
           </Flex>
@@ -30,7 +32,7 @@ class ShopCart extends React.Component{
             <GoodsItem/>
           </Flex>
         </div>
-        <div style = {{backgroundColor:'#fff'}}>
+        <div style = {{backgroundColor:'#fff',marginBottom:'14px'}}>
           <Flex>
             <ShopName/>
           </Flex>
@@ -56,8 +58,18 @@ class ShopCart extends React.Component{
             <ShopEdit/>
           </div>
         </Flex> */}
-
-        <Edit/>
+        <Flex>
+          <Edit/>
+        </Flex>
+        <Flex>
+          <GoodsItem/>
+        </Flex>
+        <div style = {{position:'fixed',bottom:'50px'}}>
+        <Flex >
+          <CheckboxItem style = {{width:'180px',backgroundColor:'#333',color:'#fff'}}><span style = {{color:'white'}}>全选</span><span style = {{float:'right',color:'#fff'}}>合计：<span style= {{color:'red'}}>￥250</span></span></CheckboxItem>
+          <Flex justify = "center" style = {{width:'150px',backgroundColor:'#ffcf2d',color:'#fff',lineHeight:'3.2em'}}>结算</Flex>
+        </Flex>
+        </div>
       </div>
     )
   }

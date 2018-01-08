@@ -49,7 +49,7 @@ class MyOrders extends React.Component {
           <ShopName/>
           <Goods/>
           <Flex justify = "end" style = {{marginRight:'10px'}}>
-            合计：<span className = {styles['total-font']}> ￥500</span>
+            合计：<span className = {styles['total']}> ￥500</span>
           </Flex>
           <Flex justify = "end" style = {{margin:'10px'}}>
             <button className = {styles['detail-btn']}>详情</button>

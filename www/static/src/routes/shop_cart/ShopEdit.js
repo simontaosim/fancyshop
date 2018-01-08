@@ -1,5 +1,6 @@
 import React from 'react';
 import { Stepper } from 'antd-mobile';
+import styles from './ShopEdit.css';
 
 class ShopEdit extends React.Component {
   constructor() {
@@ -20,15 +21,15 @@ class ShopEdit extends React.Component {
   render(){
     return(
       <div>
-        <select placeholder = "下拉列表框" style = {{width:'100%'}}>
+        <select placeholder = "下拉列表框" style = {{width:'100%',border:'1px solid #aaa',borderRadius:'5px',fontSize:'14px',padding:'4px 0'}}>
           <option defaultValue="产品规格" disabled>产品规格</option>
-          <option value="1L">规格：1L</option>
+          <option value="1L">产品规格：1L</option>
           <option value="2L">规格：2L</option>
           <option value="3L">规格：3L</option>
           <option value="4L">4L</option>
         </select>
-        <Stepper
-          style={{ width: '50%', minWidth: '80px'}}
+        <Stepper className = {styles['am-stepper-handler-down']}
+          style={{ width: '70%', minWidth: '100px'}}
           showNumber
           max={10}
           min={1}
