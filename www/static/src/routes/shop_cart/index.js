@@ -7,7 +7,7 @@ import ShopName from './ShopName';
 import Edit from './Edit';
 import goodsImg from './good.jpg';
 import Change from './Change';
-
+import Shop from './shopcart';
 const CheckboxItem = Checkbox.CheckboxItem;
 
 
@@ -21,7 +21,7 @@ class ShopCart extends React.Component{
       <div style = {{backgroundColor:'#eee',paddingBottom:'1000px'}}>
         <Change/>
         <div style = {{backgroundColor:'#fff',marginBottom:'14px'}}>
-          <Flex>
+          {/* <Flex>
             <ShopName/>
           </Flex>
           <Flex>
@@ -30,7 +30,8 @@ class ShopCart extends React.Component{
           </Flex>
           <Flex>
             <GoodsItem/>
-          </Flex>
+          </Flex> */}
+          <Shop/>
         </div>
         <div style = {{backgroundColor:'#fff',marginBottom:'14px'}}>
           <Flex>
