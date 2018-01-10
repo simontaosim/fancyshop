@@ -5,15 +5,19 @@ import Goods from './Goods.js';
 import styles from './Common.css';
 
 class Finish extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render(){
+    let data = this.props.finish;
+    console.log(data);
     return (
       <div className = {styles['item-bg']}>
-        <ShopName/>
-        <Goods/>
+        <ShopName />
+        {data.map(v=>(
+           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/> 
+							))}
         <Flex justify = "end" className = {styles['total']}>
           合计：<span className = {styles['total-font']}> ￥500</span>
         </Flex>

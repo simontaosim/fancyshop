@@ -12,10 +12,14 @@ class UnTreated extends React.Component {
   }
 
   render(){
+    console.log(this.props.datasource)
+    let data = this.props.untreated
     return (
       <div className = {styles['item-bg']}>
         <ShopName/>
-        <Goods/>
+         {data.map(v=>(
+           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/> 
+							))}
         <Flex justify = "end" className ={styles['total']}>
           合计：<span className = {styles['total-font']}> ￥500</span>
         </Flex>

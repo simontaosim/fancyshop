@@ -35,10 +35,10 @@ class TabLogin  extends React.Component {
       tabBarPosition="top"
       renderTab={tab => <span>{tab.title}</span>}
     >
-      <div style={{  height: '300px', backgroundColor: '#000' }}>
+      <div style={{  height: '300px', backgroundColor: '#fff' }}>
         <MobileLogin history={this.props.history}/>
       </div>
-      <div style={{ height: '300px', backgroundColor: '#000' }}>
+      <div style={{ height: '300px', backgroundColor: '#fff' }}>
         <Login history={this.props.history}/>
       </div>
     </Tabs>

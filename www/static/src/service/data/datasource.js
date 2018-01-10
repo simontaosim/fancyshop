@@ -45,6 +45,37 @@ Mock.mock('/orderlist',{
     shop_name:'@shop_name'
 })
 
+
+Mock.mock('/orderlist1',{
+    'list|3': [{
+        name: '@name',
+        spec: '@spec',
+        'price|1-1000': 1,
+        'num|1-100': 1
+    }],
+    shop_name:'@shop_name'
+})
+
+Mock.mock('/orderlist2',{
+    'list|3': [{
+        name: '@name',
+        spec: '@spec',
+        'price|1-1000': 1,
+        'num|1-100': 1
+    }],
+    shop_name:'@shop_name'
+})
+
+
+Mock.mock('/orderlist3',{
+    'list|2': [{
+        name: '@name',
+        spec: '@spec',
+        'price|1-1000': 1,
+        'num|1-100': 1
+    }],
+    shop_name:'@shop_name'
+})
 //购物车
 Mock.mock('/shop_car',{
     'list|1-3': [{
