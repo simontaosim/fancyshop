@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Tabs, Flex } from 'antd-mobile';
 import styles from './AwardDetail.css';
+import goodsImg from './good.jpg';
 
 class AwardDetail extends React.Component {
   constructor() {
@@ -16,11 +17,11 @@ render(){
   ]
   return(
     <div className = {styles['Award-frame']}>
-      <Flex><img src = {{}} /><span>明细</span></Flex>
+      <Flex><img src={require('../svg/details.svg')} style = {{height:'28px',width:'28px'}}/><span>明细</span></Flex>
       <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
         <div style = {{ display:'flex',height:'150px',backgroundColor:'#fff'}}>
           <Flex>
-            <img src = {{}} style = {{height:'80px',width:'80px'}}/>
+            <img src = {goodsImg} style = {{height:'80px',width:'80px'}}/>
           </Flex>
 
           <div style = {{margin:'30px 0 10px 8px'}} >

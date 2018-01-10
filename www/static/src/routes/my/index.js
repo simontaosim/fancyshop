@@ -13,6 +13,7 @@ import MyList from './MyList';
 import { Flex } from 'antd-mobile';
 import { List, Badge,Button,WhiteSpace,WingBlank } from 'antd-mobile';
 import MyItem from './MyItem';
+import userImg from './good.jpg';
 
 
 class AppMy extends React.Component{
@@ -27,8 +28,9 @@ class AppMy extends React.Component{
         <div style = {{backgroundColor:'#ffcf2d',height:'170px',marginTop:'46px',
           paddingTop:'15px',position:'relative'}}>
           <Flex>
-            <Flex.Item align = "center"><img style = {{height:'60px',width:'60px',
+            <Flex.Item align = "center"><img src = {userImg} style = {{height:'60px',width:'60px',
               borderRadius:'30px',backgroundColor:'#aaa'}}/></Flex.Item>
+            <img src = {require('../svg/pencil.svg')} style = {{marginLeft:'50px',marginRight:'0px',height:'16px',width:'16px'}}/>
           </Flex>
           <Flex justify = "center">
             我是花名，可以自己随便起

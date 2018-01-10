@@ -43,7 +43,7 @@ class ProductBottom extends React.Component {
     return(
       <div>
         <Flex>
-          <Flex.Item><img src = {{}} style = {{width:'20px',height:'20px'}}/>店铺</Flex.Item>
+          <Flex.Item><img src={require('../svg/shop.svg')} style = {{width:'30px',height:'30px'}}/><span style = {{lineHeight:'2rem'}}>店铺</span></Flex.Item>
           <Flex.Item>
             <Button>加入购物车</Button>
           </Flex.Item>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 class Good extends React.Component{
     render() {
         return(
@@ -9,11 +7,9 @@ class Good extends React.Component{
                 Good
                 fdasfdasf
                 datafads
-                
+
             </div>
         )
     }
 }
-
-
 export default Good;
