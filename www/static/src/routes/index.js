@@ -26,7 +26,9 @@ import Paid from './orders/paid';
 import Refund from './orders/Refund';
 import UntreatedDetail from './orders/UntreatedDetail';
 import QrCode from './orders/qrcode';
-
+import Change from './shop_cart/Change';
+import SelectTest from './shop_cart/select_test';
+import CartNull from './shop_cart/null';
 
 
 import ForgotPassword from './password/'
@@ -121,6 +123,10 @@ class App extends React.Component {
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
+              <Route path = "/shopedit" component={Change}/>
+              <Route path = "/nullcart" component={ CartNull }/>
+
+              {/* <Route path = "/select" component={SelectTest}/> */}
 
 
               <Route path="/forgotpassword" component={ForgotPassword}  />

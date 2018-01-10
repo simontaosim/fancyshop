@@ -32,6 +32,7 @@ class Test extends React.Component {
             data: this.state.data
         })
       }
+
     CheckAll = () => {
         for(var i =0; i < this.state.data.length; i++){
            this.state.data[i].checked=!this.state.CheckAll
@@ -40,8 +41,6 @@ class Test extends React.Component {
             CheckAll: !this.state.CheckAll,
             data: this.state.data
         })
-
-
     }
     render() {
 
