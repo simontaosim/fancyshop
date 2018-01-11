@@ -11,14 +11,14 @@ class ProductShare extends React.Component {
     ActionSheet.showShareActionSheetWithOptions({
       options: this.dataList,
       // title: 'title',
-      message: 'I am description, description, description',
+      message: '分享',
     },
     (buttonIndex) => {
       this.setState({ clicked1: buttonIndex > -1 ? this.dataList[buttonIndex].title : 'cancel' });
       // also support Promise
       return new Promise((resolve) => {
-        Toast.info('closed after 1000ms');
-        setTimeout(resolve, 1000);
+        Toast.info('100ms 后关闭');
+        setTimeout(resolve, 100);
       });
     });
   }

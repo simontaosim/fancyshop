@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Tabs } from 'antd-mobile';
+import style from './ProductTabs.css';
 
 class ProductTabs extends React.Component {
   constructor() {
@@ -14,12 +15,12 @@ class ProductTabs extends React.Component {
     ];
 
     return(
-      <div style = {{ height: 200 }}>
+      <div className = {style['tab-height']}>
         <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+          <div className = {style['tab-first']}>
              Content of first tab
            </div>
-           <div style={{  alignItems: 'left', justifyContent: 'left', height: '250px', backgroundColor: '#fff',padding:'15px 0px 0px 15px',color:'#aaa' }}>
+           <div className = {style['tab-second']}>
              <div><span>品牌：Shell/壳牌</span></div>
              <div><span>型号：喜力HX7</span></div>
              <div><span>型号：喜力HX7</span></div>
