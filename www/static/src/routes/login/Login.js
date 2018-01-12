@@ -57,7 +57,6 @@ class Login extends React.Component {
   }
 
   register() {
-    // console.log(this.props.history)
     this.props.history.push('/register');
   }
 
@@ -67,6 +66,7 @@ class Login extends React.Component {
     this.props.login(username,password)
   }
   handleForgot() {
+    this.props.history.push('/forgotpassword')
   }
 
   handleChange(key,value){

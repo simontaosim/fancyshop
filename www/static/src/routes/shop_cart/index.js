@@ -24,7 +24,7 @@ class ShopCart extends React.Component{
         <Change/>
         <div style = {{backgroundColor:'#fff',marginBottom:'14px'}}>
           {/* <Flex>
-            <ShopName/>
+            <ShopName/>111
           </Flex>
           <Flex>
             <GoodsItem/>
