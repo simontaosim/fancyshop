@@ -1,0 +1,26 @@
+.tab-height {
+  height: 200px;
+}
+.share-img {
+  width: 25px;
+  height: 25px;
+}
+.question-img {
+  width: 14px;
+  height: 14px;
+  margin-left: 6px;
+}
+.tab-first {
+  display: flex;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+.tab-second {
+  background-color: #fff;
+  padding: 15px 0px 0px 15px;
+  color: #aaa;
+  align-items: left;
+  justify-content: left;
+  height: 250px;
+}

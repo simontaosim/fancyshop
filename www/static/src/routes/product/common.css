@@ -1,0 +1,21 @@
+.product-frame {
+  margin-top: 50px;
+  background-color: #fff;
+}
+.describe {
+  padding: 10px 10px;
+}
+.price-font {
+  color: red;
+  font-size: 16px;
+}
+.black-card {
+  color: white;
+  background-color: #00acff;
+  border-radius: 10px;
+}
+
+.item-des {
+  border-bottom: 4px solid #eee;
+  padding: 10px 10px;
+}
