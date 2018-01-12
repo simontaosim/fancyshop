@@ -57,8 +57,8 @@ class Login extends React.Component {
   }
 
   register() {
-   
-    this.props.history.push('register');
+    // console.log(this.props.history)
+    this.props.history.push('/register');
   }
 
   handleLogin() {
