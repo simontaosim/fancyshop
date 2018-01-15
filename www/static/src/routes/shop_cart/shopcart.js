@@ -84,14 +84,14 @@ class Shop extends React.Component {
         </CheckboxItem>
           */}
 
-        <CheckboxItem>
+        <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']}>
           <Flex>
 
             <Flex className = {styles['good-item']}>
-              <img src = { goodsImg } className = {styles['good-img']}/>
+              <img src = { goodsImg } className = {styles['good-img']} style = {{width:'50px',height:'50px'}}/>
               <Flex.Item classnam = {styles['decribe-frame']}>
-                <span style = {{fontSize:'14px'}}>我是商品的名称1254565占位符</span><br/>
-                <div style = {{border:'1px solid #aaa',fontSize:'14px'}} onClick={this.showModal('modal2')}>规格daxiao<img style = {{float:'right'}}/></div>
+                <span style = {{fontSize:'14px',overflow:'hidden',whiteSpace:'hidden',textOverflow:'ellipsis'}}>我是商品的名称1254565占位符哈哈哈哈</span><br/>
+                <div style = {{border:'1px solid #aaa',fontSize:'14px',lineHeight:'2em',paddingLeft:'8px'}} onClick={this.showModal('modal2')}>白色，3L<img src={require('../svg/arrowdown.svg')} style = {{float:'right',width:'15px',height:'15px',marginTop:'3px'}}/></div>
                 <WhiteSpace />
                 <Modal
                  popup
@@ -104,18 +104,11 @@ class Shop extends React.Component {
                      <img src = {goodImg} style = {{width:'70px',height:'70px',border:'6px solid #680000'}}/>
                      <div style = {{paddingLeft:'10px'}}>
                        <span style = {{color:'red',fontSize:'16px'}}>￥269.1</span>
-                       <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/>
+                       <img src = {require('../svg/close_black.svg')} style = {{width:'25px',height:'25px',marginLeft:'9rem'}} onClick = {this.onClose('modal2')}/><br/>
+                       {/* <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/> */}
                        <span style = {{color:'#aaa'}}>请选择类型</span>
                      </div>
                    </Flex>
-
-                   {/* <div style = {{display: 'flex',flexDirection:'row',justifyContent:'space-around',marginTop:'30px',flexWrap:'wrap'}}>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'2px 8px',borderRadius:'5px'}}>黄色</div>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'2px 8px',borderRadius:'5px'}}>黄色</div>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'2px 8px',borderRadius:'5px'}}>黄色</div>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'2px 8px',borderRadius:'5px'}}>黄色</div>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'2px 8px',borderRadius:'5px'}}>黄色</div> */}
-
                      <div className = {style['color-destop']}>
                        <div className = {style['color-div']}>绿色</div>
                        <div className = {style['color-div']}>绿色</div>
@@ -130,30 +123,6 @@ class Shop extends React.Component {
                      <div className = {style['color-div']}>紫色</div>
                      <div className = {style['color-div']}>黑色</div>
                   </div>
-
-                     {/* <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'0 8px',borderRadius:'5px'}}>黄色</div>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'0 8px',borderRadius:'5px'}}>黄色</div>
-                     <div style = {{height:'30px',backgroundColor:'#e5e5e5',padding:'0 8px',borderRadius:'5px'}}>黄色</div> */}
-
-
-
-                     {/* <Flex justify = "center space-around" >
-                       <Flex.Item>紫色</Flex.Item>
-                       <Flex.Item>紫色</Flex.Item>
-                       <Flex.Item>紫色</Flex.Item>
-                       <Flex.Item>紫色</Flex.Item>
-                       <Flex.Item>紫色</Flex.Item>
-                       <Flex.Item>紫色</Flex.Item>
-
-                     </Flex>
-                     <Flex justify = "center">
-                       <Button>紫色</Button>
-                       <Button>紫色</Button>
-                       <Button>紫色</Button>
-                       <Button>紫色</Button>
-                       <Button>紫色</Button>
-                     </Flex>
-                      */}
                      <Flex className = {style['num-padding']}>
                        购买数量：
                        <Stepper
