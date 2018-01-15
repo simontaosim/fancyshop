@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex, WhiteSpace, WingBlank, Badge} from 'antd-mobile';
 import style from './recommend.css';
 import goodsImg from './one.jpg';
-import carImg from './car.xcf';
+// import carImg from './car.xcf';
 
 
 class Recommend extends React.Component {
