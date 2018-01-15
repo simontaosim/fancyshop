@@ -3,6 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Link,
+  BrowserRouter
 } from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout.js'
@@ -29,6 +30,7 @@ import QrCode from './orders/qrcode';
 import Change from './shop_cart/Change';
 import SelectTest from './shop_cart/select_test';
 import CartNull from './shop_cart/null';
+import CartTest from './checkbox/cart'
 
 
 import ForgotPassword from './password/'
@@ -131,8 +133,9 @@ class App extends React.Component {
 
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
+              <Route path="/carttest" component={CartTest}  />
+              
           </MainLayout>
-
       </Router>
     )
   }

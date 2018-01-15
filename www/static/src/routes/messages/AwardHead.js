@@ -11,7 +11,7 @@ class AwardHead extends React.Component {
     return(
       <div className = {styles['Head-frame']}>
         <div style = {{display:'flex'}}>
-          <img style = {{border:'1px solid #aaa',borderRadius:'15px',height:'30px',width:'30px'}}/>
+          <img style = {{border:'1px solid #aaa',borderRadius:'15px',height:'30px',width:'30px',marginRight:'10px'}}/>
           <span style = {{verticalAlign:'middle',lineHeight:'30px',color:'#f6f6f6'}}>This is my name</span>
         </div>
         <br/>

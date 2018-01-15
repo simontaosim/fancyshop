@@ -51,7 +51,7 @@ module.exports = function override(config, env) {
           loader: require.resolve('less-loader'),
           options: {
             // theme vars, also can use theme.js instead of this.
-            modifyVars: { 
+            modifyVars: {
                 // "@brand-primary": "#FECA41" ,
                },
           },

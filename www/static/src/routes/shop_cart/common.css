@@ -1,3 +1,14 @@
+.bg-color {
+  background-color: #eee;
+  padding-bottom: 20px;
+}
+.item-frame {
+  background-color: #fff;
+  margin-bottom: 14px;
+}
+.item-last {
+  background-color: #fff;
+}
 .bottom-pos {
   position: fixed;
   bottom: 50px;
@@ -10,13 +21,13 @@
 .bottom-balance {
   background-color: #ffcf2d;
   color: #fff;
-  width:130px;
+  width:260px;
   line-height: 3.2em;
 }
 .bottom-balance-red {
   background-color: #fc3e43;
   color: #fff;
-  width: 130px;
+  width: 260px;
   line-height: 3.2em;
 }
 .global .am-list-content {
