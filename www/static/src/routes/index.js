@@ -29,6 +29,7 @@ import QrCode from './orders/qrcode';
 import Change from './shop_cart/Change';
 import SelectTest from './shop_cart/select_test';
 import CartNull from './shop_cart/null';
+import UserData from './my/UserData';
 
 
 import ForgotPassword from './password/'
@@ -125,6 +126,8 @@ class App extends React.Component {
               <Route path = "/qrcode" component={QrCode}/>
               <Route path = "/shopedit" component={Change}/>
               <Route path = "/nullcart" component={ CartNull }/>
+              <Route path = "/userdata" component={ UserData }/>
+
 
               {/* <Route path = "/select" component={SelectTest}/> */}
 

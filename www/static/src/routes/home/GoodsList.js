@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex, WingBlank, WhiteSpace} from "antd-mobile";
 import styles from './GoodsList.css';
 
-import goodsImg from './one.jpg';
+import goodsImg from '../../assets/img/home/one.jpg';
 
 class GoodsList extends React.Component {
   constructor() {

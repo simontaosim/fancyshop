@@ -14,7 +14,7 @@ import { Flex } from 'antd-mobile';
 import { List, Badge,Button,WhiteSpace,WingBlank,Card ,Checkbox} from 'antd-mobile';
 import MyItem from './MyItem';
 import style from './common.css';
-import userImg from './good.jpg';
+import userImg from '../../assets/img/reward/good.jpg';
 // const CheckboxItem = Checkbox.CheckboxItem;
 
 
@@ -32,7 +32,8 @@ class AppMy extends React.Component{
             <Flex.Item align = "center"><img src = {userImg} style = {{height:'60px',width:'60px',
               borderRadius:'30px',backgroundColor:'#aaa'}}/></Flex.Item>
           </Flex>
-            <img src = {require('../svg/pencil.svg')} style = {{display:'flex',marginLeft:'280px',marginTop:'-60px',height:'20px',width:'20px',justifyContent:'flex-end'}}/>
+          <a href = "#/userdata">  <img src = {require('../svg/pencil.svg')} style = {{display:'flex',marginLeft:'280px',marginTop:'-60px',height:'20px',width:'20px',justifyContent:'flex-end'}}/>
+          </a>
           <Flex justify = "center" style = {{marginTop:"50px"}}>
             <span style = {{fontSize:'14px'}}>我是花名，可以自己随便起</span>
           </Flex>

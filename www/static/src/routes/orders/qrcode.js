@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex } from 'antd-mobile';
-import picture from './qrcode.jpg';
+import picture from '../../assets/img/orders/qrcode.jpg';
 
 class QrCode extends React.Component {
   constructor() {

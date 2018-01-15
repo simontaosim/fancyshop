@@ -5,7 +5,7 @@ import ProductTabs from './ProductTabs';
 import ProductShare from './ProductShare';
 import ProductBottom from './ProductBottom';
 import style from './common.css'
-import goodImg from './good.jpg';
+import goodImg from '../../assets/img/reward/good.jpg';
 
 
 class Goods extends React.Component {

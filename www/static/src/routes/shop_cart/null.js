@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Flex, Button } from 'antd-mobile';
-import goodsImg from './good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 
 class CartNull extends React.Component{
   constructor() {

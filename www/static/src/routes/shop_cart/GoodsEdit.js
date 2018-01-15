@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Flex, Checkbox, } from 'antd-mobile';
 import styles from './GoodItem.css';
-import goodsImg from './good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 

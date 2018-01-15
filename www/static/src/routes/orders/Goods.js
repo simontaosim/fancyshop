@@ -1,5 +1,5 @@
 import React from 'react';
-import goodImg from './good.jpg';
+import goodImg from '../../assets/img/reward/good.jpg';
 import { Flex } from 'antd-mobile';
 
 class Goods extends React.Component {

@@ -3,8 +3,8 @@ import React from 'react';
 import { Flex, Checkbox,Button, Modal, WhiteSpace, List, Stepper, Carousel} from 'antd-mobile';
 import styles from './GoodItem.css';
 import style from '../product/ProductBottom.css';
-import goodImg from './good.jpg';
-import goodsImg from './good.jpg';
+import goodImg from '../../assets/img/reward/good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
@@ -40,14 +40,6 @@ class Shop extends React.Component {
        [key]: false,
      });
    }
-
-  // onClick={(e) => {
-  //        e.preventDefault();
-  //        this.setState({
-  //          className: styles['pencil-img1'],
-  //        });
-  //      }
-  //    }
 
   render(){
     return (
@@ -91,7 +83,7 @@ class Shop extends React.Component {
               <img src = { goodsImg } className = {styles['good-img']} style = {{width:'50px',height:'50px'}}/>
               <Flex.Item classnam = {styles['decribe-frame']}>
                 <span style = {{fontSize:'14px',overflow:'hidden',whiteSpace:'hidden',textOverflow:'ellipsis'}}>我是商品的名称1254565占位符哈哈哈哈</span><br/>
-                <div style = {{border:'1px solid #aaa',fontSize:'14px',lineHeight:'2em',paddingLeft:'8px'}} onClick={this.showModal('modal2')}>白色，3L<img src={require('../svg/arrowdown.svg')} style = {{float:'right',width:'15px',height:'15px',marginTop:'3px'}}/></div>
+                <div style = {{border:'1px solid #aaa',fontSize:'14px',lineHeight:'2em',paddingLeft:'8px',borderRadius:'3px'}} onClick={this.showModal('modal2')}>白色，3L<img src={require('../svg/arrowdown.svg')} style = {{float:'right',width:'15px',height:'15px',margin:'6px 3px 0 0'}}/></div>
                 <WhiteSpace />
                 <Modal
                  popup
@@ -100,11 +92,11 @@ class Shop extends React.Component {
                  animationType="slide-up"
                 >
                  <div>
-                   <Flex>
-                     <img src = {goodImg} style = {{width:'70px',height:'70px',border:'6px solid #680000'}}/>
+                   <Flex style = {{margin:'10px'}}>
+                     <img src = {goodImg} style = {{width:'70px',height:'70px',border:'8px solid #680000'}}/>
                      <div style = {{paddingLeft:'10px'}}>
                        <span style = {{color:'red',fontSize:'16px'}}>￥269.1</span>
-                       <img src = {require('../svg/close_black.svg')} style = {{width:'25px',height:'25px',marginLeft:'9rem'}} onClick = {this.onClose('modal2')}/><br/>
+                       <img src = {require('../svg/close_black.svg')} style = {{width:'25px',height:'25px',marginLeft:'8rem'}} onClick = {this.onClose('modal2')}/><br/>
                        {/* <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/> */}
                        <span style = {{color:'#aaa'}}>请选择类型</span>
                      </div>

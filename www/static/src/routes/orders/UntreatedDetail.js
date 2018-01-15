@@ -1,6 +1,6 @@
 import React from "react";
 import { List, Icon, Flex, Button } from 'antd-mobile';
-import goodImg from './good.jpg';
+import goodImg from '../../assets/img/reward/good.jpg';
 import styles from './waitdetails.css';
 import stylec from './Common.css';
 import QrCode from './qrcode.js';

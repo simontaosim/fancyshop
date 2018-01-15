@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Tabs, Flex } from 'antd-mobile';
 import styles from './AwardDetail.css';
-import goodsImg from './good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 
 class AwardDetail extends React.Component {
   constructor() {
