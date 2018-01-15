@@ -26,7 +26,7 @@ render(){
         <ShopEdit/>
       </div>
       <div style = {{margin:'0 0 0 10px'}}>
-        <Button size="small" style = {{border:'1px solid #111',paddingLeft:'10px',marginBottom:'10px',width:'70px',padding:'3px 10px'}} >确定</Button>
+        <Button size="small" style = {{border:'1px solid #111',paddingLeft:'10px',marginBottom:'10px',width:'70px'}} >确定</Button>
         <Button size="small" style = {{backgroundColor:'red',color:'white',paddingLeft:'10px'}}>删除</Button>
       </div>
     </Flex>
