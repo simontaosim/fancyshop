@@ -14,31 +14,24 @@ class Test extends React.Component {
         super(props)
 
         this.state = {
-            CheckAll: false,
-            isCheck: false,
-            data: [
-                { value: 0, label: 'Ph.D.',checked: false,shop_id: 1 },
-                { value: 1, label: 'Bachelor',checked: false, shop_id: 1  },
-                { value: 2, label: 'College diploma',checked: false, shop_id: 2  },
-                { value: 3, label: 'College diploma',checked: false, shop_id: 2  },
-              ],
+          
             datas: 
             [
                 {shop_name: '卡哇伊',checked: false,shop_id: 1,
                      source: [
-                        { shop_id: 1, value: 0,checked:false,label: '测试1' ,checked: false},
-                        { shop_id: 1, value: 1,checked:false,label: '测试2' ,checked: false},
-                        { shop_id: 1, value: 2,checked:false,label: '测试3' ,checked: false},
-                        { shop_id: 1, value: 3,checked:false,label: '测试4' ,checked: false},
+                        { shop_id: 1, value: 0,checked:false,label: '测试1' ,checked: false,status: 1},
+                        { shop_id: 1, value: 1,checked:false,label: '测试2' ,checked: false,status: 1},
+                        { shop_id: 1, value: 2,checked:false,label: '测试3' ,checked: false,status: 1},
+                        { shop_id: 1, value: 3,checked:false,label: '测试4' ,checked: false,status: 1},
                         ]
                 },
                 {
                     shop_name: '哇哈哈',checked: false,shop_id: 2,
                     source: [
-                        { shop_id: 2, value: 0,checked:false,label: 'Ph.D.' ,checked: false},
-                        { shop_id: 2, value: 1,checked:false,label: 'Bachelor' ,checked: false},
-                        { shop_id: 2, value: 2,checked:false,label: 'College diploma' ,checked: false},
-                        { shop_id: 2, value: 3,checked:false, label: 'College diploma' ,checked: false},
+                        { shop_id: 2, value: 0,checked:false,label: 'Ph.D.' ,checked: false,status: 1},
+                        { shop_id: 2, value: 1,checked:false,label: 'Bachelor' ,checked: false,status: 1},
+                        { shop_id: 2, value: 2,checked:false,label: 'College diploma' ,checked: false,status: 1},
+                        { shop_id: 2, value: 3,checked:false, label: 'College diploma' ,checked: false,status: 1},
                     ]
     
                 }
@@ -119,10 +112,16 @@ class Test extends React.Component {
                         {i.shop_name}
                     </CheckboxItem>
                         {i.source.map((i,index)=> (
+                        <div>
+                            {i.status===1?
                         <CheckboxItem key={i.value} onChange={(e) => this.onChange(e,i.value,i.label,index,i.shop_id,index0)} checked={i.checked}>
                             {i.label}
                             {index0}
                         </CheckboxItem>
+                        :
+                        null
+                            }
+                        </div>
                         ))}
                     </div>
                     ))}
