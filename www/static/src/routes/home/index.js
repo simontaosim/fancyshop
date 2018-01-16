@@ -12,6 +12,7 @@ import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
+import goodList from './goodList';
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
@@ -81,6 +82,8 @@ class AppHome extends React.Component{
           <Recommend/>
           <WhiteSpace/>
             <ShopTagMenu/>
+            {/* <goodList/> */}
+
           <GoodsList/>
         </Flex>
     )
