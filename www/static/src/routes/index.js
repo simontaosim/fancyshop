@@ -32,6 +32,9 @@ import SelectTest from './shop_cart/select_test';
 import CartNull from './shop_cart/null';
 import CartTest from './checkbox/cart'
 import UserData from './my/UserData';
+import ProductModal from './product/ProductModal';
+import Facilitator from './home/facilitator';
+import FirmOrder from './product/FirmOrder';
 
 
 import ForgotPassword from './password/'
@@ -129,6 +132,10 @@ class App extends React.Component {
               <Route path = "/shopedit" component={Change}/>
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/userdata" component={ UserData }/>
+              <Route path = "/facilitator" component = { Facilitator }/>
+              <Route path = "/productmodal" component={ ProductModal }/>
+              <Route path = "/firmorder" component = {FirmOrder}/>
+
 
 
               {/* <Route path = "/select" component={SelectTest}/> */}

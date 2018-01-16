@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Flex, WhiteSpace, WingBlank, Badge} from 'antd-mobile';
 import style from './recommend.css';
@@ -26,12 +27,14 @@ class Recommend extends React.Component {
             <span className = {style['price-now']}>现价：￥330</span>
             <span　className = {style['reward']}>佣金：2％</span>
           </div>
+          <Link to = "/product">
           <div className = {style['test']}>
             <img src = {goodsImg} alt = "商品图片" className = {style['good-img']}/>
             <span className = {style['price-now']}>现价：￥330</span>
             <span　className = {style['reward']}>佣金：2％</span>
           </div>
-        
+        </Link>
+
         </Flex>
       </div>
     </div>
