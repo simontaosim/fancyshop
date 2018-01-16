@@ -28,7 +28,7 @@ class FirmOrder extends React.Component {
           <div className = {styles['notice-text']}>到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈</div>
         </div>
         </div>
-        <div className = {styles['goods-frame']}>
+        <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}}>
           <Flex justify = "center" className = {styles['goods-item']}>
             <div className = {styles['img-border']} >
               <img src = {goodImg} className = {styles['goods-img']}/>
@@ -48,18 +48,6 @@ class FirmOrder extends React.Component {
               <span style = {{color:'#888'}}>类型：4L 自喜力 </span>   <span style= {{float:'right'}}> <span style = {{color:'red'}}> ￥250 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ×1</span>
             </div>
           </Flex>
-          <Flex justify = "end" style = {{marginRight:'10px'}}>
-            应付款：<span style = {{color:'red'}}> ￥500</span>
-          </Flex>
-          <Flex justify = "end" style = {{margin:'10px'}}>
-            <button className = {stylec['cancel-btn']} style = {{marginRight:'15px'}}>取消订单</button>
-            <button  className = {stylec['pay-btn']}>支付</button>
-          </Flex>
-        </div>
-
-        <div className = {styles['item-orders']}>
-        订单号：12346578154<br/>
-        下单时间： 2017/5/13 10：15
         </div>
 
       </div>

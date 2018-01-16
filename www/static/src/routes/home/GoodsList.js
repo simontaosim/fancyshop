@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { Flex, WingBlank, WhiteSpace} from "antd-mobile";
+import { Flex, WingBlank, WhiteSpace,ListView} from "antd-mobile";
 import styles from './GoodsList.css';
 
 import goodsImg from '../../assets/img/home/one.jpg';
@@ -13,9 +13,9 @@ class GoodsList extends React.Component {
 
   render(){
     return(
-      <div className = {styles['back-img']}>
+      // <div className = {styles['back-img']}>
 
-        <Flex justify = "end" className = {styles['main-top']}>
+        {/* <Flex justify = "end" className = {styles['main-top']}>
           <Link to = "/product">
           <div style = {{textAlign:'center'}}>
             <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
@@ -48,7 +48,9 @@ class GoodsList extends React.Component {
             <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
             <p className = {styles['goods-name']}>嘉实多</p>
           </div>
-        </Flex>
+        </Flex> */}
+      <div>
+
       </div>
     )
   }

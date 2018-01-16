@@ -31,7 +31,7 @@ import SelectTest from './shop_cart/select_test';
 import CartNull from './shop_cart/null';
 import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
-import Facilitator from './home/facilitator';
+import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
 
 
