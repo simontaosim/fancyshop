@@ -6,12 +6,26 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import { appInfo } from '../../map_props.js';
-import ShopTagMenu from "./components/ShopTagMenu.js"
-import { Flex, Carousel, WhiteSpace, WingBlank, Grid  } from 'antd-mobile';
+// import ShopTagMenu from "./components/ShopTagMenu.js"
+
+import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
+import Recommend from "./recommend";
+import ShopTagMenu from "./shoptagmenu";
+import GoodsList from "./GoodsList";
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
+
+import addImg from './add.png'
+import barImg from './bar.png'
+import beautyImg from './beauty.png'
+import runImg from './run.png'
+import shopImg from './shop.png'
+import goodsImg from './one.jpg';
+
+
+import Good from './good'
 
 class AppHome extends React.Component{
   constructor(props) {
@@ -35,7 +49,7 @@ class AppHome extends React.Component{
   render(){
 
     return (
-        <Flex justify="center" direction="column" className="flex-container ">
+        <Flex  direction="column" className="flex-container ">
             <Carousel
               autoplay={false}
               infinite
@@ -71,16 +85,14 @@ class AppHome extends React.Component{
             </Flex>
           </Flex>
           <WhiteSpace/>
-          <Flex>商品推荐</Flex>
+          <WhiteSpace/>
+          <Recommend/>
           <WhiteSpace/>
           <ShopTagMenu/>
-          <WhiteSpace/>
-
-          <Flex>另外一栏商品推荐</Flex>
+          <GoodsList/>
         </Flex>
     )
   }
 }
-
 
 export default connect(appInfo)(AppHome);

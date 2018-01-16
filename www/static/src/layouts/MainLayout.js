@@ -8,10 +8,9 @@ import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
 import {appInfo} from '../map_props.js';
 import {connect} from 'react-redux';
+import "./common.less";   // 用于覆盖上面定义的变量
 
-import Horizon from '@horizon/client'
 
-  const horizon = Horizon({host: 'localhost:8181'});
 class MainLayout extends React.Component{
   constructor(props){
     super(props);
@@ -22,12 +21,15 @@ class MainLayout extends React.Component{
       fullScreen: false,
       name: "",
       email: "",
-      number: "",
-    };
-
-
-
+      number: ""
+    }
   }
+
+
+    componentDidMount() {
+    }
+
+
 
 
   render(){
@@ -44,5 +46,11 @@ class MainLayout extends React.Component{
   }
 }
 
+function mapStateToProps(state) {
+  return {user: state.user}
+}
+
+
 
 export default MainLayout;
+// export default connect (mapStateToProps)(MainLayout);

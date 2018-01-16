@@ -1,0 +1,65 @@
+.shop-svg {
+  width: 30px;
+  height: 30px;
+}
+.cart-bg {
+  background-color: #00b7ee;
+}
+.cart-font {
+  line-height: 3.2em;
+  color: #fff;
+}
+.buy-bg {
+  background-color: #ffcf2d;
+}
+.buy-font {
+  line-height: 2.8em;
+  color: white;
+  justify: center;
+}
+.good-img {
+  width: 70px;
+  height: 70px;
+  border: 6px solid #680000;
+}
+.good-des {
+  padding-left: 10px;
+}
+.price-font {
+  font-size: 16px;
+  color: red;
+}
+.close-btn {
+  padding: 0 4px;
+  margin-left: 148px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #111;
+  border-radius: 10px;
+}
+.type-font {
+  color: #aaa;
+}
+.color-destop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.color-div {
+  background-color: #e5e5e5;
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: #333;
+}
+.color-desbtm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #aaa;
+}
+.num-padding {
+  padding-left: 10px;
+}

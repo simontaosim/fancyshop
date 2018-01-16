@@ -22,10 +22,9 @@ class BottomMenu extends React.Component{
     };
 
 
-
   }
   componentDidMount(){
-    console.log(this.props);
+    // console.log(this.props);
 
     const { history }  = this.props;
     const pathname = history.location.pathname;
@@ -60,7 +59,7 @@ class BottomMenu extends React.Component{
 
         <TabBar
           unselectedTintColor="#949494"
-          tintColor="#33A3F4"
+          tintColor="#FECE42"
           barTintColor="white"
           hidden={this.state.hidden}
         >
@@ -151,6 +150,7 @@ class BottomMenu extends React.Component{
             selectedIcon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom4.png' }}
             title="我的"
             key="my"
+            badge = {'爆'}
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
               history.push("/my");
