@@ -43,13 +43,8 @@ class Test extends React.Component {
     }
 
     componentDidMount() {
-        asteroid.call('shop_carts.add_cart','123')
-        .then(result=>{
-                console.log(result);
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+        asteroid.call('user.test',['123'])
+    
     }
 
 
