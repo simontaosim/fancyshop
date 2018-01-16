@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-const { injectBabelPlugin } = require('react-app-rewired');
 
-module.exports = function override(config, env) {
- config = injectBabelPlugin(['import', { libraryName: 'antd-mobile', style: 'css' }], config);
-=======
 // const { injectBabelPlugin } = require('react-app-rewired');
 
 // module.exports = function override(config, env) {
@@ -109,6 +104,5 @@ module.exports = function override(config, env) {
   let l = getLoader(config.module.rules, fileLoaderMatcher);
   l.exclude.push(/\.less$/);
 
->>>>>>> login
   return config;
 };
