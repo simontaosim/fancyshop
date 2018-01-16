@@ -15,48 +15,18 @@ if (isIPhone) {
 class ProductBottom extends React.Component {
   constructor() {
     super();
-    this.state = {
-      modal2: false,
-      val: 1,
-      data: ['1', '2', '3'],
-      imgHeight: 176,
-      slideIndex: 0,
-    }
   }
-
-  showModal = key => (e) => {
-   e.preventDefault(); // 修复 Android 上点击穿透
-   this.setState({
-     [key]: true,
-   });
- }
- onClose = key => () => {
-   this.setState({
-     [key]: false,
-   });
- }
-
- onChange = (val) => {
-   // console.log(val);
-   this.setState({ val });
-   if (this.state.value == 9) {
-     // alert("您最多只能购买十件商品！")
-     console.log('您最多只能购买十件该商品');
-   }
- }
 
   render(){
     return(
-      <div>
         <Flex>
-            <Flex style = {{width:'25%'}} justify = "center">
-                <Link to = "/facilitator"><img src={require('../svg/shop.svg')} style = {{width:'30px',height:'30px'}}/><span style = {{lineHeight:'2em'}}>店铺</span>
+            <Flex style = {{width:'25%',color:'#333'}} justify = "center">
+                <Link to = "/facilitator"><img src={require('../svg/shop.svg')} style = {{width:'30px',height:'30px'}}/><span style = {{lineHeight:'2em',color:'#333'}}>店铺</span>
                 </Link>
-              </Flex>
-
+            </Flex>
           <Link to = "./shop_cart">
             <Flex style = {{backgroundColor:'#00b7ee'}}>
-              <span style = {{lineHeight:'3.2em',color:'#fff'}}>加入购物车</span>
+              <span style = {{lineHeight:'3em',color:'#fff'}}>加入购物车</span>
             </Flex>
           </Link>
           <Flex.Item style = {{backgroundColor:'#ffcf2d',width:'40%'}} >
@@ -65,7 +35,6 @@ class ProductBottom extends React.Component {
             </Link>
           </Flex.Item>
         </Flex>
-      </div>
     )
   }
 }

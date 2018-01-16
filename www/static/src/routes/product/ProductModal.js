@@ -56,11 +56,8 @@ class ProductModal extends React.Component {
 
    render(){
      return(
-       <div >
-<Flex>
-       <Flex.Item onClick={this.showModal('modal2')} style = {{color:'black',justify:'center'}}>选择类型</Flex.Item>
-</Flex>
-       <div></div>
+       <div>
+       <Flex.Item onClick={this.showModal('modal2')} style = {{color:'black',justify:'center'}}><span style = {{color:'#888'}}>选择类型</span></Flex.Item>
        <WhiteSpace />
        <Modal
         popup
