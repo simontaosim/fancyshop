@@ -1,13 +1,19 @@
+.all {
+  background-color: #fff;
+  width:100%;
+}
 .Img-size {
-  width: 75%;
-  height: 75%;
+  width: 60%;
+  height: 60%;
 }
 .main {
   background-color: #fff;
-  padding: 15px;
+  padding: 5px;
   margin-top: 10px;
 }
 p {
   text-align: center;
-  margin:5px;
+  margin: 5px 5px;
+  font-size: 12px;
+
 }

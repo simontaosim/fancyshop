@@ -1,9 +1,9 @@
 import React from 'react';
 import { Flex,Checkbox, List} from 'antd-mobile';
 import styles from "./paid.css";
-import codeImg from './code.png';
-import payImg from './pay.png';
-import wechatImg from './wechat.png';
+import codeImg from '../../assets/img/orders/code.png';
+import payImg from '../../assets/img/orders/pay.png';
+import wechatImg from '../../assets/img/orders/wechat.png';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 const AgreeItem = Checkbox.AgreeItem;

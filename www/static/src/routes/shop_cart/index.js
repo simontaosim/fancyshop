@@ -5,7 +5,7 @@ import ShopEdit from './ShopEdit';
 import GoodsItem from './GoodsItem';
 import ShopName from './ShopName';
 import Edit from './Edit';
-import goodsImg from './good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 import Change from './Change';
 import Shop from './shopcart';
 import style from './common.css';

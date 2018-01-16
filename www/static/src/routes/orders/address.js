@@ -10,7 +10,7 @@ class Address extends React.Component {
       <div>
         <Flex>
           <div>
-            <img src = {require(./svg/home.svg)} />
+            <img src = {require(../../assets/svg/home.svg)} />
             店铺名：这是一个店铺名
           </div>
         </Flex>
