@@ -9,6 +9,11 @@ import QrCode from './qrcode.js';
 class UntreatedDetail extends React.Component {
   constructor() {
     super();
+    this.qrcode = this.qrcode.bind(this)
+  }
+
+  qrcode () {
+    this.props.history.push('/qrcode')
   }
 
 render(){
@@ -55,14 +60,16 @@ render(){
         </Flex>
         <Flex justify = "end" style = {{margin:'10px'}}>
           <button className = {stylec['cancel-btn']} style = {{marginRight:'15px'}}>取消订单</button>
-          <a href = "/#/qrcode"><button  className = {stylec['qr-btn']}>二维码</button>
-          </a>
+          {/* <a href = "/#/qrcode"><button  className = {stylec['qr-btn']}>二维码</button>
+          </a> */}
+        <button  className = {stylec['qr-btn']} onClick={this.qrcode}>二维码</button>
+
         </Flex>
       </div>
 
       <div className = {styles['item-orders']}>
       订单号：12346578154<br/>
-      下单时间： 2017/5/13 10：15
+      下单时间： 2017/5/13 10：15<br/>
       付款时间： 2017/5/13 10：15
       </div>
 

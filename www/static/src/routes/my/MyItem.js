@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, List, Badge,WhiteSpace } from 'antd-mobile';
+import { Link } from 'react-router-dom';
 
 class MyItem extends React.Component {
   constructor() {
@@ -27,16 +28,16 @@ class MyItem extends React.Component {
       </div>
       <WhiteSpace/>
       <div style = {{border:'1px solid #f1f1f1',borderRadius:'8px',backgroundColor:'#fefefe',margin:'10px'}}>
-        <a href = "#/orders">
+        <Link to = '/orders'>
         <List.Item extra="全部订单" arrow="horizontal" style = {{fontSize:'12px'}}>
           <Badge text={0} style={{ marginLeft:" 12 "}}>
             <img src={require('../svg/orders.svg')}  style = {{height:'20px',width:'20px'}}/><span style = {{paddingLeft:'8px',color:'#464646',fontSize:'14px',fontFamily:'sans-serif'}}>我的订单</span></Badge>
           {/* <Badge text={'new'} style={{ marginLeft:" 12 "}} /> */}
         </List.Item>
-
-        </a>
+      </Link>
 
       <Flex style = {{padding:'10px 15px',borderTop:'1px solid #eee'}}>
+        
         <Flex.Item>
           <img src={require('../svg/wait.svg')}  style = {{height:'15px',width:'15px'}}/>
           <span style = {{}}>待付款</span>

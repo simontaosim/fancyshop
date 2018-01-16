@@ -19,3 +19,7 @@
   border-bottom: 4px solid #eee;
   padding: 10px 10px;
 }
+.item {
+  border-bottom: 4px solid #eee;
+  padding: 10px 0;
+}

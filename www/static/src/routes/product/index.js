@@ -4,6 +4,7 @@ import { Flex, Carousel } from 'antd-mobile';
 import ProductTabs from './ProductTabs';
 import ProductShare from './ProductShare';
 import ProductBottom from './ProductBottom';
+import ProductModal from './ProductModal';
 import style from './common.css'
 import goodImg from '../../assets/img/reward/good.jpg';
 
@@ -76,18 +77,18 @@ render(){
       </Flex>
         <span style = {{ textDecoration:'line-through'}}>￥299</span>
       </div>
-      <Flex className = {style['item-des']}>
-        <Flex.Item><img src={require('../svg/share.svg')} className = {style['share-img']}/><ProductShare/></Flex.Item>
-        <Flex.Item>一级奖励</Flex.Item>
-        <Flex.Item>二级奖励<img src={require('../svg/no.svg')} className = {style['question-img']}/></Flex.Item>
+      <Flex justify = "around" className = {style['item']}>
+        <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'10px'}}/><ProductShare/></Flex>
+        <Flex>一级奖励</Flex>
+        <Flex>二级奖励<img src={require('../svg/no.svg')} style = {{paddingLeft:'10px'}}/></Flex>
       </Flex>
-      <Flex className = {style['item-des']}>
+      <Flex justify = "around" className = {style['item-des']}>
         <Flex.Item>配送方式</Flex.Item>
         <Flex.Item>库存</Flex.Item>
         <Flex.Item>销量</Flex.Item>
       </Flex>
       <Flex className = {style['item-des']}>
-        选择规格
+        <ProductModal>选择规格</ProductModal>
       </Flex>
       <ProductTabs/>
       <ProductBottom/>
