@@ -1,15 +1,22 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux';
 
-class Good extends React.Component{
-    render() {
-        return(
-            <div>
-                Good
-                fdasfdasf
-                datafads
+import { Flex, WingBlank, Tabs, WhiteSpace, Toast, ActionSheet, Button, Modal, List, Stepper} from 'antd-mobile';
 
-            </div>
-        )
-    }
+class Goods extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+render(){
+
+
+  return (
+    <div style = {{marginBottom:'280px'}}>
+    hahahhahahahhahahahhhaha
+    </div>
+  )
 }
-export default Good;
+}
+
+
+export default Goods;

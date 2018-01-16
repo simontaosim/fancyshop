@@ -6,7 +6,7 @@ import Edit from './Edit';
 import styles from './GoodItem.css';
 import style from './common.css';
 
-import goodsImg from './good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 const CheckboxItem = Checkbox.CheckboxItem;
 
 

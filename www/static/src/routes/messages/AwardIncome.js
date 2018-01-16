@@ -10,11 +10,8 @@ class AwardIncome extends React.Component {
 render(){
   return(
     <div className = {styles['Award-frame']}>
-      {/* 111
-      <img src={require('../svg/income.svg')} /> */}
       <Flex>
-          <img src={require('../svg/income.svg')} style = {{height:'28px',width:'28px'}}/>
-         {/* <Icon type={require('../svg/income.svg')} /> */}
+          <img src={require('../../assets/svg/income.svg')} style = {{height:'28px',width:'28px'}}/>
       <span>收益</span></Flex>
       <table style = {{border:'1px solid #00b7ee',borderRadius:'6px',width:'100%',align:'center'}}>
         <tbody style = {{border:'1px solid #00b7ee'}}>

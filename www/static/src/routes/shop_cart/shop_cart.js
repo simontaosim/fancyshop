@@ -19,7 +19,7 @@ import addImg from './add.png'
 import barImg from './bar.png'
 import beautyImg from './beauty.png'
 import runImg from './run.png'
-import shopImg from './shop.png'
+import shopImg from '../../assets/img/home/shop.png'
 
 import { ListView } from 'antd-mobile';
 import Goods from './goods.js';

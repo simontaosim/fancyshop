@@ -4,7 +4,7 @@ import { Flex, Button, Checkbox } from 'antd-mobile';
 import ShopEdit from './ShopEdit';
 import GoodsItem from './GoodsItem';
 import ShopName from '../orders/ShopName';
-import goodsImg from './good.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 

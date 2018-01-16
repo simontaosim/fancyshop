@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Button, Modal, WhiteSpace, List, Stepper, Carousel} from 'antd-mobile';
-import goodImg from './good.jpg'
+import goodImg from '../../assets/img/reward/good.jpg';
 import style from './ProductBottom.css';
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
