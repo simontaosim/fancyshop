@@ -122,3 +122,16 @@ Mock.mock('/myWallet',{
         time: Random.time('H')+'分钟前'
     }]
 })
+//商品列表
+
+Mock.mock('goods',{
+    'name': '@name',
+    'spec': [{red: 3000, isThis: true},{blue: 4000, isThis: false}],
+    'brand': '@shop_name',
+    'inventory': '@num',
+    'deliver': '自提',
+    'description': '商品描述',
+    'price|1-1000': 1,
+    'cover': img,
+    'images': [img,img,img]
+})

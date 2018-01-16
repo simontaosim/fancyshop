@@ -1,4 +1,5 @@
 import React from 'react'
+import { asteroid } from '../../config/asteroid.config'
 
 // import { saveAs } from 'file-saver';
 
@@ -39,6 +40,16 @@ class Test extends React.Component {
         }
 
    
+    }
+
+    componentDidMount() {
+        asteroid.call('shop_carts.add_cart','123')
+        .then(result=>{
+                console.log(result);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
 
 
