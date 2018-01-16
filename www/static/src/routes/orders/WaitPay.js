@@ -6,15 +6,28 @@ import Goods from './Goods.js';
 import styles from './Common.css';
 
 class WaitPay extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
   render(){
+    
+    // console.log('waitpay')
+    let {waitpay,shop} = this.props
+    console.log(this.props.waitpay)
+   waitpay = waitpay === undefined ? []: waitpay
+    // if( waitpay === undefined){
+    //   waitpay = []
+    // }else{
+    //   waitpay = this.props.waitpay
+    // }
     return(
       <div style = {{backgroundColor:'#fff'}}>
-        <ShopName/>
-        <Goods/>
-        <Goods/>
+ 
+        <ShopName shop={shop}/>
+      
+         {waitpay.map(v=>(
+           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/> 
+							))}
         <Flex justify = "end" style = {{marginRight:'10px'}}>
           合计：<span className = {styles['total-font']}> ￥500</span>
         </Flex>

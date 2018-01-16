@@ -11,8 +11,8 @@ class ShopName extends React.Component {
   render(){
     return (
       <Flex style = {{padding:'15px 15px 0px 15px'}}>
-        <img src = {userImg} style = {{height:'30px',width:'30px',borderRadius:'15px',backgroundColor:'#111',marginRight:'10px'}}/>
-        <span>这是店铺的名字</span>
+        <img style = {{height:'30px',width:'30px',border:'1px solid #111',borderRadius:'15px',backgroundColor:'#111',marginRight:'10px'}}/>
+        <span>{this.props.shop}</span>
       </Flex>
     )
   }

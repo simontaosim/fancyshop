@@ -91,13 +91,18 @@ export function user(state=initState,action) {
 
 
 export function login(user,pwd) {
+  console.log(user)
+  console.log(pwd)
     return dispatch=>{
+      console.log(12314)
       asteroid.loginWithPassword({username:user,password:pwd})
       .then(result => {
+        console.log(222)
        Toast.success('登陆成功', 1);
        dispatch(loginSuccess(result))
       })
       .catch(error => {
+        console.log(333)
         Toast.fail('账户或者密码错误', 1);
       });
   }
