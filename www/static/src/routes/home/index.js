@@ -83,7 +83,7 @@ class AppHome extends React.Component{
           <WhiteSpace/>
             <ShopTagMenu/>
             {/* <goodList/> */}
-
+          <WhiteSpace/>
           <GoodsList/>
         </Flex>
     )

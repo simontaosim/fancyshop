@@ -30,6 +30,7 @@ class ShopCart extends React.Component{
     var link = this.state.edit ? '#/shopedit' : '#/shop_cart'
     var btn = this.state.edit ? <BtnRed/>:<BtnYellow/>
     return(
+
       <div className = {style['bg-color']}>
 
         <Flex justify = "end" style = {{backgroundColor:"#333",color:'#fff',lineHeight:'3em',padding:'5px 10px'}}>

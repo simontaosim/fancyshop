@@ -3,6 +3,7 @@ import {
   HashRouter as Router,
   Route,
   Link,
+  BrowserRouter
 } from 'react-router-dom';
 
 import MainLayout from '../layouts/MainLayout.js'
@@ -29,6 +30,7 @@ import QrCode from './orders/qrcode';
 import Change from './shop_cart/Change';
 import SelectTest from './shop_cart/select_test';
 import CartNull from './shop_cart/null';
+import CartTest from './checkbox/cart'
 import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
 import Facilitator from './product/facilitator';
@@ -107,10 +109,10 @@ class App extends React.Component {
     return (
       <Router >
           <MainLayout history={history}>
-              <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
+              <Route exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               {/* <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/> */}
-              <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/>
+              <Route path = "/shop_cart" component={ShopCart} />
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
               {/* <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/> */}
               <Route path="/register" component={Register}/>
@@ -141,8 +143,9 @@ class App extends React.Component {
 
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
-          </MainLayout>
+              <Route path="/carttest" component={CartTest}  />
 
+          </MainLayout>
       </Router>
     )
   }
