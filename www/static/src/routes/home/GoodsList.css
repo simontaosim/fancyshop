@@ -1,0 +1,32 @@
+.back-img {
+  background-image: url(./blue.png);
+  background-size: cover;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+.main-top {
+  margin-left: 105px;
+}
+.main-end {
+  margin: 10px 0 0 30px;
+}
+.goods-img {
+  width: 70%;
+  height: 70%;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+.goods-name {
+  color: #fff;
+  margin: 5px 0 0 0;
+}
+.good-frame {
+  margin:10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.good-items {
+  display: flex;
+  flex-direction: column;
+
+}

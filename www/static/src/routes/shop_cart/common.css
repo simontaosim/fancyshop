@@ -1,0 +1,37 @@
+
+.bg-color {
+  background-color: #eee;
+  padding-bottom: 20px;
+}
+.item-frame {
+  background-color: #fff;
+  margin-bottom: 14px;
+}
+.item-last {
+  background-color: #fff;
+}
+.bottom-pos {
+  position: fixed;
+  bottom: 50px;
+}
+.bottom-all {
+  background-color: #333;
+  color: #fff;
+  width: 180px;
+}
+.bottom-balance {
+  background-color: #ffcf2d;
+  color: #fff;
+  width:260px;
+  line-height: 3.2em;
+}
+.bottom-balance-red {
+  background-color: #fc3e43;
+  color: #fff;
+  width: 260px;
+  line-height: 3.2em;
+}
+.global .am-list-content {
+  width: 38px;
+  font-size: 14px;
+}

@@ -1,0 +1,141 @@
+button [disabled] {
+    cursor:wait;
+    /* > * {
+        pointer-events: none;
+    } */
+}
+
+
+button [disabled] > * {
+    pointer-events:none;
+}
+
+/*
+button {
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0 7px 0;
+  line-height: 42px;
+  border: none;
+  background: #000;
+
+}
+
+
+
+.Test {
+  background-color: #000;
+  height: 200px;
+  color: #fff;
+}
+
+img {
+  src:url(/public/img/login/background.jpg);
+}
+*/
+.all {
+  background-image: url(./background.jpg);
+  background-size:100% 100%;
+  height: 30rem;
+}
+.back {
+  width: 25px;
+  height: 25px;
+}
+.user-login {
+  color: white;
+  font-size: 1rem;
+  padding-left: 8rem;
+  /*line-height: 500px;*/
+}
+.phone-login {
+  color: white;
+  font-size: 0.7rem;
+  padding-left: 4.8rem;
+}
+.frame {
+  border: 1px solid #f6f6f6;
+  border-radius: 0.5rem;
+  background-color: #f6f6f6;
+  padding: 0.1rem;
+  margin: 0.9rem;
+  margin-top: 8rem;
+}
+.username {
+  background-color: #fff;
+  padding-left: 1rem;
+  margin: 0.8rem 0.8rem;
+}
+.password {
+  margin:0.8rem 0.8rem;
+  background-color: #fff;
+  padding-left: 1rem;
+}
+.user-img {
+  height: 2rem;
+  width: 1.6rem;
+  padding-top: 0.5rem;
+  display: inline-flex;
+}
+.psw-img {
+  height: 2rem;
+  width: 1.5rem;
+  padding-top: 0.5rem;
+}
+.login-btn {
+  /*margin: auto;*/
+  background-color: #ffc600;
+  width: 18rem;
+  border: 1px solid #ffc600;
+  border-radius: 0.2rem;
+  height: 2.2rem;
+  color: #fff;
+  /*align: center;*/
+  outline: none;
+  /*margin-left: 1.5rem;*/
+  /*text-align: center;*/
+  display: table;
+  margin: 0 auto;
+}
+.forget-psw{
+  display: block;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+.div-bor{
+  position: relative;
+  width: 25rem;
+  padding-left: 1rem;
+}
+
+.user-input {
+  height: 2rem;
+  border: 1px solid #aaa;
+  line-height: 2.5rem;
+  margin-bottom: 0.3rem;
+  margin-left: 0.3rem;
+  border: none;
+}
+.psw-input {
+  height: 2rem;
+  border: 1px solid #aaa;
+  line-height: 2.5rem;
+  margin-bottom: 0.3rem;
+  margin-left: 0.3rem;
+  border: none;
+}
+.icon-user{
+  padding-left: 1.1rem;
+  position: absolute;
+  left: 0;
+  z-index:5;
+  background-image: url(people.png); /*引入图片图片*/
+  background-repeat: no-repeat; /*设置图片不重复*/
+  background-position: 0px 0px; /*图片显示的位置*/
+  width: 1.8rem; /*设置图片显示的宽*/
+  height: 1.6rem; /*图片显示的高*/
+}

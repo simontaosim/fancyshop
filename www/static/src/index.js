@@ -1,7 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from './routes/';
+import App from './routes/index';
+import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
+import configureStore from "./stores/index";
+import createHistory from 'history/createHashHistory';
+import { ConnectedRouter } from 'react-router-redux'
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
+const history = createHistory();
+
+
+const store = configureStore();
+
+ReactDOM.render(
+   <Provider store={store}>
+      <App />
+  </Provider>,
+  document.getElementById('root'));
+
 registerServiceWorker();
