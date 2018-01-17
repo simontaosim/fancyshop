@@ -35,8 +35,8 @@ import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
 import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
-import Pull from './checkbox/pull'
-import PullTest from './checkbox/pullTest'
+// import Pull from './checkbox/pull'
+// import PullTest from './checkbox/pullTest'
 
 
 import ForgotPassword from './password/'
@@ -137,9 +137,9 @@ class App extends React.Component {
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
-              <Route path="/pull" component={Pull}  />
-              <Route path="/pulltest" component={PullTest}  />
-              
+              {/* <Route path="/pull" component={Pull}  />
+              <Route path="/pulltest" component={PullTest}  /> */}
+
           </MainLayout>
       </Router>
     )
