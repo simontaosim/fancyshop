@@ -22,7 +22,7 @@ class AppMy extends React.Component{
   render(){
 
     return (
-      <div>
+      <div >
         <div className = {style['back-color']}>
           <Flex>
             <Flex.Item align = "center"><img src = {userImg} style = {{height:'60px',width:'60px',
@@ -44,10 +44,10 @@ class AppMy extends React.Component{
 
           <MyItem/>
           <WingBlank>
-            <Button>退出当前帐号</Button>
+            <Button style = {{backgroundColor:'#ea4b4b',color:'#fff',height:'40px',marginBottom:'100px',fontSize:'12px'}}>退出当前帐号</Button>
           </WingBlank>
 
-          <MyList  history={this.props.history} />
+          {/* <MyList  history={this.props.history} /> */}
         </div>
 
       </div>

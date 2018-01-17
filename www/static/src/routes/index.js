@@ -110,10 +110,10 @@ class App extends React.Component {
       <Router >
           <MainLayout history={history}>
               <Route exact path="/" component={Home} authenticated={authenticated}/>
-              <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
+              <Route path="/messages" component={Messages} authenticated={authenticated}/>
               {/* <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/> */}
               <Route path = "/shop_cart" component={ShopCart} />
-              <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
+              <Route path="/my" component={My} authenticated={authenticated}/>
               {/* <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/> */}
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
@@ -144,7 +144,6 @@ class App extends React.Component {
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
-
           </MainLayout>
       </Router>
     )

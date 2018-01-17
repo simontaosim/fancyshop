@@ -45,24 +45,6 @@ class ShopCart extends React.Component{
           <Shop/>
           <Shop/>
         </div>
-        {/* <div className = {style['item-last']}>
-            <Shop/>
-            <Edit/>
-        </div> */}
-        <div>
-
-        </div>
-        {/* <div>
-          <ShopEdit/>
-          <ProductBottom/>
-        </div> */}
-        {/* <div className = {style['bottom-pos']}>
-        <Flex >
-          <CheckboxItem className = {style['bottom-all']}><span style = {{color:'white'}}>全选</span><span style = {{float:'right',color:'#fff'}}>合计：<span style= {{color:'red'}}>￥250</span></span></CheckboxItem>
-          <a href ="#/shopedit"><Flex justify = "center" className = {style['bottom-balance']}>结算</Flex></a>
-        </Flex>
-
-        </div> */}
         <div>
           {btn}
         </div>
