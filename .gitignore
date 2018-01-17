@@ -38,3 +38,4 @@ package-lock.json
 
 config.development.js
 adapter.development.js
+runtime/config/development.json

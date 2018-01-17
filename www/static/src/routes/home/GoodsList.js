@@ -1,58 +1,155 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 
-import { Flex, WingBlank, WhiteSpace} from "antd-mobile";
+import { Flex, WingBlank, WhiteSpace,ListView} from "antd-mobile";
 import styles from './GoodsList.css';
+import goodList from './goodList';
 
-import goodsImg from '../../assets/img/home/one.jpg';
+import goodsImg from '../../assets/img/reward/good.jpg';
+import good2Img from '../../assets/img/timg.jpg';
+
+const data = [
+  {
+    img: goodsImg,
+    title: '机油',
+    des: '机油连锁，你值得拥有',
+  },
+  {
+    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
+    title: '麦当劳',
+    des: '走过路过不要错过啦瞧一瞧看一看咧',
+  },
+  {
+    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
+    title: '店名店名',
+    des: '这是商品的简介比如说这是一个蛋糕',
+  },
+];
+const NUM_ROWS = 3;
+let pageIndex = 0;
+
+function genData(pIndex = 0) {
+  const dataBlob = {};
+  for (let i = 0; i < NUM_ROWS; i++) {
+    const ii = (pIndex * NUM_ROWS) + i;
+    dataBlob[`${ii}`] = `row - ${ii}`;
+  }
+  return dataBlob;
+}
 
 class GoodsList extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
+    const dataSource = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2,
+    });
+
+    this.state = {
+      dataSource,
+      isLoading: true,
+    };
   }
 
-  render(){
-  
+  componentDidMount() {
+    // you can scroll to the specified position
+    // setTimeout(() => this.lv.scrollTo(0, 120), 800);
 
-    return(
-      <div className = {styles['back-img']}>
+    // simulate initial Ajax
+    setTimeout(() => {
+      this.rData = genData();
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(this.rData),
+        isLoading: false,
+      });
+    }, 600);
+  }
 
-        <Flex justify = "end" className = {styles['main-top']}>
-          <Link to = "/product">
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
-            <p className = {styles['goods-name']}>嘉实多</p>
+  // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.dataSource !== this.props.dataSource) {
+  //     this.setState({
+  //       dataSource: this.state.dataSource.cloneWithRows(nextProps.dataSource),
+  //     });
+  //   }
+  // }
+
+  onEndReached = (event) => {
+    // load new data
+    // hasMore: from backend data, indicates whether it is the last page, here is false
+    if (this.state.isLoading && !this.state.hasMore) {
+      return;
+    }
+    console.log('reach end', event);
+    this.setState({ isLoading: true });
+    setTimeout(() => {
+      this.rData = { ...this.rData, ...genData(++pageIndex) };
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(this.rData),
+        isLoading: false,
+      });
+    }, 1000);
+  }
+
+  render() {
+    const separator = (sectionID, rowID) => (
+      <div
+        key={`${sectionID}-${rowID}`}
+        style={{
+          backgroundColor: '#F5F5F9',
+          height: 8,
+          borderTop: '1px solid #ECECED',
+          borderBottom: '1px solid #ECECED',
+        }}
+      />
+    );
+    let index = data.length - 1;
+    const row = (rowData, sectionID, rowID) => {
+      if (index < 0) {
+        index = data.length - 1;
+      }
+      const obj = data[index--];
+      return (
+        <div key={rowID} style={{ padding: '0 15px' }}>
+          <div
+            style={{
+              lineHeight: '50px',
+              color: '#888',
+              fontSize: 18,
+              borderBottom: '1px solid #F6F6F6',
+            }}
+          >{obj.title}</div>
+          <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
+            <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
+            <div style={{ lineHeight: 1 }}>
+              <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
+              <div><span style={{ fontSize: '25px', color: '#FF6E27' }}><span style = {{color:'#FF6E27',fontSize:'20px',paddingRight:'5px'}}>¥</span>{rowID}</span></div>
+            </div>
           </div>
-          </Link>
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
-            <p className = {styles['goods-name']}>嘉实多</p>
-          </div>
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片"/>
-            <p className = {styles['goods-name']}>嘉实多</p>
-          </div>
-        </Flex>
-        <Flex justify = "end" className = {styles['main-end']}>
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
-            <p className = {styles['goods-name']}>嘉实多</p>
-          </div>
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
-            <p className = {styles['goods-name']}>嘉实多</p>
-          </div>
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
-            <p className = {styles['goods-name']}>嘉实多</p>
-          </div>
-          <div style = {{textAlign:'center'}}>
-            <img className = {styles['goods-img']} src = {goodsImg} alt = "商品图片" />
-            <p className = {styles['goods-name']}>嘉实多</p>
-          </div>
-        </Flex>
+        </div>
+      );
+    };
+    return (
+      <div style = {{width:'100%'}}>
+      <ListView
+        ref={el => this.lv = el}
+        dataSource={this.state.dataSource}
+        // renderHeader={() => <span>header</span>}
+        renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+          {this.state.isLoading ? 'Loading...' : 'Loaded'}
+        </div>)}
+        renderRow={row}
+        renderSeparator={separator}
+        className="am-list"
+        pageSize={4}
+        useBodyScroll
+        onScroll={() => { console.log('scroll'); }}
+        scrollRenderAheadDistance={500}
+        onEndReached={this.onEndReached}
+        onEndReachedThreshold={10}
+      />
       </div>
-    )
+    );
   }
 }
 

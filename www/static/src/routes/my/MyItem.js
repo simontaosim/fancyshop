@@ -37,7 +37,7 @@ class MyItem extends React.Component {
       </Link>
 
       <Flex style = {{padding:'10px 15px',borderTop:'1px solid #eee'}}>
-        
+
         <Flex.Item>
           <img src={require('../svg/wait.svg')}  style = {{height:'15px',width:'15px'}}/>
           <span style = {{}}>待付款</span>

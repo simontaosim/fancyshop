@@ -33,7 +33,7 @@ import CartNull from './shop_cart/null';
 import CartTest from './checkbox/cart'
 import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
-import Facilitator from './home/facilitator';
+import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
 import Pull from './checkbox/pull'
 import PullTest from './checkbox/pullTest'
@@ -43,21 +43,14 @@ import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 
 
+
 import createHistory from 'history/createHashHistory';
 const history = createHistory();
-
-
 
 
 const Home = ({ match }) => (
     <AppHome path={match.path} />
   )
-
-// const About = () => (
-//   <div>
-//     <h2>About</h2>
-//   </div>
-// )
 
 const Messages = ({match}) => (
   <MessageBox path={match.path} />
@@ -67,14 +60,12 @@ const Messages = ({match}) => (
 //   <AppMy path={match.path} />
 // )
 
+
 const Topic = ({ match }) => (
   <div>
     <h3>{match.params.topicId}</h3>
   </div>
 )
-
-
-
 
 const Topics = ({ match }) => (
   <div>
@@ -112,10 +103,10 @@ class App extends React.Component {
       <Router >
           <MainLayout history={history}>
               <Route exact path="/" component={Home} authenticated={authenticated}/>
-              <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
+              <Route path="/messages" component={Messages} authenticated={authenticated}/>
               {/* <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/> */}
               <Route path = "/shop_cart" component={ShopCart} />
-              <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
+              <Route path="/my" component={My} authenticated={authenticated}/>
               {/* <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/> */}
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />

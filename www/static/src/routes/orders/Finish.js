@@ -6,9 +6,9 @@ import Goods from './Goods.js';
 import styles from './Common.css';
 
 class Finish extends React.Component {
-  constructor() {
-    super();
-    // this.details = this.details.bind(this)
+
+  constructor(props) {
+    super(props)
   }
   //
   // details() {

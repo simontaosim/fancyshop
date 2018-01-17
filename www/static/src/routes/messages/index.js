@@ -6,6 +6,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import { appInfo } from '../../map_props.js';
+
 import { Flex, WhiteSpace, WingBlank,Tabs } from 'antd-mobile';
 
 //redux actions
@@ -14,22 +15,19 @@ import  AwardDetail  from './AwardDetail.js';
 import AwardIncome from './AwardIncome.js';
 import AwardHead from './AwardHead.js';
 
-
 class MessageBox extends React.Component{
   constructor(props) {
     super(props);
   }
-
   render(){
     return (
-
-
     <div>
       <WingBlank/>
       <AwardHead/>
       <AwardIncome/>
       <AwardDetail/>
     </div>
+
     )
   }
 }

@@ -4,14 +4,13 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-
 import { appInfo } from '../../map_props.js';
-// import ShopTagMenu from "./components/ShopTagMenu.js"
-
 import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
+import goodList from './goodList';
+
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
@@ -89,8 +88,11 @@ class AppHome extends React.Component{
           <WhiteSpace/>
           <Recommend/>
           <WhiteSpace/>
-          <ShopTagMenu/>
-          <GoodsList goods={this.state.good}/>
+            <ShopTagMenu/>
+            {/* <goodList/> */}
+          <WhiteSpace/>
+          <GoodsList/>
+
         </Flex>
     )
   }
