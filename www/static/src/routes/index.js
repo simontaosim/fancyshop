@@ -35,6 +35,7 @@ import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
 import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
+import PaySuccess from './product/PaySuccess';
 
 
 import ForgotPassword from './password/'
@@ -126,6 +127,7 @@ class App extends React.Component {
               <Route path = "/facilitator" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder" component = {FirmOrder}/>
+              <Route path = "/paysuccess" component = {PaySuccess}/>
 
 
 

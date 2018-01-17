@@ -1,0 +1,13 @@
+.flex-center {
+  margin-top: 40%;
+}
+.success-img {
+  width: 50%;
+  height: 50%;
+}
+.check-btn {
+  background-color: #ffcf2d;
+  color: #fff;
+  margin-top: 10%;
+  padding: 0 15px;
+}
