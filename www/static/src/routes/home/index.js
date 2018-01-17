@@ -9,20 +9,19 @@ import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
-import goodList from './goodList';
 
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
-
-import Good from './good'
-
+import axios from 'axios';
+import '../../service/data/datasource'
 class AppHome extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       data: ['','',''],
+      good: [],
     }
   }
   componentDidMount(){
@@ -33,7 +32,13 @@ class AppHome extends React.Component{
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],
      });
    }, 100);
-
+   axios.get('/goods')
+        .then(result=>{
+          console.log(result.data.goods);
+          this.setState({
+            good: result.data.goods
+          },()=>{console.log(this.state.good)})
+        })
 
   }
 
@@ -68,6 +73,7 @@ class AppHome extends React.Component{
               ))}
             </Carousel>
             <WhiteSpace/>
+
           <Flex  direction="row" align="center" justify="around" style={{width: "100%"}}>
             <Flex direction="row" justify="around" align="center" style={{background: "brown", color: "white",width: "50%",height: "100px"}} >商城</Flex>
             <Flex  direction="column"  align="center" style={{height: "100px", width: "50%"}}>
@@ -75,12 +81,12 @@ class AppHome extends React.Component{
               <Flex justify="around" style={{height: "50px", background: "grey", color: "white", width: "100%"}}>新手指导</Flex>
             </Flex>
           </Flex>
+
           <WhiteSpace/>
           <WhiteSpace/>
           <Recommend/>
           <WhiteSpace/>
             <ShopTagMenu/>
-            {/* <goodList/> */}
           <WhiteSpace/>
           <GoodsList/>
 

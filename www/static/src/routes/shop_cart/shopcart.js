@@ -52,31 +52,6 @@ class Shop extends React.Component {
             <span>这是店铺的名字</span>
           </Flex>
         </CheckboxItem>
-        {/* <CheckboxItem>
-          <Flex>
-            <img style = {{height:'30px',width:'30px',border:'1px solid #111',borderRadius:'15px',backgroundColor:'#111',marginRight:'10px'}}/>
-            <span>商品的描述</span>
-
-          </Flex>
-        </CheckboxItem> *}
-
-        <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']} className = {styles['all']}>
-        <Flex>
-
-          <Flex className = {styles['good-item']}>
-            <img src = { goodsImg } className = {styles['good-img']}/>
-            <Flex.Item classnam = {styles['decribe-frame']}>
-              <span style = {{fontSize:'14px'}}>我是商品的名称1254565占位符</span><br/>
-              <span className = {styles['good-type']}>规格:4L蓝喜力</span><br/>
-              <span align = "left" className = {styles['good-price']}>￥262.9</span>
-              <span align = "right" className = {styles['good-num']}>×1</span>
-            </Flex.Item>
-          </Flex>
-          <img src = {require('../svg/pencil.svg')} className = {styles['pencil-img']} />
-
-        </Flex>
-        </CheckboxItem>
-          */}
 
         <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']}>
           <Flex>
@@ -99,7 +74,6 @@ class Shop extends React.Component {
                      <div style = {{paddingLeft:'10px'}}>
                        <span style = {{color:'red',fontSize:'16px'}}>￥269.1</span>
                        <img src = {require('../svg/close_black.svg')} style = {{width:'25px',height:'25px',marginLeft:'8rem'}} onClick = {this.onClose('modal2')}/><br/>
-                       {/* <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/> */}
                        <span style = {{color:'#aaa'}}>请选择类型</span>
                      </div>
                    </Flex>
@@ -135,12 +109,7 @@ class Shop extends React.Component {
                    </List>
                  </div>
                 </Modal>
-
-
-
-                {/* <span className = {styles['good-type']}>规格:4L蓝喜力</span><br/> */}
                 <span align = "left" className = {styles['good-price']}>￥262.9</span>
-                {/* <span align = "right" className = {styles['good-num']}>×1</span> */}
                 <Stepper className = {styles['am-stepper-handler-down']}
                   style={{ width: '60%', minWidth: '100px',marginLeft:'22px'}}
                   showNumber
@@ -151,8 +120,6 @@ class Shop extends React.Component {
                 />
               </Flex.Item>
             </Flex>
-            {/* <img src = {require('../svg/pencil.svg')} className = {styles['pencil-img']} /> */}
-
           </Flex>
         </CheckboxItem>
       </div>

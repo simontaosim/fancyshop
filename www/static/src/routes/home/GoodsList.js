@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 import { Flex, WingBlank, WhiteSpace,ListView} from "antd-mobile";
 import styles from './GoodsList.css';
-import goodList from './goodList';
 
 import goodsImg from '../../assets/img/reward/good.jpg';
 import good2Img from '../../assets/img/timg.jpg';

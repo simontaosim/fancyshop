@@ -14,11 +14,8 @@ import Register from './register/Register';
 import {  connect } from 'react-redux';
 import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';
-// import MyOrders from './orders/MyOrder'
-//import MyOrders from './Orders/MyOrder';
 import { getStore } from '../config/mUtils';
 import Test from './checkbox';
-import About from './home/shop_cart';
 import MyOrders from './orders/index';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
@@ -27,8 +24,6 @@ import Paid from './orders/paid';
 import Refund from './orders/Refund';
 import UntreatedDetail from './orders/UntreatedDetail';
 import QrCode from './orders/qrcode';
-import Change from './shop_cart/Change';
-import SelectTest from './shop_cart/select_test';
 import CartNull from './shop_cart/null';
 import CartTest from './checkbox/cart'
 import UserData from './my/UserData';
@@ -36,6 +31,10 @@ import ProductModal from './product/ProductModal';
 import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
 import PaySuccess from './product/PaySuccess';
+// import Pull from './checkbox/pull'
+// import PullTest from './checkbox/pullTest'
+import Address from './product/Address';
+
 
 
 import ForgotPassword from './password/'
@@ -54,10 +53,6 @@ const Home = ({ match }) => (
 const Messages = ({match}) => (
   <MessageBox path={match.path} />
 )
-
-// const My =  ({match}) => (
-//   <AppMy path={match.path} />
-// )
 
 
 const Topic = ({ match }) => (
@@ -96,47 +91,35 @@ const Topics = ({ match }) => (
 
 class App extends React.Component {
   render() {
-    // const authenticated = this.props.user.authenticated
     const authenticated = getStore('authenticated');
     return (
       <Router >
           <MainLayout history={history}>
               <Route exact path="/" component={Home} authenticated={authenticated}/>
               <Route path="/messages" component={Messages} authenticated={authenticated}/>
-              {/* <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/> */}
               <Route path = "/shop_cart" component={ShopCart} />
               <Route path="/my" component={My} authenticated={authenticated}/>
-              {/* <PrivateRoute path = "/shop_cart" component={ShopCart} authenticated={authenticated}/> */}
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
-              {/* <Route path="/my" component={My}  /> */}
-              {/* <Route path="/myorders" component={MyOrders}  /> */}
               <Route path="/test" component={Test}  />
-
               <Route path = "/orders" component={MyOrders}/>
               <Route path = "/product" component={Goods}/>
-              {/* <Route path = "/cart" component={ShopCart}/> */}
               <Route path = "/details" component={WaitDetails}/>
               <Route path = "/paid" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
-              <Route path = "/shopedit" component={Change}/>
+              {/* <Route path = "/shopedit" component={Change}/> */}
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/userdata" component={ UserData }/>
               <Route path = "/facilitator" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder" component = {FirmOrder}/>
               <Route path = "/paysuccess" component = {PaySuccess}/>
-
-
-
-              {/* <Route path = "/select" component={SelectTest}/> */}
-
-
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
+              <Route path="/address" component={Address}  />
           </MainLayout>
       </Router>
     )

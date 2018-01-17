@@ -11,9 +11,9 @@ class Finish extends React.Component {
     super(props)
   }
 
-  render(){
+  render(){ 
     let data = this.props.finish;
-    console.log(data);
+    console.log(data)
     return (
       <div className = {styles['item-bg']}>
         <ShopName />
@@ -21,7 +21,7 @@ class Finish extends React.Component {
            <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/>
 							))}
         <Flex justify = "end" className = {styles['total']}>
-          合计：<span className = {styles['total-font']}> ￥500</span>
+          合计1：<span className = {styles['total-font']}> ￥500</span>
         </Flex>
         <Flex justify = "end" className = {styles['btn-frame']}>
           <Link to = "/details">
