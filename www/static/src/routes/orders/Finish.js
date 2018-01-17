@@ -10,10 +10,6 @@ class Finish extends React.Component {
   constructor(props) {
     super(props)
   }
-  //
-  // details() {
-  //   this.props.history.push('/details');
-  // }
 
   render(){ 
     let data = this.props.finish;
@@ -22,7 +18,7 @@ class Finish extends React.Component {
       <div className = {styles['item-bg']}>
         <ShopName />
         {data.map(v=>(
-           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/> 
+           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/>
 							))}
         <Flex justify = "end" className = {styles['total']}>
           合计1：<span className = {styles['total-font']}> ￥500</span>

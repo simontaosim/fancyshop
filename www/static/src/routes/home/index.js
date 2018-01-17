@@ -9,14 +9,12 @@ import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
-import goodList from './goodList';
 
 
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
-import Good from './good'
 import '../../service/data/datasource'
 class AppHome extends React.Component{
   constructor(props) {
@@ -83,13 +81,12 @@ class AppHome extends React.Component{
               <Flex justify="around" style={{height: "50px", background: "grey", color: "white", width: "100%"}}>新手指导</Flex>
             </Flex>
           </Flex>
-          
+
           <WhiteSpace/>
           <WhiteSpace/>
           <Recommend/>
           <WhiteSpace/>
             <ShopTagMenu/>
-            {/* <goodList/> */}
           <WhiteSpace/>
           <GoodsList/>
 

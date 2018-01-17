@@ -1,21 +1,12 @@
 import React from 'react';
 import { Flex, Button, Checkbox } from 'antd-mobile';
-
-import ShopEdit from './ShopEdit';
-import GoodsItem from './GoodsItem';
-import ShopName from './ShopName';
-import Edit from './Edit';
 import goodsImg from '../../assets/img/reward/good.jpg';
-import Change from './Change';
 import Shop from './shopcart';
 import style from './common.css';
 import BtnRed from './BtnRed';
 import BtnYellow from './BtnYellow';
-import ProductBottom from '../product/ProductBottom';
 
 const CheckboxItem = Checkbox.CheckboxItem;
-
-
 class ShopCart extends React.Component{
   constructor() {
     super()

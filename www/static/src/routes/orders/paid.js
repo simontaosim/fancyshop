@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex,Checkbox, List} from 'antd-mobile';
+import { Link } from 'react-router-dom';
 import styles from "./paid.css";
 import codeImg from '../../assets/img/orders/code.png';
 import payImg from '../../assets/img/orders/pay.png';
@@ -70,7 +71,9 @@ class Paid extends React.Component {
           </Flex>
         </div> */}
         <Flex justify = "center" style = {{marginTop:'20px'}}>
-          <button style = {{backgroundColor:'#ea4b4b',color:'#fff',borderRadius:'5px',border:'1px solid #ea4b4b',width:'200px',padding:'8px 0'}}>立即支付</button>
+          <Link to="./paysuccess">
+            <button style = {{backgroundColor:'#ea4b4b',color:'#fff',borderRadius:'5px',border:'1px solid #ea4b4b',width:'200px',padding:'8px 0'}}>立即支付</button>
+          </Link>
         </Flex>
       </div>
     </div>
