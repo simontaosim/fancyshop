@@ -5,6 +5,8 @@ import styles from './GoodItem.css';
 import style from '../product/ProductBottom.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import goodsImg from '../../assets/img/reward/good.jpg';
+import userImg from '../../assets/img/timg.jpg';
+
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
@@ -46,7 +48,7 @@ class Shop extends React.Component {
       < div>
         <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']}>
           <Flex>
-            <img style = {{height:'30px',width:'30px',border:'1px solid #111',borderRadius:'15px',backgroundColor:'#111',marginRight:'10px'}}/>
+            <img src = {userImg} style = {{height:'30px',width:'30px',borderRadius:'15px',backgroundColor:'#111',marginRight:'10px'}}/>
             <span>这是店铺的名字</span>
           </Flex>
         </CheckboxItem>

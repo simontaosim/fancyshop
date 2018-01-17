@@ -9,6 +9,7 @@ const history = createHistory()
 export default function configureStore(initialState) {
   const enhancer = compose(
     applyMiddleware(logger,thunk),
+
     window.devToolsExtension ? window.devToolsExtension() : f => f
   );
   return createStore(
