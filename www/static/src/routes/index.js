@@ -35,6 +35,8 @@ import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
 import Facilitator from './home/facilitator';
 import FirmOrder from './product/FirmOrder';
+import Pull from './checkbox/pull'
+import PullTest from './checkbox/pullTest'
 
 
 import ForgotPassword from './password/'
@@ -109,7 +111,7 @@ class App extends React.Component {
     return (
       <Router >
           <MainLayout history={history}>
-              <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
+              <Route exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               {/* <PrivateRoute path="/shop_cart" component={About} authenticated={authenticated}/> */}
               <Route path = "/shop_cart" component={ShopCart} />
@@ -144,6 +146,8 @@ class App extends React.Component {
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
+              <Route path="/pull" component={Pull}  />
+              <Route path="/pulltest" component={PullTest}  />
               
           </MainLayout>
       </Router>

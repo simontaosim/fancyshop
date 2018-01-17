@@ -12,6 +12,8 @@ class GoodsList extends React.Component {
   }
 
   render(){
+  
+
     return(
       <div className = {styles['back-img']}>
 

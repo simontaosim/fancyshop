@@ -124,7 +124,8 @@ Mock.mock('/myWallet',{
 })
 //商品列表
 
-Mock.mock('goods',{
+Mock.mock('/goods',{'goods|20':[{
+    'id|+1': 1,
     'name': '@name',
     'spec': [{red: 3000, isThis: true},{blue: 4000, isThis: false}],
     'brand': '@shop_name',
@@ -134,4 +135,4 @@ Mock.mock('goods',{
     'price|1-1000': 1,
     'cover': img,
     'images': [img,img,img]
-})
+}]})
