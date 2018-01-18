@@ -79,7 +79,7 @@ class AppHome extends React.Component{
               <Flex justify="around" style={{height: "50px", background: "grey", color: "white", width: "100%"}}>新手指导</Flex>
             </Flex>
           </Flex>
-          
+
           <WhiteSpace/>
           <WhiteSpace/>
           <Recommend/>
