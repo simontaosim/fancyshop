@@ -15,13 +15,13 @@ class MyList extends React.Component {
         // this.register = this.register.bind(this);
     }
 
- 
+
 
     ConfirmWindow() {
        alert('123','321',[
         { text: '确定', onPress: () => {
             // console.log(this.props)
-            // this.props.history.push('/tablogin') 
+            // this.props.history.push('/tablogin')
             this.props.loginOut()
         }},
         { text: '取消', onPress: () => console.log('取消了') },
@@ -33,9 +33,9 @@ class MyList extends React.Component {
             nextProps.history.push('/tablogin');
         }
     }
-    
+
     render() {
-        
+
         return(
             <div>
                 <List renderHeader={() => 'Basic Style'} className="my-list">
@@ -101,6 +101,6 @@ function mapStateToProps(state) {
       user: state.user
     }
   }
-  
-  
+
+
 export default connect(mapStateToProps,{loginOut})(MyList);

@@ -4,6 +4,7 @@ import { Flex, Carousel } from 'antd-mobile';
 import ProductTabs from './ProductTabs';
 import ProductShare from './ProductShare';
 import ProductBottom from './ProductBottom';
+import ProductModal from './ProductModal';
 import style from './common.css'
 import goodImg from '../../assets/img/reward/good.jpg';
 
@@ -64,7 +65,7 @@ render(){
           {/* <img src= {goodImg} style = {{border:'1px solid #aaa',height:'200px',width:'310px'}}/> */}
       </div>
       <div  className = {style['describe']}>
-      <Flex>
+      <Flex className = {style['describe-font']}>
         新车推荐，壳牌喜力润滑油，高性价比合成有机油，黑卡会员特价
       </Flex>
       <Flex>
@@ -72,22 +73,22 @@ render(){
           <span className = {style['price-font']}>￥269.1</span>
           <span className = {style['black-card']}>黑卡价</span>
         </Flex.Item>
-        <span align = "right">四川 成都</span>
+        <span align = "right" style = {{color:'#888'}}>四川 成都</span>
       </Flex>
-        <span style = {{ textDecoration:'line-through'}}>￥299</span>
+        <span style = {{ textDecoration:'line-through',color:'#aaa'}}>￥299</span>
       </div>
-      <Flex className = {style['item-des']}>
-        <Flex.Item><img src={require('../svg/share.svg')} className = {style['share-img']}/><ProductShare/></Flex.Item>
-        <Flex.Item>一级奖励</Flex.Item>
-        <Flex.Item>二级奖励<img src={require('../svg/no.svg')} className = {style['question-img']}/></Flex.Item>
+      <Flex justify = "around" className = {style['item']}>
+        <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex>
+        <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
+        <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'12px',width:'12px'}}/></Flex>
       </Flex>
-      <Flex className = {style['item-des']}>
-        <Flex.Item>配送方式</Flex.Item>
-        <Flex.Item>库存</Flex.Item>
-        <Flex.Item>销量</Flex.Item>
+      <Flex justify = "between" className = {style['item-des']}>
+        <Flex>配送方式:自提</Flex>
+        <Flex>库存：183</Flex>
+        <Flex>销量:43</Flex>
       </Flex>
-      <Flex className = {style['item-des']}>
-        选择规格
+      <Flex className = {style['item-type']}>
+        <ProductModal/>
       </Flex>
       <ProductTabs/>
       <ProductBottom/>

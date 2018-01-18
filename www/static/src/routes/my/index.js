@@ -6,16 +6,13 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import { appInfo } from '../../map_props.js';
-
-//redux actions
 import {setAppTitle} from '../../actions/app.js';
 import MyList from './MyList';
 import { Flex } from 'antd-mobile';
 import { List, Badge,Button,WhiteSpace,WingBlank,Card ,Checkbox} from 'antd-mobile';
 import MyItem from './MyItem';
 import style from './common.css';
-import userImg from '../../assets/img/reward/good.jpg';
-// const CheckboxItem = Checkbox.CheckboxItem;
+import userImg from '../../assets/img/timg.jpg';
 
 
 class AppMy extends React.Component{
@@ -23,10 +20,11 @@ class AppMy extends React.Component{
     super(props);
   }
 
+
   render(){
 
     return (
-      <div>
+      <div >
         <div className = {style['back-color']}>
           <Flex>
             <Flex.Item align = "center"><img src = {userImg} style = {{height:'60px',width:'60px',
@@ -48,35 +46,11 @@ class AppMy extends React.Component{
 
           <MyItem/>
           <WingBlank>
-            <Button>退出当前帐号</Button>
+            <Button style = {{backgroundColor:'#ea4b4b',color:'#fff',height:'40px',marginBottom:'100px',fontSize:'12px'}}>退出当前帐号</Button>
           </WingBlank>
 
-          <MyList  history={this.props.history} />
+          {/* <MyList  history={this.props.history} /> */}
         </div>
-
-        {/* <WingBlank size="lg">
-   <WhiteSpace size="lg" />
-   <CheckboxItem>
-   <Card>
-     <Card.Header
-       title="This is title"
-       thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
-      //  extra={<span>this is extra</span>}
-       extra={<img style = {{width:'25px',height:'25px'}}/>}
-
-     />
-     <Card.Body>
-       <div>
-
-       </div>
-     </Card.Body>
-     <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
-   </Card>
-   </CheckboxItem>
-   <WhiteSpace size="lg" />
- </WingBlank> */}
-
-
 
       </div>
     )

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex } from 'antd-mobile';
+import userImg from '../../assets/img/timg.jpg';
 
 
 class ShopName extends React.Component {

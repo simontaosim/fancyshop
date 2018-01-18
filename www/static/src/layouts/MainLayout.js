@@ -8,8 +8,8 @@ import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
 import {appInfo} from '../map_props.js';
 import {connect} from 'react-redux';
-import "./common.less";   // 用于覆盖上面定义的变量
 
+import "./common.less";   // 用于覆盖上面定义的变量
 
 class MainLayout extends React.Component{
   constructor(props){
@@ -30,8 +30,6 @@ class MainLayout extends React.Component{
     }
 
 
-
-
   render(){
     return(
       <div>
@@ -49,8 +47,6 @@ class MainLayout extends React.Component{
 function mapStateToProps(state) {
   return {user: state.user}
 }
-
-
 
 export default MainLayout;
 // export default connect (mapStateToProps)(MainLayout);

@@ -14,7 +14,7 @@ class BtnYellow extends React.Component {
       <div className = {style['bottom-pos']}>
       <Flex justify = "start">
         <CheckboxItem className = {style['bottom-all']}><span style = {{color:'white'}}>全选</span><span style = {{float:'right',color:'#fff'}}>合计：<span style= {{color:'red'}}>￥250</span></span></CheckboxItem>
-        <a href ="#/shopedit"><Flex justify = "center" className = {style['bottom-balance']}>结算</Flex></a>
+        <Flex justify = "center" className = {style['bottom-balance']}>结算</Flex>
       </Flex>
       </div>
     )
