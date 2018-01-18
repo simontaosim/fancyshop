@@ -17,14 +17,6 @@ class CartNull extends React.Component{
         <Flex justify = 'center'>
           <Button style = {{backgroundColor:'#fc3e43',width:'200px'}}>去商城逛逛</Button>
         </Flex>
-        {/* <div>
-          <Flex>
-            <div>
-              <img src = {require(../svg/home.svg)} />
-              店铺名：这是一个店铺名
-            </div>
-          </Flex>
-        </div> */}
       </div>
 
 

@@ -17,7 +17,10 @@ render(){
   ]
   return(
     <div className = {styles['Award-frame']}>
-      <Flex><img src={require('../svg/details.svg')} style = {{height:'28px',width:'28px'}}/><span>明细</span></Flex>
+      <Flex>
+        <img src={require('../svg/details.svg')} className = {styles['detail-svg']}/>
+        <span className = "svg-des">明细</span>
+      </Flex>
       <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
         <div style = {{ display:'flex',height:'150px',backgroundColor:'#fff',width:'100%'}}>
           <Flex>

@@ -108,57 +108,6 @@ class ProductModal extends React.Component {
           </List>
         </div>
        </Modal>
-{/*
-       <div onClick={this.showModal('modal2')}> hahhaha</div>
-         <WhiteSpace />
-         <Modal
-          popup
-          visible={this.state.modal2}
-          maskClosable={false}
-          animationType="slide-up"
-         >
-          <div>
-            <Flex>
-              <img src = {goodImg} style = {{width:'70px',height:'70px',border:'6px solid #680000'}}/>
-              <div style = {{paddingLeft:'10px'}}>
-                <span style = {{color:'red',fontSize:'16px'}}>￥269.1</span>
-                <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/>
-                <span style = {{color:'#aaa'}}>请选择类型</span>
-              </div>
-            </Flex>
-
-              <div className = {style['color-destop']}>
-                <div className = {style['color-div']}>绿色</div>
-                <div className = {style['color-div']}>绿色</div>
-                <div className = {style['color-div']}>蓝色</div>
-                <div className = {style['color-div']}>蓝色</div>
-                <div className = {style['color-div']}>蓝色</div>
-            </div>
-
-            <div className = { style['color-desbtm'] }>
-              <div className = {style['color-div']}>黄色</div>
-              <div className = {style['color-div']}>白色</div>
-              <div className = {style['color-div']}>紫色</div>
-              <div className = {style['color-div']}>黑色</div>
-           </div>
-              <Flex className = {style['num-padding']}>
-                购买数量：
-                <Stepper
-                  style={{ width: '50%', minWidth: '80px'}}
-                  showNumber
-                  max={10}
-                  min={1}
-                  value={this.state.val}
-                  onChange={this.onChange}
-                />
-              </Flex>
-             <List>
-              <List.Item>
-                <Button type = "warning" onClick = {this.onClose('modal2')}>确定</Button>
-              </List.Item>
-            </List>
-          </div>
-         </Modal> */}
      </div>
      )
    }

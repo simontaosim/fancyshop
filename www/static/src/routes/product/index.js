@@ -98,7 +98,7 @@ render(){
         </Flex.Item>
         <span align = "right" style = {{color:'#888'}}>四川 成都</span>
       </Flex>
-        <span style = {{ textDecoration:'line-through',color:'#aaa'}}>￥299</span>
+        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
       </div>
       <Flex justify = "around" className = {style['item']}>
         <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex>
@@ -114,7 +114,7 @@ render(){
         <ProductModal/>
       </Flex>
       <ProductTabs/>
-      <ProductBottom/>
+      <ProductBottom history={this.props.history}/>
     </div>
     )
   }

@@ -10,10 +10,24 @@ class AwardIncome extends React.Component {
 render(){
   return(
     <div className = {styles['Award-frame']}>
-      <Flex>
-          <img src={require('../../assets/svg/income.svg')} style = {{height:'28px',width:'28px'}}/>
-      <span>收益</span></Flex>
-      <table style = {{border:'1px solid #00b7ee',borderRadius:'6px',width:'100%',align:'center'}}>
+      <Flex align = "center">
+          <img src={require('../../assets/svg/income.svg')} className = {styles['income-svg']}/>
+          <span className = "svg-des">收益</span>
+      </Flex>
+      <Flex direction = "column" align = "around" className = {styles['income-item-border']} >
+        <Flex justify = "around" className = {styles['income-time']}>
+          <span>今日</span>
+          <span>一周</span>
+          <span>30天</span>
+        </Flex>
+        <Flex  justify = "around" className = {styles['income-money']}>
+          <span className = {styles['income-money-border']}>38.88</span>
+          <span className = {styles['income-money-border']}>150.05</span>
+          <span>388.88</span>
+        </Flex>
+      </Flex>
+      <br/>
+      {/* <table style = {{border:'1px solid #00b7ee',borderRadius:'6px',width:'100%',align:'center'}}>
         <tbody style = {{border:'1px solid #00b7ee'}}>
           <tr style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'6px',height:'30px'}}>
             <th>今日</th>
@@ -26,7 +40,7 @@ render(){
             <td align = "center">388.80</td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </div>
   )
  }
