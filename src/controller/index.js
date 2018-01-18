@@ -2,6 +2,7 @@ const Base = require('./base.js');
 
 module.exports = class extends Base {
   indexAction() {
+
     const DDPClient = require("ddp");
     const ddpclient = new DDPClient({
       // All properties optional, defaults shown

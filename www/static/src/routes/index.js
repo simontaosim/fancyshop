@@ -137,9 +137,7 @@ class App extends React.Component {
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
-              <Route path="/pull" component={Pull}  />
-              <Route path="/pulltest" component={PullTest}  />
-              
+
           </MainLayout>
       </Router>
     )

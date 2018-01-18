@@ -24,6 +24,9 @@ coverage/
 node_modules/
 www/static/node_modules/
 www/static/build
+www/static/config-overrides.js
+www/static/package-lock.json
+view/index_index.html
 
 # IDE config
 .idea
@@ -32,9 +35,13 @@ www/static/build
 output/
 output.tar.gz
 
+yarn.lock
 runtime/
 app/
+www/.vscode/
+.vscode/
 package-lock.json
+www/static/package-lock.json
 
 config.development.js
 adapter.development.js
