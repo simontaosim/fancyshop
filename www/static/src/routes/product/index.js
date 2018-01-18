@@ -7,6 +7,10 @@ import ProductBottom from './ProductBottom';
 import ProductModal from './ProductModal';
 import style from './common.css'
 import goodImg from '../../assets/img/reward/good.jpg';
+import '../../service/data/datasource';
+import axios from 'axios';
+import {getProduct} from '../../reducers/product.redux';
+import { connect } from 'react-redux';
 
 
 class Goods extends React.Component {
@@ -15,6 +19,7 @@ class Goods extends React.Component {
     this.state = {
       modal2: false,
       val: 1,
+      product: [],
       data: ['1', '2', '3'],
       imgHeight: 176,
       slideIndex: 0,
@@ -22,15 +27,51 @@ class Goods extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
+    let id = this.props.match.params.id
+    axios.get('/products')
+         .then(result=>{
+           console.log(result);
+           let product = result.data.goods.find(x=>{ return x.id == id});
+           
+           this.setState({
+             product: product
+           },()=>{console.log(this.state.product)})
+         })
+         .catch(error => {
+         })
    // simulate img loading
-   setTimeout(() => {
      this.setState({
        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
      });
-   }, 10);
+     
  }
 
 render(){
+  let {product} = this.state
+  console.log(product);
+  let  spec = product.spec ? product.spec : []
+  let carousel = product.images ? product.images : []
+  let pic = carousel.map((img,index)=>{
+    return(
+      <a
+          key={index}
+          href="#"
+          style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+        >
+          <img
+            src={`${img}`}
+            alt=""
+            style={{ width: '100%', verticalAlign: 'top' }}
+            onLoad={() => {
+              // fire window resize event to change height
+              window.dispatchEvent(new Event('resize'));
+              this.setState({ imgHeight: 'auto' });
+            }}
+          />
+        </a>
+    )
+  })
   return (
     <div className = {style['product-frame']}>
       <div >
@@ -43,35 +84,17 @@ render(){
       beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
       afterChange={index => console.log('slide to', index)}
     >
-      {this.state.data.map(val => (
-        <a
-          key={val}
-          href="http://www.alipay.com"
-          style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
-        >
-          <img
-            src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
-            alt=""
-            style={{ width: '100%', verticalAlign: 'top' }}
-            onLoad={() => {
-              // fire window resize event to change height
-              window.dispatchEvent(new Event('resize'));
-              this.setState({ imgHeight: 'auto' });
-            }}
-          />
-        </a>
-      ))}
+    {pic}
     </Carousel>
-          {/* <img src= {goodImg} style = {{border:'1px solid #aaa',height:'200px',width:'310px'}}/> */}
       </div>
       <div  className = {style['describe']}>
       <Flex className = {style['describe-font']}>
-        新车推荐，壳牌喜力润滑油，高性价比合成有机油，黑卡会员特价
+        {product.description}
       </Flex>
       <Flex>
         <Flex.Item>
-          <span className = {style['price-font']}>￥269.1</span>
-          <span className = {style['black-card']}>黑卡价</span>
+          <span className = {style['price-font']}>￥{product.price}</span>
+          <span className = {style['black-card']}>{product.name}</span>
         </Flex.Item>
         <span align = "right" style = {{color:'#888'}}>四川 成都</span>
       </Flex>
@@ -83,9 +106,9 @@ render(){
         <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'12px',width:'12px'}}/></Flex>
       </Flex>
       <Flex justify = "between" className = {style['item-des']}>
-        <Flex>配送方式:自提</Flex>
-        <Flex>库存：183</Flex>
-        <Flex>销量:43</Flex>
+        <Flex>配送方式:{product.deliver}</Flex>
+        <Flex>库存:{product.inventory}</Flex>
+        <Flex>销量: {product.sales}</Flex>
       </Flex>
       <Flex className = {style['item-type']}>
         <ProductModal/>
@@ -97,4 +120,12 @@ render(){
   }
 }
 
-export default Goods;
+
+
+function mapStateToProps(state) {
+  return {
+    product: state.product
+  }
+}
+
+export default connect(mapStateToProps,{getProduct})(Goods);

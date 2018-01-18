@@ -24,7 +24,7 @@ class ProductBottom extends React.Component {
                 <Link to = "/facilitator"><img src={require('../svg/shop.svg')} style = {{width:'30px',height:'30px'}}/><span style = {{lineHeight:'2em',color:'#333'}}>店铺</span>
                 </Link>
             </Flex>
-          <Link to = "./shop_cart">
+          <Link to = "/shop_cart">
             <Flex style = {{backgroundColor:'#00b7ee'}}>
               <span style = {{lineHeight:'3em',color:'#fff'}}>加入购物车</span>
             </Flex>

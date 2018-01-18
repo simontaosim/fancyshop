@@ -124,15 +124,152 @@ Mock.mock('/myWallet',{
 })
 //商品列表
 
-Mock.mock('/goods',{'goods|20':[{
+Mock.mock('/goods',{'goods|5':[{
     'id|+1': 1,
     'name': '@name',
     'spec': [{red: 3000, isThis: true},{blue: 4000, isThis: false}],
     'brand': '@shop_name',
-    'inventory': '@num',
+    'inventory|10-100': 1,
+    'sales|10-99': 1,
     'deliver': '自提',
     'description': '商品描述',
     'price|1-1000': 1,
     'cover': img,
     'images': [img,img,img]
 }]})
+
+
+Mock.mock('/products', {
+    "goods": [
+        {
+            "id": 1,
+            "name": "Paul Lewis",
+            "spec": [
+                {
+                    "red": 3000,
+                    "isThis": true
+                },
+                {
+                    "blue": 4000,
+                    "isThis": false
+                }
+            ],
+            "brand": "金牛座",
+            "inventory": 39,
+            "sales": 74,
+            "deliver": "自提",
+            "description": "商品描述",
+            "price": 210,
+            "cover": "http://dummyimage.com/336x280",
+            "images": [
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Richard Jones",
+            "spec": [
+                {
+                    "red": 3000,
+                    "isThis": true
+                },
+                {
+                    "blue": 4000,
+                    "isThis": false
+                }
+            ],
+            "brand": "天秤座",
+            "inventory": 52,
+            "sales": 36,
+            "deliver": "自提",
+            "description": "商品描述",
+            "price": 862,
+            "cover": "http://dummyimage.com/336x280",
+            "images": [
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Jose Lopez",
+            "spec": [
+                {
+                    "red": 3000,
+                    "isThis": true
+                },
+                {
+                    "blue": 4000,
+                    "isThis": false
+                }
+            ],
+            "brand": "射手座",
+            "inventory": 94,
+            "sales": 41,
+            "deliver": "自提",
+            "description": "商品描述",
+            "price": 138,
+            "cover": "http://dummyimage.com/336x280",
+            "images": [
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Charles Lewis",
+            "spec": [
+                {
+                    "red": 3000,
+                    "isThis": true
+                },
+                {
+                    "blue": 4000,
+                    "isThis": false
+                }
+            ],
+            "brand": "摩羯座",
+            "inventory": 59,
+            "sales": 65,
+            "deliver": "自提",
+            "description": "商品描述",
+            "price": 486,
+            "cover": "http://dummyimage.com/336x280",
+            "images": [
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Linda Taylor",
+            "spec": [
+                {
+                    "red": 3000,
+                    "isThis": true
+                },
+                {
+                    "blue": 4000,
+                    "isThis": false
+                }
+            ],
+            "brand": "射手座",
+            "inventory": 15,
+            "sales": 31,
+            "deliver": "自提",
+            "description": "商品描述",
+            "price": 229,
+            "cover": "http://dummyimage.com/336x280",
+            "images": [
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280",
+                "http://dummyimage.com/336x280"
+            ]
+        }
+    ]
+})

@@ -115,7 +115,7 @@ class App extends React.Component {
               <Route path="/test" component={Test}  />
 
               <Route path = "/orders" component={MyOrders}/>
-              <Route path = "/product" component={Goods}/>
+              <Route path = "/product/:id" component={Goods}/>
               {/* <Route path = "/cart" component={ShopCart}/> */}
               <Route path = "/details" component={WaitDetails}/>
               <Route path = "/paid" component={Paid}/>

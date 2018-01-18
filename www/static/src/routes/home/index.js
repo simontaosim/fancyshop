@@ -9,10 +9,6 @@ import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
-import goodList from './goodList';
-
-
-//redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
@@ -34,13 +30,13 @@ class AppHome extends React.Component{
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],
      });
    }, 100);
-   axios.get('/goods')
-        .then(result=>{
-          console.log(result.data.goods);
-          this.setState({
-            good: result.data.goods
-          },()=>{console.log(this.state.good)})
-        })
+  //  axios.get('/goods')
+  //       .then(result=>{
+  //         console.log(result.data.goods);
+  //         this.setState({
+  //           good: result.data.goods
+  //         },()=>{console.log(this.state.good)})
+  //       })
 
   }
 
@@ -89,7 +85,6 @@ class AppHome extends React.Component{
           <Recommend/>
           <WhiteSpace/>
             <ShopTagMenu/>
-            {/* <goodList/> */}
           <WhiteSpace/>
           <GoodsList/>
 

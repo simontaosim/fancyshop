@@ -1,42 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
-
 import { Flex, WingBlank, WhiteSpace,ListView} from "antd-mobile";
 import styles from './GoodsList.css';
-import goodList from './goodList';
-
 import goodsImg from '../../assets/img/reward/good.jpg';
 import good2Img from '../../assets/img/timg.jpg';
+import '../../service/data/datasource';
+import axios from 'axios';
 
-const data = [
-  {
-    img: goodsImg,
-    title: '机油',
-    des: '机油连锁，你值得拥有',
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-    title: '麦当劳',
-    des: '走过路过不要错过啦瞧一瞧看一看咧',
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-    title: '店名店名',
-    des: '这是商品的简介比如说这是一个蛋糕',
-  },
-];
-const NUM_ROWS = 3;
-let pageIndex = 0;
 
-function genData(pIndex = 0) {
-  const dataBlob = {};
-  for (let i = 0; i < NUM_ROWS; i++) {
-    const ii = (pIndex * NUM_ROWS) + i;
-    dataBlob[`${ii}`] = `row - ${ii}`;
-  }
-  return dataBlob;
-}
+
 
 class GoodsList extends React.Component {
   constructor(props) {
@@ -48,21 +21,23 @@ class GoodsList extends React.Component {
     this.state = {
       dataSource,
       isLoading: true,
+      data: []
     };
   }
 
   componentDidMount() {
     // you can scroll to the specified position
     // setTimeout(() => this.lv.scrollTo(0, 120), 800);
-
-    // simulate initial Ajax
-    setTimeout(() => {
-      this.rData = genData();
+    axios.get('/products')
+    .then(result=> {
+      console.log(JSON.stringify(result, null, 4))
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(this.rData),
+        dataSource: this.state.dataSource.cloneWithRows(result.data.goods),
         isLoading: false,
-      });
-    }, 600);
+      })
+    },error=> {
+      console.log(error);
+    })
   }
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
@@ -75,20 +50,6 @@ class GoodsList extends React.Component {
   // }
 
   onEndReached = (event) => {
-    // load new data
-    // hasMore: from backend data, indicates whether it is the last page, here is false
-    if (this.state.isLoading && !this.state.hasMore) {
-      return;
-    }
-    console.log('reach end', event);
-    this.setState({ isLoading: true });
-    setTimeout(() => {
-      this.rData = { ...this.rData, ...genData(++pageIndex) };
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(this.rData),
-        isLoading: false,
-      });
-    }, 1000);
   }
 
   render() {
@@ -103,30 +64,30 @@ class GoodsList extends React.Component {
         }}
       />
     );
+    const data = this.state
+    console.log(data);
     let index = data.length - 1;
     const row = (rowData, sectionID, rowID) => {
-      if (index < 0) {
-        index = data.length - 1;
-      }
-      const obj = data[index--];
       return (
-        <div key={rowID} style={{ padding: '0 15px' }}>
-          <div
-            style={{
-              lineHeight: '50px',
-              color: '#888',
-              fontSize: 18,
-              borderBottom: '1px solid #F6F6F6',
-            }}
-          >{obj.title}</div>
-          <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
-            <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
-            <div style={{ lineHeight: 1 }}>
-              <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
-              <div><span style={{ fontSize: '25px', color: '#FF6E27' }}><span style = {{color:'#FF6E27',fontSize:'20px',paddingRight:'5px'}}>¥</span>{rowID}</span></div>
+        <div key={rowData.id} style={{ padding: '0 15px' }}>
+          <Link to={`/product/${rowData.id}`}>
+            <div
+              style={{
+                lineHeight: '50px',
+                color: '#888',
+                fontSize: 18,
+                borderBottom: '1px solid #F6F6F6',
+              }}
+            >{rowData.name}</div>
+            <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
+              <img style={{ height: '64px', marginRight: '15px' }} src={rowData.cover} alt="" />
+              <div style={{ lineHeight: 1 }}>
+                <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{rowData.description}</div>
+                <div><span style={{ fontSize: '25px', color: '#FF6E27' }}><span style = {{color:'#FF6E27',fontSize:'20px',paddingRight:'5px'}}>¥</span>{rowData.price}</span></div>
+              </div>
             </div>
-          </div>
-        </div>
+          </Link>
+        </div> 
       );
     };
     return (
@@ -139,7 +100,7 @@ class GoodsList extends React.Component {
           {this.state.isLoading ? 'Loading...' : 'Loaded'}
         </div>)}
         renderRow={row}
-        renderSeparator={separator}
+        // renderSeparator={separator}
         className="am-list"
         pageSize={4}
         useBodyScroll
