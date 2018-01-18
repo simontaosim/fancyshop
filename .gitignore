@@ -24,6 +24,8 @@ coverage/
 node_modules/
 www/static/node_modules/
 www/static/build
+www/static/config-overrides.js
+www/static/package-lock.json
 view/index_index.html
 
 # IDE config
