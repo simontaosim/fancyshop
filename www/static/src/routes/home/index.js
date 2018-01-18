@@ -9,12 +9,9 @@ import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
-<<<<<<< HEAD
-=======
 
 
 //redux actions
->>>>>>> 2971c02b33e75cc309ae7386b48e36b3df86eb50
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';

@@ -29,16 +29,10 @@ class ProductBottom extends React.Component {
             <Flex align = "center" style = {{width:'30%',color:'#333'}} justify = "center" onClick={this.facilitator}>
                 <img src={require('../svg/shop.svg')} style = {{width:'30px',height:'30px'}}/><span style = {{lineHeight:'2em',color:'#333'}}>店铺</span>
             </Flex>
-<<<<<<< HEAD
-          <Link to = "/shop_cart">
-            <Flex style = {{backgroundColor:'#00b7ee'}}>
-              <span style = {{lineHeight:'3em',color:'#fff'}}>加入购物车</span>
-=======
 
           <Link to = "./shop_cart">
             <Flex style = {{backgroundColor:'#00b7ee'}} align = "stretch">
               <span style = {{lineHeight:'2.4em',color:'#fff',fontSize:'20px',padding:'0 2rem'}}>加入购物车</span>
->>>>>>> 2971c02b33e75cc309ae7386b48e36b3df86eb50
             </Flex>
           </Link>
           <Link to = "/firmorder">

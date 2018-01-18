@@ -102,12 +102,8 @@ class App extends React.Component {
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />
               <Route path = "/orders" component={MyOrders}/>
-<<<<<<< HEAD
               <Route path = "/product/:id" component={Goods}/>
               {/* <Route path = "/cart" component={ShopCart}/> */}
-=======
-              <Route path = "/product" component={Goods}/>
->>>>>>> 2971c02b33e75cc309ae7386b48e36b3df86eb50
               <Route path = "/details" component={WaitDetails}/>
               <Route path = "/paid" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
@@ -123,12 +119,9 @@ class App extends React.Component {
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
-<<<<<<< HEAD
-=======
               {/* <Route path="/pull" component={Pull}  />
               <Route path="/pulltest" component={PullTest}  /> */}
               <Route path="/address" component={Address}  />
->>>>>>> 2971c02b33e75cc309ae7386b48e36b3df86eb50
 
           </MainLayout>
       </Router>
