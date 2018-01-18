@@ -1,8 +1,44 @@
 .Award-frame {
     background-color: #fff;
-    border: 1px solid #aaa;
+    border: 1px solid #eed;
     border-radius: 8px;
     align: center;
     margin: 10px;
-    padding: 10px;
+    padding: 15px;
+}
+.svg-des {
+  font-size: 16px;
+  color: #3b3b3b;
+  font-family: HiraginoSansGB-W3;
+}
+.income-svg,.detail-svg {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.income-item-border {
+  border: 1px solid #00b7ee;
+  border-radius: 5px;
+  margin: 5px;
+  margin-bottom: 15px;
+}
+.income-time {
+  background-color: #00b7ee;
+  color: #fff;
+  font-size: 16px;
+  font-family: HiraginoSansGB-W3;
+  width: 100%;
+  line-height: 3em;
+}
+.income-money {
+  width: 100%;
+  line-height: 3em;
+  color: #3b3b3b;
+  font-family: HiraginoSansGB-W3;
+  font-size: 14px;
+}
+.income-money-border {
+  border-right: 1px dashed #e8e8e8;
+  text-align: center;
+  padding-right: 2rem;
 }

@@ -10,7 +10,7 @@ class WaitPay extends React.Component {
     super(props)
   }
   render(){
-    
+
     // console.log('waitpay')
     let {waitpay,shop} = this.props
     console.log(this.props.waitpay)
@@ -24,9 +24,9 @@ class WaitPay extends React.Component {
       <div style = {{backgroundColor:'#fff'}}>
  
         <ShopName shop={shop}/>
-      
+
          {waitpay.map(v=>(
-           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/> 
+           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/>
 							))}
         <Flex justify = "end" style = {{marginRight:'10px'}}>
           合计：<span className = {styles['total-font']}> ￥500</span>
