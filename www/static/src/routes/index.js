@@ -34,6 +34,8 @@ import PaySuccess from './product/PaySuccess';
 // import Pull from './checkbox/pull'
 // import PullTest from './checkbox/pullTest'
 import Address from './product/Address';
+import SearchBox from './search/ProductSearch';
+import SearchResult from './search/SearchResult';
 
 
 import ForgotPassword from './password/'
@@ -122,6 +124,9 @@ class App extends React.Component {
               {/* <Route path="/pull" component={Pull}  />
               <Route path="/pulltest" component={PullTest}  /> */}
               <Route path="/address" component={Address}  />
+              <Route path="/searchbar" component={SearchBox}  />
+              <Route path="/searchresult" component={SearchResult}/>
+
 
           </MainLayout>
       </Router>

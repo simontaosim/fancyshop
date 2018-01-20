@@ -1,5 +1,6 @@
 import React from 'react'
 import {Icon, NavBar, Modal, List, Button} from 'antd-mobile';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {appInfo} from '../map_props.js';
 import { setAppCity } from '../actions/app.js';
@@ -7,6 +8,7 @@ import { setAppCity } from '../actions/app.js';
 class AppNavBar extends React.Component{
   constructor(props){
     super(props);
+    this.search = this.search.bind(this)
     this.state = {
       isBack: false,
       backTo: '/',
@@ -45,6 +47,9 @@ class AppNavBar extends React.Component{
     });
   }
 
+search () {
+  this.props.history.push('./searchbar')
+}
 
   render(){
 
@@ -62,8 +67,8 @@ class AppNavBar extends React.Component{
               this.renderLeft()
             }
             rightContent={[
-              <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-              <Icon key="1" type="ellipsis" />,
+                <Icon key="0" type="search" style={{ marginRight: '16px' }} onClick = {this.search} />,
+                <Icon key="1" type="ellipsis" />,
             ]}
           >
           {this.props.AppInfo.title}

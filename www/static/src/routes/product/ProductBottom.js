@@ -31,8 +31,8 @@ class ProductBottom extends React.Component {
             </Flex>
 
           <Link to = "./shop_cart">
-            <Flex style = {{backgroundColor:'#00b7ee'}} align = "stretch">
-              <span style = {{lineHeight:'2.4em',color:'#fff',fontSize:'20px',padding:'0 2rem'}}>加入购物车</span>
+            <Flex style = {{backgroundColor:'#00b7ee'}}>
+              <span style = {{lineHeight:'2.4em',color:'#fff',fontSize:'20px'}}>加入购物车</span>
             </Flex>
           </Link>
           <Link to = "/firmorder">
