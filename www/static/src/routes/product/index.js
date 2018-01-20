@@ -48,6 +48,7 @@ class Goods extends React.Component {
  }
 
 render(){
+  console.log(111);
   let {product} = this.state
   let  spec = product.spec ? product.spec : []
   let carousel = product.images ? product.images : []

@@ -92,30 +92,6 @@ class ProductModal extends React.Component {
               <div className = {style['color-div']}>紫色</div>
               <div className = {style['color-div']}>黑色</div>
             </Flex>
-          {/* <Flex wrap = "wrap">
-            <div className={this.state.toggle? '123':'321'} style = {{backgroundColor:'#eee',color:'#333',padding:'4px 15px',borderRadius:'5px',margin:'10px'}} onClick={()=>{this.setState({toggle: !this.state.toggle})}}>粉色</div>
-            <div className = {s['one']} style={{background: this.state.tagMenuClick[0] ? "lightgray" : "none"}} onClick={()=>{this.handleTagMenuClick(0)}}>粉色</div>
-            <div className = {s['one']}>粉色</div>
-            <div className = {s['one']}>粉色</div>
-            <div className = {s['one']}>粉色</div>
-            <div className = {s['one']}>粉色</div>
-            <div className = {s['one']}>粉色</div>
-          </Flex> */}
-
-            {/* <div className = {style['color-destop']}>
-              <div className = {style['color-div']}>绿色</div>
-              <div className = {style['color-div']}>绿色</div>
-              <div className = {style['color-div']}>蓝色</div>
-              <div className = {style['color-div']}>蓝色</div>
-              <div className = {style['color-div']}>蓝色</div>
-          </div>
-
-          <div className = { style['color-desbtm'] }>
-            <div className = {style['color-div']}>黄色</div>
-            <div className = {style['color-div']}>白色</div>
-            <div className = {style['color-div']}>紫色</div>
-            <div className = {style['color-div']}>黑色</div>
-         </div> */}
             <Flex className = {style['num-padding']}>
               购买数量：
               <Stepper

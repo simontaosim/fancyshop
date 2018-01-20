@@ -3,3 +3,10 @@ export function appInfo(state){
     AppInfo: state.AppInfo
    };
 }
+
+
+export function productinfo(state) {
+  return {
+    product: state.product
+  }
+}
