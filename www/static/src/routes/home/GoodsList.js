@@ -38,7 +38,7 @@ class GoodsList extends React.Component {
     console.log(nextProps);
     if (nextProps.prodcut !== this.props.product) {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.product),
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.product.goods),
         isLoading: false,
       });
     }else{

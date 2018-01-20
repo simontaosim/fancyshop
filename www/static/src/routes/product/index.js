@@ -35,7 +35,7 @@ componentDidMount() {
  componentWillReceiveProps(nextProps) {
     if(nextProps){
       this.setState({
-        product: nextProps.product
+        product: nextProps.product.good
       })
     }
  }

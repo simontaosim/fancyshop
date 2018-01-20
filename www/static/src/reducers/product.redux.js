@@ -12,7 +12,6 @@ const GET_PRODUCT = "GET_PRODUCT";
 
 
 const initialState = {
-  product: []
 }
 export function product(state=initialState,action) {
   switch(action.type){
@@ -41,7 +40,7 @@ export function productList() {
     axios.get('/products')
          .then(result => {
            console.log(result.data.goods)
-            dispatch(initProductList(result.data.goods))
+            dispatch(initProductList(result.data))
          })
          .catch(error => {
            console.log(error)
@@ -57,7 +56,8 @@ export function getProduct(id) {
     axios.get('/products')
          .then(result=> {
           let product = result.data.goods.find(x=>{ return x.id == id});
-            dispatch(initProductGet(product))
+          console.log(product)
+            dispatch(initProductGet({'good':product}))
          })
          .catch(error => {
             console.log(error);
