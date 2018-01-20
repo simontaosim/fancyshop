@@ -32,6 +32,8 @@ import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
 import PaySuccess from './product/PaySuccess';
 import Address from './product/Address';
+import SearchBox from './search/ProductSearch';
+import SearchResult from './search/SearchResult';
 
 
 import ForgotPassword from './password/'
@@ -116,6 +118,9 @@ class App extends React.Component {
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
               <Route path="/address" component={Address}  />
+              <Route path="/searchbar" component={SearchBox}  />
+              <Route path="/searchresult" component={SearchResult}/>
+
 
           </MainLayout>
       </Router>
