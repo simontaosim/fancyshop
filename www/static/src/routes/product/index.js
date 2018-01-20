@@ -49,7 +49,6 @@ class Goods extends React.Component {
 
 render(){
   let {product} = this.state
-  console.log(product);
   let  spec = product.spec ? product.spec : []
   let carousel = product.images ? product.images : []
   let pic = carousel.map((img,index)=>{
@@ -114,7 +113,7 @@ render(){
         <ProductModal/>
       </Flex>
       <ProductTabs/>
-      <ProductBottom history={this.props.history}/>
+      <ProductBottom history={this.props.history} product={product}/>
     </div>
     )
   }

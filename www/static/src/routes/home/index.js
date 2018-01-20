@@ -10,12 +10,12 @@ import Recommend from "./recommend";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
 
-
 //redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
+import { asteroid } from '../../config/asteroid.config'
 class AppHome extends React.Component{
   constructor(props) {
     super(props);
@@ -32,18 +32,10 @@ class AppHome extends React.Component{
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],
      });
    }, 100);
-  //  axios.get('/goods')
-  //       .then(result=>{
-  //         console.log(result.data.goods);
-  //         this.setState({
-  //           good: result.data.goods
-  //         },()=>{console.log(this.state.good)})
-  //       })
-
   }
 
   render(){
-
+    console.log(asteroid);
     return (
         <Flex  direction="column" className="flex-container ">
             <Carousel

@@ -62,7 +62,9 @@ class AppNavBar extends React.Component{
               this.renderLeft()
             }
             rightContent={[
-              <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+              <div onClick={()=>{console.log(111)}}>
+              <Icon key="0" type="search" style={{ marginRight: '16px' }} />
+              </div>,
               <Icon key="1" type="ellipsis" />,
             ]}
           >
