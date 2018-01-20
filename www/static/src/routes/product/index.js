@@ -26,25 +26,18 @@ class Goods extends React.Component {
     }
   }
 
-  componentDidMount() {
+componentDidMount() {
     console.log(this.props)
     let id = this.props.match.params.id
-    axios.get('/products')
-         .then(result=>{
-           console.log(result);
-           let product = result.data.goods.find(x=>{ return x.id == id});
-           
-           this.setState({
-             product: product
-           },()=>{console.log(this.state.product)})
-         })
-         .catch(error => {
-         })
-   // simulate img loading
-     this.setState({
-       data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-     });
-     
+    this.props.getProduct(id)
+ }
+
+ componentWillReceiveProps(nextProps) {
+    if(nextProps){
+      this.setState({
+        product: nextProps.product
+      })
+    }
  }
 
 render(){

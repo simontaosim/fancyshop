@@ -20,7 +20,7 @@ export function product(state=initialState,action) {
     console.log(action.payload)
     return Object.assign({},state,action.payload)
     case  GET_PRODUCT:
-    return [...state, action.payload]
+    return Object.assign({},state,action.payload)
       break;
     default:
       return state
@@ -32,12 +32,13 @@ function initProductList(data) {
 }
 
 function  initProductGet(data) {
-  return { type: INIT_PRODUCT, payload: data}
+  return { type: GET_PRODUCT, payload: data}
 }
 
+//获取商品列表
 export function productList() {
   return dispatch => {
-    axios.get('/goods')
+    axios.get('/products')
          .then(result => {
            console.log(result.data.goods)
             dispatch(initProductList(result.data.goods))
@@ -48,12 +49,12 @@ export function productList() {
   }
 }
 
-
+//获取商品详情
 export function getProduct(id) {
   console.log('getProduct')
   console.log(id)
   return dispatch => {
-    axios.get('/goods')
+    axios.get('/products')
          .then(result=> {
           let product = result.data.goods.find(x=>{ return x.id == id});
             dispatch(initProductGet(product))
