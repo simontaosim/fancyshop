@@ -21,6 +21,7 @@ class ProductModal extends React.Component {
       data: ['1', '2', '3'],
       imgHeight: 176,
       slideIndex: 0,
+      tagMenuClick: [false,false,false,false]
     }
   }
 
@@ -55,6 +56,23 @@ class ProductModal extends React.Component {
      }
    }
 
+
+     handleTagMenuClick(num){
+       let tagMenuClick = this.state.tagMenuClick;
+       this.clearClickedStyle();
+       tagMenuClick[num] = !tagMenuClick[num];
+       this.setState({
+         tagMenuClick,
+       })
+     }
+
+     clearClickedStyle(){
+       let tagMenuClick = this.state.tagMenuClick;
+       for (var i = 0; i < tagMenuClick.length; i++) {
+         tagMenuClick[i] = false;
+       }
+     }
+
    render(){
      return(
        <div>
@@ -81,12 +99,13 @@ class ProductModal extends React.Component {
             <Flex style = {{display:'flex',alignSelf:'flex-end'}}>
 
             </Flex>
+            <WhiteSpace/>
             <Flex wrap = "wrap" justify = "start">
-              <div className = {style['color-div']}>绿色</div>
-              <div className = {style['color-div']}>绿色</div>
-              <div className = {style['color-div']}>尼古拉斯色</div>
-              <div className = {style['color-div']}>灰绿色</div>
-              <div className = {style['color-div']}>蓝色</div>
+              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[0] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(0)}}>绿色</div>
+              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[1] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(1)}}>绿色</div>
+              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[2] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(2)}}>尼古拉斯色</div>
+              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[3] ? "#ffcf2d" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(3)}}>灰绿色</div>
+              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[4] ? "#ffcf2d" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(4)}}>蓝色</div>
               <div className = {style['color-div']}>粉白色</div>
               <div className = {style['color-div']}>白色</div>
               <div className = {style['color-div']}>紫色</div>

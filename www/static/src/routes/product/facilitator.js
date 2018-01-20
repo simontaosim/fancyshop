@@ -2,7 +2,8 @@ import React from 'react';
 
 import { Flex, Tabs } from 'antd-mobile';
 import style from './facilitator.css';
-import goodImg from '../../assets/img/reward/good.jpg'
+import goodImg from '../../assets/img/reward/good.jpg';
+import userImg from '../../assets/img/timg.jpg';
 
 class Facilitator extends React.Component {
   constructor() {
@@ -17,9 +18,9 @@ class Facilitator extends React.Component {
     return (
       <div >
         <div className = { style['bg-img']}>
-          <Flex justify = "center" align = "center" className = {style['user']}><img src={goodImg} style = {{height:'50px',width:'50px',borderRadius:'25px',border:'1px solid #aaa'}}/></Flex>
+          <Flex justify = "center" align = "center" className = {style['user']}><img src={userImg}/></Flex>
           <Flex justify = "center" className = {style['distance']}>服务商名</Flex>
-          <Flex justify = "center" className = {style['distance2']}><img src = {require('../../assets/svg/location.svg')} style = {{width:'15px',height:'15px',color:'#fff'}}/>四川省成都市金牛区沙湾路63号<img/></Flex>
+          <Flex justify = "center" className = {style['distance2']}><img src = {require('../svg/location-white.svg')} style = {{width:'15px',height:'15px',color:'#fff',letterSpacing:'1px'}}/>四川省成都市金牛区沙湾路63号<img src = {require('../../assets/svg/phone-blue.svg')} style = {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end'}}/></Flex>
         </div>
         <Tabs tabs = {tabs} >
           <div>
