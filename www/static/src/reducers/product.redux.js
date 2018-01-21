@@ -13,6 +13,9 @@ const GET_PRODUCT = "GET_PRODUCT";
 const CHANGE_PRODUCT = "CHANGE_PRODUCT";
 
 
+const ADD_COUNT = "ADD_COUNT";
+
+
 
 const initialState = {
 }
@@ -21,9 +24,22 @@ export function product(state=initialState,action) {
     case INIT_PRODUCT:
     console.log(action.payload)
     return Object.assign({},state,action.payload)
+    break;
     case  GET_PRODUCT:
     return Object.assign({},state,action.payload)
-      break;
+    break;
+    case CHANGE_PRODUCT:
+    let index = action.payload;
+    let good_spec = state.good.spec
+    for(var i=0;i< good_spec.length;i++){
+      good_spec[i].isThis = false;
+      good_spec[index].isThis=true
+    }
+    return Object.assign({},state,{selected: good_spec[index]})
+    break;
+    case ADD_COUNT:
+    return Object.assign({},state,{count: action.payload})
+    break;
     default:
       return state
   }
@@ -37,9 +53,14 @@ function  initProductGet(data) {
   return { type: GET_PRODUCT, payload: data}
 }
 
-function changeProduct(data) {
+export function changeProduct(data) {
   return { type: CHANGE_PRODUCT, payload: data}
 }
+
+export function addCount(data) {
+  return { type: ADD_COUNT, payload: data}
+}
+
 
 //获取商品列表
 export function productList() {
@@ -62,6 +83,7 @@ export function getProduct(id) {
   return dispatch => {
     axios.get('/products')
          .then(result=> {
+           console.log('')
           let product = result.data.goods.find(x=>{ return x.id == id});
           console.log(product)
             dispatch(initProductGet({'good':product}))

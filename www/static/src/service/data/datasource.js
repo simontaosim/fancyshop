@@ -148,11 +148,13 @@ Mock.mock('/products', {
             "spec": [
                 {
                     "red": 3000,
-                    "isThis": true
+                    "isThis": true,
+                    "name": '红色'
                 },
                 {
                     "blue": 4000,
-                    "isThis": false
+                    "isThis": false,
+                    "name": '蓝色'
                 }
             ],
             "brand": "金牛座",
@@ -175,11 +177,13 @@ Mock.mock('/products', {
             "spec": [
                 {
                     "red": 3000,
-                    "isThis": true
+                    "isThis": true,
+                    "name": '红色'
                 },
                 {
                     "blue": 4000,
-                    "isThis": false
+                    "isThis": false,
+                    "name": '蓝色'
                 }
             ],
             "brand": "天秤座",
@@ -202,11 +206,13 @@ Mock.mock('/products', {
             "spec": [
                 {
                     "red": 3000,
-                    "isThis": true
+                    "isThis": true,
+                    "name": '红色'
                 },
                 {
                     "blue": 4000,
-                    "isThis": false
+                    "isThis": false,
+                    "name": '蓝色'
                 }
             ],
             "brand": "射手座",
@@ -229,11 +235,13 @@ Mock.mock('/products', {
             "spec": [
                 {
                     "red": 3000,
-                    "isThis": true
+                    "isThis": true,
+                    "name": '红色'
                 },
                 {
                     "blue": 4000,
-                    "isThis": false
+                    "isThis": false,
+                    "name": '蓝色'
                 }
             ],
             "brand": "摩羯座",
@@ -255,12 +263,14 @@ Mock.mock('/products', {
             "name": "Linda Taylor",
             "spec": [
                 {
-                    "red": 3000,
-                    "isThis": true
+                    "price": 3000,
+                    "isThis": true,
+                    "name": '红色'
                 },
                 {
-                    "blue": 4000,
-                    "isThis": false
+                    "price": 4000,
+                    "isThis": false,
+                    "name": '蓝色'
                 }
             ],
             "brand": "射手座",

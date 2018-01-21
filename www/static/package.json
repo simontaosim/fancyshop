@@ -66,7 +66,8 @@
     "style-loader": "^0.19.1",
     "think-babel": "^1.0.3",
     "think-inspect": "0.0.2",
-    "think-watcher": "^3.0.0"
+    "think-watcher": "^3.0.0",
+    "underscore": "^1.8.3"
   },
   "repository": "",
   "license": "MIT",

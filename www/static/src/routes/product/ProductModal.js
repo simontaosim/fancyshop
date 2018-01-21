@@ -5,6 +5,7 @@ import style from './ProductBottom.css';
 import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
+import { changeProduct, addCount } from '../../reducers/product.redux';
 import { modelInfo } from '../../map_props';
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
 let wrapProps;
@@ -48,9 +49,10 @@ class ProductModal extends React.Component {
     //  });
    }
    onClose = key => (e) => {
-     console.log(this.props)
+    e.preventDefault(); 
+    let { dispatch } = this.props
      if(this.props.model.spec_status){
-       console.log('测试')
+       console.log(this.props.product)
      }else{
        this.props.dispatch(closeSpecModel())
      }
@@ -66,15 +68,46 @@ class ProductModal extends React.Component {
 
    onChange = (val) => {
      // console.log(val);
-     this.setState({ val });
-     if (this.state.value == 9) {
-       // alert("您最多只能购买十件商品！")
-       console.log('您最多只能购买十件该商品');
-     }
+     let { dispatch } = this.props;
+     console.log(dispatch);
+     this.setState({ val },()=>{
+       dispatch(addCount(this.state.val))
+     });
+    
    }
+
+   handleSelectedSpec(i){
+    let { dispatch } = this.props
+    dispatch(changeProduct(i))
+   }
+
 
    render(){
      let modelStatus = this.props.model.spec_model
+    //  console.log(`hihihihi`)
+     console.log(this.props);
+     var spec=[];
+     let price = [];
+     for(var i=0; i<this.props.spec.length;i++){
+      spec.push(
+        <div className = {style['color-div']}  key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
+          {this.props.spec[i].name}
+      </div>
+       )
+       price.push(
+         <span>
+          { this.props.spec[i].isThis==true? this.props.spec[i].price : null}
+         </span>
+       )
+     }
+     
+    //  let spec = this.props.spec.map((i,index)=> {
+    //    return (
+    //     <div className = {style['color-div']}  key={index} onClick={console.log(9999)}>
+    //         {i.name}
+    //     </div>
+    //    )
+    //  },this)
      return(
        <div>
        <Flex.Item onClick={this.showModal('modal2')} style = {{color:'black',justify:'center'}}><span style = {{color:'#888'}}>选择类型</span></Flex.Item>
@@ -101,7 +134,8 @@ class ProductModal extends React.Component {
 
             </Flex>
             <Flex wrap = "wrap" justify = "start">
-              <div className = {style['color-div']}>绿色</div>
+              {spec}
+              {/* <div className = {style['color-div']}>绿色</div>
               <div className = {style['color-div']}>绿色</div>
               <div className = {style['color-div']}>尼古拉斯色</div>
               <div className = {style['color-div']}>灰绿色</div>
@@ -109,7 +143,7 @@ class ProductModal extends React.Component {
               <div className = {style['color-div']}>粉白色</div>
               <div className = {style['color-div']}>白色</div>
               <div className = {style['color-div']}>紫色</div>
-              <div className = {style['color-div']}>黑色</div>
+              <div className = {style['color-div']}>黑色</div> */}
             </Flex>
             <Flex className = {style['num-padding']}>
               购买数量：
