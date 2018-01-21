@@ -66,11 +66,13 @@
 .box2 {
   background-color: #00b7ee;
   padding: 0 10px ;
+  flex-grow : 1;
 }
 .box3 {
   background-color: #ffcf2d;
   padding: 0 20px ;
   flex-shrink: 0;
+  flex-grow : 1;
 }
 .box4 {
   background-color: #e22a09;

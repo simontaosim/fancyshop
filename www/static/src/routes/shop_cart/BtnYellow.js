@@ -25,7 +25,7 @@ class BtnYellow extends React.Component {
         {/* <Flex justify = "center" className = {style['bottom-balance']}>结算</Flex> /}
       </Flex>
     </div> */}
-    <div className = {s['container']}>
+    {/* <div className = {s['container']}>
       <CheckboxItem className = {s['box1']} className = {s['am-list-line']} style = {{backgroundColor:'#333',border:'none',padding:'2px',flexGrow:'1',paddingLeft:'7px'}}>
         <span style = {{color:'white'}}>全选</span>
         <span style = {{float:'right',color:'#fff',paddingLeft:'15px'}}>合计：
@@ -38,7 +38,22 @@ class BtnYellow extends React.Component {
       </Link>
       </div>
 
+    </div> */}
+    <Flex>
+      <div style = {{flexGrow:'1',color:'#fff'}}>
+        <CheckboxItem style = {{backgroundColor:'#333',color:'#fff',paddingLeft:'7px'}}>
+          <span style = {{color:'white',lineHeight:'1.95em'}}>全选</span>
+          <span style = {{float:'right',color:'#fff',lineHeight:'1.95em'}}>合计：
+          <span style= {{color:'red',lineHeight:'1.95em'}}>￥250</span></span>
+        </CheckboxItem>
+      </div>
+
+      <div style = {{flexGrow:'1',backgroundColor:'#ffcf2d',padding:'0 30px'}}>
+        <Link to="/nullcart">
+        <Button style = {{backgroundColor:'#ffcf2d',color:'#fff'}}>结算</Button>
+      </Link>
     </div>
+    </Flex>
        </div>
     )
   }
