@@ -10,6 +10,9 @@ const INIT_PRODUCT = "INIT_PRODUCT";
 const GET_PRODUCT = "GET_PRODUCT";
 
 
+const CHANGE_PRODUCT = "CHANGE_PRODUCT";
+
+
 
 const initialState = {
 }
@@ -32,6 +35,10 @@ function initProductList(data) {
 
 function  initProductGet(data) {
   return { type: GET_PRODUCT, payload: data}
+}
+
+function changeProduct(data) {
+  return { type: CHANGE_PRODUCT, payload: data}
 }
 
 //获取商品列表
@@ -64,5 +71,7 @@ export function getProduct(id) {
          })
   }
 }
+
+
 
 

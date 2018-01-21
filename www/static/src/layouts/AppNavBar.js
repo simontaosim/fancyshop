@@ -52,8 +52,6 @@ search () {
 }
 
   render(){
-
-
     const { dispatch, history, AppInfo } = this.props;
     const top = this.props.AppInfo.navBarHidden ? "-42px" : "0";
 

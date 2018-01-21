@@ -104,7 +104,7 @@ render(){
         <Flex>销量: {product.sales}</Flex>
       </Flex>
       <Flex className = {style['item-type']}>
-        <ProductModal/>
+        <ProductModal spec={spec}/>
       </Flex>
       <ProductTabs/>
       <ProductBottom history={this.props.history} product={product}/>

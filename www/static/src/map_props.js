@@ -10,3 +10,10 @@ export function productinfo(state) {
     product: state.product
   }
 }
+
+export function modelInfo(state) {
+  return {
+    model: state.model,
+    product: state.product
+  }
+}

@@ -143,6 +143,7 @@ Mock.mock('/products', {
     "goods": [
         {
             "id": 1,
+            "shop_id": 1,
             "name": "Paul Lewis",
             "spec": [
                 {
@@ -169,6 +170,7 @@ Mock.mock('/products', {
         },
         {
             "id": 2,
+            "shop_id": 1,
             "name": "Richard Jones",
             "spec": [
                 {
@@ -195,6 +197,7 @@ Mock.mock('/products', {
         },
         {
             "id": 3,
+            "shop_id": 2,
             "name": "Jose Lopez",
             "spec": [
                 {
@@ -221,6 +224,7 @@ Mock.mock('/products', {
         },
         {
             "id": 4,
+            "shop_id": 2,
             "name": "Charles Lewis",
             "spec": [
                 {
@@ -247,6 +251,7 @@ Mock.mock('/products', {
         },
         {
             "id": 5,
+            "shop_id": 1,
             "name": "Linda Taylor",
             "spec": [
                 {
