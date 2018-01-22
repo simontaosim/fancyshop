@@ -1,10 +1,11 @@
-import {SET_APP_TIILE, SET_APP_CITY } from '../actions/app.js'
+import {SET_APP_TIILE, SET_APP_CITY, SET_HOME_TAGS } from '../actions/app.js'
 
 export function AppInfo(state={
   title: "万人车汇",
   appName: "万人车汇",
   navBarHidden: false,
   path: "/",
+  homeTags: [],
   location: {
     planet: "地球",
     country: '中国',
@@ -45,6 +46,12 @@ export function AppInfo(state={
           city: action.city,
         }
       });
+    case SET_HOME_TAGS:
+      console.log(action);
+      return Object.assign({}, state, {
+        homeTags: action.tags,
+      });
+
     default:
       return state;
   }

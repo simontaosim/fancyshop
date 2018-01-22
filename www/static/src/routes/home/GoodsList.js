@@ -30,13 +30,11 @@ class GoodsList extends React.Component {
     // setTimeout(() => this.lv.scrollTo(0, 120), 800);
     axios.get('/products')
     .then(result=> {
-      console.log(JSON.stringify(result, null, 4))
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(result.data.goods),
         isLoading: false,
       })
     },error=> {
-      console.log(error);
     })
   }
 
@@ -65,7 +63,6 @@ class GoodsList extends React.Component {
       />
     );
     const data = this.state
-    console.log(data);
     let index = data.length - 1;
     const row = (rowData, sectionID, rowID) => {
       return (
@@ -87,7 +84,7 @@ class GoodsList extends React.Component {
               </div>
             </div>
           </Link>
-        </div> 
+        </div>
       );
     };
     return (

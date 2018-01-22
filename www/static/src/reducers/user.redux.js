@@ -114,7 +114,7 @@ export function loginOut(fn) {
      asteroid.logout()
      .then(result => {
          dispatch(loginOutSuccess(result))
-        
+
      })
      .catch(error => {
      })
@@ -143,12 +143,12 @@ export function register(username,password,mobile,verify) {
             .catch(error => {
                   if(error.reason==="Username already exists."){
                     Toast.fail("用户名已存在")
-                  } 
+                  }
             })
           }
           else
           {
-            Toast.info("手机已被使用") 
+            Toast.info("手机已被使用")
           }
         })
     }else{
@@ -174,7 +174,7 @@ export function mobileRegister(mobile,verify){
     }else{
       Toast.info('验证码错误');
     }
-   
+
   }
 }
 

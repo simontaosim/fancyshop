@@ -16,15 +16,19 @@ import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
+import {getAddress} from '../../service/amap/api/getCurrentLocationByIP';
+
 class AppHome extends React.Component{
   constructor(props) {
     super(props);
+
     this.state = {
       data: ['','',''],
       good: [],
     }
   }
   componentDidMount(){
+    getAddress();
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
     setTimeout(() => {
@@ -39,6 +43,8 @@ class AppHome extends React.Component{
   //           good: result.data.goods
   //         },()=>{console.log(this.state.good)})
   //       })
+  var geolocation;
+
 
   }
 
