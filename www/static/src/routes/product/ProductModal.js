@@ -50,7 +50,7 @@ class ProductModal extends React.Component {
     //  });
    }
    onClose = key => (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     let { dispatch } = this.props
      if(this.props.model.spec_status){
        console.log(this.props.product)
@@ -74,7 +74,7 @@ class ProductModal extends React.Component {
      this.setState({ val },()=>{
        dispatch(addCount(this.state.val))
      });
-    
+
    }
 
    handleSelectedSpec(i){
@@ -128,7 +128,7 @@ class ProductModal extends React.Component {
      }
      console.log(price);
      console.log(spec);
-     
+
     //  let spec = this.props.spec.map((i,index)=> {
     //    return (
     //     <div className = {style['color-div']}  key={index} onClick={console.log(9999)}>
@@ -154,7 +154,8 @@ class ProductModal extends React.Component {
                 {/* <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/> */}
                 <span style = {{color:'#666',fontSize:'14px'}}>请选择类型</span>
               </div>
-              <img src = {require('../svg/close_black.svg')} style = {{display:'flex',width:'25px',height:'25px',paddingLeft:'35%',paddingBottom:'44px',alignSelf:'flex-end'}} onClick = {this.Close('modal2')}/><br/>
+              {/* <img src = {require('../svg/close_black.svg')} style = {{display:'flex',width:'25px',height:'25px',paddingLeft:'35%',paddingBottom:'44px',alignSelf:'flex-end'}} onClick = {this.Close('modal2')}/><br/> */}
+              <img src = {require('../svg/close_black.svg')} style = {{position:'absolute',right:'15px',top:'10px',width:'25px',height:'25px',paddingBottom:'44px'}} onClick = {this.Close('modal2')}/><br/>
           </Flex>
 
 
@@ -171,7 +172,7 @@ class ProductModal extends React.Component {
               <div className = {style['color-div']} style={{background: this.state.tagMenuClick[4] ? "#ffcf2d" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(4)}}>蓝色</div>
               */}
               {spec}
-             
+
             </Flex>
             <Flex className = {style['num-padding']}>
               购买数量：

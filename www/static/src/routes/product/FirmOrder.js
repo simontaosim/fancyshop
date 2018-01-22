@@ -16,29 +16,29 @@ class FirmOrder extends React.Component {
         <div className = {styles['item-info']}>
           <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
           <Link to = "/address">
-            <div><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>成都市金牛区沙湾路63号</span></div>
-            <div><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>123456789</span></div>
+            <div style = {{color:'#333'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>成都市金牛区沙湾路63号</span></div>
+            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>123456789</span></div>
           </Link>
         </div>
 
         <div className = {styles['item-user']}>
           <Flex>
-            <img src={require('../svg/people.svg')} className = {styles['item-icon']}/>姓&nbsp;名：<InputItem placeholder = "默认为黑卡姓名" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'12px',lineHeight:'2em'}}/>
+            <img src={require('../svg/people.svg')} className = {styles['item-icon']}/>姓&nbsp;名：<InputItem placeholder = "默认为黑卡姓名" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'14px',lineHeight:'2em',padding:'0 20px 0 10px'}}/>
           </Flex>
         <Flex>
-          <span style = {{textIndent:'15px'}}>
-          手机号：</span>
-          <InputItem placeholder = "默认为黑卡手机号" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'12px',lineHeight:'2em'}}/>
+          <Flex style = {{textIndent:'15px'}}>
+          手机号：</Flex>
+          <InputItem placeholder = "默认为黑卡手机号" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'14px',lineHeight:'2em',padding:'0 20px 0 10px'}}/>
         </Flex>
         <Flex>
           <span style = {{textIndent:'15px'}}>车牌号：</span>
-          <InputItem placeholder = "默认为黑卡车牌号" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'12px',lineHeight:'2em'}}/>
+          <InputItem placeholder = "默认为黑卡车牌号" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'14px',lineHeight:'2em',padding:'0 20px 0 10px'}}/>
         </Flex>
         </div>
 
         <div className = {styles['item-notice']}>
           <div><img src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
-          <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'12px',width:'95%'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈"/>
+          <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'14px',width:'95%',padding:'10px 3px'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈"/>
         </div>
         </div>
         <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}}>
@@ -65,8 +65,8 @@ class FirmOrder extends React.Component {
         <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%'}}>
           <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'1'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
           <Link to = "paid">
-          <div style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',padding:'0 20px'}}>
-            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 10px',borderRadius:'0'}}>提交订单</Button>
+          <div style = {{display:'flex',flexGrow:'1'}}>
+            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 10px',borderRadius:'0',padding:'0 30px'}}>提交订单</Button>
           </div>
           </Link>
         </Flex>

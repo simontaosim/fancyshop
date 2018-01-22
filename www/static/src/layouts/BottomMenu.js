@@ -129,6 +129,7 @@ class BottomMenu extends React.Component{
               <div style={{
                 width: '22px',
                 height: '22px',
+                // background: 'url(../../svg/shopcart.svg) center center /  21px 21px no-repeat' }}
                 background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
               />
             }

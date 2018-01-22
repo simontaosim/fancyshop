@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ActionSheet, Toast } from 'antd-mobile';
+import { ActionSheet, Toast,Flex } from 'antd-mobile';
 
 class ProductShare extends React.Component {
   constructor() {
@@ -38,7 +38,9 @@ class ProductShare extends React.Component {
 
   render(){
     return(
-      <span onClick = {this.showShareActionSheet}>分享再赚</span>
+      // <span onClick = {this.showShareActionSheet}>分享再赚</span>
+      <Flex onClick = {this.showShareActionSheet}><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/>分享再赚</Flex>
+
     )
   }
 }

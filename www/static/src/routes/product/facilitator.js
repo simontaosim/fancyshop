@@ -40,7 +40,14 @@ class Facilitator extends React.Component {
             </Link>
           </div>
           <div>
-            这是服务商简介
+            <Flex justify = "center" align = "center">
+              <br/>
+              <br/>
+              <br/>
+            这是服务商简介<br/>
+            这只是随便写的一些文字<br/>
+            本店主要出售机油，欢迎光顾
+            </Flex>
           </div>
         </Tabs>
       </div>

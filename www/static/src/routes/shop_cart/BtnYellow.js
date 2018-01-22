@@ -13,7 +13,7 @@ class BtnYellow extends React.Component {
 
   render(){
     return (
-      <div>
+      <div style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%'}}>
       {/* <div className = {style['bottom-pos']}>
       <Flex justify = "start">
         <CheckboxItem className = {style['bottom-all']}>
@@ -48,9 +48,9 @@ class BtnYellow extends React.Component {
         </CheckboxItem>
       </div>
 
-      <div style = {{flexGrow:'1',backgroundColor:'#ffcf2d',padding:'0 30px'}}>
-        <Link to="/nullcart">
-        <Button style = {{backgroundColor:'#ffcf2d',color:'#fff'}}>结算</Button>
+      <div style = {{flexGrow:'1',backgroundColor:'#ffcf2d'}}>
+        <Link to="/firmorder">
+        <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 30px'}}>结算</Button>
       </Link>
     </div>
     </Flex>

@@ -22,7 +22,7 @@ class ShopCart extends React.Component{
     var btn = this.state.edit ? <BtnRed/>:<BtnYellow/>
     return(
 
-      <div className = {style['bg-color']}>
+      <div className = {style['bg-color']}  history={this.props.history}>
 
         <Flex justify = "end" style = {{backgroundColor:"#333",color:'#fff',lineHeight:'3em',padding:'5px 10px'}}>
           <span style = {{textAlign:'right'}}> <span   onClick={(e) => {
@@ -36,7 +36,7 @@ class ShopCart extends React.Component{
           <Shop/>
           <Shop/>
         </div>
-        <div>
+        <div history={this.props.history}>
           {btn}
         </div>
       </div>
