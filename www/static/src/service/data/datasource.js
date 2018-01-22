@@ -147,12 +147,12 @@ Mock.mock('/products', {
             "name": "Paul Lewis",
             "spec": [
                 {
-                    "red": 3000,
+                    "price": 3000,
                     "isThis": true,
                     "name": '红色'
                 },
                 {
-                    "blue": 4000,
+                    "price": 4000,
                     "isThis": false,
                     "name": '蓝色'
                 }
@@ -176,14 +176,14 @@ Mock.mock('/products', {
             "name": "Richard Jones",
             "spec": [
                 {
-                    "red": 3000,
+                    "price": 3000,
                     "isThis": true,
-                    "name": '红色'
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
+                    "price": 4000,
                     "isThis": false,
-                    "name": '蓝色'
+                    "name": '蓝色',
                 }
             ],
             "brand": "天秤座",
@@ -205,14 +205,14 @@ Mock.mock('/products', {
             "name": "Jose Lopez",
             "spec": [
                 {
-                    "red": 3000,
+                    "price": 3000,
                     "isThis": true,
-                    "name": '红色'
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
+                    "price": 4000,
                     "isThis": false,
-                    "name": '蓝色'
+                    "name": '蓝色',
                 }
             ],
             "brand": "射手座",
@@ -234,14 +234,14 @@ Mock.mock('/products', {
             "name": "Charles Lewis",
             "spec": [
                 {
-                    "red": 3000,
+                    "price": 3000,
                     "isThis": true,
-                    "name": '红色'
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
+                    "price": 4000,
                     "isThis": false,
-                    "name": '蓝色'
+                    "name": '蓝色',
                 }
             ],
             "brand": "摩羯座",
@@ -265,12 +265,12 @@ Mock.mock('/products', {
                 {
                     "price": 3000,
                     "isThis": true,
-                    "name": '红色'
+                    "name": '红色',
                 },
                 {
                     "price": 4000,
                     "isThis": false,
-                    "name": '蓝色'
+                    "name": '蓝色',
                 }
             ],
             "brand": "射手座",

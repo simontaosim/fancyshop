@@ -94,12 +94,15 @@ class ProductModal extends React.Component {
           {this.props.spec[i].name}
       </div>
        )
-       price.push(
-         <span>
-          { this.props.spec[i].isThis==true? this.props.spec[i].price : null}
-         </span>
-       )
+       {this.props.spec[i].isThis===true ? price.push(`${this.props.spec[i].price}`) : null }
+      //  price.push(
+      //    <span>
+      //     { this.props.spec[i].isThis==true? <span>{this.props.spec[i].price}</span> : null}
+      //    </span>
+      //  )
      }
+     console.log(price);
+     console.log(spec);
      
     //  let spec = this.props.spec.map((i,index)=> {
     //    return (
@@ -122,7 +125,7 @@ class ProductModal extends React.Component {
           <Flex>
               <img src = {goodImg} style = {{width:'60px',height:'60px',border:'6px solid #680000'}}/>
               <div style = {{paddingLeft:'10px'}}>
-                <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥269.1</span><br/>
+                <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥{price}</span><br/>
                 {/* <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/> */}
                 <span style = {{color:'#666',fontSize:'14px'}}>请选择类型</span>
               </div>
