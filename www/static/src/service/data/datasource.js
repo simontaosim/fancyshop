@@ -143,15 +143,18 @@ Mock.mock('/products', {
     "goods": [
         {
             "id": 1,
+            "shop_id": 1,
             "name": "Paul Lewis",
             "spec": [
                 {
-                    "red": 3000,
-                    "isThis": true
+                    "price": 3000,
+                    "isThis": true,
+                    "name": '红色'
                 },
                 {
-                    "blue": 4000,
-                    "isThis": false
+                    "price": 4000,
+                    "isThis": false,
+                    "name": '蓝色'
                 }
             ],
             "brand": "金牛座",
@@ -169,15 +172,18 @@ Mock.mock('/products', {
         },
         {
             "id": 2,
+            "shop_id": 1,
             "name": "Richard Jones",
             "spec": [
                 {
-                    "red": 3000,
-                    "isThis": true
+                    "price": 3000,
+                    "isThis": true,
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
-                    "isThis": false
+                    "price": 4000,
+                    "isThis": false,
+                    "name": '蓝色',
                 }
             ],
             "brand": "天秤座",
@@ -195,15 +201,18 @@ Mock.mock('/products', {
         },
         {
             "id": 3,
+            "shop_id": 2,
             "name": "Jose Lopez",
             "spec": [
                 {
-                    "red": 3000,
-                    "isThis": true
+                    "price": 3000,
+                    "isThis": true,
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
-                    "isThis": false
+                    "price": 4000,
+                    "isThis": false,
+                    "name": '蓝色',
                 }
             ],
             "brand": "射手座",
@@ -221,15 +230,18 @@ Mock.mock('/products', {
         },
         {
             "id": 4,
+            "shop_id": 2,
             "name": "Charles Lewis",
             "spec": [
                 {
-                    "red": 3000,
-                    "isThis": true
+                    "price": 3000,
+                    "isThis": true,
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
-                    "isThis": false
+                    "price": 4000,
+                    "isThis": false,
+                    "name": '蓝色',
                 }
             ],
             "brand": "摩羯座",
@@ -247,15 +259,18 @@ Mock.mock('/products', {
         },
         {
             "id": 5,
+            "shop_id": 1,
             "name": "Linda Taylor",
             "spec": [
                 {
-                    "red": 3000,
-                    "isThis": true
+                    "price": 3000,
+                    "isThis": true,
+                    "name": '红色',
                 },
                 {
-                    "blue": 4000,
-                    "isThis": false
+                    "price": 4000,
+                    "isThis": false,
+                    "name": '蓝色',
                 }
             ],
             "brand": "射手座",

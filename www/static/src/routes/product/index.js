@@ -26,29 +26,27 @@ class Goods extends React.Component {
     }
   }
 
-  componentDidMount() {
-    console.log(this.props)
-    let id = this.props.match.params.id
-    axios.get('/products')
-         .then(result=>{
-           console.log(result);
-           let product = result.data.goods.find(x=>{ return x.id == id});
 
-           this.setState({
-             product: product
-           },()=>{console.log(this.state.product)})
-         })
-         .catch(error => {
-         })
-   // simulate img loading
-     this.setState({
-       data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-     });
+componentDidMount() {
+    let id = this.props.match.params.id;
+    
+    this.props.getProduct(id)
+ }
 
+ componentWillReceiveProps(nextProps) {
+  console.log('gogogoogo');
+  console.log(nextProps);   
+    if(nextProps){
+      this.setState({
+        product: nextProps.product.good
+      })
+    }
  }
 
 render(){
+  console.log(111);
   let {product} = this.state
+  console.log(this.state);
   let  spec = product.spec ? product.spec : []
   let carousel = product.images ? product.images : []
   let pic = carousel.map((img,index)=>{
@@ -107,10 +105,10 @@ render(){
       <Flex justify = "between" className = {style['item-des']}>
         <Flex>配送方式:{product.deliver}</Flex>
         <Flex>库存:{product.inventory}</Flex>
-        <Flex>销量: {product.sales}</Flex>
+        <Flex>销量: {product.sales} </Flex>
       </Flex>
       <Flex className = {style['item-type']}>
-        <ProductModal/>
+        <ProductModal spec={spec}/>
       </Flex>
       <ProductTabs/>
       <ProductBottom history={this.props.history} product={product}/>

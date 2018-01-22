@@ -34,7 +34,7 @@ import PaySuccess from './product/PaySuccess';
 import Address from './product/Address';
 import SearchBox from './search/ProductSearch';
 import SearchResult from './search/SearchResult';
-
+import Cart from './checkbox/cart'
 
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
@@ -120,6 +120,7 @@ class App extends React.Component {
               <Route path="/address" component={Address}  />
               <Route path="/searchbar" component={SearchBox}  />
               <Route path="/searchresult" component={SearchResult}/>
+              <Route path="/pull" component={Cart}/>
 
 
           </MainLayout>

@@ -5,7 +5,11 @@ import history from 'react-router-dom';
 import goodImg from '../../assets/img/reward/good.jpg';
 import style from './ProductBottom.css';
 import s from './common.css';
-import { asteroid } from '../../config/asteroid.config'
+import { asteroid } from '../../config/asteroid.config';
+import { connect } from 'react-redux';
+import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
+import { modelInfo } from '../../map_props';
+
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
 let wrapProps;
 if (isIPhone) {
@@ -21,10 +25,23 @@ class ProductBottom extends React.Component {
     this.AddCart = this.AddCart.bind(this)
   }
 
+  componentDidMount() {
+    
+  }
+
+  blockModal = key => (e) => {
+    e.preventDefault(); // 修复 Android 上点击穿透
+    console.log(`为什么走这里`)
+    this.props.dispatch(openSpecModel(true))
+   //  this.setState({
+   //    [key]: true,
+   //  });
+   }
+
 
   AddCart() {
     // console.log(this.props.product)
-    let product = Object.assign({},this.props.product,{user_id: 1})
+    let product = Object.assign({},this.props.product,{user_id: 1},{count: 1})
     console.log(product);
     asteroid.call('shop_carts.add_cart',product)
   }
@@ -42,11 +59,13 @@ class ProductBottom extends React.Component {
             </Flex>
 
           {/* <Link to = "./shop_cart"> */}
+
             {/* <Flex style = {{backgroundColor:'#00b7ee'}} align = "stretch">
               <span style = {{lineHeight:'2.4em',color:'#fff',fontSize:'20px',padding:'0 2rem'}} onClick={this.AddCart}>加入购物车</span>
             </Flex> *}
             <Button style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'0',padding:'0 10%'}} onClick={this.AddCart}>加入购物车</Button>
           {/* </Link> *}
+
           <Link to = "/firmorder">
             <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',width:'150%'}}>立即购买</Button>
           </Link>
@@ -76,4 +95,4 @@ class ProductBottom extends React.Component {
   }
 }
 
-export default ProductBottom;
+export default connect(modelInfo)(ProductBottom);

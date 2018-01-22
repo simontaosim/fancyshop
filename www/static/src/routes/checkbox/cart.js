@@ -5,10 +5,24 @@ const Item = List.Item;
 
 
 class CartTest extends React.Component {
+    handle(i) {
+        console.log(i)
+    }
     render() {
+        let showArry = ['hello1', 'hello2', 'hello3'];
+        var newArry=[];
+        for(var i=0;i<showArry.length;i++){
+            var item=showArry[i];
+             newArry.push(<li onClick={this.handle.bind(this,i)}>{item}</li>)
+        }
         return(
-             <Item extra={<Stepper style={{ width: '100%', minWidth: '100px' }} showNumber size="small" defaultValue={20} />}>Number of Subscribers</Item>
-        )
+            <div id="result">
+            <ul className="am-list">
+                {newArry}
+            </ul>
+        </div>
+
+            )
     }
 }
 

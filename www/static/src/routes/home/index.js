@@ -35,7 +35,6 @@ class AppHome extends React.Component{
   }
 
   render(){
-    console.log(asteroid);
     return (
         <Flex  direction="column" className="flex-container ">
             <Carousel

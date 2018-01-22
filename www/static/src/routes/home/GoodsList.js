@@ -7,6 +7,9 @@ import goodsImg from '../../assets/img/reward/good.jpg';
 import good2Img from '../../assets/img/timg.jpg';
 import '../../service/data/datasource';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { productList } from '../../reducers/product.redux';
+import { productinfo } from '../../map_props';
 
 
 
@@ -26,28 +29,22 @@ class GoodsList extends React.Component {
   }
 
   componentDidMount() {
-    // you can scroll to the specified position
-    // setTimeout(() => this.lv.scrollTo(0, 120), 800);
-    axios.get('/products')
-    .then(result=> {
-      console.log(JSON.stringify(result, null, 4))
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(result.data.goods),
-        isLoading: false,
-      })
-    },error=> {
-      console.log(error);
-    })
+    console.log(this.props);
+    this.props.productList();
   }
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.dataSource !== this.props.dataSource) {
-  //     this.setState({
-  //       dataSource: this.state.dataSource.cloneWithRows(nextProps.dataSource),
-  //     });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    if (nextProps.prodcut !== this.props.product) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.product.goods),
+        isLoading: false,
+      });
+    }else{
+      console.log(1122)
+    }
+  }
 
   onEndReached = (event) => {
   }
@@ -114,4 +111,4 @@ class GoodsList extends React.Component {
   }
 }
 
-export default GoodsList;
+export default connect(productinfo,{productList})(GoodsList);

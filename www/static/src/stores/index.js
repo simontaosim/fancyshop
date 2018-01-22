@@ -3,6 +3,7 @@ import {AppInfo} from '../reducers'
 import {user} from '../reducers/user.redux'
 import { cart } from '../reducers/cart.redux'
 import { product } from '../reducers/product.redux'
+import { model } from '../reducers/model.redux'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import logger from 'redux-logger'
@@ -19,6 +20,7 @@ export default function configureStore(initialState) {
       user,
       cart,
       product,
+      model
     }),
     initialState,
     enhancer);
