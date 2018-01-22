@@ -74,7 +74,7 @@ class ProductBottom extends React.Component {
           <div className = {s['box1']} onClick={this.facilitator}>
             <img src={require('../svg/shop.svg')} /><span>店铺</span>
           </div>
-          <div className = {s['box2']} onClick={this.AddCart}>
+          <div className = {s['box2']} onClick={this.blockModal('modal2')}>
             <Button align = "stretch" style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'0',border:'none'}} >加入购物车</Button>
           </div>
           <Link to = "/firmorder">

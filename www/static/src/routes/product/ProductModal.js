@@ -79,6 +79,12 @@ class ProductModal extends React.Component {
 
    handleSelectedSpec(i){
     let { dispatch } = this.props
+    let tagMenuClick = this.state.tagMenuClick;
+       this.clearClickedStyle();
+       tagMenuClick[i] = !tagMenuClick[i];
+    this.setState({
+      tagMenuClick,
+    })
     dispatch(changeProduct(i))
    }
 
@@ -109,7 +115,7 @@ class ProductModal extends React.Component {
      let price = [];
      for(var i=0; i<this.props.spec.length;i++){
       spec.push(
-        <div className = {style['color-div']} style={{background: this.state.tagMenuClick[0] ? "#e85839" : "#e5e5e5"}} key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
+        <div className = {style['color-div']} style={{background: this.state.tagMenuClick[i] ? "#e85839" : "#e5e5e5"}} key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
           {this.props.spec[i].name}
       </div>
        )
