@@ -9,6 +9,8 @@ import { asteroid } from '../../config/asteroid.config';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { modelInfo } from '../../map_props';
+import { addCart } from '../../reducers/cart.redux';
+
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
 let wrapProps;

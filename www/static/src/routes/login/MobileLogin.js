@@ -59,15 +59,12 @@ sendCode() {
   }
 
   handleLogin() {
-    console.log(`${this.state.user}`)
-    console.log(`${this.state.pwd}`)
     let phone = this.state.user;
     let pwd = this.state.pwd
 
     if(!testPhone(phone)){
       Toast.info("手机格式不正确")
     }else{
-      console.log(`走这了`)
       this.props.mobileRegister(phone,pwd)
     }
   }
@@ -86,7 +83,6 @@ sendCode() {
     });
     // 验证手机号
     if(testPhone(phone)){
-      console.log(`手机验证成功`)
         this.setState({
           status:'able'
         });

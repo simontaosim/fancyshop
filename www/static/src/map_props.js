@@ -14,6 +14,7 @@ export function productinfo(state) {
 export function modelInfo(state) {
   return {
     model: state.model,
-    product: state.product
+    product: state.product,
+    cart: state.cart
   }
 }

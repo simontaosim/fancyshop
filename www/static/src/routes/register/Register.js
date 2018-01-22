@@ -68,7 +68,6 @@ onChildChange(tips,status){
   
 
   register(){
-    console.log(`regsiter`)
     let self = this;
     let {user, pwd, mobile,verify} = this.state
     console.log(`mobile`)
@@ -86,7 +85,7 @@ onChildChange(tips,status){
       return
     }
     getAddress()
-     this.props.register(user,pwd,mobile,verify)
+    // this.props.register(user,pwd,mobile,verify)
   }
 
   handlePhone=(event)=>{
@@ -123,7 +122,6 @@ onChildChange(tips,status){
     return (
       <div>
         <WingBlank>
-          11
         <List renderHeader={() => '进入万车汇'}>
           <InputItem
             type="text"

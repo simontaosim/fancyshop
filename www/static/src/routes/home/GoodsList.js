@@ -29,7 +29,6 @@ class GoodsList extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     this.props.productList();
   }
 
@@ -62,7 +61,6 @@ class GoodsList extends React.Component {
       />
     );
     const data = this.state
-    console.log(data);
     let index = data.length - 1;
     const row = (rowData, sectionID, rowID) => {
       return (

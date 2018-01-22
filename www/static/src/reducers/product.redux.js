@@ -23,24 +23,24 @@ export function product(state=initialState,action) {
   switch(action.type){
     case INIT_PRODUCT:
     console.log(action.payload)
-    return Object.assign({},state,action.payload)
-    break;
+      return Object.assign({},state,action.payload,{})
+      break;
     case  GET_PRODUCT:
-    return Object.assign({},state,action.payload)
-    break;
+      return Object.assign({},state,action.payload)
+      break;
     case CHANGE_PRODUCT:
-    let index = action.payload;
-    let good_spec = state.good.spec
-    for(var i=0;i< good_spec.length;i++){
-      good_spec[i].isThis = false;
-      good_spec[index].isThis=true
-    }
-    return Object.assign({},state,{selected: good_spec[index]})
-    break;
+      let index = action.payload;
+      let good_spec = state.good.spec
+      for(var i=0;i< good_spec.length;i++){
+        good_spec[i].isThis = false;
+        good_spec[index].isThis=true
+      }
+      return Object.assign({},state,{selected: good_spec[index]})
+      break;
     case ADD_COUNT:
-    return Object.assign({},state,{count: action.payload})
-    break;
-    default:
+      return Object.assign({},state,{count: action.payload})
+      break;
+    default: 
       return state
   }
 }

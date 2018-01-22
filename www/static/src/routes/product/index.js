@@ -23,6 +23,7 @@ class Goods extends React.Component {
       data: ['1', '2', '3'],
       imgHeight: 176,
       slideIndex: 0,
+      tagMenuClick: []
     }
   }
 
@@ -34,17 +35,34 @@ componentDidMount() {
  }
 
  componentWillReceiveProps(nextProps) {
-  console.log('gogogoogo');
-  console.log(nextProps);   
+  // let self = this;
+  // console.log('gogogoogo');
+  // console.log(nextProps.product.good); 
+  
+  // this.setState({
+  //   tagMenClick: tagMenuArr
+  // })
     if(nextProps){
+      console.log('ok')
+      let spec = nextProps.product.good.spec
+      let tagMenuArr = [];
+      for(var i=0;i<spec.length;i++){
+        if(spec[i].isThis == true){
+          tagMenuArr.push(true)
+        }else{
+          tagMenuArr.push(false)
+        }
+      }  
       this.setState({
-        product: nextProps.product.good
+        product: nextProps.product.good,
+        tagMenuClick: tagMenuArr
       })
+    }else{
+      console.log('no')
     }
  }
 
 render(){
-  console.log(111);
   let {product} = this.state
   console.log(this.state);
   let  spec = product.spec ? product.spec : []
@@ -108,10 +126,10 @@ render(){
         <Flex>销量: {product.sales} </Flex>
       </Flex>
       <Flex className = {style['item-type']}>
-        <ProductModal spec={spec}/>
+        <ProductModal spec={spec} tagMenuClick={this.state.tagMenuClick} history={this.props.history}/>
       </Flex>
       <ProductTabs/>
-      <ProductBottom history={this.props.history} product={product}/>
+      <ProductBottom history={this.props.history} product={product} />
     </div>
     )
   }
