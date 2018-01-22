@@ -15,11 +15,9 @@ import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
-<<<<<<< HEAD
 
-=======
 import { asteroid } from '../../config/asteroid.config'
->>>>>>> 700a76cc0a69e4c437c6c94dc627ccff73e59b8c
+
 class AppHome extends React.Component{
   constructor(props) {
     super(props);
