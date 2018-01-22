@@ -17,19 +17,26 @@
 .bottom-all {
   background-color: #333;
   color: #fff;
-  width: 180px;
+  width: 190px;
+  line-height: 3.4em;
 }
 .bottom-balance {
   background-color: #ffcf2d;
   color: #fff;
   width:260px;
-  line-height: 3.2em;
+  line-height: 3.4em;
 }
 .bottom-balance-red {
   background-color: #fc3e43;
   color: #fff;
+  border-radius: 0;
   width: 260px;
-  line-height: 3.2em;
+  /*display: flex;
+  flex-grow: 2;*/
+
+  /*width: 260px;*/
+  /*border: 2px solid #fc3e43;*/
+  /*line-height: 3.2em;*/
 }
 .global .am-list-content {
   width: 38px;

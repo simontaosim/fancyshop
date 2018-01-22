@@ -9,16 +9,37 @@ import { appInfo } from '../../map_props.js';
 import {setAppTitle} from '../../actions/app.js';
 import MyList from './MyList';
 import { Flex } from 'antd-mobile';
-import { List, Badge,Button,WhiteSpace,WingBlank,Card ,Checkbox} from 'antd-mobile';
+import { List, Badge,Button,WhiteSpace,WingBlank,Card ,Checkbox,Modal} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
+import{ loginOut } from '../../reducers/user.redux';
 
+const alert = Modal.alert;
 
 class AppMy extends React.Component{
   constructor(props) {
     super(props);
+    this.ConfirmWindow = this.ConfirmWindow.bind(this);
+  }
+
+  ConfirmWindow() {
+    alert('123','321',[
+      { text: '确定', onPress: () => {
+          // console.log(this.props)
+          // this.props.history.push('/tablogin')
+          this.props.loginOut()
+      }},
+      { text: '取消', onPress: () => console.log('取消了') },
+    ])
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    if(!nextProps.user.authenticated){
+        nextProps.history.push('/tablogin');
+    }
   }
 
 
@@ -49,7 +70,7 @@ class AppMy extends React.Component{
 
           <MyItem/>
           <WingBlank>
-            <Button className = {style['sign-out-btn']}>退出当前帐号</Button>
+            <Button className = {style['sign-out-btn']} onClick={this.ConfirmWindow}>退出当前帐号</Button>
           </WingBlank>
         </div>
 
@@ -57,6 +78,11 @@ class AppMy extends React.Component{
     )
   }
 }
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
 
-
-export default connect(appInfo)(AppMy);
+export default connect(mapStateToProps,{loginOut})(AppMy);
+// export default connect(appInfo)(AppMy);

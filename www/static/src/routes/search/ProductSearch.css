@@ -1,0 +1,12 @@
+.search-item {
+  padding: 10px;
+}
+.search-title {
+  font-size: 16px;
+}
+.search-text {
+   background-color: #eee;
+   padding: 6px 10px;
+   margin: 5px 10px;
+   border-radius: 10px;
+}

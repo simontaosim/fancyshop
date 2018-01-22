@@ -23,33 +23,48 @@ class Goods extends React.Component {
       data: ['1', '2', '3'],
       imgHeight: 176,
       slideIndex: 0,
+      tagMenuClick: []
     }
   }
 
-  componentDidMount() {
-    console.log(this.props)
-    let id = this.props.match.params.id
-    axios.get('/products')
-         .then(result=>{
-           console.log(result);
-           let product = result.data.goods.find(x=>{ return x.id == id});
-           
-           this.setState({
-             product: product
-           },()=>{console.log(this.state.product)})
-         })
-         .catch(error => {
-         })
-   // simulate img loading
-     this.setState({
-       data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-     });
-     
+
+componentDidMount() {
+    let id = this.props.match.params.id;
+    
+    this.props.getProduct(id)
+ }
+
+ componentWillReceiveProps(nextProps) {
+  // let self = this;
+  // console.log('gogogoogo');
+  // console.log(nextProps.product.good); 
+  
+  // this.setState({
+  //   tagMenClick: tagMenuArr
+  // })
+    if(nextProps){
+      console.log('ok')
+      let spec = nextProps.product.good.spec
+      let tagMenuArr = [];
+      for(var i=0;i<spec.length;i++){
+        if(spec[i].isThis == true){
+          tagMenuArr.push(true)
+        }else{
+          tagMenuArr.push(false)
+        }
+      }  
+      this.setState({
+        product: nextProps.product.good,
+        tagMenuClick: tagMenuArr
+      })
+    }else{
+      console.log('no')
+    }
  }
 
 render(){
   let {product} = this.state
-  console.log(product);
+  console.log(this.state);
   let  spec = product.spec ? product.spec : []
   let carousel = product.images ? product.images : []
   let pic = carousel.map((img,index)=>{
@@ -100,7 +115,7 @@ render(){
       </Flex>
         <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
       </div>
-      <Flex justify = "around" className = {style['item']}>
+      <Flex justify = "between" className = {style['item']}>
         <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
         <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'12px',width:'12px'}}/></Flex>
@@ -108,13 +123,13 @@ render(){
       <Flex justify = "between" className = {style['item-des']}>
         <Flex>配送方式:{product.deliver}</Flex>
         <Flex>库存:{product.inventory}</Flex>
-        <Flex>销量: {product.sales}</Flex>
+        <Flex>销量: {product.sales} </Flex>
       </Flex>
       <Flex className = {style['item-type']}>
-        <ProductModal/>
+        <ProductModal spec={spec} tagMenuClick={this.state.tagMenuClick} history={this.props.history}/>
       </Flex>
       <ProductTabs/>
-      <ProductBottom history={this.props.history}/>
+      <ProductBottom history={this.props.history} product={product} />
     </div>
     )
   }

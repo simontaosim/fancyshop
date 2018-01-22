@@ -75,7 +75,6 @@ class Login extends React.Component {
     })
   }
   render() {
-
     const authenticated = this.props.user.authenticated
     if(authenticated){
       return (

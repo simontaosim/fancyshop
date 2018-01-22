@@ -1,8 +1,9 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Flex, Tabs } from 'antd-mobile';
 import style from './facilitator.css';
-import goodImg from '../../assets/img/reward/good.jpg'
+import goodImg from '../../assets/img/reward/good.jpg';
+import userImg from '../../assets/img/timg.jpg';
 
 class Facilitator extends React.Component {
   constructor() {
@@ -17,18 +18,26 @@ class Facilitator extends React.Component {
     return (
       <div >
         <div className = { style['bg-img']}>
-          <Flex justify = "center" align = "center" className = {style['user']}><img src={goodImg} style = {{height:'50px',width:'50px',borderRadius:'25px',border:'1px solid #aaa'}}/></Flex>
+          <Flex justify = "center" align = "center" className = {style['user']}><img src={userImg}/></Flex>
           <Flex justify = "center" className = {style['distance']}>服务商名</Flex>
-          <Flex justify = "center" className = {style['distance2']}><img src = {require('../../assets/svg/location.svg')} style = {{width:'15px',height:'15px',color:'#fff'}}/>四川省成都市金牛区沙湾路63号<img/></Flex>
+          <Flex justify = "center" className = {style['distance2']}>
+            <img src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>四川省成都市金牛区沙湾路63号
+            <img src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
+          </Flex>
         </div>
         <Tabs tabs = {tabs} >
           <div>
-            <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'10px'}}>
-              <div><img src={goodImg} style = {{width:'45px',height:'45px'}}/></div>
-              <div style = {{marginLeft:'8px'}}>这是商品的名称占位符占位符<br/>
-              <span style = {{color:'red',marginLeft:'25px'}}>价格:183</span><span style = {{color:'purple',marginLeft:'25px'}}>销量:18</span>
+            <Link to ='/product/1'>
+            <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
+              <img src={goodImg} style = {{width:'45px',height:'45px'}}/>
+              <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>这是商品的名称占位符占位符占一排<br/>
+              <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
+                <span style = {{color:'red',marginLeft:'25px'}}>价格:183</span>
+                <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
+              </div>
             </div>
             </Flex>
+            </Link>
           </div>
           <div>
             这是服务商简介

@@ -70,19 +70,31 @@ class Shop extends React.Component {
                 >
                  <div>
                    <Flex style = {{margin:'10px'}}>
-                     <img src = {goodImg} style = {{width:'70px',height:'70px',border:'8px solid #680000'}}/>
+                     <img src = {goodImg} style = {{width:'60px',height:'60px',border:'8px solid #680000'}}/>
                      <div style = {{paddingLeft:'10px'}}>
                        <span style = {{color:'red',fontSize:'16px'}}>￥269.1</span>
                        <img src = {require('../svg/close_black.svg')} style = {{width:'25px',height:'25px',marginLeft:'8rem'}} onClick = {this.onClose('modal2')}/><br/>
                        <span style = {{color:'#aaa'}}>请选择类型</span>
                      </div>
                    </Flex>
-                     <div className = {style['color-destop']}>
+                   <Flex wrap = "wrap" justify = "start">
+                     <div className = {style['color-div']}>绿色</div>
+                     <div className = {style['color-div']}>绿色</div>
+                     <div className = {style['color-div']}>尼古拉斯色</div>
+                     <div className = {style['color-div']}>灰绿色</div>
+                     <div className = {style['color-div']}>蓝色</div>
+                     <div className = {style['color-div']}>粉白色</div>
+                     <div className = {style['color-div']}>白色</div>
+                     <div className = {style['color-div']}>紫色</div>
+                     <div className = {style['color-div']}>黑色</div>
+                   </Flex>
+                     {/* <div className = {style['color-destop']}>
                        <div className = {style['color-div']}>绿色</div>
                        <div className = {style['color-div']}>绿色</div>
                        <div className = {style['color-div']}>蓝色</div>
                        <div className = {style['color-div']}>蓝色</div>
                        <div className = {style['color-div']}>蓝色</div>
+
                    </div>
 
                    <div className = { style['color-desbtm'] }>
@@ -90,7 +102,7 @@ class Shop extends React.Component {
                      <div className = {style['color-div']}>白色</div>
                      <div className = {style['color-div']}>紫色</div>
                      <div className = {style['color-div']}>黑色</div>
-                  </div>
+                  </div> */}
                      <Flex className = {style['num-padding']}>
                        购买数量：
                        <Stepper

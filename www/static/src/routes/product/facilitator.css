@@ -1,6 +1,6 @@
 .bg-img {
   margin-top: 48px;
-  background-image: url(../../assets/img/timg.jpg);
+  background-image: url(../../assets/img/background3.jpg);
   background-size: cover;
   color: #fff;
   font-size: 16px;
@@ -9,9 +9,16 @@
 .user {
   padding-top: 30px;
 }
+.user img {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  border: 1px solid #eee;
+}
 .distance {
-  padding: 6px 0;
+  padding: 8px 0 0 0;
 }
 .distance2 {
-  padding: 6px 0 15px 0;
+  padding: 0 0 15px 0;
+  font-size: 14px;
 }

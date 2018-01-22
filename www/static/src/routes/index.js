@@ -31,10 +31,10 @@ import ProductModal from './product/ProductModal';
 import Facilitator from './product/facilitator';
 import FirmOrder from './product/FirmOrder';
 import PaySuccess from './product/PaySuccess';
-// import Pull from './checkbox/pull'
-// import PullTest from './checkbox/pullTest'
 import Address from './product/Address';
-
+import SearchBox from './search/ProductSearch';
+import SearchResult from './search/SearchResult';
+import Cart from './checkbox/cart'
 
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
@@ -103,13 +103,11 @@ class App extends React.Component {
               <Route path="/test" component={Test}  />
               <Route path = "/orders" component={MyOrders}/>
               <Route path = "/product/:id" component={Goods}/>
-              {/* <Route path = "/cart" component={ShopCart}/> */}
               <Route path = "/details" component={WaitDetails}/>
               <Route path = "/paid" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
-              {/* <Route path = "/shopedit" component={Change}/> */}
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/userdata" component={ UserData }/>
               <Route path = "/facilitator" component = { Facilitator }/>
@@ -119,9 +117,11 @@ class App extends React.Component {
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
               <Route path="/carttest" component={CartTest}  />
-              {/* <Route path="/pull" component={Pull}  />
-              <Route path="/pulltest" component={PullTest}  /> */}
               <Route path="/address" component={Address}  />
+              <Route path="/searchbar" component={SearchBox}  />
+              <Route path="/searchresult" component={SearchResult}/>
+              <Route path="/pull" component={Cart}/>
+
 
           </MainLayout>
       </Router>
