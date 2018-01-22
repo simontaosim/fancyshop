@@ -62,10 +62,12 @@ class FirmOrder extends React.Component {
             </div>
           </Flex>
         </div>
-        <Flex style = {{position:'fixed',bottom:'50px',width:'100%',marginTop:'20px'}}>
-          <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',width:'70%'}}>合计：<span style = {{color:'red'}}>￥250</span></Flex>
+        <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%'}}>
+          <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'1'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
           <Link to = "paid">
-            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 10px',width:'150%',borderRadius:'0'}}>提交订单</Button>
+          <div style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',padding:'0 20px'}}>
+            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 10px',borderRadius:'0'}}>提交订单</Button>
+          </div>
           </Link>
         </Flex>
 

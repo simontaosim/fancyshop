@@ -26,6 +26,7 @@ class Goods extends React.Component {
     }
   }
 
+
 componentDidMount() {
     let id = this.props.match.params.id;
     
@@ -96,7 +97,7 @@ render(){
       </Flex>
         <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
       </div>
-      <Flex justify = "around" className = {style['item']}>
+      <Flex justify = "between" className = {style['item']}>
         <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
         <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'12px',width:'12px'}}/></Flex>
