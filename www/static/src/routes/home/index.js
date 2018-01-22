@@ -16,7 +16,6 @@ import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
-import {getAddress} from '../../service/amap/api/getCurrentLocationByIP';
 
 class AppHome extends React.Component{
   constructor(props) {
@@ -28,7 +27,6 @@ class AppHome extends React.Component{
     }
   }
   componentDidMount(){
-    getAddress();
     const { dispatch } = this.props;
     dispatch(setAppTitle(this.props.path));
     setTimeout(() => {

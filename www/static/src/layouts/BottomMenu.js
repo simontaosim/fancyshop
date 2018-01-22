@@ -9,7 +9,6 @@ import { Icon, TabBar } from 'antd-mobile';
 import { connect } from 'react-redux';
 
 import { appInfo } from '../map_props.js';
-
 class BottomMenu extends React.Component{
   constructor(props){
     super(props);
@@ -20,6 +19,7 @@ class BottomMenu extends React.Component{
       fullScreen: false,
 
     };
+
 
   }
   componentDidMount(){

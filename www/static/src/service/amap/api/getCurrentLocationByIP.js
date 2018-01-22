@@ -1,6 +1,7 @@
 // import React from 'react';
 import axios from 'axios';
 import {setStore} from '../../../config/mUtils'
+import {setAppCity} from '../../../actions/app.js'
 
 function  initMap(){
     let amap = new window.AMap.Map('', {
@@ -9,7 +10,11 @@ function  initMap(){
     return amap;
 }
 
-export function getAddress() {
+export function getAddress(props=null) {
+    if (props) {
+      props.dispatch(setAppCity("定位中"));
+    }
+
     let amap = initMap();
     let geolocation;
     amap.plugin('AMap.Geolocation', () => {
@@ -21,32 +26,38 @@ export function getAddress() {
             buttonPosition:'RB'
         });
         geolocation.getCurrentPosition();
-        window.AMap.event.addListener(geolocation, 'complete', onComplete)
-        window.AMap.event.addListener(geolocation, 'error', onError);
+        window.AMap.event.addListener(geolocation, 'complete', (data)=> onComplete(props, data))
+        window.AMap.event.addListener(geolocation, 'error', (data) => onError(props, data));
 
     })
 
 }
 
-function onComplete(data) {
-    alert(JSON.stringify(data));
-    getDetailAddress(data.position.getLng(),data.position.getLat())
+function onComplete(props=null, data) {
+
+    getDetailAddress(props, data.position.getLng(),data.position.getLat())
 
 }
 
-function onError(data){
+function onError(props=null, data){
+  if (props) {
+    props.dispatch(setAppCity("定位失败"));
+    props.dispatch(setAppCity("北京市"));
+  }
 
-    alert(JSON.stringify(data));
-    console.log(data);
+  console.error(data);
 }
 
 
-function getDetailAddress(lng,lat) {
+function getDetailAddress(props, lng,lat) {
     var address;
     let url = `http://restapi.amap.com/v3/geocode/regeo?output=json&location=${lng},${lat}&key=75827486bc30d2cdaa8ed3410b61606e&radius=1&extensions=all`
     axios.get(url).then(function(data){
 
             address =  data.data.regeocode
-            setStore('address',address)
+            setStore('address',address);
+            if (props) {
+              props.dispatch(setAppCity(address.addressComponent.city));
+            }
     })
 }
