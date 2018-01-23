@@ -27,7 +27,7 @@ class ProductBottom extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   blockModal = key => (e) => {
@@ -76,12 +76,15 @@ class ProductBottom extends React.Component {
           <div className = {s['box1']} onClick={this.facilitator}>
             <img src={require('../svg/shop.svg')} /><span>店铺</span>
           </div>
-          <div className = {s['box2']} onClick={this.blockModal('modal2')}>
-            <Button align = "stretch" style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'0',border:'none'}} >加入购物车</Button>
-          </div>
-          {/* <Link to = "/firmorder"> */}
+
+          {/* <div className = {s['box2']} onClick={this.blockModal('modal2')}> */}
+              <button style = {{flexGrow:'1',backgroundColor:'#00b7ee',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em' }} onClick={this.blockModal('modal2')}>加入购物车</button>
+            {/* <Button align = "stretch" style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'0',border:'none',padding:'0 10px'}} >加入购物车</Button> */}
+          {/* </div> */}
+          <Link to = "/firmorder">
+
           <div className = {s['box3']}>
-            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',border:'none',outline:'none'}}>立即购买</Button>
+            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',border:'none',outline:'none',padding:'0 20px'}}>立即购买</Button>
           </div>
           {/* </Link> */}
 

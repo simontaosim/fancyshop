@@ -7,12 +7,20 @@ const CheckboxItem = Checkbox.CheckboxItem;
 
 class BtnRed extends React.Component {
   constructor() {
-    super()
+    super();
+    this.delete = this.delete.bind(this)
+
   }
+
+  delete() {
+    console.log(this.props.history);
+    this.props.history.push('/nullcart')
+  }
+
 
   render(){
     return (
-      <div>
+      <div style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%'}}>
 {/*
       <div className = {style['bottom-pos']}>
       <Flex >
@@ -31,13 +39,16 @@ class BtnRed extends React.Component {
             <span style= {{color:'#fff',lineHeight:'1.95em'}}>全选</span>
           </CheckboxItem>
         </div>
-
-        <div style = {{flexGrow:'1',backgroundColor:'red'}}>
+    {/*
+        <div style = {{flexGrow:'1',backgroundColor:'red',justifyContent:'center'}}>
           <Link to="/nullcart">
-          <Button style = {{backgroundColor:'red',color:'#fff'}}>删除</Button>
+          <Button style = {{backgroundColor:'red',color:'#fff',borderRadius:'0',border:'none'}}>删除</Button>
         </Link>
 
         </div>
+    */}
+
+        <button style = {{flexGrow:'1',backgroundColor:'red',justifyContent:'center',backgroundColor:'red',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.7em',color:'#fff'}}><Link to="/nullcart" style = {{color:'#fff'}}>删除</Link></button>
       </Flex>
 
     </div>

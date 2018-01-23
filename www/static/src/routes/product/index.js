@@ -30,18 +30,11 @@ class Goods extends React.Component {
 
 componentDidMount() {
     let id = this.props.match.params.id;
-    
+
     this.props.getProduct(id)
  }
 
  componentWillReceiveProps(nextProps) {
-  // let self = this;
-  // console.log('gogogoogo');
-  // console.log(nextProps.product.good); 
-  
-  // this.setState({
-  //   tagMenClick: tagMenuArr
-  // })
     if(nextProps){
       let spec = nextProps.product.good.spec
       let tagMenuArr = [];
@@ -111,10 +104,16 @@ render(){
         </Flex.Item>
         <span align = "right" style = {{color:'#888'}}>四川 成都</span>
       </Flex>
+      {/* <Flex>
+          <span className = {style['price-font']}>￥{product.price}</span>
+          <span style = {{backgroundColor:'#aaa',color:'#fff',borderRadius:'8px',padding:'3px 5px',fontSize:'10px'}}>{product.name}</span>
+          <span style = {{display:'flex',color:'#888',position:'absolute',top:'',right:'20px'}}>四川 成都</span>
+      </Flex> */}
         <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
       </div>
       <Flex justify = "between" className = {style['item']}>
-        <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex>
+        {/* <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex> */}
+        <Flex > <ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
         <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'12px',width:'12px'}}/></Flex>
       </Flex>

@@ -39,3 +39,9 @@
   width: 20px;
   background-color: #aaa;
 }
+.over-font {
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis;
+   overflow:hidden;
+}

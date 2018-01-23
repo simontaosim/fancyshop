@@ -71,7 +71,7 @@ class ProductModal extends React.Component {
      this.setState({ val },()=>{
        this.props.addCount(this.state.val)
      });
-    
+
    }
 
    handleSelectedSpec(i){
@@ -115,7 +115,9 @@ class ProductModal extends React.Component {
        )
        {this.props.spec[i].isThis===true ? price.push(`${this.props.spec[i].price}`) : null }
      }
+
      
+
      return(
        <div>
        <Flex.Item onClick={this.showModal('modal2')} style = {{color:'black',justify:'center'}}><span style = {{color:'#888'}}>选择类型</span></Flex.Item>
@@ -133,7 +135,8 @@ class ProductModal extends React.Component {
                 <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥{price}</span><br/>
                 <span style = {{color:'#666',fontSize:'14px'}}>请选择类型</span>
               </div>
-              <img src = {require('../svg/close_black.svg')} style = {{display:'flex',width:'25px',height:'25px',paddingLeft:'35%',paddingBottom:'44px',alignSelf:'flex-end'}} onClick = {this.Close('modal2')}/><br/>
+              {/* <img src = {require('../svg/close_black.svg')} style = {{display:'flex',width:'25px',height:'25px',paddingLeft:'35%',paddingBottom:'44px',alignSelf:'flex-end'}} onClick = {this.Close('modal2')}/><br/> */}
+              <img src = {require('../svg/close_black.svg')} style = {{position:'absolute',right:'15px',top:'10px',width:'25px',height:'25px',paddingBottom:'44px'}} onClick = {this.Close('modal2')}/><br/>
           </Flex>
 
 
@@ -143,6 +146,7 @@ class ProductModal extends React.Component {
             <WhiteSpace/>
             <Flex wrap = "wrap" justify = "start">
               {spec}
+
             </Flex>
             <Flex className = {style['num-padding']}>
               购买数量：
