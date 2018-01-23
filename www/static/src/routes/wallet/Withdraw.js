@@ -10,8 +10,22 @@ class Withdraw extends React.Component {
 
   render(){
     return(
-    <div>
-      <div justify = "center" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff'}}>
+    <div style = {{backgroundColor:'#fff'}}>
+      <div justify = "center" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff',padding:' 0 0 15px 0'}}>
+      <Flex justify = "between" style = {{backgroundColor:'#ffcf2d',color:'#fff',lineHeight:'4em',fontSize:'16px'}}>
+        <Flex.Item justify = "start">
+          可提现余额
+        </Flex.Item>
+        <Flex.Item justify = "end">
+          ￥100
+        </Flex.Item>
+      </Flex>
+      {/* <div style = {{display:'flex',alignItems:'center',backgroundColor:'#ffcf2d',color:'#fff',lineHeight:'4em',fontSize:'16px'}}>
+        <span> 可提现余额 </span>
+
+        <span style = {{alignSelf:'end'}}> ￥100 </span>
+      </div> */}
+      <div style = {{backgroundColor:'#fff',padding:' 0 10px 0 10px'}}>
       <Flex>
         提现：<InputItem placeholder = "请输入提现余额"></InputItem><br/>
       </Flex>
@@ -22,12 +36,16 @@ class Withdraw extends React.Component {
         注：余额提现后7个工作日内到账，提现手续费微0.05%，最小提现额为100元
       </Flex>
       <Flex justify = "center">
-        <Button size = "small" style = {{color:'#fff',backgroundColor:'red'}}>提现</Button>
+        <Button size = "small" style = {{color:'#fff',backgroundColor:'red',padding:'0 20px'}}>提现</Button>
       </Flex>
+      </div>
       </div>
       <Flex justify = "center" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff'}}>
         <table cellpadding="15px" cellspacing="">
-          <caption>提现记录</caption>
+          {/* <caption align = "left">提现记录</caption> */}
+          <tr align = "left">
+            <th>提现记录</th>
+          </tr>
           <tr align = "center">
             <th>提现现金</th>
             <th>到账金额</th>
@@ -38,7 +56,7 @@ class Withdraw extends React.Component {
             <td>100.00</td>
             <td>99.95</td>
             <td>170802</td>
-            <Link to = "/nullcart">
+            <Link to = "/withdrawsuccess">
             <td align = "left"><span>成功&nbsp;<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span></td>
             </Link>
             {/* <img src = {require('../svg/arrow-right.svg')} style = {{width:'10px',height:'10px'}}/> */}
@@ -47,7 +65,7 @@ class Withdraw extends React.Component {
             <td>100.00</td>
             <td>99.95</td>
             <td>170802</td>
-            <Link to = "/nullcart">
+            <Link to = "/withdrawwait">
             <td align = "left"><span>等待&nbsp;<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span></td>
             </Link>
           </tr>

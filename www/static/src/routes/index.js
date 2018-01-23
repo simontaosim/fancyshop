@@ -36,6 +36,9 @@ import SearchBox from './search/ProductSearch';
 import SearchResult from './search/SearchResult';
 import Cart from './checkbox/cart';
 import Wallet from './wallet/index';
+import Withdraw from './wallet/Withdraw';
+import WithdrawSuccess from './wallet/WithdrawSuccess';
+import WithdrawWait from './wallet/WithdrawWait';
 
 
 import ForgotPassword from './password/'
@@ -124,6 +127,10 @@ class App extends React.Component {
               <Route path="/searchresult" component={SearchResult}/>
               <Route path="/pull" component={Cart}/>
               <Route path="/wallet" component={Wallet}/>
+              <Route path="/withdraw" component={Withdraw}/>
+              <Route path="/withdrawsuccess" component={WithdrawSuccess}/>
+              <Route path="/withdrawwait" component={WithdrawWait}/>
+
           </MainLayout>
       </Router>
     )

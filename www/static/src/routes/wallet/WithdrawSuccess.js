@@ -8,7 +8,7 @@ class WithdrawSuccess extends React.Component {
 
   render(){
     return(
-      <Flex style = {{border:'1px dashed black',margin:'10px',borderRadius:'5px'}}>
+      <Flex style = {{border:'1px dashed black',margin:'10px',borderRadius:'5px',backgroundColor:'#fff',marginTop:'50px'}}>
         <div style = {{padding:'10px',fontSize:'16px'}}>
           用户名：zuoting<br/>
           开户名：小小<br/>

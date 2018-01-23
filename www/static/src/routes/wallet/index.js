@@ -14,12 +14,12 @@ class Wallet extends React.Component {
     return(
       <div>
         <MyWallet/>
-        <h1>test0000</h1>
+        {/* <h1>test0000</h1>
         <Withdraw/>
         <h1>test0000</h1>
         <WithdrawSuccess/>
         <h1>test0000</h1>
-        <WithdrawWait/>
+        <WithdrawWait/> */}
       </div>
     )
   }

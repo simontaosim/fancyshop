@@ -8,7 +8,7 @@ class WithdrawWait extends React.Component {
 
   render(){
     return(
-      <Flex>
+      <Flex style = {{backgroundColor:'#fff',marginTop:'50px'}}>
         <Flex style = {{border:'1px dashed black',margin:'10px',borderRadius:'5px'}}>
           <div style = {{padding:'10px',fontSize:'16px'}}>
             用户名：zuoting<br/>

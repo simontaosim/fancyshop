@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Button, Tabs, WhiteSpace } from 'antd-mobile';
+import { Link } from 'react-router-dom';
 
 class MyWallet extends React.Component {
   constructor() {
@@ -14,20 +15,21 @@ class MyWallet extends React.Component {
     return(
     <div style = {{marginTop:'48px',backgroundColor:'#fff',paddingTop:'15px'}}>
       <Flex justify = "center" style = {{margin:'15px'}}>
-        <Flex.Item align = "center" direction = "column" style = {{display:'flex',border:'1px solid #ffcf2d',}}>
-          {/* <div style = {{backgroundColor:'#ffcf2d',color:'#fff',fontSize:'16px',lineHeight:'1.6em',padding:''}}>我的收入</div> */}
-          {/* <div>80.00</div> */}
-          {/* <h1>test</h1> */}
+        <Flex.Item align = "center" direction = "column" style = {{border:'1px solid #ffcf2d'}}>
+          <div style = {{backgroundColor:'#ffcf2d',color:'#fff',fontSize:'16px',lineHeight:'2.5em',padding:''}}>我的收入</div>
+          <span style = {{lineHeight:'4em',fontSize:'20px'}}>80.00</span>
         </Flex.Item>
-        <Flex.Item align = "center" direction = "column" style = {{display:'flex',border:'1px solid #ffcf2d',direction:'column'}}>
+        <Flex.Item align = "center" direction = "column" style = {{border:'1px solid #ffcf2d'}}>
           {/* <span style = {{backgroundColor:'#ffcf2d',color:'#fff',fontSize:'16px',lineHeight:'1.6em',padding:''}}>可以提现余额</span> */}
-          <div>我的收入</div>
-          <div>我的指出</div>
+          <div style = {{backgroundColor:'#ffcf2d',color:'#fff',fontSize:'16px',lineHeight:'2.5em',padding:''}}>可以提现余额</div>
+            <span style = {{lineHeight:'4em',fontSize:'20px'}}>0.00</span>
         </Flex.Item>
       </Flex>
       <Flex justify = "around" style = {{borderTop:'1px solid #aaa',margin:'15px',padding:'15px 0'}}>
         <Flex.Item>
-          <Button size = "small" style = {{backgroundColor:'red',color:'#fff'}}>提现</Button>
+          <Link to = "/withdraw">
+            <Button size = "small" style = {{backgroundColor:'red',color:'#fff'}}>提现</Button>
+          </Link>
         </Flex.Item>
         <Flex.Item>
           <Button size = "small" style = {{backgroundColor:'#ffcf2d',color:'#fff'}}>我的银行卡</Button>
