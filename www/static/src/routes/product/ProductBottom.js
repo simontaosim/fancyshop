@@ -86,7 +86,7 @@ class ProductBottom extends React.Component {
           <div className = {s['box3']}>
             <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',border:'none',outline:'none',padding:'0 20px'}}>立即购买</Button>
           </div>
-          {/* </Link> */}
+          </Link>
 
           {/* <div className = {s['box1']}>123232</div>
           <div className = {s['box2']}><button>hello</button></div>
