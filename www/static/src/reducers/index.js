@@ -1,4 +1,4 @@
-import {SET_APP_TIILE, SET_APP_CITY, SET_HOME_TAGS } from '../actions/app.js'
+import {SET_APP_TIILE, SET_APP_CITY, SET_HOME_TAGS, SET_APP_TITLE_NAME } from '../actions/app.js'
 
 export function AppInfo(state={
   title: "万人车汇",
@@ -50,6 +50,12 @@ export function AppInfo(state={
       console.log(action);
       return Object.assign({}, state, {
         homeTags: action.tags,
+      });
+
+    case SET_APP_TITLE_NAME:
+      document.title=action.title
+      return  Object.assign({}, state, {
+        title: action.title,
       });
 
     default:

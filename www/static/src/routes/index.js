@@ -2,6 +2,7 @@ import React from 'react'
 import {
   HashRouter as Router,
   Route,
+  Switch,
   Link,
   BrowserRouter
 } from 'react-router-dom';
@@ -38,6 +39,8 @@ import Cart from './checkbox/cart'
 
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
+import NoMatchPage from './no_match/'
+import Shops from './shops/'
 
 
 
@@ -47,6 +50,9 @@ const history = createHistory();
 
 const Home = ({ match }) => (
     <AppHome path={match.path} />
+  )
+const ShopsPage = ({ match }) => (
+    <Shops path={match.path}  params={match.params}  />
   )
 
 const Messages = ({match}) => (
@@ -94,6 +100,7 @@ class App extends React.Component {
     return (
       <Router >
           <MainLayout history={history}>
+          <Switch>
               <Route exact path="/" component={Home} authenticated={authenticated}/>
               <Route path="/messages" component={Messages} authenticated={authenticated}/>
               <Route path = "/shop_cart" component={ShopCart} />
@@ -120,8 +127,10 @@ class App extends React.Component {
               <Route path="/address" component={Address}  />
               <Route path="/searchbar" component={SearchBox}  />
               <Route path="/searchresult" component={SearchResult}/>
+              <Route path="/shops/:tagId" component={ShopsPage}/>
               <Route path="/pull" component={Cart}/>
-
+              <Route component={NoMatchPage}/>
+            </Switch>
 
           </MainLayout>
       </Router>

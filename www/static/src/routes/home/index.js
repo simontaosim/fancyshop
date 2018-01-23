@@ -80,7 +80,7 @@ class AppHome extends React.Component{
           <WhiteSpace/>
           <Recommend/>
           <WhiteSpace/>
-            <ShopTagMenu/>
+            <ShopTagMenu history={this.props.path} />
           <WhiteSpace/>
           <GoodsList/>
 
