@@ -67,7 +67,6 @@ export function productList() {
   return dispatch => {
     axios.get('/products')
          .then(result => {
-           console.log(result.data.goods)
             dispatch(initProductList(result.data))
          })
          .catch(error => {
@@ -78,14 +77,10 @@ export function productList() {
 
 //获取商品详情
 export function getProduct(id) {
-  console.log('getProduct')
-  console.log(id)
   return dispatch => {
     axios.get('/products')
          .then(result=> {
-           console.log('')
           let product = result.data.goods.find(x=>{ return x.id == id});
-          console.log(product)
             dispatch(initProductGet({'good':product}))
          })
          .catch(error => {

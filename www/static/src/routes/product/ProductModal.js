@@ -104,8 +104,6 @@ class ProductModal extends React.Component {
 
 
    render(){
-     console.log(this.state)
-     console.log(this.props)
      let modelStatus = this.props.model.spec_model
      var spec=[];
      let price = [];

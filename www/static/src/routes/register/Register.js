@@ -85,7 +85,7 @@ onChildChange(tips,status){
       return
     }
     getAddress()
-    // this.props.register(user,pwd,mobile,verify)
+    this.props.register(user,pwd,mobile,verify)
   }
 
   handlePhone=(event)=>{

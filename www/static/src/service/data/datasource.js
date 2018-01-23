@@ -122,6 +122,17 @@ Mock.mock('/myWallet',{
         time: Random.time('H')+'分钟前'
     }]
 })
+
+
+//店铺列表
+Mock.mock('./shops',{
+    'shops|5': [{
+        'id+1': 1,
+        'name': '@name',
+        'phone': 13751124249,
+        'description': '店铺挺好的',
+    }]
+})
 //商品列表
 
 Mock.mock('/goods',{'goods|5':[{

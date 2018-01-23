@@ -110,7 +110,7 @@ class App extends React.Component {
               <Route path = "/qrcode" component={QrCode}/>
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/userdata" component={ UserData }/>
-              <Route path = "/facilitator" component = { Facilitator }/>
+              <Route path = "/facilitator/:id" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder" component = {FirmOrder}/>
               <Route path = "/paysuccess" component = {PaySuccess}/>

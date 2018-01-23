@@ -43,7 +43,6 @@ componentDidMount() {
   //   tagMenClick: tagMenuArr
   // })
     if(nextProps){
-      console.log('ok')
       let spec = nextProps.product.good.spec
       let tagMenuArr = [];
       for(var i=0;i<spec.length;i++){
@@ -64,7 +63,6 @@ componentDidMount() {
 
 render(){
   let {product} = this.state
-  console.log(this.state);
   let  spec = product.spec ? product.spec : []
   let carousel = product.images ? product.images : []
   let pic = carousel.map((img,index)=>{

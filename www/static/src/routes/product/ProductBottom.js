@@ -9,7 +9,6 @@ import { asteroid } from '../../config/asteroid.config';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { modelInfo } from '../../map_props';
-import { addCart } from '../../reducers/cart.redux';
 
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -49,7 +48,8 @@ class ProductBottom extends React.Component {
   }
 
   facilitator () {
-    this.props.history.push('/facilitator')
+    console.log(this.props)
+    this.props.history.push(`/facilitator/${this.props.product.good.shop_id}`)
   }
 
   render(){
@@ -79,11 +79,11 @@ class ProductBottom extends React.Component {
           <div className = {s['box2']} onClick={this.blockModal('modal2')}>
             <Button align = "stretch" style = {{backgroundColor:'#00b7ee',color:'#fff',borderRadius:'0',border:'none'}} >加入购物车</Button>
           </div>
-          <Link to = "/firmorder">
+          {/* <Link to = "/firmorder"> */}
           <div className = {s['box3']}>
             <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',border:'none',outline:'none'}}>立即购买</Button>
           </div>
-          </Link>
+          {/* </Link> */}
 
           {/* <div className = {s['box1']}>123232</div>
           <div className = {s['box2']}><button>hello</button></div>
