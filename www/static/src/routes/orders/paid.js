@@ -58,29 +58,6 @@ class Paid extends React.Component {
           如何获取支付码
         </Flex>
         </div>
-        {/* <Flex style = {{backgroundColor:'#eee',padding:'15px 0',margin:'15px 0'}}>
-          <input type = "checkbox"></input>
-          <img/>
-          <span>支付宝支付</span>
-        </Flex> */}
-
-        {/* <div style = {{backgroundColor:'#eee',padding:'15px 0'}}>
-          <Flex style = {{marginBottom:'15px'}}>
-            <input type = "checkbox" />
-            <img/>
-            <span>支付码支付</span>
-          </Flex>
-          <Flex justify = "center" style = {{borderBottom:'1px solid #aaa',width:'300px'}}>
-          </Flex>
-          <Flex justify = "center" style = {{padding:'15px 0'}}>
-            <input type = "text"/>
-          </Flex>
-          <Flex justify = "center" style = {{borderBottom:'1px solid #aaa',width:'300px'}}>
-          </Flex>
-          <Flex justify = "center" style = {{color:'#ea5e5e',marginTop:'15px'}}>
-            如何获取支付码
-          </Flex>
-        </div> */}
         <Flex justify = "center" style = {{marginTop:'20px'}}>
           <Link to="./paysuccess">
             <button style = {{backgroundColor:'#ea4b4b',color:'#fff',borderRadius:'5px',border:'1px solid #ea4b4b',width:'200px',padding:'8px 0'}}>立即支付</button>

@@ -15,10 +15,12 @@ class FirmOrder extends React.Component {
       <div style = {{marginTop:'60px'}}>
         <div className = {styles['item-info']}>
           <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
+          <div>
           <Link to = "/address">
             <div style = {{color:'#333'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>成都市金牛区沙湾路63号</span></div>
             <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>123456789</span></div>
           </Link>
+          </div>
         </div>
 
         <div className = {styles['item-user']}>

@@ -14,8 +14,10 @@ class MyItem extends React.Component {
       <div className = {s['card-item-border']}>
         <Flex justify = "center" >
           <Flex.Item align = "center">
+            <Link to = "/wallet">
             <img src={require('../svg/bwallat.svg')}  className = {s['card-svg']}/>
             <p>我的钱包</p>
+            </Link>
           </Flex.Item>
           <Flex.Item align = "center">
             <img src={require('../svg/card.svg')}  className = {s['card-svg']}/>
