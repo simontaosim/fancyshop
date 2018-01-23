@@ -9,7 +9,6 @@ import { Icon, TabBar } from 'antd-mobile';
 import { connect } from 'react-redux';
 
 import { appInfo } from '../map_props.js';
-
 class BottomMenu extends React.Component{
   constructor(props){
     super(props);
@@ -20,6 +19,7 @@ class BottomMenu extends React.Component{
       fullScreen: false,
 
     };
+
 
   }
   componentDidMount(){
@@ -78,7 +78,7 @@ class BottomMenu extends React.Component{
             />
             }
             selected={this.state.selectedTab === 'blueTab'}
-            badge={1}
+            badge={''}
             onPress={() => {
               history.push("/");
               this.setState({
@@ -104,9 +104,9 @@ class BottomMenu extends React.Component{
                 background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
               />
             }
-            title="消息"
+            title="财务"
             key="Koubei"
-            badge={'new'}
+            badge={''}
             selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
               history.push("/messages");
@@ -150,7 +150,7 @@ class BottomMenu extends React.Component{
             selectedIcon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom4.png' }}
             title="我的"
             key="my"
-            badge = {'爆'}
+            badge = {''}
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
               history.push("/my");

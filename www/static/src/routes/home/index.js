@@ -15,10 +15,13 @@ import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
+
 import { asteroid } from '../../config/asteroid.config'
+
 class AppHome extends React.Component{
   constructor(props) {
     super(props);
+
     this.state = {
       data: ['','',''],
       good: [],
@@ -77,7 +80,7 @@ class AppHome extends React.Component{
           <WhiteSpace/>
           <Recommend/>
           <WhiteSpace/>
-            <ShopTagMenu/>
+            <ShopTagMenu history={this.props.path} />
           <WhiteSpace/>
           <GoodsList/>
 
