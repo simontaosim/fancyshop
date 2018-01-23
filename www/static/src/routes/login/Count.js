@@ -5,7 +5,6 @@ class Count extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            // disabled: props.disabled
             status: props.status,
             countdown:'发送验证码',
             nums: props.nums,

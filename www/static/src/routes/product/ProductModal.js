@@ -6,7 +6,9 @@ import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { changeProduct, addCount } from '../../reducers/product.redux';
+import { addCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
+
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
 let wrapProps;
 if (isIPhone) {
@@ -16,76 +18,70 @@ if (isIPhone) {
 }
 
 class ProductModal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       // modal2: false,
       val: 1,
       data: ['1', '2', '3'],
       imgHeight: 176,
       slideIndex: 0,
-      tagMenuClick: [false,false,false,false]
+      tagMenuClick: [false,false,false,false],
     }
   }
 
 
-    componentDidMount() {
-      // console.log(this.props);
-      // let { dispatch } = this.props;
-      // dispatch(openSpecModel());
-      // this.props.openSpecModel;
-     // simulate img loading
-     setTimeout(() => {
-       this.setState({
-         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+  componentDidMount() {
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      tagMenuClick: nextProps.tagMenuClick
        });
-     }, 100);
-   }
+    //  if(nextProps.cart){
+    //    this.props.history.push('/shop_cart')
+    //  }
+  }
 
     showModal = key => (e) => {
      e.preventDefault(); // 修复 Android 上点击穿透
-     this.props.dispatch(openSpecModel())
-    //  this.setState({
-    //    [key]: true,
-    //  });
+     this.props.openSpecModel()
    }
    onClose = key => (e) => {
-    e.preventDefault();
-    let { dispatch } = this.props
+    e.preventDefault(); 
      if(this.props.model.spec_status){
-       console.log(this.props.product)
+       let productinfo = this.props.product
+       let selected = productinfo.selected !== undefined ? productinfo.selected : productinfo.good.spec[0]
+       let count = productinfo.count !== undefined ? productinfo.count : 1
+       let product = Object.assign({},productinfo.good,{selected},{count})
+       this.props.addCart(product);
+       this.props.history.push('/shop_cart')
      }else{
-       this.props.dispatch(closeSpecModel())
+      this.props.closeSpecModel()
      }
-    //  this.setState({
-    //    [key]: false,
-    //  });
    }
 
    Close = key => (e) => {
     e.preventDefault();
-    this.props.dispatch(closeSpecModel())
+    this.props.closeSpecModel()
    }
 
    onChange = (val) => {
-     // console.log(val);
-     let { dispatch } = this.props;
-     console.log(dispatch);
      this.setState({ val },()=>{
-       dispatch(addCount(this.state.val))
+       this.props.addCount(this.state.val)
      });
 
    }
 
    handleSelectedSpec(i){
-    let { dispatch } = this.props
     let tagMenuClick = this.state.tagMenuClick;
        this.clearClickedStyle();
        tagMenuClick[i] = !tagMenuClick[i];
     this.setState({
       tagMenuClick,
     })
-    dispatch(changeProduct(i))
+    this.props.changeProduct(i)
    }
 
 
@@ -109,33 +105,19 @@ class ProductModal extends React.Component {
 
    render(){
      let modelStatus = this.props.model.spec_model
-    //  console.log(`hihihihi`)
-     console.log(this.props);
      var spec=[];
      let price = [];
      for(var i=0; i<this.props.spec.length;i++){
       spec.push(
-        <div className = {style['color-div']} style={{background: this.state.tagMenuClick[i] ? "#e85839" : "#e5e5e5"}} key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
+      <div className = {style['color-div']} style={{background: this.state.tagMenuClick[i] ? "#e85839" : "#e5e5e5"}} key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
           {this.props.spec[i].name}
       </div>
        )
        {this.props.spec[i].isThis===true ? price.push(`${this.props.spec[i].price}`) : null }
-      //  price.push(
-      //    <span>
-      //     { this.props.spec[i].isThis==true? <span>{this.props.spec[i].price}</span> : null}
-      //    </span>
-      //  )
      }
-     console.log(price);
-     console.log(spec);
 
-    //  let spec = this.props.spec.map((i,index)=> {
-    //    return (
-    //     <div className = {style['color-div']}  key={index} onClick={console.log(9999)}>
-    //         {i.name}
-    //     </div>
-    //    )
-    //  },this)
+     
+
      return(
        <div>
        <Flex.Item onClick={this.showModal('modal2')} style = {{color:'black',justify:'center'}}><span style = {{color:'#888'}}>选择类型</span></Flex.Item>
@@ -151,7 +133,6 @@ class ProductModal extends React.Component {
               <img src = {goodImg} style = {{width:'60px',height:'60px',border:'6px solid #680000'}}/>
               <div style = {{paddingLeft:'10px'}}>
                 <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥{price}</span><br/>
-                {/* <span align = "right" onClick = {this.onClose('modal2')} style = {{border:'1px solid #111',borderRadius:'10px',height:'16px',width:'16px',padding:'0px 4px',justifyContent:'flex-end',marginLeft:'148px'}}>×</span><br/> */}
                 <span style = {{color:'#666',fontSize:'14px'}}>请选择类型</span>
               </div>
               {/* <img src = {require('../svg/close_black.svg')} style = {{display:'flex',width:'25px',height:'25px',paddingLeft:'35%',paddingBottom:'44px',alignSelf:'flex-end'}} onClick = {this.Close('modal2')}/><br/> */}
@@ -164,13 +145,6 @@ class ProductModal extends React.Component {
             </Flex>
             <WhiteSpace/>
             <Flex wrap = "wrap" justify = "start">
-              {/*
-              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[0] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(0)}}>绿色</div>
-              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[1] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(1)}}>绿色</div>
-              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[2] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(2)}}>尼古拉斯色</div>
-              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[3] ? "#ffcf2d" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(3)}}>灰绿色</div>
-              <div className = {style['color-div']} style={{background: this.state.tagMenuClick[4] ? "#ffcf2d" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(4)}}>蓝色</div>
-              */}
               {spec}
 
             </Flex>
@@ -197,4 +171,4 @@ class ProductModal extends React.Component {
    }
  }
 
-   export default connect(modelInfo)(ProductModal);
+   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel})(ProductModal);

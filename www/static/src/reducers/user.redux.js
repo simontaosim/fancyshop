@@ -132,6 +132,7 @@ export function register(username,password,mobile,verify) {
             .then(result => {
                 let userId = result.id
                 let address = JSON.parse(getStore('address'));
+                console.log(address);
                 asteroid.call('users.update',userId,mobile,address)
                 .then(result => {
                   Toast.success('注册成功',1)
