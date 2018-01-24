@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {appInfo} from '../map_props.js';
 import { setAppCity } from '../actions/app.js';
+import {getAddress} from '../service/amap/api/getCurrentLocationByIP';
 
 class AppNavBar extends React.Component{
   constructor(props){
@@ -16,18 +17,21 @@ class AppNavBar extends React.Component{
       modal1: false,
       modal2: false,
     }
+    getAddress(this.props);
 
   }
 
   componentDidMount(){
+
+
     const {history} = this.props;
+
 
 
   }
 
   renderLeft(){
     const {history} = this.props;
-
     const pathname = history.location.pathname;
     if (pathname === '/') {
     return <Button onClick={this.showModal('modal2')} >{this.props.AppInfo.location.city}</Button>
