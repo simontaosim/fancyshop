@@ -34,7 +34,6 @@ class ShopCart extends React.Component{
         </Flex>
         <div className = {style['item-frame']}>
           <Shop/>
-          <Shop/>
         </div>
         <div history={this.props.history}>
           {btn}

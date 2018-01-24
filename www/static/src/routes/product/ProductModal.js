@@ -6,7 +6,7 @@ import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { changeProduct, addCount } from '../../reducers/product.redux';
-import { addCart  } from '../../reducers/cart.redux';
+import { addCart, getCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -32,31 +32,79 @@ class ProductModal extends React.Component {
 
 
   componentDidMount() {
-
+    console.log(this.props)
+    this.props.getCart(2)
+    
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       tagMenuClick: nextProps.tagMenuClick
        });
-    //  if(nextProps.cart){
-    //    this.props.history.push('/shop_cart')
-    //  }
   }
 
     showModal = key => (e) => {
      e.preventDefault(); // 修复 Android 上点击穿透
      this.props.openSpecModel()
    }
+
+
+   //加入购物车
    onClose = key => (e) => {
     e.preventDefault(); 
+    //判断是否有选择规格
      if(this.props.model.spec_status){
-       let productinfo = this.props.product
-       let selected = productinfo.selected !== undefined ? productinfo.selected : productinfo.good.spec[0]
-       let count = productinfo.count !== undefined ? productinfo.count : 1
-       let product = Object.assign({},productinfo.good,{selected},{count})
-       this.props.addCart(product);
-       this.props.history.push('/shop_cart')
+       let {product,cart} = this.props;
+      //  let productInfo = this.props.product
+       let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
+       let count =product.count !== undefined ?product.count : 1
+       let product_id =product.good.id
+       let shop_id =product.good.shop_id
+
+     
+       let shopIds = [];
+       let goodIds = [];
+      //  var replaceData;
+      //店铺数组
+       for(var i = 0;i < cart.goods.shopsData.length;i++){
+        shopIds.push({[i]:cart.goods.shopsData[i].shop_id});
+        // goodIds.push(cart.goods.shopsData[i].productsDtata[])
+       }
+       console.log(`shopIds`);
+       console.log(shopIds);
+       //商品数组
+
+      //    //判断是否新店铺
+        var replaceData;
+      //   if(shopIds.includes(shop_id)){
+        
+      //   }else{
+          
+      //       replaceData = { 
+      //         shop_name: product.good.shop_name,
+      //         checked: false,
+      //         shop_id: shop_id,
+      //         productsData: [
+      //           {
+      //             shop_id: shop_id,
+      //             checked: false,
+      //             name: product.good.name,
+      //             staus: 1,
+      //             count: count,
+      //             prodductSpec: selected,
+      //             product_id: product_id
+      //           }
+      //         ]
+      //       }
+      //     cart.goods.shopsData.push(replaceData)
+      //  }
+
+       
+      //  console.log(product_id);
+      // console.log(this.props.cart.goods)
+       
+      //  let product = Object.assign({},productinfo.good,{selected},{count})
+      //  this.props.addCart(product);
      }else{
       this.props.closeSpecModel()
      }
@@ -104,6 +152,7 @@ class ProductModal extends React.Component {
 
 
    render(){
+     
      let modelStatus = this.props.model.spec_model
      var spec=[];
      let price = [];
@@ -171,4 +220,4 @@ class ProductModal extends React.Component {
    }
  }
 
-   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel})(ProductModal);
+   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart })(ProductModal);

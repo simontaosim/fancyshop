@@ -10,6 +10,7 @@ import goodImg from '../../assets/img/reward/good.jpg';
 import '../../service/data/datasource';
 import axios from 'axios';
 import {getProduct} from '../../reducers/product.redux';
+import { getCart } from '../../reducers/cart.redux';
 import { connect } from 'react-redux';
 
 

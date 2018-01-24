@@ -126,7 +126,7 @@ Mock.mock('/myWallet',{
 
 //店铺列表
 Mock.mock('./shops',{
-    'shops|5': [{
+    'shops|5': [{ 
         'id+1': 1,
         'name': '@name',
         'phone': 13751124249,
@@ -155,6 +155,7 @@ Mock.mock('/products', {
         {
             "id": 1,
             "shop_id": 1,
+            "shop_name": "烧一🔥",
             "name": "Paul Lewis",
             "spec": [
                 {
@@ -184,6 +185,7 @@ Mock.mock('/products', {
         {
             "id": 2,
             "shop_id": 1,
+            "shop_name": "烧一🔥",
             "name": "Richard Jones",
             "spec": [
                 {
@@ -213,6 +215,7 @@ Mock.mock('/products', {
         {
             "id": 3,
             "shop_id": 2,
+            "shop_name": "四洲",
             "name": "Jose Lopez",
             "spec": [
                 {
@@ -242,6 +245,7 @@ Mock.mock('/products', {
         {
             "id": 4,
             "shop_id": 2,
+            "shop_name": "四洲",
             "name": "Charles Lewis",
             "spec": [
                 {
@@ -271,6 +275,7 @@ Mock.mock('/products', {
         {
             "id": 5,
             "shop_id": 1,
+            "shop_name": "烧一🔥",
             "name": "Linda Taylor",
             "spec": [
                 {

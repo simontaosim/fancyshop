@@ -15,7 +15,6 @@ class Shop extends React.Component {
     super()
 
     this.state = {
-        className: styles['pencil-img'],
         val: 1,
         modal2: false,
         tagMenuClick: [false, false, false, false, false],
@@ -91,7 +90,6 @@ class Shop extends React.Component {
                      <div style = {{paddingLeft:'10px'}}>
                        <span style = {{color:'red',fontSize:'16px'}}>￥269.1</span>
                        <img src = {require('../svg/close_black.svg')} style = {{position:'absolute',right:'15px',top:'10px',width:'25px',height:'25px',paddingBottom:'44px'}} onClick = {this.onClose('modal2')}/><br/>
-                       {/* <img src = {require('../svg/close_black.svg')} style = {{width:'25px',height:'25px',marginLeft:'8rem'}} onClick = {this.onClose('modal2')}/><br/> */}
                        <span style = {{color:'#aaa'}}>请选择类型</span>
                      </div>
                    </Flex>
