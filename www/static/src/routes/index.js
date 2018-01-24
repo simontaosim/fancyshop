@@ -139,7 +139,7 @@ class App extends React.Component {
               <Route path="/withdrawsuccess" component={WithdrawSuccess}/>
               <Route path="/withdrawwait" component={WithdrawWait}/>
               <Route component={NoMatchPage}/>
-
+            </Switch>
 
           </MainLayout>
       </Router>
