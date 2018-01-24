@@ -44,5 +44,5 @@ class ProductShare extends React.Component {
     )
   }
 }
-
+''
 export default ProductShare;
