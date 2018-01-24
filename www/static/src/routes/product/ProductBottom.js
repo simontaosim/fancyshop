@@ -56,14 +56,12 @@ class ProductBottom extends React.Component {
     return(
       <div>
         <div className = {s['container']}>
-          <div className = {s['box1']} onClick={this.facilitator}>
+          <div style = {{display:'flex',borderTop:'1px solid #eee',flexGrow:'1',backgroundColor:'#fff',justifyContent:'center',alignItems: 'center',color:'#1b1b1b',borderRadius:'0',fontSize:'17px',lineHeight:'2.65em',paddingTop:'1px'}} onClick={this.facilitator}>
             <img src={require('../svg/shop.svg')} /><span>店铺</span>
           </div>
             <button style = {{flexGrow:'1',backgroundColor:'#00b7ee',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em' }} onClick={this.blockModal('modal2')}>加入购物车</button>
           <Link to = "/firmorder">
-          <div className = {s['box3']}>
-            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',border:'none',outline:'none',padding:'0 20px'}}>立即购买</Button>
-          </div>
+          <button style = {{flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em',padding:'1px 15px'}}>立即购买</button>
           </Link>
 
         </div>
