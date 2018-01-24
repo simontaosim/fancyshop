@@ -35,8 +35,8 @@ class ShopTagMenu extends React.Component {
 renderTagItem(tagId, tagName, index){
 
   return (
-    <Link to={'/shops/'+tagId.toString()}>
-    <Flex key={tagId} direction = "column" justify = "center">
+    <Link  key={index}  to={'/shops/'+tagId.toString()}>
+    <Flex direction = "column" justify = "center">
       <img src = {icons[index]} alt = "标签{tagName}" className = {styles['Img-size']}/>
       <p>{tagName}</p>
     </Flex>
