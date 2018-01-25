@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tabs, Flex } from 'antd-mobile';
+import { Tabs, Flex, WhiteSpace } from 'antd-mobile';
 import styles from './AwardDetail.css';
 import goodsImg from '../../assets/img/reward/good.jpg';
 
@@ -22,20 +22,23 @@ render(){
         <span className = "svg-des">明细</span>
       </Flex>
       <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
-        <div style = {{ display:'flex',height:'150px',backgroundColor:'#fff',width:'100%'}}>
-          <Flex>
-            <img src = {goodsImg} style = {{height:'80px',width:'80px'}}/>
+        <div style = {{backgroundColor:'#fff',width:'100%',padding:'15px 0'}}>
+          <Flex style = {{padding:'18px 10px 10px 5px',width:'100%'}}>
+            <img src = {goodsImg} style = {{height:'80px',width:'80px',border:'1px solid #ccc',borderRadius:'5px',marginRight:'10px',marginTop:'-15px'}}/>
+            <Flex direction = "column" jusitify = "start" align = "start" style= {{}}>
+              <span style = {{fontSize:'16px',overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis'}}>我叫商品的名字是是占位符只能是一行</span>
+              <span  style = {{fontSize:'14px',color:'#888'}}>我叫店铺名</span>
+              <WhiteSpace/>
+              <WhiteSpace/>
+              <div  style = {{color:'#333',fontSize:'16px',display:'flex',justifyContent:'around'}}>
+                <span>付款金额：<span style = {{color:'red'}}>215</span></span>
+                <span  style = {{position:'absolute',right:'15px'}}>佣金:<span style = {{color:'#ffcf2d'}}>10</span></span>
+              </div>
+            </Flex>
           </Flex>
-
-          <div style = {{margin:'30px 0 10px 8px'}} >
-            <span>我叫商品的名字哈哈占位符</span><br/>
-            <span>我叫店铺名</span><br/><br/><br/>
-            <span>付款金额:</span><span style = {{color:'red'}}>215</span>
-            <span style = {{float:'right'}}><span >佣金:</span><span style = {{color:'#ffcf2d'}}>10</span></span><br/>
-            <span style = {{textAlign:'right'}}>2017.12.26 10:52</span>
-          </div>
-
-
+          <span style = {{float:'right',color:'#aaa',paddingBottom:'15px'}}>
+            2017.08.22 13:39
+          </span>
         </div>
         <div style = {{ display:'flex',alignItems:'center',justifyContent:'center',height:'250px',backgroundColor:'#fff'}}>
           已结算

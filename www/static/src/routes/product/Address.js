@@ -9,24 +9,8 @@ class Address extends React.Component {
     super();
     this.state = {
       tagMenuClick: [false, false, false, false, false],
-      // AddressClick : false,
     }
   }
-  //
-  // handAddressClick(){
-  //   let AddressClick = this.state.AddressClick;
-  //   this.clearClickedStyle();
-  //   AddressClick = !AddressClick;
-  //   this.setState({
-  //     AddressClick,
-  //   })
-  // }
-  //
-  // clearClickedStyle(){
-  //   let AddressClick = this.state.AddressClick;
-  //   AddressClick = false;
-  // }
-
 
   handleTagMenuClick(num){
     let tagMenuClick = this.state.tagMenuClick;

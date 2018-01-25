@@ -18,13 +18,19 @@ class Goods extends React.Component {
     return(
       <div>
         {this.props.goods}
-          <Flex justify = "start" style = {{backgroundColor:'#f6f6f6',padding:'15px',height:'auto',margin:'15px 10px'}}>
+          <Flex justify = "start" style = {{backgroundColor:'#f8f8f8',padding:'15px',height:'auto',margin:'5px 10px 15px 10px'}}>
 
-            <img src = { goodImg } style = {{height:'60px',width:'60px'}}/>
+            <img src = { goodImg } style = {{height:'50px',width:'70px'}}/>
 
           <div style = {{paddingLeft:'8px'}}>
-            <Flex style = {{marginBottom:'10px'}}><span style = {{fontSize:'14px'}}>{name}</span></Flex>
-            <span style = {{color:'#666',fontSize:'13px'}}>类型：{spec}     <span style = {{float:'right'}}>￥{price} &nbsp;&nbsp; ×{num}</span></span>
+            <Flex style = {{marginBottom:'10px'}}>
+              <span style = {{fontSize:'16px',color:'#1b1b1b'}}>{name}</span>
+            </Flex>
+
+            <span style = {{color:'#888',fontSize:'14px'}}>类型：{spec}</span>
+             &nbsp;&nbsp; &nbsp;&nbsp;
+            <span  style = {{color:'#888',fontSize:'14px'}}>￥{price} &nbsp;&nbsp; ×{num}</span>
+
           </div>
         </Flex>
 
