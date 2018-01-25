@@ -58,44 +58,108 @@ class ProductModal extends React.Component {
       //  let productInfo = this.props.product
        let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
        let count =product.count !== undefined ?product.count : 1
-       let product_id =product.good.id
-       let shop_id =product.good.shop_id
-
+       let productId =product.good.id
+       let shopId =product.good.shop_id
+console.log(shopId);
+console.log(cart);
      
        let shopIds = [];
        let goodIds = [];
-      //  var replaceData;
+       var ShopReplaceData;
+       var ProductReplaceData;
       //店铺数组
        for(var i = 0;i < cart.goods.shopsData.length;i++){
-        shopIds.push({[i]:cart.goods.shopsData[i].shop_id});
+        // shopIds.push({[i]:cart.goods.shopsData[i].shop_id});
         // goodIds.push(cart.goods.shopsData[i].productsDtata[])
+        if(cart.goods.shopsData[i].shop_id!==shopId){
+          ShopReplaceData = { 
+            shop_name: product.good.shop_name,
+            checked: false,
+            shop_id: shopId,
+            productsData: [
+              {
+                shop_id: shopId,
+                checked: false,
+                name: product.good.name,
+                staus: 1,
+                count: count,
+                prodductSpec: selected,
+                product_id: productId
+              }
+            ]
+          }
+        }else{
+          // ShopReplaceData = undefined
+          // console.log(count)
+          // console.log(i);
+          // console.log(cart.goods.shopsData[i].productsData.length)
+          // console.log(productId)
+          // console.log(cart.goods.shopsData[i].productsData.length);
+          for(var j=0;j<cart.goods.shopsData[i].productsData.length;j++){
+            console.log(`zzzz`);
+            if(cart.goods.shopsData[i].productsData[j].product_id==productId){
+                  cart.goods.shopsData[i].productsData[j].count = cart.goods.shopsData[i].productsData[j].count*1+count
+                  // return
+            }else{
+              ProductReplaceData = {
+                shop_id: shopId,
+                checked: false, 
+                name: product.good.name,
+                status: 1,
+                count: count,
+                prodductSpec: selected,
+                product_id: productId
+              }
+              // ProductReplaceData!==undefined ?  cart.goods.shopsData[i].productsData.push(ProductReplaceData) : null
+              // cart.goods.shopsData[i].productsData.push(ProductReplaceData);
+              // return
+              // ProductReplaceData = undefined;
+              // return
+              // ProductReplaceData = undefined;
+              // console.log(`xxxx`);
+              // console.log(cart);
+            }
+          }
+
+        }
        }
-       console.log(`shopIds`);
-       console.log(shopIds);
+      //  cart.goods.shopsData.push(ShopReplaceData)
+      //  cart.goods.shopsData.push(ShopReplaceData)
+      // console.log(ShopReplaceData)
+      //  ShopReplaceData!==undefined ? cart.goods.shopsData.push(ShopReplaceData) : null
+      //  ProductReplaceData!==undefined ? cart.goods.shopsData.push(ProductReplaceData) : null
+      //  ProductReplaceData = undefined;
+      //  console.log('qqqq');
+      //  console.log(`shopIds`);
+      //  console.log(cart);
        //商品数组
 
       //    //判断是否新店铺
-        var replaceData;
+        // var replaceData;
+
+        // 店铺相等   商品不相等 创建商品
+        //           商品相等   找到该商品  在商品基础上计算数量
+        // 店铺不相等  创建店铺商品并创建商品
       //   if(shopIds.includes(shop_id)){
         
       //   }else{
           
-      //       replaceData = { 
-      //         shop_name: product.good.shop_name,
-      //         checked: false,
-      //         shop_id: shop_id,
-      //         productsData: [
-      //           {
-      //             shop_id: shop_id,
-      //             checked: false,
-      //             name: product.good.name,
-      //             staus: 1,
-      //             count: count,
-      //             prodductSpec: selected,
-      //             product_id: product_id
-      //           }
-      //         ]
-      //       }
+            // replaceData = { 
+            //   shop_name: product.good.shop_name,
+            //   checked: false,
+            //   shop_id: shop_id,
+            //   productsData: [
+            //     {
+            //       shop_id: shop_id,
+            //       checked: false,
+            //       name: product.good.name,
+            //       staus: 1,
+            //       count: count,
+            //       prodductSpec: selected,
+            //       product_id: product_id
+            //     }
+            //   ]
+            // }
       //     cart.goods.shopsData.push(replaceData)
       //  }
 

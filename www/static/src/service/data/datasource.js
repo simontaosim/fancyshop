@@ -154,7 +154,7 @@ Mock.mock('/products', {
     "goods": [
         {
             "id": 1,
-            "shop_id": 1,
+            "shop_id": 10,
             "shop_name": "烧一🔥",
             "name": "Paul Lewis",
             "spec": [
@@ -182,9 +182,10 @@ Mock.mock('/products', {
                 "http://dummyimage.com/336x280"
             ]
         },
+        //相同店铺,不同商品
         {
             "id": 2,
-            "shop_id": 1,
+            "shop_id": 2,
             "shop_name": "烧一🔥",
             "name": "Richard Jones",
             "spec": [
@@ -212,6 +213,7 @@ Mock.mock('/products', {
                 "http://dummyimage.com/336x280"
             ]
         },
+        //相同店铺，相同商品
         {
             "id": 3,
             "shop_id": 2,
