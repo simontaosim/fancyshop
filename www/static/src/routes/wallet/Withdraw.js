@@ -66,7 +66,8 @@ class Withdraw extends React.Component {
             <td>99.95</td>
             <td>170802</td>
             <Link to = "/withdrawwait">
-            <td align = "left"><span>等待&nbsp;<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span></td>
+            <td align = "left">等待</td>
+            <img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px',position:'absolute',right:'15px',bottom:'-26px'}}/>
             </Link>
           </tr>
         </table>

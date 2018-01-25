@@ -1,5 +1,7 @@
 import React from 'react';
 import { Flex, Button, Tabs } from 'antd-mobile';
+import s from './Withdraw.css';
+import waitImg from '../../assets/img/withdrowait.png';
 
 class WithdrawWait extends React.Component {
   constructor() {
@@ -8,9 +10,9 @@ class WithdrawWait extends React.Component {
 
   render(){
     return(
-      <Flex style = {{backgroundColor:'#fff',marginTop:'50px'}}>
-        <Flex style = {{border:'1px dashed black',margin:'10px',borderRadius:'5px'}}>
-          <div style = {{padding:'10px',fontSize:'16px'}}>
+      // <Flex className = {s['withdraw-details']}>
+        <Flex className = {s['details-item']}>
+          <div className = {s['details-describe']}>
             用户名：zuoting<br/>
             开户名：小小<br/>
             开户行：建设银行金牛支行<br/>
@@ -19,13 +21,12 @@ class WithdrawWait extends React.Component {
             到账金额： 99.95<br/>
             发起时间： 2017年8月3日  23：00<br/>
           </div>
-          {/* <div style = {{display:'flex',justifyContent:'flex-end'}}> */}
-          <div>
-            <img style = {{width:'80px',height:'80px',borderRadius:'40px'}}/>
-            <Button size = "small" style = {{backgroundColor:'#ddd',color:'#fff'}}>撤销</Button>
-          </div>
+          <Flex direction = "column" justify = "end">
+            <img src = {waitImg} className = {s['wait-img']}/>
+            <Button size = "small" className = {s['revoke-btn']}>撤销</Button>
+          </Flex>
         </Flex>
-      </Flex>
+
     )
   }
 }

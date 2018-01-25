@@ -1,0 +1,67 @@
+.withdraw-frame {
+  background-color: #fff;
+}
+.top-item {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin-left: 10px;
+  background-color: #fff;
+  padding-bottom: 15px;
+}
+.balance-item {
+  background-color: #ffcf2d;
+  color: #fff;
+  font-size: 16px;
+  line-height: 4em;
+  padding: 0 10px;
+}
+.withdraw-item {
+  padding: 0 10px;
+}
+.withdraw-describe {
+  padding: 20px;
+}
+.withdraw-btn {
+  color: #fff;
+  background-color: red;
+  padding: 0 20px;
+}
+.record-item {
+  border: 1px solid #aaa;
+  border-radius: 5x;
+  margin: 10px;
+}
+
+/* WithdrawSuccess */
+.withdraw-details {
+  background-color: #fff;
+  margin-top: 50px;
+}
+.details-item {
+  background-color: #fff;
+  border: 1px dashed #000;
+  border-radius: 5px;
+  margin: 10px;
+  margin-top: 50px;
+}
+.details-describe {
+  padding: 10px;
+  font-size: 14px;
+  color: #666;
+}
+.success-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+.wait-img {
+  width: 80px;
+  height: 40px;
+  margin: 0 10px 10px 0;
+}
+.revoke-btn {
+  background-color: #ddd;
+  color: #fff;
+  margin-right: 10px;
+}

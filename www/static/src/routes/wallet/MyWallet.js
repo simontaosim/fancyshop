@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flex, Button, Tabs, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import s from './MyWallet.css';
 
 class MyWallet extends React.Component {
   constructor() {
@@ -35,8 +36,8 @@ class MyWallet extends React.Component {
           <Button size = "small" style = {{backgroundColor:'#ffcf2d',color:'#fff'}}>我的银行卡</Button>
         </Flex.Item>
       </Flex>
-      <Flex style = {{padding:'20px'}}>
-        注：余额提现后7个工作日内到账，提现手续费微0.05%，最小提现额为100元
+      <Flex style = {{padding:'20px'}} justify = "center">
+        注：余额提现后7个工作日内到账，提现手续费为0.05%，最小提现额为100元
       </Flex>
       <Flex justify = "center">
         明细
