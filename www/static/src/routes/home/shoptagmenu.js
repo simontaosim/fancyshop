@@ -10,21 +10,20 @@ import beautyImg from '../../assets/img/home/beauty.png'
 import runImg from '../../assets/img/home/run.png'
 import shopImg from '../../assets/img/home/shop.png'
 import styles from './shoptagmenu.css';
-import { asteroid } from '../../config/asteroid.config.js'
 
-import {getHomeTags} from '../../actions/app.js'
 import { Link } from 'react-router-dom';
 
+import { asteroid } from '../../config/asteroid.config.js'
 
 const icons = [addImg, barImg, beautyImg, runImg, shopImg]
 
 class ShopTagMenu extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   };
   componentDidMount(){
       const {dispatch} = this.props;
-      dispatch(getHomeTags());
+
 
   }
   componentwillunmount(){
