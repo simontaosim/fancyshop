@@ -18,12 +18,14 @@ class ProductTabs extends React.Component {
       <div className = {style['tab-height']}>
         <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
           <div className = {style['tab-first']}>
-             Content of first tab
+             Content of first tab<br/>
+             这是详情页面<br/>
+             这是随便填充的内容
            </div>
            <div className = {style['tab-second']}>
-             <div><span>品牌：Shell/壳牌</span></div>
-             <div><span>型号：喜力HX7</span></div>
-             <div><span>型号：喜力HX7</span></div>
+             <span>品牌：Shell/壳牌</span><br/>
+             <span>型号：喜力HX7</span><br/>
+             <span>型号：喜力HX7</span><br/>
              <span>适合发动机种类：柴油发动机、汽油发动机</span><br/>
              <span>净含量：4L</span><br/>
              <span>机油分类：半合成机油</span><br/>

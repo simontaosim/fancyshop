@@ -85,4 +85,17 @@ export function addCart(product) {
   }
 }
 
+export function insertCart(product) {
+  return dispatch => {
+      asteroid.call('shop_carts.insert_cart',product)
+              .then(result => {
+                 dispatch(initCartSuccess(result))
+                  Toast.info('加入购物车成功',1)
+              })
+              .catch(error => {
+
+              })
+  }
+}
+
 

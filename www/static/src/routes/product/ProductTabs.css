@@ -12,6 +12,7 @@
 }
 .tab-first {
   display: flex;
+  padding: 15px 0px 0px 15px;
   background-color: #fff;
   justify-content: center;
   align-items: center;
@@ -19,8 +20,8 @@
 .tab-second {
   background-color: #fff;
   padding: 15px 0px 0px 15px;
-  color: #777;
+  color: #7b7b7b;
+  font-size: 14px;
   align-items: left;
   justify-content: left;
-  height: 250px;
 }

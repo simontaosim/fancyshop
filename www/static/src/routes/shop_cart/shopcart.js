@@ -6,6 +6,9 @@ import style from '../product/ProductBottom.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import goodsImg from '../../assets/img/reward/good.jpg';
 import userImg from '../../assets/img/timg.jpg';
+import { getCart } from '../../reducers/cart.redux';
+import { cartInfo } from '../../map_props';
+import { connect } from 'react-redux';
 
 
 const CheckboxItem = Checkbox.CheckboxItem;
@@ -19,6 +22,10 @@ class Shop extends React.Component {
         modal2: false,
         tagMenuClick: [false, false, false, false, false],
     }
+  }
+
+  componentDidMount(){
+    this.props.getCart(2)
   }
 
   handleTagMenuClick(num){
@@ -60,6 +67,16 @@ class Shop extends React.Component {
    }
 
   render(){
+  let ProductShopCartList = []
+  // for(var i=0;i<)
+// console.log(this.props.cart.goods.shopsData)
+    // let shopsData = this.props.shopsData;
+    // console.log(shopsData)
+  //  let { cart } =  this.props
+  //  let shopsData = cart.goods.shopsData!==undefined ? cart.goods.shopsData : []
+  //  console.log(cart.goods.shopsData)
+  //  console.info(cart.goods.shopsData.length);
+   
     return (
       < div>
         <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']} style = {{borderTop:'10px solid #eee'}}>
@@ -140,4 +157,4 @@ class Shop extends React.Component {
   }
 }
 
-export default Shop;
+export default connect(cartInfo,{getCart})(Shop);

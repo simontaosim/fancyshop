@@ -82,7 +82,7 @@ class GoodsList extends React.Component {
               </div>
             </div>
           </Link>
-        </div> 
+        </div>
       );
     };
     return (

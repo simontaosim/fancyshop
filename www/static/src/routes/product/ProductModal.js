@@ -6,7 +6,7 @@ import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { changeProduct, addCount } from '../../reducers/product.redux';
-import { addCart, getCart  } from '../../reducers/cart.redux';
+import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -66,7 +66,32 @@ class ProductModal extends React.Component {
        let goodIds = [];
        var ShopReplaceData;
        var ProductReplaceData;
-
+      if(cart.goods == undefined){
+        let params = {
+          user_id: 2,
+          shopsData: [
+            {
+              shop_name: product.good.shop_name,
+              checked: false,
+              shop_id: product.good.shop_id,
+                productsData: [
+                  {
+                    shop_id: product.shop_id,
+                    checked: false, 
+                    name: product.good.name,
+                    status: 1,
+                    count: count,
+                    prodductSpec: selected,
+                    product_id: product.good.id
+                  }
+                ]
+            }
+          ]
+        }
+        this.props.insertCart(params)
+        this.props.closeSpecModel()
+        return
+      }
        for(var i = 0;i < cart.goods.shopsData.length;i++){
           shopIds.push(cart.goods.shopsData[i].shop_id);
           for(var j=0;j<cart.goods.shopsData[i].productsData.length;j++){
@@ -97,7 +122,6 @@ class ProductModal extends React.Component {
             }
          }
        }else{
-         console.log(123);
           cart.goods.shopsData.push({
               shop_name: product.good.shop_name,
               checked: false,
@@ -232,4 +256,4 @@ class ProductModal extends React.Component {
    }
  }
 
-   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart })(ProductModal);
+   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart,insertCart })(ProductModal);

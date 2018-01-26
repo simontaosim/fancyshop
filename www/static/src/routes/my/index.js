@@ -51,11 +51,11 @@ class AppMy extends React.Component{
           <Flex justify = 'center' align = "center">
               <img src = {userImg} className = {style['user-img']}/>
           </Flex>
-          <Link to = "/userdata">
           <Flex justify = "end" className = {style['pencil-position']} >
-            <img src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
+            <Link to = "/userdata">
+              <img src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
+            </Link>
            </Flex>
-          </Link>
           <Flex justify = "center"  className = {style['nick-name-pos']}>
             <span>我是花名</span>
           </Flex>

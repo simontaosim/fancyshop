@@ -1,127 +1,117 @@
 import React from 'react';
-import { Flex, List, Accordion, InputItem, Button, TextareaItem, Calendar, ImagePicker, WingBlank, SegmentedControl} from 'antd-mobile';
+import { Flex, Accordion, InputItem, Button, TextareaItem, Calendar, ImagePicker, WingBlank, SegmentedControl,DatePicker, List, PickerView } from 'antd-mobile';
 import enUS from 'antd-mobile/lib/calendar/locale/en_US';
 import zhCN from 'antd-mobile/lib/calendar/locale/zh_CN';
 
-const data = [{
-  url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-  id: '2121',
-}, {
-  url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-  id: '2122',
-}];
-
+const nowTimeStamp = Date.now();
+const now = new Date(nowTimeStamp);
 class UserData extends React.Component {
   constructor() {
     super();
     this.state = {
-     files: data,
+    //  files: data,
+     date:now,
+     value: null,
     }
   }
 
-  onChange = (key) => {
-  console.log(key);
-}
+//   const seasons = [
+//   [
+//     {
+//       label: '2013',
+//       value: '2013',
+//     },
+//     {
+//       label: '2014',
+//       value: '2014',
+//     },
+//   ],
+//   [
+//     {
+//       label: '春',
+//       value: '春',
+//     },
+//     {
+//       label: '夏',
+//       value: '夏',
+//     },
+//   ],
+// ];
 
-onChangeP = (files, type, index) => {
- console.log(files, type, index);
- this.setState({
-   files,
- });
-}
-
+  onChange = (value) => {
+     console.log(value);
+     this.setState({
+       value,
+     });
+   }
+   onScrollChange = (value) => {
+     console.log(value);
+   }
 
   render(){
-     const { files } = this.state;
     return(
-      <div style={{ marginTop: 50, marginBottom: 10 }}>
-        <Flex>
-        <san>头像：</san>
-        <ImagePicker
-         files={files}
-         onChangeP={this.onChangeP}
-         onImageClick={(index, fs) => console.log(index, fs)}
-       />
-       </Flex>
-       {/*
-      <Accordion defaultActiveKey="0" className="my-accordion" onChange={this.onChange}>
-        <Accordion.Panel header="头像">
-          <List className="my-list">
-            头像
-          </List>
-        </Accordion.Panel>
-      </Accordion>
-         <Accordion.Panel header="Title 2" className="pad">this is panel content2 or other</Accordion.Panel>
-        <Accordion.Panel header="Title 3" className="pad">
-          text text text text text text text text text text text text text text text
-        </Accordion.Panel> */}
-
+    <div>
       <Accordion>
-        <Accordion.Panel header="花名">
-          <Flex>
-            <Flex.Item>
-            <InputItem placeholder = "设置花名"/>
-            </Flex.Item>
-            <Flex.Item>
-              <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'60%',marginBottom:'10px'}}>提交</Button>
-            </Flex.Item>
-          </Flex>
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="性别">
-          <Flex>
-            <InputItem placeholder = "请选择性别" style = {{width:'50%',marginRight:'10%'}}/>
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'10px'}}>提交</Button>
-          </Flex>
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="签名">
-            <TextareaItem placeholder = "写一句话吧"  rows={2}  count={300}  style = {{border:'1px solid #aaa',width:'95%',marginRight:'20px'}}>
-
-            </TextareaItem>
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'10px'}}>提交</Button>
-
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="地区">
-            <Button style = {{backgroundColor:'#2bbbba',width:'30%',margin:'0 auto'}}>提交</Button>
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="生日">
-            <Calendar/>
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'10px'}}>提交</Button>
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="修改密码">
-          <InputItem placeholder = "设置你的新密码" style = {{borderBottom:'1px solid #aaa',outLine:'blue'}}/>
-          <InputItem placeholder = "确认你的新密码"/><br/>
-          <Flex justify = "center" style = {{}}>
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'10px'}}>提交</Button>
-          </Flex>
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="手机号123">
-          <Flex justify = "center" style = {{fontSize:'18px',padding:'15px'}}>暂不支持修改此项</Flex>
-        </Accordion.Panel>
-      </Accordion>
-      <Accordion>
-        <Accordion.Panel header="车牌号">
-          <Flex>
-            <InputItem placeholder = "设置车牌号" style = {{borderBottom:'1px solid #aaa',width:'80%'}}/>
+        <Accordion.Panel header = "花名" >
+          <Flex justify = "center">
+            <InputItem placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
           </Flex>
-          </Accordion.Panel>
+        </Accordion.Panel>
+        <Accordion.Panel header = "性别" >
+          {/* <PickerView
+            onChange={this.onChange}
+            onScrollChange={this.onScrollChange}
+            value={this.state.value}
+            data={seasons}
+            cascade={false}
+          /> */}
+        </Accordion.Panel>
+        <Accordion.Panel header = "签名" >
+          <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
+          </TextareaItem>
+          <Flex justify = "center" style = {{}}>
+            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'15px'}}>提交</Button>
+          </Flex>
+        </Accordion.Panel>
+        <Accordion.Panel header = "地区" >
+
+        </Accordion.Panel>
+        <Accordion.Panel header = "生日" >
+          <Flex style = {{width:'100%'}}>
+            <DatePicker
+              style = {{width:'100%'}}
+             mode="date"
+             title="请选择你的出生日期"
+            //  extra="Optional"
+             value={this.state.date}
+             onChange={date => this.setState({ date })}
+           >
+             <List.Item arrow="horizontal">生日</List.Item>
+           </DatePicker>
+          </Flex>
+          <Flex justify = "center">
+            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
+          </Flex>
+        </Accordion.Panel>
+        <Accordion.Panel header = "修改密码" >
+          <InputItem placeholder = "设置你的新密码" />
+          <InputItem placeholder = "确认你的新密码"/><br/>
+          <Flex justify = "center" style = {{}}>
+            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'15px'}}>提交</Button>
+          </Flex>
+        </Accordion.Panel>
+        <Accordion.Panel header = "手机" >
+          <Flex justify ="center" style = {{fontSize:'18px',padding:'15px'}}>暂不支持修改此项</Flex>
+        </Accordion.Panel>
+        <Accordion.Panel header = "车牌号" >
+          <Flex justify = "center">
+            <InputItem placeholder = "设置车牌号" style = {{borderBottom:'1px solid #aaa'}}/>
+            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
+          </Flex>
+        </Accordion.Panel>
       </Accordion>
-
-
-
-    </div>
+      </div>
     )
   }
 }
