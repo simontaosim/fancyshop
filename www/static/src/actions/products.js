@@ -35,3 +35,31 @@ export function loadRecommandProducts(page, pagesize){
     });
   }
 }
+
+function exceptProductById(id){
+
+}
+
+function receiveProductById(id){
+
+}
+function receiveProductByIdError(error){
+
+}
+
+export function loadProductById(id){
+  return dispatch => {
+    dispatch(exceptProductById(id));
+    asteroid.subscribe("get.product.id", id);
+    let product = [];
+    asteroid.connect();
+    asteroid.call("get.oneproduct.id", id)
+                  .then(result => {
+                    dispatch(receiveProductById(id));
+                  })
+                  .catch(error => {
+                    dispatch(receiveProductByIdError(error));
+
+                  });
+  }
+}
