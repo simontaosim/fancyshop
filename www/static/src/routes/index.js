@@ -108,6 +108,7 @@ class App extends React.Component {
           <MainLayout history={history}>
           <Switch>
               <Route exact path="/" component={Home} authenticated={authenticated}/>
+              <Route exact path="/money" component={Home} authenticated={authenticated}/>
               <Route path="/messages" component={Messages} authenticated={authenticated}/>
               <Route path = "/shop_cart" component={ShopCart} />
               <Route path="/my" component={My} authenticated={authenticated}/>

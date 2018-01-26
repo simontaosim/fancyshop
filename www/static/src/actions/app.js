@@ -35,16 +35,19 @@ export function setHomeTags(tags){
 }
 
 export function getHomeTags(){
-
+  console.log('getHomeTags');
   return dispatch => {
     asteroid.subscribe("home.tags");
-    let tags = [];
     asteroid.connect();
+    let tags = [];
     asteroid.ddp.on("added", ({collection, id, fields}) => {
-      if (tags.length < 5) {
-        tags.push({fields, id});
+      if (collection === 'tags') {
+        if (tags.length < 5) {
+          tags.push({fields, id});
+        }
+        dispatch(setHomeTags(tags));
       }
-      dispatch(setHomeTags(tags));
+
     });
   }
 }
