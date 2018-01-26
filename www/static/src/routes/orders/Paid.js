@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex,Checkbox, List, InputItem, Radio} from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import styles from "./paid.css";
+import styles from "./Paid.css";
 import codeImg from '../../assets/img/orders/code.png';
 import payImg from '../../assets/img/orders/pay.png';
 import wechatImg from '../../assets/img/orders/wechat.png';

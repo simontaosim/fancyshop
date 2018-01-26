@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, Button, Radio} from 'antd-mobile';
 import cartnullImg from '../../assets/img/cartnull.jpg';
-import s from './test.css';
 
 const RadioItem = Radio.RadioItem;
 class CartNull extends React.Component{

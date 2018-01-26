@@ -3,8 +3,7 @@ import { Flex, Tabs, Button } from 'antd-mobile';
 // import { Goods, ShopName } from './OrdersCommon';
 import ShopName from './ShopName';
 import Goods from './Goods';
-import OrdersItem from './OrdersDetail';
-import Paid from './paid';
+import Paid from './Paid';
 import UnTreated from './UnTreated';
 import WaitPay from './WaitPay';
 import Finish from './Finish';
@@ -13,7 +12,7 @@ import styles from './Common.css';
 import '../../service/data/datasource';
 import axios from 'axios';
 
-class MyOrders extends React.Component {
+class Orders extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -69,7 +68,7 @@ class MyOrders extends React.Component {
     }
     // console.log(`tab:${tab},index: ${index}`);
 
-    
+
 
   }
 
@@ -95,7 +94,7 @@ class MyOrders extends React.Component {
           {/* <Finish data={all}/> */}
           {/* <Invalid/>  */}
           {/* {this.state.all} */}
-          
+
         </div>
         <div className = "waitpay" style = {{backgroundColor:'#fff'}}>
           <WaitPay waitpay={waitpay.list} shop={waitpay.shop_name} />
@@ -128,4 +127,4 @@ class MyOrders extends React.Component {
   }
 }
 
-export default MyOrders;
+export default Orders;

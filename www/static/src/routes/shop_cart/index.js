@@ -1,10 +1,11 @@
 import React from 'react';
 import { Flex, Button, Checkbox } from 'antd-mobile';
 import goodsImg from '../../assets/img/reward/good.jpg';
-import Shop from './shopcart';
+// import Shop from './shopcart';
+import ShopCartList from './ShopCartList';
 import style from './common.css';
-import BtnRed from './BtnRed';
-import BtnYellow from './BtnYellow';
+import DeleteBtn from './DeleteBtn';
+import BalanceBtn from './BalanceBtn';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 class ShopCart extends React.Component{
@@ -19,7 +20,7 @@ class ShopCart extends React.Component{
   render(){
     var text = this.state.edit ? '完成' : '编辑'
     var link = this.state.edit ? '#/shopedit' : '#/shop_cart'
-    var btn = this.state.edit ? <BtnRed/>:<BtnYellow/>
+    var btn = this.state.edit ? <DeleteBtn/>:<BalanceBtn/>
     return(
 
       <div className = {style['bg-color']}  history={this.props.history}>
@@ -33,8 +34,8 @@ class ShopCart extends React.Component{
           }}>{text}</span></span>
         </Flex>
         <div className = {style['item-frame']}>
-          <Shop/>
-          <Shop/>
+          <ShopCartList/>
+          <ShopCartList/>
         </div>
         <div history={this.props.history}>
           {btn}
