@@ -6,7 +6,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { appInfo } from '../../map_props.js';
 import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
-import Recommend from "./recommend";
+import RecommandProducts from "./RecommandProducts.js";
 import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
 
@@ -15,8 +15,9 @@ import {setAppTitle} from '../../actions/app.js';
 import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
+import { loadRecommandProducts } from '../../actions/products';
+import {getHomeTags} from '../../actions/app.js'
 
-import { asteroid } from '../../config/asteroid.config'
 
 class AppHome extends React.Component{
   constructor(props) {
@@ -26,9 +27,13 @@ class AppHome extends React.Component{
       data: ['','',''],
       good: [],
     }
+
   }
   componentDidMount(){
+    console.log('good');
     const { dispatch } = this.props;
+    dispatch(loadRecommandProducts(1,3));
+    dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
     setTimeout(() => {
      this.setState({
@@ -76,17 +81,22 @@ class AppHome extends React.Component{
             </Flex>
           </Flex>
 
-          <WhiteSpace/>
-          <WhiteSpace/>
-          <Recommend/>
-          <WhiteSpace/>
+          <WhiteSpace />
+          <WhiteSpace />
+          <RecommandProducts products={this.props.recommandProducts} status={this.props.recommandProducts.status} />
+          <WhiteSpace />
             <ShopTagMenu history={this.props.path} />
-          <WhiteSpace/>
-          <GoodsList/>
+          <WhiteSpace />
+          <GoodsList />
 
         </Flex>
     )
   }
 }
-
-export default connect(appInfo)(AppHome);
+function indexHome(state){
+  return {
+    appInfo: state.AppInfo,
+    recommandProducts: state.recommandProducts
+  }
+}
+export default connect(indexHome)(AppHome);
