@@ -40,7 +40,8 @@ import Wallet from './wallet/index';
 import Withdraw from './wallet/Withdraw';
 import WithdrawSuccess from './wallet/WithdrawSuccess';
 import WithdrawWait from './wallet/WithdrawWait';
-
+import VipCard from './vipcard/index';
+import Coupon from './coupon/index';
 
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
@@ -138,6 +139,9 @@ class App extends React.Component {
               <Route path="/withdraw" component={Withdraw}/>
               <Route path="/withdrawsuccess" component={WithdrawSuccess}/>
               <Route path="/withdrawwait" component={WithdrawWait}/>
+              <Route path="/vipcard" component={VipCard}/>
+              <Route path="/coupon" component={Coupon}/>
+
               <Route component={NoMatchPage}/>
             </Switch>
 

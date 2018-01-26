@@ -1,5 +1,7 @@
 import React from 'react';
 import { Flex, Button, Tabs } from 'antd-mobile';
+import s from './Withdraw.css';
+import successImg from '../../assets/img/yes.png';
 
 class WithdrawSuccess extends React.Component {
   constructor() {
@@ -8,8 +10,8 @@ class WithdrawSuccess extends React.Component {
 
   render(){
     return(
-      <Flex style = {{border:'1px dashed black',margin:'10px',borderRadius:'5px',backgroundColor:'#fff',marginTop:'50px'}}>
-        <div style = {{padding:'10px',fontSize:'16px'}}>
+      <Flex className = {s['details-item']}>
+        <div className = {s['details-describe']}>
           用户名：zuoting<br/>
           开户名：小小<br/>
           开户行：建设银行金牛支行<br/>
@@ -18,9 +20,9 @@ class WithdrawSuccess extends React.Component {
           到账金额： 99.95<br/>
           发起时间： 2017年8月3日  23：00<br/>
         </div>
-        <div style = {{display:'flex',justifyContent:'flex-end'}}>
-          <img style = {{width:'80px',height:'80px',borderRadius:'40px'}}/>
-        </div>
+        <Flex justify = "end">
+          <img src = {successImg} className = {s['success-img']}/>
+        </Flex>
       </Flex>
     )
   }
