@@ -5,6 +5,9 @@ import Shop from './shopcart';
 import style from './common.css';
 import BtnRed from './BtnRed';
 import BtnYellow from './BtnYellow';
+import { getCart } from '../../reducers/cart.redux';
+import { connect } from 'react-redux';
+import { cartInfo } from '../../map_props';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 class ShopCart extends React.Component{
@@ -13,6 +16,10 @@ class ShopCart extends React.Component{
     this.state = {
       edit: false,
     }
+  }
+
+  componentDidMount() {
+
   }
 
 
@@ -43,4 +50,4 @@ class ShopCart extends React.Component{
   }
 }
 
-export default ShopCart;
+export default connect(cartInfo,{getCart})(ShopCart);

@@ -31,8 +31,6 @@ class Register extends React.Component {
 
 
 sendCode() {
-  console.log(123);
-  console.log(`发送验证码1:${this.state.user}`)
   asteroid.call('get.phonesms', this.state.user)
   .then(result => {
       Toast.info('验证码已发送请查看手机');
@@ -91,7 +89,6 @@ onChildChange(tips,status){
   handlePhone=(event)=>{
     // 倒计时按钮处于倒计时未结束状态时手机号不能修改
     var phone = event;
-    console.log(event)
     if(this.state.status==='sending')
         return false;
     // 同步input值

@@ -18,3 +18,10 @@ export function modelInfo(state) {
     cart: state.cart
   }
 }
+
+
+export function cartInfo(state) {
+  return {
+    cart: state.cart
+  }
+}
