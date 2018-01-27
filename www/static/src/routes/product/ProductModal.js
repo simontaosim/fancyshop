@@ -103,7 +103,11 @@ class ProductModal extends React.Component {
          for(var i = 0;i < cart.goods.shopsData.length;i++){
           for(var j=0;j<cart.goods.shopsData[i].productsData.length;j++){
             if(cart.goods.shopsData[i].productsData[j].product_id==productId){
-              cart.goods.shopsData[i].productsData[j].count = cart.goods.shopsData[i].productsData[j].count*1+count
+              if(cart.goods.shopsData[i].productsData[j].prodductSpec.name==selected.name){
+                cart.goods.shopsData[i].productsData[j].count = cart.goods.shopsData[i].productsData[j].count*1+count
+              }else{
+                console.log(`生成新的规格商品`)
+              }
             }
           }
          }
