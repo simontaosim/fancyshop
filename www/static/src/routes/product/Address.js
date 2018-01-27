@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex,WhiteSpace } from 'antd-mobile';
-import styles from '../orders/waitdetails.css';
+import styles from '../orders/WaitDetails.css';
 import s from './Address.css';
 
 

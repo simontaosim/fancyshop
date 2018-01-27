@@ -5,7 +5,7 @@ import ShopName from './ShopName.js';
 import Goods from './Goods.js';
 import styles from './Common.css';
 import UntreatedDetail from './UntreatedDetail';
-import QrCode from './qrcode.js';
+import QrCode from './QrCode.js';
 
 class UnTreated extends React.Component {
   constructor() {

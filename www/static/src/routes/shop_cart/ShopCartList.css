@@ -45,3 +45,12 @@
   -o-text-overflow:ellipsis;
    overflow:hidden;
 }
+.shop-name-item {
+  border-top: 10px solid #eee;
+}
+.shop-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: 10px;
+}

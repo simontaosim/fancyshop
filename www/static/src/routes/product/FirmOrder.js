@@ -2,7 +2,7 @@ import React from 'react';
 import { List, Icon, Flex, Button, InputItem, TextareaItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import goodImg from '../../assets/img/reward/good.jpg';
-import styles from '../orders/waitdetails.css';
+import styles from '../orders/WaitDetails.css';
 import stylec from '../orders/Common.css';
 
 

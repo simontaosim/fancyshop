@@ -1,7 +1,7 @@
 import React from "react";
 import { List, Icon, Flex, Button } from 'antd-mobile';
 import goodImg from '../../assets/img/reward/good.jpg';
-import styles from './waitdetails.css';
+import styles from './WaitDetails.css';
 import stylec from './Common.css';
 
 

@@ -17,19 +17,19 @@ import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';
 import { getStore } from '../config/mUtils';
 import Test from './checkbox';
-import MyOrders from './orders/index';
+import Orders from './orders/index';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
-import WaitDetails from './orders/waitdetails';
-import Paid from './orders/paid';
+import WaitDetails from './orders/WaitDetails';
+import Paid from './orders/Paid';
 import Refund from './orders/Refund';
 import UntreatedDetail from './orders/UntreatedDetail';
-import QrCode from './orders/qrcode';
-import CartNull from './shop_cart/null';
+import QrCode from './orders/QrCode';
+import CartNull from './shop_cart/CartNull';
 import CartTest from './checkbox/cart'
 import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
-import Facilitator from './product/facilitator';
+import Facilitator from './product/Facilitator';
 import FirmOrder from './product/FirmOrder';
 import PaySuccess from './product/PaySuccess';
 import Address from './product/Address';
@@ -115,7 +115,7 @@ class App extends React.Component {
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />
-              <Route path = "/orders" component={MyOrders}/>
+              <Route path = "/orders" component={Orders}/>
               <Route path = "/product/:id" component={Goods}/>
               <Route path = "/details" component={WaitDetails}/>
               <Route path = "/paid" component={Paid}/>
