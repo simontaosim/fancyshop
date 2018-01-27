@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Flex, Checkbox,Button, Modal, WhiteSpace, List, Stepper, Carousel} from 'antd-mobile';
-import styles from './GoodItem.css';
+import styles from './ShopCartList.css';
 import style from '../product/ProductBottom.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import goodsImg from '../../assets/img/reward/good.jpg';
@@ -10,7 +10,7 @@ import userImg from '../../assets/img/timg.jpg';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
-class Shop extends React.Component {
+class ShopCartList extends React.Component {
   constructor() {
     super()
 
@@ -142,4 +142,4 @@ class Shop extends React.Component {
   }
 }
 
-export default Shop;
+export default ShopCartList;

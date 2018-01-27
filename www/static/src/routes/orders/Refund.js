@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Flex, Button } from 'antd-mobile';
-import styles from './waitdetails.css';
+import styles from './WaitDetails.css';
 import goodImg from '../../assets/img/reward//good.jpg';
 
 class Refund extends React.Component {

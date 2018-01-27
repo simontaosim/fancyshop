@@ -6,7 +6,7 @@ import s from '../product/common.css';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
-class BtnYellow extends React.Component {
+class BalanceBtn extends React.Component {
   constructor() {
     super()
   }
@@ -34,4 +34,4 @@ class BtnYellow extends React.Component {
   }
 }
 
-export default BtnYellow;
+export default BalanceBtn;

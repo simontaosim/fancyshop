@@ -5,7 +5,7 @@ import style from './common.css';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
-class BtnRed extends React.Component {
+class DeleteBtn extends React.Component {
   constructor() {
     super();
     this.delete = this.delete.bind(this)
@@ -36,4 +36,4 @@ class BtnRed extends React.Component {
   }
 }
 
-export default BtnRed;
+export default DeleteBtn;

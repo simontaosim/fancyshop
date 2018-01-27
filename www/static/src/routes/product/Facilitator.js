@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, Tabs } from 'antd-mobile';
-import style from './facilitator.css';
+import style from './Facilitator.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import userImg from '../../assets/img/timg.jpg';
 
