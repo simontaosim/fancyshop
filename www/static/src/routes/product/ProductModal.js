@@ -66,7 +66,7 @@ class ProductModal extends React.Component {
        let goodIds = [];
        var ShopReplaceData;
        var ProductReplaceData;
-      if(cart.goods == undefined){
+      if(cart.goods.user_id == ''){
         let params = {
           user_id: 2,
           shopsData: [

@@ -12,11 +12,19 @@ const ADD_PRODUCT= "ADD_PRODUCT";
 
 
 const initialState = {
+    goods: {
+        user_id: '',
+        shopsData: []
+     }
 }
 export function cart(state=initialState,action) {
   switch(action.type){
     case INIT_CART:
+    if(action.payload == undefined){
+      return state
+    }else{
     return Object.assign({},state,{goods: action.payload})
+    }
       break;
     case ADD_CART:
     return Object.assign({},state,{status: action.payload})

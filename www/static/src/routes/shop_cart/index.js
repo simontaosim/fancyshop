@@ -30,7 +30,7 @@ class ShopCart extends React.Component{
     var text = this.state.edit ? '完成' : '编辑'
     var link = this.state.edit ? '#/shopedit' : '#/shop_cart'
     var btn = this.state.edit ? <BtnRed/>:<BtnYellow/>
-    // console.log(this.props.cart.goods.shopsData)
+   
     return(
 
       <div className = {style['bg-color']}  history={this.props.history}>

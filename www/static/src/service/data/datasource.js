@@ -154,8 +154,8 @@ Mock.mock('/products', {
     "goods": [
         {
             "id": 1,
-            "shop_id": 10,
-            "shop_name": "烧一🔥",
+            "shop_id": 1,
+            "shop_name": "测试店铺1",
             "name": "Paul Lewis",
             "spec": [
                 {
@@ -186,7 +186,7 @@ Mock.mock('/products', {
         {
             "id": 2,
             "shop_id": 2,
-            "shop_name": "烧一🔥",
+            "shop_name": "测试店铺2",
             "name": "Richard Jones",
             "spec": [
                 {
@@ -216,8 +216,8 @@ Mock.mock('/products', {
         //相同店铺，相同商品
         {
             "id": 3,
-            "shop_id": 2,
-            "shop_name": "四洲",
+            "shop_id": 3,
+            "shop_name": "测试店铺3",
             "name": "Jose Lopez",
             "spec": [
                 {
@@ -246,8 +246,8 @@ Mock.mock('/products', {
         },
         {
             "id": 4,
-            "shop_id": 2,
-            "shop_name": "四洲",
+            "shop_id": 4,
+            "shop_name": "测试店铺4",
             "name": "Charles Lewis",
             "spec": [
                 {
@@ -276,8 +276,8 @@ Mock.mock('/products', {
         },
         {
             "id": 5,
-            "shop_id": 1,
-            "shop_name": "烧一🔥",
+            "shop_id": 5,
+            "shop_name": "测试店铺5",
             "name": "Linda Taylor",
             "spec": [
                 {
