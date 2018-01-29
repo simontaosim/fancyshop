@@ -18,8 +18,8 @@ class Paid extends React.Component {
   render(){
     return(
     <div style = {{marginTop:'46px',}}>
-      <Flex class= {styles["letter-box"]}>
-        <div class= {styles["letter-border"]}>
+      <Flex className = {styles["letter-box"]}>
+        <div className = {styles["letter-border"]}>
           <Flex style = {{padding:'15px 10px'}}>
             订单号：13165465
           </Flex>
