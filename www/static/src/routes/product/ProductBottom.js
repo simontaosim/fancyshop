@@ -23,6 +23,7 @@ class ProductBottom extends React.Component {
   constructor(props) {
     super(props);
     this.facilitator = this.facilitator.bind(this)
+    this.firmorder = this.firmorder.bind(this)
     this.AddCart = this.AddCart.bind(this)
   }
 
@@ -48,6 +49,9 @@ class ProductBottom extends React.Component {
   facilitator () {
     this.props.history.push(`/facilitator/${this.props.product.good.shop_id}`)
   }
+  firmorder() {
+    this.props.history.push('/firmorder')
+  }
 
   render(){
     return(
@@ -56,11 +60,8 @@ class ProductBottom extends React.Component {
           <div style = {{display:'flex',borderTop:'1px solid #eee',flexGrow:'1',backgroundColor:'#fff',justifyContent:'center',alignItems: 'center',color:'#1b1b1b',borderRadius:'0',fontSize:'17px',lineHeight:'2.65em',paddingTop:'1px'}} onClick={this.facilitator}>
             <img src={require('../svg/shop.svg')} /><span>店铺</span>
           </div>
-            <button style = {{flexGrow:'1',backgroundColor:'#00b7ee',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em' }} onClick={this.blockModal('modal2')}>加入购物车</button>
-          <Link to = "/firmorder">
-          <button style = {{flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em',padding:'1px 15px'}}>立即购买</button>
-          </Link>
-
+          <button style = {{flexGrow:'1',backgroundColor:'#00b7ee',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em' }} onClick={this.blockModal('modal2')}>加入购物车</button>
+          <button style = {{flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em',padding:'1px 15px'}} onClick={this.firmorder}>立即购买</button>
         </div>
       </div>
     )

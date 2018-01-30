@@ -88,7 +88,7 @@ class Orders extends React.Component {
     return(
     <div className = "all">
       <Tabs tabs = {tabs} initialPage = {5} animated = {false} useOnPan = {false} onChange={this.switchTab}>
-        <div style = {{backgroundColor:'#fff',paddingBottom:'10px'}}>
+        <div style = {{backgroundColor:'#fff',paddingBottom:'10px'}} key = "all">
           {/* <WaitPay waitpay={all}/> */}
           {/* <UnTreated untreated={all}/> */}
           {/* <Finish data={all}/> */}
@@ -96,17 +96,17 @@ class Orders extends React.Component {
           {/* {this.state.all} */}
 
         </div>
-        <div className = "waitpay" style = {{backgroundColor:'#fff'}}>
+        <div className = "waitpay" style = {{backgroundColor:'#fff'}} key = "waitay">
           <WaitPay waitpay={waitpay.list} shop={waitpay.shop_name} />
         </div>
         <div style = {{backgroundColor:'#fff'}}>
           <UnTreated untreated={untreated}/>
         </div>
-        <div className = "finish" style = {{backgroundColor:'#fff'}}>
+        <div className = "finish" style = {{backgroundColor:'#fff'}} key = "finish">
           <Finish finish={finish}/>
         </div>
       <div className = "invalid">
-        <div style = {{backgroundColor:'#fff',marginBottom:'15px'}}>
+        <div style = {{backgroundColor:'#fff',marginBottom:'15px'}} key = "invalid">
           {/* <Finish/> */}
           </div>
           <div style = {{backgroundColor:'#fff'}} >

@@ -12,6 +12,11 @@ const CheckboxItem = Checkbox.CheckboxItem;
 class BalanceBtn extends React.Component {
   constructor() {
     super()
+    this.firmorder = this.firmorder.bind(this)
+  }
+
+  firmorder(){
+    this.props.history.push('/firmorder')
   }
   CheckAll(e) {
     let data = this.props.cart.goods

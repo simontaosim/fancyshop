@@ -1,18 +1,28 @@
 import React from 'react';
-import { Flex, Button, Tabs, InputItem } from 'antd-mobile';
+import { Flex, Button, Tabs, InputItem, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
 
 class Withdraw extends React.Component {
   constructor() {
     super();
+    this.withdrawsuccess = this.withdrawsuccess.bind(this)
+    this.withdrawwait = this.withdrawwait.bind(this)
+  }
+
+  withdrawsuccess() {
+    console.log(this.props.history);
+    this.props.history.push('/withdrawsuccess')
+  }
+  withdrawwait(){
+    this.props.history.push('/withdrawwait')
   }
 
   render(){
     return(
     <div style = {{backgroundColor:'#fff'}}>
       <div justify = "center" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff',padding:' 0 0 15px 0'}}>
-      <Flex justify = "between" style = {{backgroundColor:'#ffcf2d',color:'#fff',lineHeight:'4em',fontSize:'16px'}}>
+      <Flex justify = "between" style = {{backgroundColor:'#ffcf2d',color:'#fff',lineHeight:'4em',fontSize:'16px',padding:'0 10px'}}>
         <Flex.Item justify = "start">
           可提现余额
         </Flex.Item>
@@ -20,29 +30,23 @@ class Withdraw extends React.Component {
           ￥100
         </Flex.Item>
       </Flex>
-      {/* <div style = {{display:'flex',alignItems:'center',backgroundColor:'#ffcf2d',color:'#fff',lineHeight:'4em',fontSize:'16px'}}>
-        <span> 可提现余额 </span>
-
-        <span style = {{alignSelf:'end'}}> ￥100 </span>
-      </div> */}
       <div style = {{backgroundColor:'#fff',padding:' 0 10px 0 10px'}}>
       <Flex>
         提现：<InputItem placeholder = "请输入提现余额"></InputItem><br/>
       </Flex>
       <Flex>
-        选择银行卡：<InputItem placeholder = "请输入提现余额"></InputItem>
+        选择银行卡：<InputItem placeholder = "请输入银行卡号"></InputItem>
       </Flex>
-      <Flex style = {{padding:'20px'}}>
-        注：余额提现后7个工作日内到账，提现手续费微0.05%，最小提现额为100元
+      <Flex style = {{padding:'20px 10px'}}>
+        <span align = "center">注：余额提现后7个工作日内到账，提现手续费微0.05%，最小提现额为100元</span>
       </Flex>
       <Flex justify = "center">
         <Button size = "small" style = {{color:'#fff',backgroundColor:'red',padding:'0 20px'}}>提现</Button>
       </Flex>
       </div>
       </div>
-      <Flex justify = "center" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff'}}>
-        <table cellpadding="15px" cellspacing="">
-          {/* <caption align = "left">提现记录</caption> */}
+      <Flex justify = "around" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff'}}>
+        {/* <table cellpadding="15px" cellspacing="">
           <tr align = "left">
             <th>提现记录</th>
           </tr>
@@ -59,7 +63,7 @@ class Withdraw extends React.Component {
             <Link to = "/withdrawsuccess">
             <td align = "left"><span>成功&nbsp;<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span></td>
             </Link>
-            {/* <img src = {require('../svg/arrow-right.svg')} style = {{width:'10px',height:'10px'}}/> */}
+            {/* <img src = {require('../svg/arrow-right.svg')} style = {{width:'10px',height:'10px'}}/> *}
           </tr>
           <tr align = "center">
             <td>100.00</td>
@@ -70,8 +74,41 @@ class Withdraw extends React.Component {
             <img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px',position:'absolute',right:'15px',bottom:'-26px'}}/>
             </Link>
           </tr>
-        </table>
-      </Flex>
+        </table> */}
+
+          <Flex direction = "column" justify = "around" align = "center"  style = {{margin:'7px 0'}}>
+            <span align = 'center' style = {{fontWeight:'600'}} >提现金额</span>
+            <WhiteSpace/>
+            <span align = 'center'>100.00元</span>
+            <WhiteSpace/>
+            <span align = 'center'>100.00元</span>
+            <WhiteSpace/>
+          </Flex>
+          <Flex direction = "column" justify = "center"  style = {{padding:'7px 0px'}}>
+            <span align = 'center' style = {{fontWeight:'600'}}>到账金额</span>
+            <WhiteSpace/>
+            <span align = 'center'>99.95元</span>
+            <WhiteSpace/>
+            <span align = 'center'>99.95元</span>
+            <WhiteSpace/>
+          </Flex>
+          <Flex direction = "column" justify = "center" style = {{padding:'7px 0px'}}>
+            <span align = 'center' style = {{fontWeight:'600'}}>时间</span>
+            <WhiteSpace/>
+            <span align = 'center'>20170812</span>
+            <WhiteSpace/>
+            <span align = 'center'>20180125</span>
+            <WhiteSpace/>
+          </Flex>
+          <Flex direction = "column" justify = "center"  style = {{padding:'7px 0'}}>
+            <span align = 'center' style = {{fontWeight:'600'}}>状态</span>
+            <WhiteSpace/>
+            <span align = 'center' onClick={this.withdrawsuccess}>成功<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span>
+            <WhiteSpace/>
+            <span align = 'center'  onClick={this.withdrawwait}>等待<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span>
+            <WhiteSpace/>
+          </Flex>
+        </Flex>
       </div>
     )
   }

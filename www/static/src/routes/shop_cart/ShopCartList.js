@@ -118,7 +118,7 @@ class ShopCartList extends React.Component {
               return(
                 <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']} key={product.index} checked={product.checked} onChange={(e)=>this.CheckItemProdcut(e,shop_index,product_index,product.shop_id)} key={product_index}>
                 <Flex>
-      
+
                   <Flex className = {styles['good-item']} >
                     <img src = { goodsImg } className = {styles['good-img']} style = {{width:'50px',height:'50px'}}/>
                     <Flex.Item classnam = {styles['decribe-frame']} style = {{width:'100%',fontSize:'14px',overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis'}}>
@@ -181,7 +181,7 @@ class ShopCartList extends React.Component {
         )
       })
     }
-   
+
     return (
       < div>
         {shopList}
