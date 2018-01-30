@@ -9,7 +9,13 @@ import stylec from '../orders/Common.css';
 class FirmOrder extends React.Component {
   constructor() {
     super()
+    this.paid = this.paid.bind(this)
   }
+
+  paid() {
+    this.props.history.push('/paid')
+  }
+
   render(){
     return(
       <div style = {{marginTop:'60px'}}>
@@ -64,13 +70,13 @@ class FirmOrder extends React.Component {
             </div>
           </Flex>
         </div>
-        <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%'}}>
+        <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%',flexGrow:'1'}}>
           <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'1'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
-          <Link to = "paid">
-          <div style = {{display:'flex',flexGrow:'1'}}>
+          {/* <Link to = "paid"> */}
+          <div style = {{display:'flex'}} onClick = {this.paid}>
             <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 10px',borderRadius:'0',padding:'0 30px'}}>提交订单</Button>
           </div>
-          </Link>
+          {/* </Link> */}
         </Flex>
 
       </div>

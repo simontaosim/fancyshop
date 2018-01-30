@@ -1,10 +1,26 @@
 import React from 'react';
-import { Flex, Accordion, InputItem, Button, TextareaItem, Calendar, ImagePicker, WingBlank, SegmentedControl,DatePicker, List, PickerView } from 'antd-mobile';
-import enUS from 'antd-mobile/lib/calendar/locale/en_US';
-import zhCN from 'antd-mobile/lib/calendar/locale/zh_CN';
+import { Flex, Accordion, InputItem, Button, TextareaItem, ImagePicker, WingBlank, SegmentedControl,DatePicker, List, PickerView, Picker } from 'antd-mobile';
+import { createForm } from 'rc-form';
+import arrayTreeFilter from 'array-tree-filter';
+import { district, provinceLite } from 'antd-mobile-demo-data';
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
+const gender = [
+  {
+    label:'未知',
+    value:'未知',
+  },{
+    label:'保密',
+    value:'保密',
+  },{
+    label:'男',
+    value:'男',
+  },{
+    label:'女',
+    value:'女',
+  },
+]
 class UserData extends React.Component {
   constructor() {
     super();
@@ -15,40 +31,9 @@ class UserData extends React.Component {
     }
   }
 
-//   const seasons = [
-//   [
-//     {
-//       label: '2013',
-//       value: '2013',
-//     },
-//     {
-//       label: '2014',
-//       value: '2014',
-//     },
-//   ],
-//   [
-//     {
-//       label: '春',
-//       value: '春',
-//     },
-//     {
-//       label: '夏',
-//       value: '夏',
-//     },
-//   ],
-// ];
-
-  onChange = (value) => {
-     console.log(value);
-     this.setState({
-       value,
-     });
-   }
-   onScrollChange = (value) => {
-     console.log(value);
-   }
 
   render(){
+    // const {getFieldProps} = this.props.form;
     return(
     <div>
       <Accordion>
@@ -58,15 +43,11 @@ class UserData extends React.Component {
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
           </Flex>
         </Accordion.Panel>
-        <Accordion.Panel header = "性别" >
-          {/* <PickerView
-            onChange={this.onChange}
-            onScrollChange={this.onScrollChange}
-            value={this.state.value}
-            data={seasons}
-            cascade={false}
-          /> */}
-        </Accordion.Panel>
+      </Accordion>
+       <Picker data={gender} cols={1} >
+          <List.Item arrow="horizontal">性别</List.Item>
+        </Picker>
+      <Accordion>
         <Accordion.Panel header = "签名" >
           <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
           </TextareaItem>
@@ -74,11 +55,19 @@ class UserData extends React.Component {
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'15px'}}>提交</Button>
           </Flex>
         </Accordion.Panel>
-        <Accordion.Panel header = "地区" >
-
-        </Accordion.Panel>
-        <Accordion.Panel header = "生日" >
-          <Flex style = {{width:'100%'}}>
+      </Accordion>
+         <Picker extra="地区"
+           data={district}
+           title="地区"
+          //  {...getFieldProps('district', {
+          //    initialValue: ['340000', '341500', '341502'],
+          //  })}
+          //  onOk={e => console.log('ok', e)}
+          //  onDismiss={e => console.log('dismiss', e)}
+         >
+           <List.Item arrow="horizontal">地区</List.Item>
+         </Picker>
+          <List>
             <DatePicker
               style = {{width:'100%'}}
              mode="date"
@@ -89,11 +78,8 @@ class UserData extends React.Component {
            >
              <List.Item arrow="horizontal">生日</List.Item>
            </DatePicker>
-          </Flex>
-          <Flex justify = "center">
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
-          </Flex>
-        </Accordion.Panel>
+         </List>
+        <Accordion>
         <Accordion.Panel header = "修改密码" >
           <InputItem placeholder = "设置你的新密码" />
           <InputItem placeholder = "确认你的新密码"/><br/>
@@ -111,6 +97,7 @@ class UserData extends React.Component {
           </Flex>
         </Accordion.Panel>
       </Accordion>
+
       </div>
     )
   }
