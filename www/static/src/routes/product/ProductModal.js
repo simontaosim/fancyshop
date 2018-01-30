@@ -66,7 +66,9 @@ class ProductModal extends React.Component {
        let goodIds = [];
        var ShopReplaceData;
        var ProductReplaceData;
+       console.log(selected); 
       if(cart.goods.user_id == ''){
+        console.log(`购物车不存在`)
         let params = {
           user_id: 2,
           shopsData: [
@@ -76,7 +78,7 @@ class ProductModal extends React.Component {
               shop_id: product.good.shop_id,
                 productsData: [
                   {
-                    shop_id: product.shop_id,
+                    shop_id: product.good.shop_id,
                     checked: false, 
                     name: product.good.name,
                     status: 1,
@@ -88,6 +90,7 @@ class ProductModal extends React.Component {
             }
           ]
         }
+        console.log(params)
         this.props.insertCart(params)
         this.props.closeSpecModel()
         return
@@ -107,6 +110,15 @@ class ProductModal extends React.Component {
                 cart.goods.shopsData[i].productsData[j].count = cart.goods.shopsData[i].productsData[j].count*1+count
               }else{
                 console.log(`生成新的规格商品`)
+                cart.goods.shopsData[i].productsData.push({
+                  shop_id: product.good.shop_id,
+                  checked: false, 
+                  name:  product.good.name,
+                  status: 1,
+                  count: count,
+                  prodductSpec: selected,
+                  product_id: product.good.id
+                })
               }
             }
           }
@@ -132,7 +144,7 @@ class ProductModal extends React.Component {
               shop_id: product.good.shop_id,
                 productsData: [
                   {
-                    shop_id: product.shop_id,
+                    shop_id: product.good.shop_id,
                     checked: false, 
                     name: product.good.name,
                     status: 1,

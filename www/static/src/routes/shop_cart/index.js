@@ -28,10 +28,9 @@ class ShopCart extends React.Component{
 
 
   render(){
-    console.log(11)
     var text = this.state.edit ? '完成' : '编辑'
-    var link = this.state.edit ? '#/shopedit' : '#/shop_cart'
     var btn = this.state.edit ? <DeleteBtn/>:<BalanceBtn/>
+   
     return(
 
       <div className = {style['bg-color']}  history={this.props.history}>

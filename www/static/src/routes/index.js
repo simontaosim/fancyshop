@@ -42,7 +42,7 @@ import WithdrawSuccess from './wallet/WithdrawSuccess';
 import WithdrawWait from './wallet/WithdrawWait';
 import VipCard from './vipcard/index';
 import Coupon from './coupon/index';
-
+import { asteroid } from '../config/asteroid.config';
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'

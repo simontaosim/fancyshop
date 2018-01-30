@@ -8,14 +8,21 @@ const CUT_CART = "CUT_CART";
 const REMOVE_CART = "REMOVE_CART";
 const ADD_SHOP = "ADD_SHOP";
 const ADD_PRODUCT= "ADD_PRODUCT";
+const PRODCUT_CHECK_ALL = "PRODCUT_CHECK_ALL";
+const SHOP_CHECK_ALL = "SHOP_CHECK_ALL";
+const SINGEL_PRODUCT_CHECK = "SINGEL_PRODUCT_CHECK";
+const COUNT_PRODUCT = "COUNT_PRODUCT";
+const DELETE_SHOP_CART = "DELETE_SHOP_CART";
 
 
 
 const initialState = {
     goods: {
         user_id: '',
-        shopsData: []
-     }
+        shopsData: [],
+     },
+    total: 0
+    
 }
 export function cart(state=initialState,action) {
   switch(action.type){
@@ -39,6 +46,25 @@ export function cart(state=initialState,action) {
       break;
     case REMOVE_CART:
       break;
+    case PRODCUT_CHECK_ALL:
+    var total = ProdcutTotal(action.payload)
+    return Object.assign({},state,{goods: action.payload},{total})
+      break;
+    case SHOP_CHECK_ALL:
+    var total = ProdcutTotal(action.payload)
+    return Object.assign({},state,{goods: action.payload},{total})
+      break;
+    case SINGEL_PRODUCT_CHECK:
+    var total = ProdcutTotal(action.payload)
+    return Object.assign({},state,{goods: action.payload},{total})
+      break;
+    case COUNT_PRODUCT:
+    var total = ProdcutTotal(action.payload)
+    return Object.assign({},state,{goods: action.payload},{total})
+      break;
+    case DELETE_SHOP_CART:
+    return Object.assign({},state,{goods: action.payload})
+      break;
     default:
       return state
   }
@@ -53,6 +79,48 @@ function initCartSuccess(data) {
 }
 
 
+function deleteCartSuccess(data){
+  return { type:DELETE_SHOP_CART, payload: data}
+}
+//计算选中总价格
+function ProdcutTotal(data) {
+  let shopsData = data.shopsData;
+  var total = 0;
+  for(var i=0;i< shopsData.length; i++){
+    for(var j=0;j< shopsData[i].productsData.length; j++){
+      if(shopsData[i].productsData[j].checked == true){
+        total += shopsData[i].productsData[j].prodductSpec.price*1 * shopsData[i].productsData[j].count
+      }
+    }
+  }
+  return total;
+}
+
+//删除购物车 
+function deleteShopCart(data) {
+    let shopsData = data.shopsData;
+    let shopDeletData = shopsData.filter(filterByItem);
+    for(var i=0;i<shopDeletData.length;i++){
+      shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
+    }    
+    console.log(shopDeletData)
+     return shopDeletData
+}
+//结算购物车
+
+function filterByItem(item) {
+  if (isCheck(item.checked)) {
+    return true;
+  } 
+  return false; 
+}
+
+function isCheck(obj) {
+  return  obj!== true
+}
+export function deleteProduct(data){
+  return { type: DELETE_SHOP_CART}
+}
 //添加店铺商品
 export function addShop(shop,product) {
   return { type: ADD_SHOP,shop,product}
@@ -63,13 +131,33 @@ export function addProduct(product) {
   return { type: ADD_PRODUCT, product}
 }
 
+//选中店铺所有商品
+export function productCheckAll(data) {
+  return { type: PRODCUT_CHECK_ALL,payload: data}
+}
+
+//选中所有店铺
+export function shopCheckAll(data){
+  return { type: SHOP_CHECK_ALL, payload: data}
+}
+
+//选中单个商品
+export function prodoctSingelCheck(data) {
+  return { type: SHOP_CHECK_ALL, payload: data}
+}
+
+//计算商品数量
+export function countProduct(data) {
+  return { type: COUNT_PRODUCT, payload: data}
+}
+
+
+
 //获取购物车
 export function getCart(id) {
   return dispatch => {
-    console.log(`id: ${id}`)
       asteroid.call('shop_carts.get_cart',id)
               .then(result => {
-                console.log(result);
                  dispatch(initCartSuccess(result))
               })
               .catch(error => {
@@ -81,7 +169,6 @@ export function getCart(id) {
 
 export function addCart(product) {
   return dispatch => {
-    console.log(product);
       asteroid.call('shop_carts.add_cart',product)
               .then(result => {
                   dispatch(addCartSuccess(result))
@@ -103,6 +190,21 @@ export function insertCart(product) {
               .catch(error => {
 
               })
+  }
+}
+
+
+export function removeCart(product) {
+  return dispatch => {
+    console.log(product)
+   console.log(deleteShopCart(product))
+    asteroid.call('shop_carts.add_cart',deleteShopCart(product))
+            .then(result => {
+                dispatch(deleteCartSuccess(result))
+            })
+            .catch(error => {
+
+            })
   }
 }
 
