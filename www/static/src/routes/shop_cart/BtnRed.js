@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import style from './common.css';
 import { connect } from 'react-redux';
 import { cartInfo } from '../../map_props';
-import { removeCart } from '../../reducers/cart.redux';
+import { removeCart,shopCheckAll } from '../../reducers/cart.redux';
 
 
 const CheckboxItem = Checkbox.CheckboxItem;
@@ -21,16 +21,27 @@ class BtnRed extends React.Component {
   delete() {
     const alertInstance = alert('', '确认将已选中的商品删除吗?', [
       { text: '取消', onPress: () => console.log('cancel')},
-      { text: '删除', onPress: () => console.log('ok') },
+      { text: '删除', onPress: () => this.props.removeCart(this.props.cart.goods)},
     ]);
   }
 
   deleteProduct() {
     console.log(this.props.cart.goods)
+    let shopsData = this.props.cart.goods.shopsData;
+    console.log(shopsData)
   }
 
-  CheckAll() {
-    console.log(this.props.cart.goods)
+  
+
+  CheckAll(e) {
+    let data = this.props.cart.goods
+    for(var i=0;i<data.shopsData.length;i++){
+      data.shopsData[i].checked = e.target.checked;
+      for(var j=0;j<data.shopsData[i].productsData.length;j++){
+        data.shopsData[i].productsData[j].checked = e.target.checked;
+      }
+    }
+    this.props.shopCheckAll(data)
   }
 
 
@@ -39,7 +50,7 @@ class BtnRed extends React.Component {
       <div style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%'}}>
       <Flex>
         <div style = {{flexGrow:'1',color:'#fff'}}>
-          <CheckboxItem style = {{backgroundColor:'#333',color:'#fff',paddingLeft:'7px'}} onChange={this.CheckAall}>
+          <CheckboxItem style = {{backgroundColor:'#333',color:'#fff',paddingLeft:'7px'}} onChange={(e)=>this.CheckAll(e)}>
             <span style= {{color:'#fff',lineHeight:'1.95em'}}>全选</span>
           </CheckboxItem>
         </div>
@@ -52,4 +63,4 @@ class BtnRed extends React.Component {
   }
 }
 
-export default connect(cartInfo,{removeCart})(BtnRed);
+export default connect(cartInfo,{removeCart,shopCheckAll})(BtnRed);

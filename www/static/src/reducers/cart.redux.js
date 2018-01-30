@@ -77,10 +77,14 @@ function addCartSuccess(data) {
 function initCartSuccess(data) {
   return { type: INIT_CART, payload: data}
 }
+
+
+function deleteCartSuccess(data){
+  return { type:DELETE_SHOP_CART, payload: data}
+}
 //计算选中总价格
 function ProdcutTotal(data) {
   let shopsData = data.shopsData;
-  console.log(data)
   var total = 0;
   for(var i=0;i< shopsData.length; i++){
     for(var j=0;j< shopsData[i].productsData.length; j++){
@@ -95,24 +99,24 @@ function ProdcutTotal(data) {
 //删除购物车 
 function deleteShopCart(data) {
     let shopsData = data.shopsData;
-    console.log(shopsData.length)
-    // var total = 0;
-    for(var i=0;i< shopsData.length; i++){
-      if(shopsData[i].checked == true){
-        //  shopsData.splice(i,1)
-        console.log(111);
-          shopsData.splice(i,1)
-      }
-      // else{
-      //   for(var j=0;j< shopsData[i].productsData.length; j++){
-      //     if(shopsData[i].productsData[j].checked == true){
-      //       shopsData[i].productsData.splice(j,1)
-      //     }
-      //   }
-      // }
-    
-    }
-    return data
+    let shopDeletData = shopsData.filter(filterByItem);
+    for(var i=0;i<shopDeletData.length;i++){
+      shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
+    }    
+    console.log(shopDeletData)
+     return shopDeletData
+}
+//结算购物车
+
+function filterByItem(item) {
+  if (isCheck(item.checked)) {
+    return true;
+  } 
+  return false; 
+}
+
+function isCheck(obj) {
+  return  obj!== true
 }
 export function deleteProduct(data){
   return { type: DELETE_SHOP_CART}
@@ -154,7 +158,6 @@ export function getCart(id) {
   return dispatch => {
       asteroid.call('shop_carts.get_cart',id)
               .then(result => {
-                console.log(result);
                  dispatch(initCartSuccess(result))
               })
               .catch(error => {
@@ -195,7 +198,13 @@ export function removeCart(product) {
   return dispatch => {
     console.log(product)
    console.log(deleteShopCart(product))
-    // asteroid.call('')
+    asteroid.call('shop_carts.add_cart',deleteShopCart(product))
+            .then(result => {
+                dispatch(deleteCartSuccess(result))
+            })
+            .catch(error => {
+
+            })
   }
 }
 

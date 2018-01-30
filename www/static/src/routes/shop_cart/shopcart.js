@@ -34,7 +34,7 @@ class Shop extends React.Component {
   }
 
   ShopCheckAll(e,shop_id,index) {
-    console.log(this.props.cart.goods.shopsData[index].checked = e.target.checked)
+    this.props.cart.goods.shopsData[index].checked = e.target.checked
     for(let i=0; i < this.props.cart.goods.shopsData[index].productsData.length; i++){
       if(this.props.cart.goods.shopsData[index].productsData[i].shop_id==shop_id){
         this.props.cart.goods.shopsData[index].productsData[i].checked= e.target.checked
