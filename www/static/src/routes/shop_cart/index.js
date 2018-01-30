@@ -24,13 +24,13 @@ class ShopCart extends React.Component{
     // this.props.getCart(2);
   }
 
- 
+
 
 
   render(){
     var text = this.state.edit ? '完成' : '编辑'
-    var btn = this.state.edit ? <DeleteBtn/>:<BalanceBtn/>
-   
+    var btn = this.state.edit ? <DeleteBtn />:<BalanceBtn history={this.props.history}/>
+
     return(
 
       <div className = {style['bg-color']}  history={this.props.history}>
@@ -46,7 +46,7 @@ class ShopCart extends React.Component{
         <div className = {style['item-frame']}>
           <ShopCartList/>
         </div>
-        <div history={this.props.history}>
+        <div>
           {btn}
         </div>
       </div>

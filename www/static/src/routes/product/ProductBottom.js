@@ -9,6 +9,7 @@ import { asteroid } from '../../config/asteroid.config';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { modelInfo } from '../../map_props';
+import mystyle from '../../layouts/common.less';
 
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -56,13 +57,28 @@ class ProductBottom extends React.Component {
   render(){
     return(
       <div>
-        <div className = {s['container']}>
+        {/* <div className = {s['container']}>
           <div style = {{display:'flex',borderTop:'1px solid #eee',flexGrow:'1',backgroundColor:'#fff',justifyContent:'center',alignItems: 'center',color:'#1b1b1b',borderRadius:'0',fontSize:'17px',lineHeight:'2.65em',paddingTop:'1px'}} onClick={this.facilitator}>
             <img src={require('../svg/shop.svg')} /><span>店铺</span>
           </div>
           <button style = {{flexGrow:'1',backgroundColor:'#00b7ee',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em' }} onClick={this.blockModal('modal2')}>加入购物车</button>
           <button style = {{flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.65em',padding:'1px 15px'}} onClick={this.firmorder}>立即购买</button>
+        </div> */}
+        <div className = {s['container']}>
+          <div style = {{display:'flex',borderTop:'1px solid #eee',flexGrow:'1',backgroundColor:'#fff',justifyContent:'center',alignItems: 'center',color:'#1b1b1b',borderRadius:'0'}} onClick={this.facilitator}>
+            <img src={require('../svg/shop.svg')} /><span>店铺</span>
+          </div>
+          {/* <button>
+            <img src={require('../svg/shop.svg')} /><span>店铺</span>
+          </button> */}
+          <button style = {{flexGrow:'1',backgroundColor:'#00b7ee',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none'}} onClick={this.blockModal('modal2')}>加入购物车</button>
+          <button style = {{flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none'}} onClick={this.firmorder}>立即购买</button>
         </div>
+        {/* <div className = {s['container']}>
+          <Button className = {mystyle['my-btn']} style = {{flexGrow:'1',align:'center',border:'none'}}><img src={require('../svg/shop.svg')}/><span>店铺</span></Button>
+          <Button style = {{flexGrow:'1',backgroundColor:'#00b7ee',color:'#fff',borderRadius:'0',border:'0px solid #00b7ee',fontSize:'17px'}}>加入购物车</Button>
+          <Button style = {{flexGrow:'1',backgroundColor:'#ffcf2d',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px'}}>立即购买</Button>
+        </div> */}
       </div>
     )
   }

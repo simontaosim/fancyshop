@@ -31,7 +31,7 @@ class DeleteBtn extends React.Component {
     console.log(shopsData)
   }
 
-  
+
 
   CheckAll(e) {
     let data = this.props.cart.goods
@@ -56,7 +56,6 @@ class DeleteBtn extends React.Component {
         </div>
         <button style = {{flexGrow:'1',backgroundColor:'red',justifyContent:'center',backgroundColor:'red',color:'#fff',borderRadius:'0',border:'none',fontSize:'17px',lineHeight:'2.7em',color:'#fff'}} onClick={this.delete}>删除</button>
       </Flex>
-
     </div>
 
     )

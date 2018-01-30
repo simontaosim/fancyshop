@@ -97,16 +97,16 @@ class Orders extends React.Component {
 
         </div>
         <div className = "waitpay" style = {{backgroundColor:'#fff'}} key = "waitay">
-          <WaitPay waitpay={waitpay.list} shop={waitpay.shop_name} />
+          <WaitPay waitpay={waitpay.list} shop={waitpay.shop_name} history = {this.props.history} />
         </div>
         <div style = {{backgroundColor:'#fff'}}>
-          <UnTreated untreated={untreated}/>
+          <UnTreated untreated={untreated} history = {this.props.history}/>
         </div>
         <div className = "finish" style = {{backgroundColor:'#fff'}} key = "finish">
-          <Finish finish={finish}/>
+          <Finish finish={finish} history = {this.props.history}/>
         </div>
       <div className = "invalid">
-        <div style = {{backgroundColor:'#fff',marginBottom:'15px'}} key = "invalid">
+        <div style = {{backgroundColor:'#fff',paddingBottom:'15px'}} key = "invalid">
           {/* <Finish/> */}
           </div>
           <div style = {{backgroundColor:'#fff'}} >

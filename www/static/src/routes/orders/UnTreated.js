@@ -10,6 +10,19 @@ import QrCode from './QrCode.js';
 class UnTreated extends React.Component {
   constructor() {
     super();
+    this.untreated = this.untreated.bind(this)
+    this.refund = this.refund.bind(this)
+    this.qrcode = this.qrcode.bind(this)
+  }
+
+  untreated(){
+    this.props.history.push('/untreated')
+  }
+  refund(){
+    this.props.history.push('/refund')
+  }
+  qrcode(){
+    this.props.history.push('/qrcode')
   }
 
   render(){
@@ -19,23 +32,17 @@ class UnTreated extends React.Component {
       <div className = {styles['item-bg']}>
         <ShopName/>
          {data.map(v=>(
-           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/>
+           <Goods key = {v.name} name={v.name} spec={v.spec} price={v.price} num={v.num}/>
 							))}
         <Flex justify = "end" className ={styles['total']}>
           合计：<span className = {styles['total-font']}> ￥500</span>
         </Flex>
         <Flex justify = "end" className = {styles['btn-frame']}>
-          <Link to = "/untreated">
-            <button className = {styles['detail-btn']}>详情</button>
-          </Link>
-          <Link to = "/refund">
-            <button className = {styles['refund-btn']}>申请退款</button>
-          </Link>
-          <Link to = "/qrcode">
-            <button className = {styles['qr-btn']}>二维码</button>
-          </Link>
+          <button className = {styles['detail-btn']} onClick = {this.untreated}>详情</button>
+          <button className = {styles['refund-btn']} onClick = {this.refund}>申请退款</button>
+          <button className = {styles['qr-btn']} onClick = {this.qrcode}>二维码</button>
         </Flex>
-        <Flex justify = "end" className = {styles['red-border']}></Flex>
+        {/* <Flex justify = "end" className = {styles['red-border']}></Flex> */}
 
       </div>
     )
