@@ -71,12 +71,10 @@ class FirmOrder extends React.Component {
           </Flex>
         </div>
         <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%',flexGrow:'1'}}>
-          <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'1'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
-          {/* <Link to = "paid"> */}
-          <div style = {{display:'flex'}} onClick = {this.paid}>
-            <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 10px',borderRadius:'0',padding:'0 30px'}}>提交订单</Button>
-          </div>
-          {/* </Link> */}
+          <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'2',height:'50px',fontSize:'14px'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
+          <button style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px'}} onClick={this.firmorder}>
+            <span style= {{textAlign:'center',color:'#fff',lineHeight:'1.95em'}}>提交订单</span>
+          </button>
         </Flex>
 
       </div>

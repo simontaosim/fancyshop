@@ -99,7 +99,7 @@ render(){
         {product.description}
       </Flex>
       <Flex style = {{marginBottom:'-10px'}}>
-        <Flex.Item justify = "center">
+        <Flex.Item justify = "center" >
           <span className = {style['price-font']}>￥{product.price}</span>
           <span className = {style['black-card']}>{product.name}</span>
         </Flex.Item>

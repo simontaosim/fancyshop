@@ -2,12 +2,16 @@
   /*padding-top: 10px;*/
 }
 .good-img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #5e0f0f;
   padding: 2px 7px 7px 3px;
   margin-right: 8px;
 }
+/*.good-img {
+  width: 50px;
+  height: 50px;
+}*/
 .decribe-frame {
   margin-left: 10px;
   padding: 10px;
@@ -18,7 +22,8 @@
 }
 .good-price {
   color: red;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 2.3em;
 }
 .good-num {
   float: right;
@@ -27,7 +32,6 @@
 .am-list-item,.am-checkbox-item, .am-list-item-middle,.am-list-thumb {
   padding-left: 7px;
 }
-
 .pencil-img {
   margin-left: 10px;
   height: 16px;
@@ -53,4 +57,9 @@
   width: 40px;
   border-radius: 20px;
   margin-right: 10px;
+}
+.modal-good-img {
+  width: 60px;
+  height: 60px;
+  border: 8px solid #680000;
 }
