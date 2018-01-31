@@ -63,9 +63,8 @@ render(){
   let productDefault =  this.props.productShow
   let pic = product.images.map((img,index)=>{
     return(
-      <a
+      <div
           key={index}
-          href="#"
           style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
         >
           <img
@@ -78,7 +77,7 @@ render(){
               this.setState({ imgHeight: 'auto' });
             }}
           />
-        </a>
+        </div>
     )
   })
   return (
