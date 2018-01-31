@@ -16,6 +16,7 @@ class BalanceBtn extends React.Component {
   }
 
   firmorder(){
+    // console.log(this.props)
     this.props.history.push('/firmorder')
   }
   CheckAll(e) {
@@ -42,9 +43,7 @@ class BalanceBtn extends React.Component {
       </div>
 
       <div style = {{flexGrow:'1',backgroundColor:'#ffcf2d'}}>
-        <Link to="/firmorder">
-          <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 30px'}}>结算</Button>
-        </Link>
+          <Button style = {{backgroundColor:'#ffcf2d',color:'#fff',padding:'0 30px'}} onClick = {this.firmorder}>结算</Button>
       </div>
     </Flex>
        </div>

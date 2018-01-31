@@ -1,8 +1,22 @@
 import React from 'react';
-import { Flex, Button, Tabs, InputItem, WhiteSpace } from 'antd-mobile';
+import { Flex, Button, Tabs, InputItem, WhiteSpace, Picker, List} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
-
+const bankcard = [
+  {
+    label:'12457895445555',
+    value:'12457895445555',
+  },{
+    label:'52457895445555',
+    value:'52457895445555',
+  },{
+    label:'82457895445555',
+    value:'82457895445555',
+  },{
+    label:'62457895445555',
+    value:'62457895445555',
+  },
+]
 class Withdraw extends React.Component {
   constructor() {
     super();
@@ -34,10 +48,13 @@ class Withdraw extends React.Component {
       <Flex>
         提现：<InputItem placeholder = "请输入提现余额"></InputItem><br/>
       </Flex>
-      <Flex>
-        选择银行卡：<InputItem placeholder = "请输入银行卡号"></InputItem>
-      </Flex>
-      <Flex style = {{padding:'20px 10px'}}>
+      {/* <Flex>
+        选择银行卡：<InputItem placeholder = "请输入银行卡号" style = {{border:'1px solid #aaa'}}></InputItem>
+      </Flex> */}
+      <Picker data={bankcard} cols={1} >
+         <List.Item arrow="horizontal">银行卡</List.Item>
+      </Picker>
+      <Flex style = {{padding:'20px 10px',borderTop:'1px solid #ddd'}}>
         <span align = "center">注：余额提现后7个工作日内到账，提现手续费微0.05%，最小提现额为100元</span>
       </Flex>
       <Flex justify = "center">

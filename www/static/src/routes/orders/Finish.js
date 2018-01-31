@@ -9,27 +9,29 @@ class Finish extends React.Component {
 
   constructor(props) {
     super(props)
+    this.details = this.details.bind(this)
   }
 
-  render(){ 
+  details() {
+    this.props.history.push('/details')
+  }
+  render(){
     let data = this.props.finish;
     console.log(data)
     return (
-      <div className = {styles['item-bg']}>
+      <div className = {styles['item-bg']} key = "test">
         <ShopName />
         {data.map(v=>(
-           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/>
+           <Goods key = {v.name} name={v.name} spec={v.spec} price={v.price} num={v.num}/>
 							))}
         <Flex justify = "end" className = {styles['total']}>
           合计1：<span className = {styles['total-font']}> ￥500</span>
         </Flex>
         <Flex justify = "end" className = {styles['btn-frame']}>
-          <Link to = "/details">
-          <button className = {styles['detail-btn']} >详情</button>
-          </Link>
+          <button className = {styles['detail-btn']} onClick = {this.details}>详情</button>
           <button className = {styles['delete-btn']}>删除订单</button>
         </Flex>
-        <Flex justify = "end" className = {styles['red-border']}></Flex>
+        {/* <Flex justify = "end" className = {styles['red-border']}></Flex> */}
       </div>
     )
   }

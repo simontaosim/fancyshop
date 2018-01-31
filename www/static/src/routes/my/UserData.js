@@ -21,6 +21,7 @@ const gender = [
     value:'女',
   },
 ]
+
 class UserData extends React.Component {
   constructor() {
     super();
@@ -46,7 +47,7 @@ class UserData extends React.Component {
       </Accordion>
        <Picker data={gender} cols={1} >
           <List.Item arrow="horizontal">性别</List.Item>
-        </Picker>
+       </Picker>
       <Accordion>
         <Accordion.Panel header = "签名" >
           <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
