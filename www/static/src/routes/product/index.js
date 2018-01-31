@@ -58,8 +58,9 @@ componentDidMount() {
  }
 
 render(){
-  let product = this.props.productShow
+  let product = this.props.productShow.product
   console.log(product)
+  let productDefault =  this.props.productShow
   let pic = product.images.map((img,index)=>{
     return(
       <a
@@ -103,7 +104,7 @@ render(){
           <span className = {style['price-font']}>￥{product.price}</span>
           <span className = {style['black-card']}>{product.name_zh}</span>
         </Flex.Item>
-        <span align = "right" style = {{color:'#7b7b7b'}}>{product.address}</span>
+        <span align = "right" style = {{color:'#7b7b7b'}}>{productDefault.address}</span>
       </Flex>
         <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
       </div>
@@ -113,9 +114,9 @@ render(){
         <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px',width:'14px'}}/></Flex>
       </Flex>
       <Flex justify = "between" className = {style['item-des']}>
-        <Flex>配送方式:{product.deliver}</Flex>
-        <Flex>库存:{product.inventory}</Flex>
-        <Flex>销量: {product.sales} </Flex>
+        <Flex>配送方式:{productDefault.deliver}</Flex>
+        <Flex>库存:{productDefault.inventory}</Flex>
+        <Flex>销量: {productDefault.sales} </Flex>
       </Flex>
       <Flex className = {style['item-type']}>
         <ProductModal spec={product.specifications} tagMenuClick={this.state.tagMenuClick} history={this.props.history}/>
@@ -132,7 +133,7 @@ render(){
 function mapStateToProps(state) {
   return {
     product: state.product,
-    productShow: state.productShow.product
+    productShow: state.productShow
   }
 }
 

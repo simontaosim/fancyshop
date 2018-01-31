@@ -54,11 +54,11 @@ const initState = {
   	"isTool" : false,
   	"roleName" : "",
 		"categoryId" : null,
-		"deliver": "自提",
-		"address": "四川 成都",
-		"inventory": 39,
-		"sales": 74,
-  }
+	},
+	"deliver": "自提",
+	"address": "四川 成都",
+	"inventory": 39,
+	"sales": 74,
 }
 
 export function productShow(state=initState, action){
