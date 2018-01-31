@@ -1,9 +1,9 @@
 import React from 'react';
 import { Flex, Button, Checkbox } from 'antd-mobile';
 import goodsImg from '../../assets/img/reward/good.jpg';
-// import Shop from './shopcart';
 import ShopCartList from './ShopCartList';
 import style from './common.css';
+// import ShopCartList from './test';
 
 import { getCart } from '../../reducers/cart.redux';
 import { connect } from 'react-redux';
@@ -29,11 +29,11 @@ class ShopCart extends React.Component{
 
   render(){
     var text = this.state.edit ? '完成' : '编辑'
-    var btn = this.state.edit ? <DeleteBtn />:<BalanceBtn history={this.props.history}/>
+    var btn = this.state.edit ? <DeleteBtn history={this.props.history}/>:<BalanceBtn history={this.props.history}/>
 
     return(
 
-      <div className = {style['bg-color']}  history={this.props.history}>
+      <div className = {style['bg-color']} >
 
         <Flex justify = "end" style = {{backgroundColor:"#333",color:'#fff',lineHeight:'3em',padding:'5px 10px'}}>
           <span style = {{textAlign:'right'}}> <span   onClick={(e) => {

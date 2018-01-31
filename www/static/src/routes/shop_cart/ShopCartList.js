@@ -40,7 +40,7 @@ class ShopCartList extends React.Component {
         this.props.cart.goods.shopsData[index].productsData[i].checked= e.target.checked
       }
   }
-  
+
     this.props.productCheckAll(this.props.cart.goods)
   }
 
@@ -119,11 +119,13 @@ class ShopCartList extends React.Component {
                 <CheckboxItem className = {styles['am-list-item']} className = {styles['am-list-thumb']} key={product.index} checked={product.checked} onChange={(e)=>this.CheckItemProdcut(e,shop_index,product_index,product.shop_id)} key={product_index}>
                 <Flex>
 
-                  <Flex className = {styles['good-item']} >
-                    <img src = { goodsImg } className = {styles['good-img']} style = {{width:'50px',height:'50px'}}/>
+                  <Flex className = {styles['good-item']} style = {{width:'100%'}}>
+                    <img src = { goodsImg } className = {styles['good-img']} style = {{width:'60px',height:'70px'}}/>
                     <Flex.Item classnam = {styles['decribe-frame']} style = {{width:'100%',fontSize:'14px',overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis'}}>
-                      <span style = {{width:'100%',fontSize:'14px',overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis'}}>{product.name}</span><br/>
-                      <div style = {{border:'1px solid #aaa',fontSize:'14px',lineHeight:'2em',paddingLeft:'8px',borderRadius:'3px'}} onClick={this.showModal('modal2')}>{product.prodductSpec.name}<img src={require('../svg/arrowdown.svg')} style = {{float:'right',width:'15px',height:'15px',margin:'6px 3px 0 0'}}/></div>
+                      <span style = {{width:'100%',overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis',fontWeight:'600',fontSize:'16px'}}>{product.name}</span><br/>
+                      <div style = {{border:'1px solid #ccc',fontSize:'16px',lineHeight:'2em',paddingLeft:'8px',borderRadius:'3px'}} onClick={this.showModal('modal2')}>{product.prodductSpec.name}
+                        <img src={require('../svg/arrowdown.svg')} style = {{float:'right',width:'15px',height:'15px',margin:'6px 3px 0 0'}}/>
+                      </div>
                       <WhiteSpace />
                       <Modal
                        popup
@@ -142,7 +144,7 @@ class ShopCartList extends React.Component {
                          </Flex>
                          <Flex wrap = "wrap" justify = "start">
                            <div className = {style['color-div']}  style={{background: this.state.tagMenuClick[0] ? "#e85839" : "#e5e5e5"}} onClick={()=>{this.handleTagMenuClick(0)}}>绿色</div>
-                          
+
                          </Flex>
                            <Flex className = {style['num-padding']}>
                              购买数量：
@@ -164,7 +166,7 @@ class ShopCartList extends React.Component {
                       </Modal>
                       <span align = "left" className = {styles['good-price']}>￥{product.prodductSpec.price}</span>
                       <Stepper className = {styles['am-stepper-handler-down']}
-                        style={{ width: '60%', minWidth: '100px',marginLeft:'22px'}}
+                        style={{ width: '50%', minWidth: '100px',marginLeft:'22px',float:'right'}}
                         showNumber
                         max={99}
                         min={1}
