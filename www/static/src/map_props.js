@@ -15,7 +15,8 @@ export function modelInfo(state) {
   return {
     model: state.model,
     product: state.product,
-    cart: state.cart
+    cart: state.cart,
+    productShow: state.productShow
   }
 }
 

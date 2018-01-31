@@ -8,15 +8,16 @@ const CLOSE_SPEC_MODEL = "CLOSE_SPEC_MODEL";
 
 const initialState = {
   spec_model: false,
+  way: 'add_cart',
 }
 export function model(state=initialState,action) {
   switch(action.type){
     case OPEN_SPEC_MODEL:
     let spec_status = action.payload;
-    return Object.assign({},state,{spec_model: true,spec_status})
+    let way = action.way
+    return Object.assign({},state,{spec_model: true,spec_status,way})
       break;
     case CLOSE_SPEC_MODEL:
-    // let spec_status = false;
     return Object.assign({},state,{spec_model: false,spec_status:false})
       break;
     default:
@@ -24,8 +25,8 @@ export function model(state=initialState,action) {
   }
 }
 
-export function openSpecModel(data=false) {
-  return { type: OPEN_SPEC_MODEL ,payload: data }
+export function openSpecModel(data=false,way='add_cart') {
+  return { type: OPEN_SPEC_MODEL ,payload: data, way } 
 }
 
 

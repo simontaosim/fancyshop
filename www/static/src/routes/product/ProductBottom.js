@@ -47,10 +47,12 @@ class ProductBottom extends React.Component {
   }
 
   facilitator () {
-    this.props.history.push(`/facilitator/${this.props.product.good.shop_id}`)
+    console.log(this.props.shopId)
+    this.props.history.push(`/facilitator/${this.props.shopId}`)
   }
   firmorder() {
-    this.props.history.push('/firmorder')
+    this.props.dispatch(openSpecModel(true,'orders'))
+    // this.props.history.push('/firmorder')
   }
 
   render(){

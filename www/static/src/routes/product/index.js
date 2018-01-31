@@ -11,6 +11,7 @@ import '../../service/data/datasource';
 import axios from 'axios';
 import {getProduct} from '../../reducers/product.redux';
 import { getCart } from '../../reducers/cart.redux';
+import { loadProductById } from '../../actions/products';
 import { connect } from 'react-redux';
 
 
@@ -31,12 +32,13 @@ class Goods extends React.Component {
 
 componentDidMount() {
     let id = this.props.match.params.id;
+    this.props.loadProductById(id)
 
-    this.props.getProduct(id)
+    // this.props.getProduct(id)  
  }
 
  componentWillReceiveProps(nextProps) {
-    if(nextProps){
+    if(nextProps.product.good){
       let spec = nextProps.product.good.spec
       let tagMenuArr = [];
       for(var i=0;i<spec.length;i++){
@@ -56,10 +58,9 @@ componentDidMount() {
  }
 
 render(){
-  let {product} = this.state
-  let  spec = product.spec ? product.spec : []
-  let carousel = product.images ? product.images : []
-  let pic = carousel.map((img,index)=>{
+  let product = this.props.productShow
+  console.log(product)
+  let pic = product.images.map((img,index)=>{
     return(
       <a
           key={index}
@@ -82,7 +83,6 @@ render(){
   return (
     <div className = {style['product-frame']}>
       <div >
-        {/* <div className="sub-title">Normal</div> */}
     <Carousel
       dots = {true}
       autoplay={false}
@@ -101,17 +101,16 @@ render(){
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center">
           <span className = {style['price-font']}>￥{product.price}</span>
-          <span className = {style['black-card']}>{product.name}</span>
+          <span className = {style['black-card']}>{product.name_zh}</span>
         </Flex.Item>
-        <span align = "right" style = {{color:'#7b7b7b'}}>四川 成都</span>
+        <span align = "right" style = {{color:'#7b7b7b'}}>{product.address}</span>
       </Flex>
         <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
       </div>
       <Flex justify = "between" className = {style['item']}>
-        {/* <Flex><img src = {require('../svg/share.svg')} style = {{paddingRight:'6px',width:'28px',height:'28px'}}/><ProductShare/></Flex> */}
         <Flex > <ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
-        <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px',width:'14px'}}/></Flex>
+        <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px',width:'14px'}}/></Flex>
       </Flex>
       <Flex justify = "between" className = {style['item-des']}>
         <Flex>配送方式:{product.deliver}</Flex>
@@ -119,10 +118,10 @@ render(){
         <Flex>销量: {product.sales} </Flex>
       </Flex>
       <Flex className = {style['item-type']}>
-        <ProductModal spec={spec} tagMenuClick={this.state.tagMenuClick} history={this.props.history}/>
+        <ProductModal spec={product.specifications} tagMenuClick={this.state.tagMenuClick} history={this.props.history}/>
       </Flex>
       <ProductTabs/>
-      <ProductBottom history={this.props.history} product={product} />
+      <ProductBottom history={this.props.history} shopId={product.shopId} />
     </div>
     )
   }
@@ -132,8 +131,9 @@ render(){
 
 function mapStateToProps(state) {
   return {
-    product: state.product
+    product: state.product,
+    productShow: state.productShow.product
   }
 }
 
-export default connect(mapStateToProps,{getProduct})(Goods);
+export default connect(mapStateToProps,{getProduct,loadProductById})(Goods);

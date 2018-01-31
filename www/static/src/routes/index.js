@@ -103,6 +103,12 @@ const Topics = ({ match }) => (
 class App extends React.Component {
   render() {
     const authenticated = getStore('authenticated');
+    // console.log(asteroid)
+    // console.log(asteroid.userId)
+    // asteroid.ddp.on('result',({id,message,result}) =>{
+    //   console.log(result.id)
+    // })
+  //  asteroid.connected()
     return (
       <Router >
           <MainLayout history={history}>
