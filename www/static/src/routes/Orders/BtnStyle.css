@@ -1,0 +1,25 @@
+.btn-item {
+  margin-bottom: 15px;
+}
+.btn-item button {
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 6px 15px;
+  margin: 0 10px;
+}
+/*.btn {
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 6px 15px;
+  margin: 0 10px;
+}*/
+.pay-btn {
+  border: 1px solid red;
+  color: #fff;
+  background-color: red;
+  border-radius: 8px;
+  padding: 6px 15px;
+  margin: 0 10px;
+}

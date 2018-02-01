@@ -36,7 +36,7 @@ class ShopCart extends React.Component{
       <div className = {style['bg-color']} >
 
         <Flex justify = "end" style = {{backgroundColor:"#333",color:'#fff',lineHeight:'3em',padding:'5px 10px'}}>
-          <span style = {{textAlign:'right'}}> <span   onClick={(e) => {
+          <span style = {{textAlign:'right'}}> <span  onClick={(e) => {
             e.preventDefault();
             this.setState({
               edit:!this.state.edit,
