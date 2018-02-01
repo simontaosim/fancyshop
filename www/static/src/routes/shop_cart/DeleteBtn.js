@@ -52,7 +52,8 @@ class DeleteBtn extends React.Component {
       <CheckboxItem style = {{display:'flex',flexGrow:'1',backgroundColor:'#333',color:'#fff',paddingLeft:'7px',height:'50px'}} onChange={(e)=>this.CheckAll(e)}>
         <span style= {{color:'#fff',lineHeight:'1.95em'}}>全选</span>
       </CheckboxItem>
-      <button style = {{display:'flex',flexGrow:'1',backgroundColor:'red',justifyContent:'center',backgroundColor:'red',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px',lineHeight:'1.95em'}} onClick={this.delete}>删除</button>
+      <button style = {{display:'flex',flexGrow:'1',backgroundColor:'red',justifyContent:'center',backgroundColor:'red',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px',lineHeight:'1.95em'}}
+         onClick={this.delete}>删除</button>
       </Flex>
     </div>
 
