@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Flex, Accordion, InputItem, Button, TextareaItem, ImagePicker, WingBlank, SegmentedControl,DatePicker, List, PickerView, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import arrayTreeFilter from 'array-tree-filter';
 import { district, provinceLite } from 'antd-mobile-demo-data';
+
+import { asteroid } from '../../config/asteroid.config.js'
+import { getCurrentUser } from '../../actions/users.js'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
@@ -30,16 +34,25 @@ class UserData extends React.Component {
      value: null,
     }
   }
-
+  componentDidMount(){
+    const { dispatch } = this.props;
+    console.log('组件渲染完成');
+    console.log(asteroid)
+    console.log(asteroid.userId)
+    // asteroid.ddp.on('result',({id,message,result}) =>{
+    //  console.log(result.id)
+    // })
+    dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
+  }
 
   render(){
-    // const {getFieldProps} = this.props.form;
+    const { dispatch } = this.props;
     return(
     <div>
       <Accordion>
         <Accordion.Panel header = "花名" >
           <Flex justify = "center">
-            <InputItem placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
+            <InputItem defaultValue={this.props.current_user} placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
           </Flex>
         </Accordion.Panel>
@@ -103,4 +116,11 @@ class UserData extends React.Component {
   }
 }
 
-export default UserData;
+function mapStateToProps(state) {
+  return {
+    current_user: state.currentUser.current_user,
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(UserData);

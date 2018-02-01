@@ -6,6 +6,7 @@ import Goods from './Goods.js';
 import styles from './Common.css';
 import UntreatedDetail from './UntreatedDetail';
 import QrCode from './QrCode.js';
+import { connect } from 'react-redux';
 
 class UnTreated extends React.Component {
   constructor() {
@@ -13,13 +14,12 @@ class UnTreated extends React.Component {
   }
 
   render(){
-    console.log(this.props.datasource)
-    let data = this.props.untreated
+    const {untreated}  = this.props
     return (
       <div className = {styles['item-bg']}>
         <ShopName/>
-         {data.map(v=>(
-           <Goods name={v.name} spec={v.spec} price={v.price} num={v.num}/>
+         {untreated.map(v=>(
+           <Goods name={v.name} spec={v.spec} price={v.price} num={v.count}/>
 							))}
         <Flex justify = "end" className ={styles['total']}>
           合计：<span className = {styles['total-font']}> ￥500</span>
@@ -42,4 +42,11 @@ class UnTreated extends React.Component {
   }
 }
 
-export default UnTreated;
+function mapStateToProps(state) {
+  return {
+    untreated: state.ordersInfo.orders,
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(UnTreated);

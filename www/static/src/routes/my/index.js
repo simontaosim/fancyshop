@@ -4,7 +4,7 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 import { appInfo } from '../../map_props.js';
 import {setAppTitle} from '../../actions/app.js';
 import MyList from './MyList';
@@ -15,6 +15,10 @@ import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
 import{ loginOut } from '../../reducers/user.redux';
+import { asteroid } from '../../config/asteroid.config.js'
+import { getCurrentUser } from '../../actions/users.js'
+
+
 
 const alert = Modal.alert;
 
@@ -25,26 +29,41 @@ class AppMy extends React.Component{
   }
 
   ConfirmWindow() {
-    alert('123','321',[
+    let self = this
+    const { dispatch } = this.props;
+    alert('退出当前账号','321',[
       { text: '确定', onPress: () => {
           // console.log(this.props)
           // this.props.history.push('/tablogin')
-          this.props.loginOut()
+          dispatch(loginOut())
       }},
       { text: '取消', onPress: () => console.log('取消了') },
     ])
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log(nextProps);
-    if(!nextProps.user.authenticated){
-        nextProps.history.push('/tablogin');
-    }
+  // componentWillReceiveProps(nextProps){
+  //   console.log(nextProps);
+  //   if(!nextProps.user.authenticated){
+  //       nextProps.history.push('/tablogin');
+  //   }
+
+  // }
+  componentDidMount(){
+    const { dispatch } = this.props;
+    console.log('组件渲染完成');
+    console.log(asteroid)
+    console.log(asteroid.userId)
+    // asteroid.ddp.on('result',({id,message,result}) =>{
+    //  console.log(result.id)
+    // })
+    dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
   }
 
 
   render(){
-
+    const { dispatch, current_user } = this.props;
+    console.log(this.props.current_user)
+    
     return (
       <div >
         <div className = {style['back-color']}>
@@ -57,13 +76,13 @@ class AppMy extends React.Component{
             </Link>
            </Flex>
           <Flex justify = "center"  className = {style['nick-name-pos']}>
-            <span>我是花名</span>
+            <span>{this.props.current_user.nickname}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['user-name-span']}>（用户名：我是用户名）</span>
+            <span className = {style['user-name-span']}>{this.props.current_user.username}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['slogan-span']}>我的口号是，让世界和平</span>
+            <span className = {style['slogan-span']}>{this.props.current_user.dataAutograph}</span>
           </Flex>
         </div>
         <div className = {style['item-position']} >
@@ -80,9 +99,11 @@ class AppMy extends React.Component{
 }
 function mapStateToProps(state) {
   return {
+    current_user: state.currentUser.current_user,
     user: state.user
   }
 }
 
-export default connect(mapStateToProps,{loginOut})(AppMy);
+export default connect(mapStateToProps)(AppMy);
+
 // export default connect(appInfo)(AppMy);

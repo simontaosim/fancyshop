@@ -1,5 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import {AppInfo} from '../reducers'
+import { ordersInfo } from '../reducers/orders.js'
+
+import { currentUser } from '../reducers/users.js'
 import {user} from '../reducers/user.redux'
 import { cart } from '../reducers/cart.redux'
 import { product } from '../reducers/product.redux'
@@ -18,6 +21,8 @@ export default function configureStore() {
     combineReducers({
       AppInfo,
       recommandProducts,
+      currentUser,
+      ordersInfo,
       user,
       cart,
       product,
