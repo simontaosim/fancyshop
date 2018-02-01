@@ -1,4 +1,6 @@
-import { asteroid } from '../config/asteroid.config.js'
+import history from '../history';
+import { asteroid } from '../config/asteroid.config.js';
+
 
 export const EXCEPT_RECOMMAND_PRODUCTS = 'EXCEPT_RECOMMAND_PRODUCTS';
 export const RECEIVE_RECOMMAND_PRODUCTS = 'RECEIVE_RECOMMAND_PRODUCTS';
@@ -82,4 +84,22 @@ export function loadProductById(id){
 
 export function loadProductList(){
 
+}
+
+
+
+export function createOrder(product) {
+  return dispatch => {
+    asteroid.call('app.orders.insert',product)
+            .then(result => {
+              console.log(`自爱崽子`)
+              console.log(result)
+                if(result){
+                  history.push(`/firmorder/${result}`)
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+  }
 }

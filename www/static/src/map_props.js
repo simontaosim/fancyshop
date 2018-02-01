@@ -26,3 +26,11 @@ export function cartInfo(state) {
     cart: state.cart
   }
 }
+
+
+export function orderInfo(state) {
+  return {
+    order: state.order
+  }
+}
+

@@ -6,7 +6,7 @@ import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { changeProduct } from '../../reducers/product.redux';
-import {  addCount } from '../../actions/products';
+import {  addCount,createOrder } from '../../actions/products';
 import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
 
@@ -62,26 +62,29 @@ class ProductModal extends React.Component {
     let count = this.props.productShow.count
     // console.log(product)
     // console.log(cart)
-    let spec = this.props.spec.length == 0 ? [{name: '默认规格',price: product.endPrice,isThis: true}] : product.specifications;
+    let spec = this.props.spec.length == 0 ?  '默认规格': product.specifications;
     if(this.props.model.way=="orders"){
       let params = {
-        createdBy: 2,
+        userId: 2,
         status: 'unpay',
         shopId: product.shopId,
-        orderItems: [
+        address: "user.address.id",
+        username: "李逍遥",
+        mobile: "13751124249",
+        products: [
           {
             price: product.endPrice,
             count,
-            product: {
-              name: product.name_zh,
-              specifications: {
-                  name: spec
-              }
+            id: product._id,
+            name: product.name_zh,
+            specifications: {
+              name: spec
             }
-          }
+          },
         ]
-      }
-      console.log(params)
+      };
+      console.log(`提交订单`)
+      this.props.createOrder(params);
      }
     // let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
     //    let count =product.count !== undefined ?product.count : 1
@@ -316,4 +319,4 @@ class ProductModal extends React.Component {
    }
  }
 
-   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart,insertCart })(ProductModal);
+   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart,insertCart,createOrder })(ProductModal);

@@ -134,7 +134,7 @@ class App extends React.Component {
               <Route path = "/userdata" component={ UserData }/>
               <Route path = "/facilitator/:id" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
-              <Route path = "/firmorder" component = {FirmOrder}/>
+              <Route path = "/firmorder/:orderId" component = {FirmOrder}/>
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />

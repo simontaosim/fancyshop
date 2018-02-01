@@ -4,12 +4,14 @@ import {user} from '../reducers/user.redux';
 import { cart } from '../reducers/cart.redux';
 import { product } from '../reducers/product.redux';
 import { model } from '../reducers/model.redux';
-import { productShow } from '../reducers/product'
+import { productShow } from '../reducers/product';
+import { order } from '../reducers/order'
 import { recommandProducts } from '../reducers/recommand_products';
 import thunk from 'redux-thunk'
-import createHistory from 'history/createBrowserHistory'
+// import createHistory from 'history/createBrowserHistory'
 // import logger from 'redux-logger'
-const history = createHistory()
+// const history = createHistory()
+// import history from './history';
 export default function configureStore() {
   const enhancer = compose(
     applyMiddleware(thunk),
@@ -24,6 +26,7 @@ export default function configureStore() {
       product,
       model,
       productShow,
+      order,
     }),
     enhancer);
 }

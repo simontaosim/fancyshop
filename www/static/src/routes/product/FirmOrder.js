@@ -4,12 +4,54 @@ import { Link } from 'react-router-dom';
 import goodImg from '../../assets/img/reward/good.jpg';
 import styles from '../orders/WaitDetails.css';
 import stylec from '../orders/Common.css';
+import { orderInfo} from '../../map_props';
+import { loadOrderById } from '../../actions/orders';
+import { connect } from 'react-redux';
+import { asteroid } from '../../config/asteroid.config'
 
 
 class FirmOrder extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.state = {
+      order:  {
+       "_id" : "",
+      "type" : null,
+      "userId" : "",
+      "status" : "",
+      "shopId" : "",
+      "products" : [
+      ],
+      "username" : "",
+      "address" : null
+       }
+    }
     this.paid = this.paid.bind(this)
+  }
+
+  componentWillMount() {
+    // let id = this.props.match.params.orderId;
+    // let {dispatch} = this.props;
+    // dispatch(loadOrderById(id))
+  }
+  componentDidMount() {
+    let id = this.props.match.params.orderId;
+    asteroid.call('app.order.getone',id)
+            .then(result => {
+              console.log(result);
+              if(result){
+                this.setState({
+                  order: result
+                })
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            })
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps)
   }
 
   paid() {
@@ -17,6 +59,50 @@ class FirmOrder extends React.Component {
   }
 
   render(){
+    let {order} = this.state;
+   let productItem;
+   if(order.products.length>0){
+      productItem  = order.products.map((product,index)=> {
+       return(
+       <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
+         <Flex justify = "center" className = {styles['goods-item']}>
+            <div className = {styles['img-border']} >
+              <img src = {goodImg} className = {styles['goods-img']}/>
+            </div>
+            <div >
+              <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
+              <span className = {styles['type-color']}>规格：{product.specifications.name} </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥{product.price} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×{product.count}</span>
+            </div>
+          </Flex>
+        </div>
+       )
+     })
+   }
+   console.log(productItem)
+    
+    // console.log(this.props.order)
+    // let {order} = this.props
+    // console.log(order);
+    // console.log(order.username);
+    // console.log(order.products.length);
+    // if(order.products.length>0){
+    //   console.log(order.username)
+    // }
+    // let productItem = order.products.map((product)=>{
+    //   return(
+    //     <div>{product.name}222{product.count}</div>
+    //   )
+    // })
+    // if(order.orderItems.length>0){
+    //   console.log(order.orderItems)
+    // }
+    // let orderItems = order.orderItems.map((v)=>{
+    //   console.log(v)
+    //   return(
+ 
+    //   )
+    // })
+    // console.log(orderItems);
     return(
       <div style = {{marginTop:'60px'}}>
         <div className = {styles['item-info']}>
@@ -49,31 +135,13 @@ class FirmOrder extends React.Component {
           <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'14px',width:'95%',padding:'10px 3px'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈"/>
         </div>
         </div>
-        <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}}>
-          <Flex justify = "center" className = {styles['goods-item']}>
-            <div className = {styles['img-border']} >
-              <img src = {goodImg} className = {styles['goods-img']}/>
-            </div>
-            <div >
-              <Flex style = {{marginBottom:'10px'}}>我是商品的长名字占位符占位符占位符哈哈哈哈哈哈</Flex>
-              <span className = {styles['type-color']}>类型：4L 自喜力 </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥250 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×1</span>
-            </div>
-          </Flex>
 
-          <Flex justify = "center" style = {{backgroundColor:'#f6f6f6',height:'auto',margin:'15px 10px'}}>
-            <div style = {{backgroundColor:'#5e0f0f',padding:'2px 8px 8px 3px'}}>
-              <img src = {goodImg} style = {{height:'50px',width:'50px'}}/>
-            </div>
-            <div style ={{paddingLeft:'10px'}}>
-              我是商品的长名字占位符占位符占位符哈哈哈哈哈哈<br/>
-              <span style = {{color:'#888'}}>类型：4L 自喜力 </span>   <span style= {{float:'right'}}> <span style = {{color:'red'}}> ￥250 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ×1</span>
-            </div>
-          </Flex>
-        </div>
+        {productItem }
+
         <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%',flexGrow:'1'}}>
           <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'2',height:'50px',fontSize:'14px'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
-          <button style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px'}} onClick={this.firmorder}>
-            <span style= {{textAlign:'center',color:'#fff',lineHeight:'1.95em'}}>提交订单</span>
+          <button style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px'}} onClick={this.paid}>
+            <span style= {{textAlign:'center',color:'#fff',lineHeight:'1.95em'}} >提交订单</span>
           </button>
         </Flex>
 
@@ -83,4 +151,4 @@ class FirmOrder extends React.Component {
 
 }
 
-export default FirmOrder;
+export default connect(orderInfo)(FirmOrder);

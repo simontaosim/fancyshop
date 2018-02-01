@@ -39,7 +39,7 @@ class UserData extends React.Component {
     return(
     <div>
       <Accordion>
-        <Accordion.Panel header = "花名&nbsp;&nbsp;&nbsp;&nbsp;设置花名" >
+        <Accordion.Panel header = "花名" >
           <Flex justify = "center">
             <InputItem placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
@@ -48,9 +48,9 @@ class UserData extends React.Component {
       </Accordion>
        <Picker data={gender} cols={1} >
           <List.Item arrow="horizontal"
-        //     value={this.state.sValue}
-        //  onChange={v => this.setState({ sValue: v })}
-        //  onOk={v => this.setState({ sValue: v })}
+            value={this.state.sValue}
+         onChange={v => this.setState({ sValue: v })}
+         onOk={v => this.setState({ sValue: v })}
              >性别</List.Item>
        </Picker>
       <Accordion>
