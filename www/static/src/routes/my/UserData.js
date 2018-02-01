@@ -29,12 +29,13 @@ class UserData extends React.Component {
     //  files: data,
      date:now,
      value: null,
+     sValue: ['未知'],
     }
   }
 
 
   render(){
-    // const {getFieldProps} = this.props.form;
+    const {getFieldProps} = this.props.form;
     return(
     <div>
       <Accordion>
@@ -46,11 +47,16 @@ class UserData extends React.Component {
         </Accordion.Panel>
       </Accordion>
        <Picker data={gender} cols={1} >
-          <List.Item arrow="horizontal">性别</List.Item>
+          <List.Item arrow="horizontal"
+        //     value={this.state.sValue}
+        //  onChange={v => this.setState({ sValue: v })}
+        //  onOk={v => this.setState({ sValue: v })}
+             >性别</List.Item>
        </Picker>
       <Accordion>
         <Accordion.Panel header = "签名" >
-          <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
+          <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',
+            border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
           </TextareaItem>
           <Flex justify = "center" style = {{}}>
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'15px'}}>提交</Button>
@@ -60,11 +66,11 @@ class UserData extends React.Component {
          <Picker extra="地区"
            data={district}
            title="地区"
-          //  {...getFieldProps('district', {
-          //    initialValue: ['340000', '341500', '341502'],
-          //  })}
-          //  onOk={e => console.log('ok', e)}
-          //  onDismiss={e => console.log('dismiss', e)}
+           {...getFieldProps('district', {
+             initialValue: ['340000', '341500', '341502'],
+           })}
+           onOk={e => console.log('ok', e)}
+           onDismiss={e => console.log('dismiss', e)}
          >
            <List.Item arrow="horizontal">地区</List.Item>
          </Picker>
@@ -104,4 +110,5 @@ class UserData extends React.Component {
   }
 }
 
-export default UserData;
+const UserDataWrapper = createForm()(UserData);
+export default UserDataWrapper;

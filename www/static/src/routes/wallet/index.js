@@ -13,7 +13,7 @@ class Wallet extends React.Component {
   render(){
     return(
       <div>
-        <MyWallet/>
+        <MyWallet history = {this.props.history}/>
       </div>
     )
   }
