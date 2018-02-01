@@ -3,6 +3,7 @@ import { asteroid } from '../config/asteroid.config.js'
 export const EXCEPT_RECOMMAND_PRODUCTS = 'EXCEPT_RECOMMAND_PRODUCTS';
 export const RECEIVE_RECOMMAND_PRODUCTS = 'RECEIVE_RECOMMAND_PRODUCTS';
 export const RECEIVEPRODUCTBYID = 'RECEIVEPRODUCTBYID';
+export const ADD_COUNT = "ADD_COUNT";
 // export const RECOMMAND_PRODUCTS_LIST = "RECOMMAND_PRODUCTS_LIST"
 
 
@@ -52,6 +53,14 @@ function receiveProductById(product){
 }
 function receiveProductByIdError(error){
 
+}
+
+
+export function addCount(count) {
+  return { 
+    type: ADD_COUNT, 
+    count: count
+  }
 }
 
 export function loadProductById(id){

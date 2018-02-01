@@ -38,27 +38,40 @@ componentDidMount() {
  }
 
  componentWillReceiveProps(nextProps) {
-    if(nextProps.product.good){
-      let spec = nextProps.product.good.spec
-      let tagMenuArr = [];
-      for(var i=0;i<spec.length;i++){
-        if(spec[i].isThis == true){
-          tagMenuArr.push(true)
-        }else{
-          tagMenuArr.push(false)
-        }
-      }
-      this.setState({
-        product: nextProps.product.good,
-        tagMenuClick: tagMenuArr
-      })
-    }else{
-      console.log('no')
-    }
+   console.log(nextProps)
+   if(nextProps.productShow) {
+     let tagMenuArr = [];
+     let spec = nextProps.productShow.specifications
+     for(var i=0;i<spec.length;i++){
+        tagMenuArr.push(false)
+     }
+     tagMenuArr[0] = true
+     console.log(tagMenuArr)
+     this.setState({
+      tagMenuClick: tagMenuArr
+     })
+   }
+    // if(nextProps.product.good){
+    //   let spec = nextProps.product.good.spec
+    //   let tagMenuArr = [];
+    //   for(var i=0;i<spec.length;i++){
+    //     if(spec[i].isThis == true){
+    //       tagMenuArr.push(true)
+    //     }else{
+    //       tagMenuArr.push(false)
+    //     }
+    //   }
+    //   this.setState({
+    //     // product: nextProps.product.good,
+    //     tagMenuClick: tagMenuArr
+    //   })
+    // }else{
+    //   console.log('no')
+    // }
  }
 
 render(){
-  let product = this.props.productShow.product
+  let product = this.props.productShow
   console.log(product)
   let productDefault =  this.props.productShow
   let pic = product.images.map((img,index)=>{
@@ -75,7 +88,7 @@ render(){
               // fire window resize event to change height
               window.dispatchEvent(new Event('resize'));
               this.setState({ imgHeight: 'auto' });
-            }}
+            }}  
           />
         </div>
     )
@@ -132,7 +145,7 @@ render(){
 function mapStateToProps(state) {
   return {
     product: state.product,
-    productShow: state.productShow
+    productShow: state.productShow.product
   }
 }
 

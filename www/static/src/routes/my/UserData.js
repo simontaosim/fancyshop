@@ -38,7 +38,7 @@ class UserData extends React.Component {
     return(
     <div>
       <Accordion>
-        <Accordion.Panel header = "花名" >
+        <Accordion.Panel header = "花名&nbsp;&nbsp;&nbsp;&nbsp;设置花名" >
           <Flex justify = "center">
             <InputItem placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>

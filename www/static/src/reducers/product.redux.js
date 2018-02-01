@@ -36,9 +36,9 @@ export function product(state=initialState,action) {
       }
       return Object.assign({},state,{selected: good_spec[index]})
       break;
-    case ADD_COUNT:
-      return Object.assign({},state,{count: action.payload})
-      break;
+    // case ADD_COUNT:
+    //   return Object.assign({},state,{count: action.payload})
+    //   break;
     default: 
       return state
   }
@@ -56,9 +56,9 @@ export function changeProduct(data) {
   return { type: CHANGE_PRODUCT, payload: data}
 }
 
-export function addCount(data) {
-  return { type: ADD_COUNT, payload: data}
-}
+// export function addCount(data) {
+//   return { type: ADD_COUNT, payload: data}
+// }
 
 
 //获取商品列表
