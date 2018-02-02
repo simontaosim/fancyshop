@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Flex } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import ShopName from './ShopName.js';
@@ -36,7 +37,7 @@ class WaitPay extends React.Component {
         <ShopName shop={shop}/>
 
          {waitpay.map(v=>(
-           <Goods key = {v.name}  name={v.name} spec={v.spec} price={v.price} num={v.num}/>
+           <Goods key = {v.name}  name={v.name} spec={v.spec} price={v.price} num={v.count}/>
 							))}
         <Flex justify = "end" style = {{marginRight:'10px'}}>
           合计：<span className = {styles['total-font']}> ￥500</span>
@@ -52,4 +53,11 @@ class WaitPay extends React.Component {
   }
 }
 
-export default WaitPay;
+function mapStateToProps(state) {
+  return {
+    waitpay: state.ordersInfo.orders,
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(WaitPay);
