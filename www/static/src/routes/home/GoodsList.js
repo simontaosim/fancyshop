@@ -46,6 +46,8 @@ class GoodsList extends React.Component {
   }
 
   onEndReached = (event) => {
+    console.log('reach end', event);
+    this.setState({ isLoading: false });
   }
 
   render() {
@@ -92,7 +94,7 @@ class GoodsList extends React.Component {
         dataSource={this.state.dataSource}
         // renderHeader={() => <span>header</span>}
         renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-          {this.state.isLoading ? 'Loading...' : 'Loaded'}
+          {this.state.isLoading ? 'Loading...' : '加载完成'}
         </div>)}
         renderRow={row}
         // renderSeparator={separator}

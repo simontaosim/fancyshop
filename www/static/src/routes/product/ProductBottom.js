@@ -29,7 +29,7 @@ class ProductBottom extends React.Component {
   }
 
   componentDidMount() {
-
+      console.log(this.props.shopId)
   }
 
   blockModal = key => (e) => {

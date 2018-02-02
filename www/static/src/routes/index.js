@@ -17,7 +17,7 @@ import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';
 import { getStore } from '../config/mUtils';
 import Test from './checkbox';
-import Orders from './orders/index';
+// import Orders from './orders/index';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
 import WaitDetails from './orders/WaitDetails';
@@ -44,11 +44,15 @@ import VipCard from './vipcard/index';
 import Coupon from './coupon/index';
 import MyBankCard from './wallet/MyBankCard';
 import EditBankCard from './wallet/EditBankCard';
+// import OrderList from './orders/OrderList';
 import { asteroid } from '../config/asteroid.config';
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
 import Shops from './shops/'
+
+import Orders from './orders/index';
+import OrderList from './orders/OrderList';
 
 
 
@@ -123,18 +127,18 @@ class App extends React.Component {
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />
-              <Route path = "/orders" component={Orders}/>
+              {/* <Route path = "/orders" component={Orders}/> */}
               <Route path = "/product/:id" component={Goods}/>
               <Route path = "/details" component={WaitDetails}/>
-              <Route path = "/paid" component={Paid}/>
+              <Route path = "/paid/:orderId" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/userdata" component={ UserData }/>
-              <Route path = "/facilitator/:id" component = { Facilitator }/>
+              <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
-              <Route path = "/firmorder" component = {FirmOrder}/>
+              <Route path = "/firmorder/:orderId" component = {FirmOrder}/>
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
@@ -152,6 +156,10 @@ class App extends React.Component {
               <Route path="/coupon" component={Coupon}/>
               <Route path="/bankcard" component={MyBankCard}/>
               <Route path="/editbankcard" component={EditBankCard}/>
+              <Route path="/orderlist" component={OrderList}/>
+              <Route path = "/orders" component={Orders}/>
+
+
               <Route component={NoMatchPage}/>
             </Switch>
 

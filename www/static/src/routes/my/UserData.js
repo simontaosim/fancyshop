@@ -79,9 +79,9 @@ class UserData extends React.Component {
       </Accordion>
        <Picker data={gender} cols={1} >
           <List.Item arrow="horizontal"
-        //     value={this.state.sValue}
-        //  onChange={v => this.setState({ sValue: v })}
-        //  onOk={v => this.setState({ sValue: v })}
+            value={this.state.sValue}
+         onChange={v => this.setState({ sValue: v })}
+         onOk={v => this.setState({ sValue: v })}
              >性别</List.Item>
        </Picker>
       <Accordion>

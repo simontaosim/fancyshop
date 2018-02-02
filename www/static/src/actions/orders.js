@@ -1,6 +1,6 @@
-import { asteroid } from '../config/asteroid.config.js'
-
-
+import history from '../history';
+import { asteroid } from '../config/asteroid.config.js';
+export const RECEIVEORDERBYID = 'RECEIVEORDERBYID';
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const GET_PAID_ORDERS = "GET_PAID_ORDERS";
 export const GET_UNPAID_ORDERS = "GET_UNPAID_ORDERS";
@@ -96,3 +96,44 @@ export function  gainUnPaidOrders(userId){
                   });
   }
 }
+
+
+
+function reviceOrderById(order) {
+    return {
+     type: RECEIVEORDERBYID,
+     order
+    }
+}
+
+
+export function loadOrderById(id) {
+  return  dispatch => {
+        asteroid.call('app.order.getone',id)
+                .then(result => {
+                    console.log(result);
+                    dispatch(reviceOrderById(result))
+                })
+                .catch(error => {
+
+                })
+    }
+}
+
+
+
+export function createOrder(product) {
+    return dispatch => {
+      asteroid.call('app.orders.insert',product)
+              .then(result => {
+                  if(result){
+                    history.push(`/firmorder${result}`)
+                  }
+              })
+              .catch(error => {
+                  console.log(error);
+              })
+    }
+  }
+
+

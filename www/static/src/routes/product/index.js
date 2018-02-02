@@ -25,7 +25,7 @@ class Goods extends React.Component {
       data: ['1', '2', '3'],
       imgHeight: 176,
       slideIndex: 0,
-      tagMenuClick: []
+      tagMenuClick: [true]
     }
   }
 
@@ -38,47 +38,58 @@ componentDidMount() {
  }
 
  componentWillReceiveProps(nextProps) {
-    if(nextProps.product.good){
-      let spec = nextProps.product.good.spec
-      let tagMenuArr = [];
-      for(var i=0;i<spec.length;i++){
-        if(spec[i].isThis == true){
-          tagMenuArr.push(true)
-        }else{
-          tagMenuArr.push(false)
-        }
-      }
-      this.setState({
-        product: nextProps.product.good,
-        tagMenuClick: tagMenuArr
-      })
-    }else{
-      console.log('no')
-    }
+   console.log(nextProps)
+   console.log(123456);
+
+   if(nextProps.reviceProduce) {
+    //  let tagMenuArr = [];
+    //  let spec = nextProps.productShow.specifications
+    //  for(var i=0;i<spec.length;i++){
+    //     tagMenuArr.push(false)
+    //  }
+    //  tagMenuArr[0] = true
+    //  console.log(tagMenuArr)
+    //  this.setState({
+    //   tagMenuClick: tagMenuArr
+    //  })
+   }
+    // if(nextProps.product.good){
+    //   let spec = nextProps.product.good.spec
+    //   let tagMenuArr = [];
+    //   for(var i=0;i<spec.length;i++){
+    //     if(spec[i].isThis == true){
+    //       tagMenuArr.push(true)
+    //     }else{
+    //       tagMenuArr.push(false)
+    //     }
+    //   }
+    //   this.setState({
+    //     // product: nextProps.product.good,
+    //     tagMenuClick: tagMenuArr
+    //   })
+    // }else{
+    //   console.log('no')
+    // }
  }
 
 render(){
   let product = this.props.productShow.product
-  console.log(product)
   let productDefault =  this.props.productShow
   let pic = product.images.map((img,index)=>{
     return(
-      <a
+      <div
           key={index}
-          href="#"
           style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
         >
           <img
             src={`${img}`}
-            alt=""
             style={{ width: '100%', verticalAlign: 'top' }}
             onLoad={() => {
-              // fire window resize event to change height
               window.dispatchEvent(new Event('resize'));
               this.setState({ imgHeight: 'auto' });
-            }}
+            }}  
           />
-        </a>
+        </div>
     )
   })
   return (
@@ -88,7 +99,7 @@ render(){
       dots = {true}
       autoplay={false}
       infinite
-      selectedIndex={1}
+      selectedIndex={0}
       beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
       afterChange={index => console.log('slide to', index)}
     >
@@ -101,12 +112,12 @@ render(){
       </Flex>
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center" >
-          <span className = {style['price-font']}>￥{product.price}</span>
+          <span className = {style['price-font']}>￥{product.endPrice}</span>
           <span className = {style['black-card']}>{product.name_zh}</span>
         </Flex.Item>
         <span align = "right" style = {{color:'#7b7b7b'}}>{productDefault.address}</span>
       </Flex>
-        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥299</span>
+        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥{product.price}</span>
       </div>
       <Flex justify = "between" className = {style['item']}>
         <Flex > <ProductShare/></Flex>
@@ -133,7 +144,8 @@ render(){
 function mapStateToProps(state) {
   return {
     product: state.product,
-    productShow: state.productShow
+    productShow: state.productShow,
+    reviceProduce: state.productShow.product
   }
 }
 
