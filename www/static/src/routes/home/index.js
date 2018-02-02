@@ -29,6 +29,7 @@ class AppHome extends React.Component{
     this.state = {
       data: ['','',''],
       good: [],
+      shops: [],
     }
 
   }

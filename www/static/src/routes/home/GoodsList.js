@@ -13,7 +13,7 @@ import { productinfo } from '../../map_props';
 
 
 
-
+let page = 1;
 class GoodsList extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class GoodsList extends React.Component {
 
     this.state = {
       dataSource,
-      isLoading: true,
+      isLoading: false,
       data: []
     };
   }
