@@ -130,7 +130,7 @@ class App extends React.Component {
               {/* <Route path = "/orders" component={Orders}/> */}
               <Route path = "/product/:id" component={Goods}/>
               <Route path = "/details" component={WaitDetails}/>
-              <Route path = "/paid" component={Paid}/>
+              <Route path = "/paid/:orderId" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>

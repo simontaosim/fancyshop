@@ -56,9 +56,6 @@ export function changeProduct(data) {
   return { type: CHANGE_PRODUCT, payload: data}
 }
 
-// export function addCount(data) {
-//   return { type: ADD_COUNT, payload: data}
-// }
 
 
 //获取商品列表

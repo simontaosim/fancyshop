@@ -24,7 +24,11 @@ class FirmOrder extends React.Component {
       ],
       "username" : "",
       "address" : null
-       }
+       },
+       shop: {
+
+       },
+       remark: ''
     }
     this.paid = this.paid.bind(this)
   }
@@ -36,12 +40,14 @@ class FirmOrder extends React.Component {
   }
   componentDidMount() {
     let id = this.props.match.params.orderId;
+    console.log(`走不走`)
     asteroid.call('app.order.getone',id)
             .then(result => {
               console.log(result);
               if(result){
                 this.setState({
-                  order: result
+                  order: result.order,
+                  shop: result.shop
                 })
               }
             })
@@ -49,17 +55,39 @@ class FirmOrder extends React.Component {
               console.log(error);
             })
   }
-
+ 
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
   }
 
   paid() {
-    this.props.history.push('/paid')
+    console.log(`提交`)
+  console.log(this.state.remark)
+    let params = {
+      remark: this.state.remark,
+      id: this.state.order._id,
+      shop_name: this.state.shop.name,
+      address: this.state.shop.address
+    }
+    asteroid.call('app.order.update',params)
+            .then(result => {
+                if(result){
+                  this.props.history.push(`/paid/${this.state.order._id}`)
+                }
+            })
+            .catch(error => {
+
+            })
+  }
+
+  handleChange(key,value){
+    this.setState({
+      [key]:value
+    })
   }
 
   render(){
-    let {order} = this.state;
+    let {order, shop} = this.state;
    let productItem;
    if(order.products.length>0){
       productItem  = order.products.map((product,index)=> {
@@ -78,7 +106,8 @@ class FirmOrder extends React.Component {
        )
      })
    }
-   console.log(productItem)
+
+   
     
     // console.log(this.props.order)
     // let {order} = this.props
@@ -109,8 +138,8 @@ class FirmOrder extends React.Component {
           <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
           <div>
           <Link to = "/address">
-            <div style = {{color:'#333'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>成都市金牛区沙湾路63号</span></div>
-            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>123456789</span></div>
+            <div style = {{color:'#333'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.address}</span></div>
+            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.phone}</span></div>
           </Link>
           </div>
         </div>
@@ -132,14 +161,14 @@ class FirmOrder extends React.Component {
 
         <div className = {styles['item-notice']}>
           <div><img src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
-          <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'14px',width:'95%',padding:'10px 3px'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈"/>
+          <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'14px',width:'95%',padding:'10px 3px'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈" onChange={v=>this.handleChange('remark',v)}/>
         </div>
         </div>
 
         {productItem }
 
         <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%',flexGrow:'1'}}>
-          <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'2',height:'50px',fontSize:'14px'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥250</span></Flex>
+          <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'2',height:'50px',fontSize:'14px'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥{order.products.length>0? order.products[0].price*order.products[0].count : 0}</span></Flex>
           <button style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px'}} onClick={this.paid}>
             <span style= {{textAlign:'center',color:'#fff',lineHeight:'1.95em'}} >提交订单</span>
           </button>
