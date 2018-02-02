@@ -5,6 +5,7 @@ import styles from "./Paid.css";
 import codeImg from '../../assets/img/orders/code.png';
 import payImg from '../../assets/img/orders/pay.png';
 import wechatImg from '../../assets/img/orders/wechat.png';
+import { asteroid } from '../../config/asteroid.config';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 const RadioItem = Radio.RadioItem;
@@ -14,24 +15,53 @@ const AgreeItem = Checkbox.AgreeItem;
 class Paid extends React.Component {
   constructor() {
     super()
+    this.state = {
+      order:  {
+        "_id" : "",
+       "type" : null,
+       "userId" : "",
+       "status" : "",
+       "shopId" : "",
+       "products" : [
+       ],
+       "username" : "",
+       "address" : null
+        },
+    }
+  }
+  componentDidMount() {
+    let id = this.props.match.params.orderId;
+    asteroid.call('app.order.getone',id)
+            .then(result => {
+              console.log(result);
+              if(result){
+                this.setState({
+                  order: result.order,
+                })
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            })
   }
   render(){
+    let {order} = this.state
     return(
     <div style = {{marginTop:'46px',}}>
       <Flex className = {styles["letter-box"]}>
         <div className = {styles["letter-border"]}>
           <Flex style = {{padding:'15px 10px'}}>
-            订单号：13165465
+            订单号：{order._id}
           </Flex>
           <Flex justify = "center" style = {{marginLeft:'10px',borderBottom:'1px solid #aaa',width:'270px'}}>
           </Flex>
           <Flex style = {{padding:'15px 10px'}}>
-            购买的商品：尊享卡*1
+            购买的商品：{order.products.length>0? order.products[0].name : null}
           </Flex>
           <Flex justify = "center" style = {{marginLeft:'10px',borderBottom:'1px solid #aaa',width:'270px'}}>
           </Flex>
           <Flex style = {{padding:'15px 10px'}}>
-            总价：888
+            总价：￥{order.products.length>0 ? order.products[0].price* order.products[0].count : 0}
           </Flex>
         </div>
       </Flex>

@@ -15,6 +15,7 @@ class OrderList extends React.Component {
     }
   }
   render(){
+      let {name, price, spec,num} = this.props
     return (
       <div className = {s['order-frame']}>
         <Flex justify = "start">

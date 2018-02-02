@@ -5,7 +5,8 @@ import WaitPayBtn from './WaitPayBtn';
 import UntreatedBtn from './UntreatedBtn';
 import FinishBtn from './FinishBtn';
 import InvalidBtn from './InvalidBtn';
-
+import '../../service/data/datasource';
+import axios from 'axios';
 
 class Orders extends React.Component{
   constructor() {

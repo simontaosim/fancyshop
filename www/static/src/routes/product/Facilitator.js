@@ -9,6 +9,9 @@ class Facilitator extends React.Component {
   constructor() {
     super();
   };
+  componentDidMount() {
+    console.log(123123213123);
+  }
 
   render(){
     const tabs = [
