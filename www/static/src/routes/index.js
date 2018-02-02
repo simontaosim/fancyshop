@@ -51,8 +51,8 @@ import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
 import Shops from './shops/'
 
-import Orders from './orders/index';
-import OrderList from './orders/OrderList';
+import Orders from './Orders/index';
+import OrderList from './Orders/OrderList';
 
 
 
