@@ -39,11 +39,11 @@ class Address extends React.Component {
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span>
+          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span>成都市金牛区沙湾路63号</span>
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123456789</span>
+          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
         </Flex>
       </div>
       <div className = {s['address-item']} style={{border: this.state.tagMenuClick[1] ? "2px dashed red" : "2px dashed #aaa"}} onClick={()=>{this.handleTagMenuClick(1)}}>
@@ -52,11 +52,11 @@ class Address extends React.Component {
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span>
+          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span >成都市金牛区沙湾路63号</span>
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123456789</span>
+          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
         </Flex>
       </div>
       <div className = {s['address-item']} style={{border: this.state.tagMenuClick[2] ? "2px dashed red" : "2px dashed #aaa"}} onClick={()=>{this.handleTagMenuClick(2)}}>
@@ -65,11 +65,11 @@ class Address extends React.Component {
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span>
+          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span>成都市金牛区沙湾路63号</span>
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123456789</span>
+          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
         </Flex>
       </div>
     </div>

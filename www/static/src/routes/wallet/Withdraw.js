@@ -45,8 +45,8 @@ class Withdraw extends React.Component {
         </Flex.Item>
       </Flex>
       <div style = {{backgroundColor:'#fff',padding:' 0 10px 0 10px'}}>
-      <Flex>
-        提现：<InputItem placeholder = "请输入提现余额"></InputItem><br/>
+      <Flex justify = "start" style = {{borderBottom:'1px solid #ccc'}}>
+        <label style = {{fontSize:'17px',paddingLeft:'15px'}}>提现</label><InputItem placeholder = "请输入提现余额" style = {{width:'80%',paddingLeft:'10px'}}></InputItem>
       </Flex>
       {/* <Flex>
         选择银行卡：<InputItem placeholder = "请输入银行卡号" style = {{border:'1px solid #aaa'}}></InputItem>

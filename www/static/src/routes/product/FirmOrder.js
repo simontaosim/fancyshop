@@ -55,7 +55,7 @@ class FirmOrder extends React.Component {
               console.log(error);
             })
   }
- 
+
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
   }
@@ -107,8 +107,8 @@ class FirmOrder extends React.Component {
      })
    }
 
-   
-    
+
+
     // console.log(this.props.order)
     // let {order} = this.props
     // console.log(order);
@@ -128,23 +128,23 @@ class FirmOrder extends React.Component {
     // let orderItems = order.orderItems.map((v)=>{
     //   console.log(v)
     //   return(
- 
+
     //   )
     // })
     // console.log(orderItems);
     return(
-      <div style = {{marginTop:'60px'}}>
+      <div style = {{marginTop:'60px',fontSize:'16px'}}>
         <div className = {styles['item-info']}>
           <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
           <div>
           <Link to = "/address">
-            <div style = {{color:'#333'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.address}</span></div>
-            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.phone}</span></div>
+            <div style = {{color:'#333',padding:'10px 0'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>1234566{shop.address}</span></div>
+            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123233{shop.phone}</span></div>
           </Link>
           </div>
         </div>
 
-        <div className = {styles['item-user']}>
+        {/* <div className = {styles['item-user']}>
           <Flex>
             <img src={require('../svg/people.svg')} className = {styles['item-icon']}/>姓&nbsp;名：<InputItem placeholder = "默认为黑卡姓名" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'14px',lineHeight:'2em',padding:'0 20px 0 10px'}}/>
           </Flex>
@@ -157,7 +157,7 @@ class FirmOrder extends React.Component {
           <span style = {{textIndent:'15px'}}>车牌号：</span>
           <InputItem placeholder = "默认为黑卡车牌号" style = {{backgroundColor:"#eee",borderRadius:'4px',fontSize:'14px',lineHeight:'2em',padding:'0 20px 0 10px'}}/>
         </Flex>
-        </div>
+        </div> */}
 
         <div className = {styles['item-notice']}>
           <div><img src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>

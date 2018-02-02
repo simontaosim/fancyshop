@@ -25,7 +25,8 @@ class Facilitator extends React.Component {
           <Flex justify = "center" className = {style['distance']}>服务商名</Flex>
           <Flex justify = "center" className = {style['distance2']}>
             <img src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>四川省成都市金牛区沙湾路63号
-            <img src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
+            <a href="tel:139xxxxxxxx"><img src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
+            </a>
           </Flex>
         </div>
         <Tabs tabs = {tabs} >
@@ -43,13 +44,8 @@ class Facilitator extends React.Component {
             </Link>
           </div>
           <div>
-            <Flex justify = "center" align = "center">
-              <br/>
-              <br/>
-              <br/>
-            这是服务商简介<br/>
-            这只是随便写的一些文字<br/>
-            本店主要出售机油，欢迎光顾
+            <Flex justify = "start" align = "center" style = {{margin:'10px',padding:'15px 10px',fontSize:'14px',backgroundColor:'#fff'}}>
+              <span>这是服务商简介的一些内容，大概就是夸夸自己的产品很好大家快来买吧之类的</span>
             </Flex>
           </div>
         </Tabs>
