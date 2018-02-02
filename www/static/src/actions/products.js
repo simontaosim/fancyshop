@@ -2,6 +2,8 @@ import { asteroid } from '../config/asteroid.config.js'
 
 export const EXCEPT_RECOMMAND_PRODUCTS = 'EXCEPT_RECOMMAND_PRODUCTS';
 export const RECEIVE_RECOMMAND_PRODUCTS = 'RECEIVE_RECOMMAND_PRODUCTS';
+export const RECEIVEPRODUCTBYID = 'RECEIVEPRODUCTBYID';
+// export const RECOMMAND_PRODUCTS_LIST = "RECOMMAND_PRODUCTS_LIST"
 
 
 function exceptRecommandProduct(){
@@ -17,6 +19,7 @@ function receiveRecommandProduct(products){
     products,
   }
 }
+
 
 export function loadRecommandProducts(page, pagesize){
   return dispatch => {
@@ -40,7 +43,11 @@ function exceptProductById(id){
 
 }
 
-function receiveProductById(id){
+function receiveProductById(product){
+  return {
+    type: RECEIVEPRODUCTBYID,
+    product,
+  }
 
 }
 function receiveProductByIdError(error){
@@ -49,17 +56,21 @@ function receiveProductByIdError(error){
 
 export function loadProductById(id){
   return dispatch => {
-    dispatch(exceptProductById(id));
+    // dispatch(exceptProductById(id));
     asteroid.subscribe("get.product.id", id);
     let product = [];
     asteroid.connect();
     asteroid.call("get.oneproduct.id", id)
                   .then(result => {
-                    dispatch(receiveProductById(id));
+                    dispatch(receiveProductById(result));
                   })
                   .catch(error => {
                     dispatch(receiveProductByIdError(error));
 
                   });
   }
+}
+
+export function loadProductList(){
+
 }

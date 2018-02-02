@@ -38,9 +38,7 @@ class RecommandProducts extends React.Component {
     console.log(this.props);
     let products = [];
     if (this.props.recommandProducts.products) {
-      console.log('数据已经加载');
       this.props.recommandProducts.products.map((product,index)=>{
-        console.log(product);
         products.push(this.renderItem(product, index));
       });
     }else{

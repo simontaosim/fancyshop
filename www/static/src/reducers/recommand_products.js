@@ -1,8 +1,9 @@
-import {EXCEPT_RECOMMAND_PRODUCTS, RECEIVE_RECOMMAND_PRODUCTS} from '../actions/products.js'
+import {EXCEPT_RECOMMAND_PRODUCTS, RECEIVE_RECOMMAND_PRODUCTS, RECEIVEPRODUCTBYID} from '../actions/products.js'
 export function recommandProducts(state={
   status: "ready",
   loadingText: "开始加载",
-  products: null
+  products: null,
+  product: null,
 }, action){
   switch (action.type) {
     case EXCEPT_RECOMMAND_PRODUCTS:
@@ -22,6 +23,7 @@ export function recommandProducts(state={
       loadingText: "加载完毕",
       products: action.products
     })
+   
     default:
     return state;
 

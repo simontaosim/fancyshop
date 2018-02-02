@@ -53,11 +53,8 @@ class ProductModal extends React.Component {
    //加入购物车
    onClose = key => (e) => {
     e.preventDefault(); 
-    //判断是否有选择规格
-     if(this.props.model.spec_status){
-       let {product,cart} = this.props;
-      //  let productInfo = this.props.product
-       let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
+    let {product,cart} = this.props;
+    let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
        let count =product.count !== undefined ?product.count : 1
        let productId =product.good.id
        let shopId =product.good.shop_id
@@ -66,7 +63,15 @@ class ProductModal extends React.Component {
        let goodIds = [];
        var ShopReplaceData;
        var ProductReplaceData;
-       console.log(selected); 
+    if(this.props.model.way=="orders"){
+     let params = {
+       shop_id: product.good.shop_id,
+       prodductSpec: selected,
+       product_id: product.good.id,
+       count: count,
+     }
+     console.log(params)
+    }else{
       if(cart.goods.user_id == ''){
         console.log(`购物车不存在`)
         let params = {
@@ -157,9 +162,10 @@ class ProductModal extends React.Component {
        }
        this.props.addCart(cart.goods.shopsData);
        this.props.closeSpecModel()
-     }else{
-      this.props.closeSpecModel()
-     }
+
+    }
+      
+   
    }
 
    Close = key => (e) => {

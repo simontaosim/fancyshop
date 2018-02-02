@@ -170,7 +170,9 @@ export function mobileRegister(mobile,verify){
         dispatch(loginSuccess(result))
       })
       .catch(error => {
-        console.log(error);
+        if(error.reason==="Username already exists."){
+          Toast.fail("用户名已存在")
+        }
       })
     }else{
       Toast.info('验证码错误');

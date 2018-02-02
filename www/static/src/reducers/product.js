@@ -1,7 +1,6 @@
-export function productShow
-( state
-  =
-  {
+import { RECEIVEPRODUCTBYID} from '../actions/products.js'
+const initState = {
+	product:{
     "_id" : null,
   	"isSale" : true,
   	"name_zh" : "",
@@ -10,21 +9,21 @@ export function productShow
   	"description" : "",
   	"brief" : "",
   	"images" : [
-  		"http://wanchehui.oss-cn-qingdao.aliyuncs.com/cards/bbg2.png"
+  		""
   	],
-  	"cover" : "http://wanchehui.oss-cn-qingdao.aliyuncs.com/cards/bbg2.png",
+  	"cover" : "",
   	"shopId" : null,
   	"createdByUserId" : null,
   	"properties" : [ ],
   	"specifications" : [ ],
-  	"endPrice" : 36500,
+  	"endPrice" : NaN,
   	"curency" : "cny",
-  	"agencyLevelCount" : 2,
+  	"agencyLevelCount" : NaN,
   	"agencyLevelPrices" : [
   		NaN,
   		NaN
   	],
-  	"hasSoldCount" : 0,
+  	"hasSoldCount" : NaN,
   	"acl" : {
   		"own" : {
   			"roles" : [
@@ -54,13 +53,21 @@ export function productShow
   	"createdAt" : null,
   	"isTool" : false,
   	"roleName" : "",
-  	"categoryId" : null
-  }, action){
+		"categoryId" : null,
+	},
+	"deliver": "自提",
+	"address": "四川 成都",
+	"inventory": 39,
+	"sales": 74,
+}
+
+export function productShow(state=initState, action){
     switch (action.type) {
-      case expression:
-
-        break;
+			case  RECEIVEPRODUCTBYID:
+			return Object.assign(state,{},{
+				product: action.product
+			})
       default:
-
+				return state
     }
   }

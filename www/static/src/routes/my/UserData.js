@@ -6,7 +6,7 @@ import arrayTreeFilter from 'array-tree-filter';
 import { district, provinceLite } from 'antd-mobile-demo-data';
 
 import { asteroid } from '../../config/asteroid.config.js'
-import { getCurrentUser } from '../../actions/users.js'
+import { getCurrentUser,handleNickname } from '../../actions/users.js'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
@@ -25,6 +25,7 @@ const gender = [
     value:'女',
   },
 ]
+
 class UserData extends React.Component {
   constructor() {
     super();
@@ -32,37 +33,61 @@ class UserData extends React.Component {
     //  files: data,
      date:now,
      value: null,
+     sValue: ['未知'],
+     nickName:''
     }
+  }
+  hanldNicknameValue(value){
+    console.log(value)
+    this.setState({
+      nickName:value
+    })
+  }
+  changeNickname(){
+    const { dispatch } = this.props;
+    let user = this.props.current_user
+    let nickName = this.state.nickName
+    console.log(this.state.nickName)
+    console.log(this.props.current_user)
+    dispatch(handleNickname(user,nickName))
+    
   }
   componentDidMount(){
     const { dispatch } = this.props;
     console.log('组件渲染完成');
     console.log(asteroid)
     console.log(asteroid.userId)
-    // asteroid.ddp.on('result',({id,message,result}) =>{
-    //  console.log(result.id)
-    // })
     dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
+    this.setState({
+      nickName:this.props.current_user.nickname
+    })
+
   }
 
   render(){
     const { dispatch } = this.props;
+    const {getFieldProps} = this.props.form;
     return(
     <div>
       <Accordion>
         <Accordion.Panel header = "花名" >
           <Flex justify = "center">
-            <InputItem defaultValue={this.props.current_user} placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
+            <InputItem defaultValue={this.props.current_user.nickname} onChange={(v)=>(this.hanldNicknameValue(v))}placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
+            <Button size = "small" onClick={this.changeNickname.bind(this)}style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
           </Flex>
         </Accordion.Panel>
       </Accordion>
        <Picker data={gender} cols={1} >
-          <List.Item arrow="horizontal">性别</List.Item>
-        </Picker>
+          <List.Item arrow="horizontal"
+        //     value={this.state.sValue}
+        //  onChange={v => this.setState({ sValue: v })}
+        //  onOk={v => this.setState({ sValue: v })}
+             >性别</List.Item>
+       </Picker>
       <Accordion>
         <Accordion.Panel header = "签名" >
-          <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
+          <TextareaItem placeholder = "开始发布您的签名吧（30个字符限制）" rows={2}  count={30} style = {{width:'95%',marginBottom:'8px',marginRight:'16px',
+            border:'1px solid #aaa',borderRadius:'5px',fontSize:'12px'}} >
           </TextareaItem>
           <Flex justify = "center" style = {{}}>
             <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff',width:'30%',marginBottom:'15px'}}>提交</Button>
@@ -72,11 +97,11 @@ class UserData extends React.Component {
          <Picker extra="地区"
            data={district}
            title="地区"
-          //  {...getFieldProps('district', {
-          //    initialValue: ['340000', '341500', '341502'],
-          //  })}
-          //  onOk={e => console.log('ok', e)}
-          //  onDismiss={e => console.log('dismiss', e)}
+           {...getFieldProps('district', {
+             initialValue: ['340000', '341500', '341502'],
+           })}
+           onOk={e => console.log('ok', e)}
+           onDismiss={e => console.log('dismiss', e)}
          >
            <List.Item arrow="horizontal">地区</List.Item>
          </Picker>
@@ -115,7 +140,7 @@ class UserData extends React.Component {
     )
   }
 }
-
+const UserDataWrapper = createForm()(UserData)
 function mapStateToProps(state) {
   return {
     current_user: state.currentUser.current_user,
@@ -123,4 +148,5 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(UserData);
+export default connect(mapStateToProps)(UserDataWrapper);
+

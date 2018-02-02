@@ -6,6 +6,15 @@ import s from './MyWallet.css';
 class MyWallet extends React.Component {
   constructor() {
     super();
+    this.withdraw = this.withdraw.bind(this)
+    this.bankcard = this.bankcard.bind(this)
+  }
+
+  withdraw(){
+    this.props.history.push('/withdraw')
+  }
+  bankcard(){
+    this.props.history.push('/bankcard')
   }
   render(){
     const tabs = [
@@ -28,12 +37,10 @@ class MyWallet extends React.Component {
       </Flex>
       <Flex justify = "around" style = {{borderTop:'1px solid #aaa',margin:'15px',padding:'15px 0'}}>
         <Flex.Item>
-          <Link to = "/withdraw">
-            <Button size = "small" style = {{backgroundColor:'red',color:'#fff'}}>提现</Button>
-          </Link>
+          <Button size = "small" style = {{backgroundColor:'red',color:'#fff'}} onClick = {this.withdraw}>提现</Button>
         </Flex.Item>
         <Flex.Item>
-          <Button size = "small" style = {{backgroundColor:'#ffcf2d',color:'#fff'}}>我的银行卡</Button>
+          <Button size = "small" style = {{backgroundColor:'#ffcf2d',color:'#fff'}} onClick = {this.bankcard}>我的银行卡</Button>
         </Flex.Item>
       </Flex>
       <Flex style = {{padding:'20px'}} justify = "center">

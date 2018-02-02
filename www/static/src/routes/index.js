@@ -42,6 +42,8 @@ import WithdrawSuccess from './wallet/WithdrawSuccess';
 import WithdrawWait from './wallet/WithdrawWait';
 import VipCard from './vipcard/index';
 import Coupon from './coupon/index';
+import MyBankCard from './wallet/MyBankCard';
+import EditBankCard from './wallet/EditBankCard';
 import { asteroid } from '../config/asteroid.config';
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
@@ -103,6 +105,12 @@ const Topics = ({ match }) => (
 class App extends React.Component {
   render() {
     const authenticated = getStore('authenticated');
+    // console.log(asteroid)
+    // console.log(asteroid.userId)
+    // asteroid.ddp.on('result',({id,message,result}) =>{
+    //   console.log(result.id)
+    // })
+  //  asteroid.connected()
     return (
       <Router >
           <MainLayout history={history}>
@@ -142,7 +150,8 @@ class App extends React.Component {
               <Route path="/withdrawwait" component={WithdrawWait}/>
               <Route path="/vipcard" component={VipCard}/>
               <Route path="/coupon" component={Coupon}/>
-
+              <Route path="/bankcard" component={MyBankCard}/>
+              <Route path="/editbankcard" component={EditBankCard}/>
               <Route component={NoMatchPage}/>
             </Switch>
 
