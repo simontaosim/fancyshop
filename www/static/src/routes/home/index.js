@@ -4,7 +4,7 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-import { appInfo } from '../../map_props.js';
+// import { appInfo } from '../../map_props.js';
 import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
 import Recommend from "./Recommend";
 import ShopTagMenu from "./ShopTagMenu";

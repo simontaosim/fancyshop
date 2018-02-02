@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Flex, Accordion, InputItem, Button, TextareaItem, ImagePicker, WingBlank, SegmentedControl,DatePicker, List, PickerView, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import arrayTreeFilter from 'array-tree-filter';
 import { district, provinceLite } from 'antd-mobile-demo-data';
+
+import { asteroid } from '../../config/asteroid.config.js'
+import { getCurrentUser,handleNickname } from '../../actions/users.js'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
@@ -30,19 +34,46 @@ class UserData extends React.Component {
      date:now,
      value: null,
      sValue: ['未知'],
+     nickName:''
     }
   }
+  hanldNicknameValue(value){
+    console.log(value)
+    this.setState({
+      nickName:value
+    })
+  }
+  changeNickname(){
+    const { dispatch } = this.props;
+    let user = this.props.current_user
+    let nickName = this.state.nickName
+    console.log(this.state.nickName)
+    console.log(this.props.current_user)
+    dispatch(handleNickname(user,nickName))
+    
+  }
+  componentDidMount(){
+    const { dispatch } = this.props;
+    console.log('组件渲染完成');
+    console.log(asteroid)
+    console.log(asteroid.userId)
+    dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
+    this.setState({
+      nickName:this.props.current_user.nickname
+    })
 
+  }
 
   render(){
+    const { dispatch } = this.props;
     const {getFieldProps} = this.props.form;
     return(
     <div>
       <Accordion>
         <Accordion.Panel header = "花名" >
           <Flex justify = "center">
-            <InputItem placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
-            <Button size = "small" style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
+            <InputItem defaultValue={this.props.current_user.nickname} onChange={(v)=>(this.hanldNicknameValue(v))}placeholder = "设置花名" style = {{borderBottom:'1px solid #aaa'}}/>
+            <Button size = "small" onClick={this.changeNickname.bind(this)}style = {{backgroundColor:'#2bbbba',color:'#fff'}}>提交</Button>
           </Flex>
         </Accordion.Panel>
       </Accordion>
@@ -109,6 +140,13 @@ class UserData extends React.Component {
     )
   }
 }
+const UserDataWrapper = createForm()(UserData)
+function mapStateToProps(state) {
+  return {
+    current_user: state.currentUser.current_user,
+    user: state.user
+  }
+}
 
-const UserDataWrapper = createForm()(UserData);
-export default UserDataWrapper;
+export default connect(mapStateToProps)(UserDataWrapper);
+
