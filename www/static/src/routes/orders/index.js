@@ -45,6 +45,7 @@ class Orders extends React.Component {
         // })
         break;
       case '待付款':
+      console.log(111);
       dispatch(gainUnPaidOrders(userId));
         break;
       case '未处理':
@@ -57,7 +58,13 @@ class Orders extends React.Component {
       default:
         console.log('无效');
     }
+    // console.log(`tab:${tab},index: ${index}`);
+
+
+
   }
+
+
   render(){
     const tabs = [
       {title:'全部',status: '全部'},
@@ -66,6 +73,10 @@ class Orders extends React.Component {
       {title:'已完成', status: '已完成'},
       {title:'无效', status: '无效'},
     ]
+    console.log(this.state.waitpay)
+    let {waitpay,all,untreated,finish}= this.state;
+    console.log(111);
+    console.log(this.state.waitpay)
     return(
     <div className = "all">
       <Tabs tabs = {tabs} initialPage = {5} animated = {false} useOnPan = {false} onChange={this.switchTab}>
@@ -90,12 +101,20 @@ class Orders extends React.Component {
         <div style = {{backgroundColor:'#fff',paddingBottom:'15px'}} key = "invalid">
           {/* <Finish/> */}
           </div>
-          <div>
-            <OrderList/>
-            <div> {this.state.invalid} </div>
+          <div style = {{backgroundColor:'#fff'}} >
+          <ShopName/>
+          <Goods/>
+          <Flex justify = "end" style = {{marginRight:'10px'}}>
+            合计：<span className = {styles['total']}> ￥500</span>
+          </Flex>
+          <Flex justify = "end" style = {{margin:'10px'}}>
+            <button className = {styles['detail-btn']}>详情</button>
+            <button className = {styles['revoke-btn']}>撤销退款</button>
+          </Flex>
           </div>
-        </Tabs>
       </div>
+      </Tabs>
+    </div>
     )
   }
 }
