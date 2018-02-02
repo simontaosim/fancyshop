@@ -65,11 +65,11 @@ const initState = {
 export function productShow(state=initState, action){
     switch (action.type) {
 			case  RECEIVEPRODUCTBYID:
-			return Object.assign(state,{},{
+			return Object.assign({},state,{
 				product: action.product
 			})
 			case ADD_COUNT:
-			return Object.assign(state,{},{ 
+			return Object.assign({},state,{ 
 				count: action.count
 				})
 			break;

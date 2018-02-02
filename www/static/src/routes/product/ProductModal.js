@@ -75,6 +75,7 @@ class ProductModal extends React.Component {
           {
             price: product.endPrice,
             count,
+            cover: product.cover,
             id: product._id,
             name: product.name_zh,
             specifications: {

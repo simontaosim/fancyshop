@@ -4,13 +4,26 @@ import { Flex, Tabs } from 'antd-mobile';
 import style from './Facilitator.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import userImg from '../../assets/img/timg.jpg';
+import {asteroid} from '../../config/asteroid.config';
 
 class Facilitator extends React.Component {
   constructor() {
     super();
+    this.state = {
+      shop: []
+    }
   };
   componentDidMount() {
-    console.log(123123213123);
+    let id = this.props.match.params.shopId;
+    asteroid.call('shops.findShopById',id)
+            .then(result=> {
+              this.setState({
+                shop: result,
+              })
+            })
+            .catch(error=> {
+
+            })
   }
 
   render(){
@@ -18,13 +31,14 @@ class Facilitator extends React.Component {
       {title : '商品' },
       {title : '简介' },
     ];
+    let { shop }  = this.state
     return (
       <div >
         <div className = { style['bg-img']}>
-          <Flex justify = "center" align = "center" className = {style['user']}><img src={userImg}/></Flex>
-          <Flex justify = "center" className = {style['distance']}>服务商名</Flex>
+          <Flex justify = "center" align = "center" className = {style['user']}><img src={shop.cover}/></Flex>
+          <Flex justify = "center" className = {style['distance']}>{shop.name}</Flex>
           <Flex justify = "center" className = {style['distance2']}>
-            <img src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>四川省成都市金牛区沙湾路63号
+            <img src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>{shop.address}
             <img src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
           </Flex>
         </div>
@@ -44,12 +58,7 @@ class Facilitator extends React.Component {
           </div>
           <div>
             <Flex justify = "center" align = "center">
-              <br/>
-              <br/>
-              <br/>
-            这是服务商简介<br/>
-            这只是随便写的一些文字<br/>
-            本店主要出售机油，欢迎光顾
+              {shop.description}
             </Flex>
           </div>
         </Tabs>

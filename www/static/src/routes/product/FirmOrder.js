@@ -95,7 +95,7 @@ class FirmOrder extends React.Component {
        <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
          <Flex justify = "center" className = {styles['goods-item']}>
             <div className = {styles['img-border']} >
-              <img src = {goodImg} className = {styles['goods-img']}/>
+              <img src = {product.cover} className = {styles['goods-img']}/>
             </div>
             <div >
               <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
