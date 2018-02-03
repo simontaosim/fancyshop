@@ -10,6 +10,7 @@ class OrderList extends React.Component {
 
 // let {name, price, spec,num} = this.props
   render(){
+      let {name, price, spec,num} = this.props
     return (
       <div style = {{backgroundColor:'#fff',marginTop:'50px',padding:'10px 10px'}}>
         <Flex justify = "start">
