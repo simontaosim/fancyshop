@@ -23,25 +23,37 @@ class MessageBox extends React.Component{
       username: [
         {name: 'Hiark'},
       ],
-      balanck: [],
+      balance: {
+        
+      },
     }
   }
 
   componentDidMount() {
-    asteroid.subscribe("get.current.balance");
+    console.log(`balance`)
+    let userId = "ZCFqbZeRpKZge3uGf"
+    asteroid.subscribe("app.get.current.balance",userId);
+    asteroid.connect();
+    let self = this;
     asteroid.ddp.on("added", ({collection, id, fields}) => {
-        console.log(`Element added to collection ${collection}`);
-        console.log(id);
-        console.log(fields);
+     
+        console.log(collection)
+        console.log(id)
+        console.log(fields)
+        self.setState({
+          balance: fields
+        })
     });
   }
 
   render(){
+    let { balance } = this.state;
+    console.log(this.state.balance)
     return (
     <div>
       {/* <WingBlank/> */}
-      <AwardHead/>
-      <AwardIncome/>
+      <AwardHead balance={balance}/>
+      <AwardIncome />
       <AwardDetail/>
     </div>
 

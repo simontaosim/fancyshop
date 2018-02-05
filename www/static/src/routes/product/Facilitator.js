@@ -10,7 +10,8 @@ class Facilitator extends React.Component {
   constructor() {
     super();
     this.state = {
-      shop: []
+      shop: [],
+      products: [],
     }
   };
   componentDidMount() {
@@ -24,6 +25,17 @@ class Facilitator extends React.Component {
             .catch(error=> {
 
             })
+            console.log(123);
+    asteroid.subscribe("get.shop.products",[id,1,10]);
+
+    asteroid.ddp.on("added", ({collection, id, fields}) => {
+        console.log(`Element added to collection ${collection}`);
+        console.log(id);
+        this.setState({
+          products: fields
+        })
+    });
+                    
   }
 
   render(){
@@ -31,7 +43,35 @@ class Facilitator extends React.Component {
       {title : '商品' },
       {title : '简介' },
     ];
-    let { shop }  = this.state
+    let { shop, products }  = this.state
+    console.log(products);
+    if(products.length>0){
+      products.map((product)=> {
+        return(
+          <div>
+            {product.name}
+          </div>
+        )
+      })
+    }
+  
+    // let prodcutsItem = products.map((product)=>{
+    //   return(
+    //     <div>
+    //     <Link to ='/product/${product._id}'>
+    //     <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
+    //       <img src={product.cover} style = {{width:'45px',height:'45px'}}/>
+    //       <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>{product.name}<br/>
+    //       <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
+    //         <span style = {{color:'red',marginLeft:'25px'}}>价格:{product.price}</span>
+    //         <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
+    //       </div>
+    //     </div>
+    //     </Flex>
+    //     </Link>
+    //   </div>
+    //   )
+    // })
     return (
       <div >
         <div className = { style['bg-img']}>
