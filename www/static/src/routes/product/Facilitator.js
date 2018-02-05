@@ -97,7 +97,7 @@ class Facilitator extends React.Component {
             </Link>
           </div>
           <div>
-            <Flex justify = "center" align = "center">
+           <Flex justify = "start" align = "center" style = {{margin:'10px',padding:'15px 10px',fontSize:'14px',backgroundColor:'#fff'}}>
               {shop.description}
             </Flex>
           </div>

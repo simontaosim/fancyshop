@@ -51,9 +51,11 @@ import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
 import Shops from './shops/'
 
+// import Orders from './Orders/index';
+// import OrderList from './Orders/OrderList';
+
 import Orders from './orders/index';
 import OrderList from './orders/OrderList';
-
 
 
 import createHistory from 'history/createHashHistory';
@@ -139,6 +141,7 @@ class App extends React.Component {
               <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder/:orderId" component = {FirmOrder}/>
+              {/* <Route path = "/firmorder" component = {FirmOrder}/> */}
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
