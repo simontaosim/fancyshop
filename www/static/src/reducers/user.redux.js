@@ -111,13 +111,16 @@ export function login(user,pwd) {
 
 export function loginOut(fn) {
   return dispatch=> {
-     asteroid.logout()
-     .then(result => {
+     asteroid.logout().then(result => {
          dispatch(loginOutSuccess(result))
 
-     })
-     .catch(error => {
-     })
+     }).catch(error => {
+      });
+     asteroid.on('loggedOut', function(e){
+       console.log('登出成功', e);
+     });
+
+
   }
 }
 

@@ -31,7 +31,7 @@ class TabLogin  extends React.Component {
       <div >
 
     <Tabs tabs={tabs}
-      initialPage={1}
+      initialPage={0}
       tabBarPosition="top"
       renderTab={tab => <span>{tab.title}</span>}
     >

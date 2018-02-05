@@ -47,7 +47,7 @@ export function handleNickname(user,nickname){
       .then(result => {
           console.log("Success");
           console.log(result);
-          // dispatch(setCurrentUser(result))
+          dispatch(setCurrentUser(result))
       })
       .catch(error => {
           console.log("Error");
