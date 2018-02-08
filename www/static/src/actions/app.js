@@ -35,7 +35,6 @@ export function setHomeTags(tags){
 }
 
 export function getHomeTags(){
-  console.log('getHomeTags');
   return dispatch => {
     asteroid.subscribe("home.tags");
     asteroid.connect();

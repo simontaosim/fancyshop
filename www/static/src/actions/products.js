@@ -124,20 +124,14 @@ export function createOrder(product) {
 
 export function loadShopProductsByShopId(shopId,page,pagesize) {
   return dispatch => {
-    console.log(`加载店铺商品`)
-    console.log(shopId)
     asteroid.subscribe('app.get.shop.products',shopId,page,pagesize);
     asteroid.connect();
     let products = [];
       asteroid.ddp.on("added", ({collection, id, fields}) => {
-        console.log(`Element added to collection ${collection}`);
-        console.log(id);
-        console.log(fields);
         if(collection==='products'){
           if(products.length< pagesize){
             products.push({fields,id})
           }
-          console.log(products);
           dispatch(receiveShopProductsByShopId(products));
         }
       });
@@ -147,21 +141,20 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
-    console.log(`获取推荐商品`)
     asteroid.subscribe('app.get.recommend.products',page,pagesize);
     asteroid.connect();
     let products = [];
     // data = data.slice();
-    console.log(data);
-    console.log(page);
+    // console.log(data);
+    // console.log(page);
     asteroid.ddp.on("added", ({collection, id, fields}) => {
-      console.log(fields)
+      // console.log(fields)
       if(collection==='products'){
         if(products.length< pagesize){
           fields.id = id
           products.push(fields)
         }
-        console.log(data.concat(products))
+        // console.log(data.concat(products))
         dispatch(getRecommandProducts(data.concat(products)))
       }
     })

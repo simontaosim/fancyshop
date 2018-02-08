@@ -11,12 +11,10 @@ class RecommandProducts extends React.Component {
     super(props);
   }
   componentDidMount(){
-    console.log('init stat');
 
   }
 
   renderItem(product, index){
-    console.log(product);
     return (
       <Link to = {"product/"+product.id} key={index}>
         <div className = {style['test']}>
@@ -29,13 +27,12 @@ class RecommandProducts extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
+    // console.log(nextProps);
   }
 
 
 
   render(){
-    console.log(this.props);
     let products = [];
     if (this.props.recommandProducts.products) {
       Toast.hide();

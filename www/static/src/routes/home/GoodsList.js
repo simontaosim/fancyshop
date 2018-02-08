@@ -38,18 +38,18 @@ class GoodsList extends React.Component {
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.recommandProducts);
-    console.log(this.props.products.products)
-    if (nextProps.prodcuts !== this.props.products.products) {
-      console.log(`出来啊`)
-      data = nextProps.recommandProducts
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts),
-        isLoading: false,
-      });
-    }else{
-      console.log(1122)
-    }
+    // console.log(nextProps.recommandProducts);
+    // console.log(this.props.products.products)
+    // if (nextProps.prodcuts !== this.props.products.products) {
+    //   console.log(`出来啊`)
+    //   data = nextProps.recommandProducts
+    //   this.setState({
+    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts),
+    //     isLoading: false,
+    //   });
+    // }else{
+    //   console.log(1122)
+    // }
   }
 
   onEndReached = (event) => {
