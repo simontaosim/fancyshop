@@ -141,22 +141,31 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
-    asteroid.subscribe('app.get.recommend.products',page,pagesize);
-    asteroid.connect();
-    let products = [];
-    // data = data.slice();
-    // console.log(data);
-    // console.log(page);
-    asteroid.ddp.on("added", ({collection, id, fields}) => {
-      // console.log(fields)
-      if(collection==='products'){
-        if(products.length< pagesize){
-          fields.id = id
-          products.push(fields)
-        }
-        // console.log(data.concat(products))
-        dispatch(getRecommandProducts(data.concat(products)))
-      }
-    })
+    // asteroid.subscribe('app.get.recommend.products',page,pagesize);
+    // asteroid.connect();
+    // let products = [];
+    data = data.slice();
+    // // console.log(data);
+    // // console.log(page);
+    // asteroid.ddp.on("added", ({collection, id, fields}) => {
+    //   // console.log(fields)
+    //   if(collection==='products'){
+    //     if(products.length< pagesize){
+    //       fields.id = id
+    //       products.push(fields)
+    //     }
+    //     // console.log(data.concat(products))
+    //     dispatch(getRecommandProducts(data.concat(products)))
+    //   }
+    // })
+    asteroid.call('app.get.recommend.products',page,pagesize)
+            .then(result => {
+              console.log(result);
+              console.log(data.concat(result));
+              dispatch(getRecommandProducts(data.concat(result)))
+            })
+            .catch(error => {
+
+            })
   }
 }

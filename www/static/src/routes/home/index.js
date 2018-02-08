@@ -38,7 +38,7 @@ class AppHome extends React.Component{
     dispatch(loadRecommandProducts(1,3));
     dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
-    dispatch(gainRecommandProducts(1,3));
+    dispatch(gainRecommandProducts(1,1));
     setTimeout(() => {
      this.setState({
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],
@@ -91,7 +91,7 @@ class AppHome extends React.Component{
           <WhiteSpace />
             <ShopTagMenu history={this.props.path} />
           <WhiteSpace />
-          <GoodsList recommandProducts={this.props.products.products} />
+          <GoodsList recommandProducts={this.props.products} />
 
         </Flex>
     )

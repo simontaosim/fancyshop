@@ -38,18 +38,18 @@ class GoodsList extends React.Component {
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps.recommandProducts);
-    // console.log(this.props.products.products)
-    // if (nextProps.prodcuts !== this.props.products.products) {
-    //   console.log(`出来啊`)
-    //   data = nextProps.recommandProducts
-    //   this.setState({
-    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts),
-    //     isLoading: false,
-    //   });
-    // }else{
-    //   console.log(1122)
-    // }
+    console.log(nextProps.recommandProducts);
+    console.log(this.props.products.products)
+    if (nextProps.recommandProducts !== this.props.products.products) {
+      console.log(`出来啊`)
+      // data = nextProps.recommandProducts
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
+        isLoading: false,
+      });
+    }else{
+      console.log(1122)
+    }
   }
 
   onEndReached = (event) => {
@@ -75,7 +75,7 @@ class GoodsList extends React.Component {
     // console.log(products);
     // data = data.slice().concat(products);
     // console.log(data);
-    dispatch(gainRecommandProducts(page,3,this.props.products.products));
+    dispatch(gainRecommandProducts(page,1,this.props.products.products));
     console.log('reach end', event);
     // this.setState({ isLoading: false });
   }
@@ -97,7 +97,7 @@ class GoodsList extends React.Component {
     const row = (rowData, sectionID, rowID) => {
       return (
         <div key={rowData.id} style={{ padding: '0 15px' }}>
-          <Link to={`/product/${rowData.id}`}>
+          <Link to={`/product/${rowData._id}`}>
             <div
               style={{
                 lineHeight: '50px',
@@ -129,7 +129,7 @@ class GoodsList extends React.Component {
         renderRow={row}
         // renderSeparator={separator}
         className="am-list"
-        pageSize={4}
+        pageSize={1}
         useBodyScroll
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
