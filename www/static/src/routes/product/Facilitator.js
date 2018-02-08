@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Tabs } from 'antd-mobile';
+import { Flex, Tabs} from 'antd-mobile';
 import style from './Facilitator.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import userImg from '../../assets/img/timg.jpg';
 import {asteroid} from '../../config/asteroid.config';
+import { product } from '../../reducers/product.redux';
+import { connect } from 'react-redux';
+import { loadShopProductsByShopId } from '../../actions/products';
 
 class Facilitator extends React.Component {
   constructor() {
@@ -16,6 +19,10 @@ class Facilitator extends React.Component {
   };
   componentDidMount() {
     let id = this.props.match.params.shopId;
+    let { dispatch } = this.props;
+    console.log(dispatch);
+    console.log(id);
+    dispatch(loadShopProductsByShopId(id,1,10))
     asteroid.call('shops.findShopById',id)
             .then(result=> {
               this.setState({
@@ -25,17 +32,6 @@ class Facilitator extends React.Component {
             .catch(error=> {
 
             })
-            console.log(123);
-    asteroid.subscribe("get.shop.products",[id,1,10]);
-
-    asteroid.ddp.on("added", ({collection, id, fields}) => {
-        console.log(`Element added to collection ${collection}`);
-        console.log(id);
-        this.setState({
-          products: fields
-        })
-    });
-                    
   }
 
   render(){
@@ -44,34 +40,32 @@ class Facilitator extends React.Component {
       {title : '简介' },
     ];
     let { shop, products }  = this.state
-    console.log(products);
-    if(products.length>0){
-      products.map((product)=> {
+    // console.log(this.props.products)
+    let productsItem;
+    if(this.props.products){
+      productsItem = this.props.products.map((product)=>{
         return(
-          <div>
-            {product.name}
-          </div>
+          <div key={product.id}>
+            <Link to ={`/product/${product.id}`} >
+            <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
+              <img src={product.fields
+  .cover} style = {{width:'45px',height:'45px'}}/>
+              <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>{product.fields
+  .name_zh}<br/>
+              <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
+                <span style = {{color:'red',marginLeft:'25px'}}>价格:{product.fields
+  .price}</span>
+                <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
+              </div>
+            </div>
+            </Flex>
+            </Link>
+        </div>
         )
       })
+    }else{
+      console.log(`加载失败`)
     }
-  
-    // let prodcutsItem = products.map((product)=>{
-    //   return(
-    //     <div>
-    //     <Link to ='/product/${product._id}'>
-    //     <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
-    //       <img src={product.cover} style = {{width:'45px',height:'45px'}}/>
-    //       <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>{product.name}<br/>
-    //       <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
-    //         <span style = {{color:'red',marginLeft:'25px'}}>价格:{product.price}</span>
-    //         <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
-    //       </div>
-    //     </div>
-    //     </Flex>
-    //     </Link>
-    //   </div>
-    //   )
-    // })
     return (
       <div >
         <div className = { style['bg-img']}>
@@ -84,17 +78,7 @@ class Facilitator extends React.Component {
         </div>
         <Tabs tabs = {tabs} >
           <div>
-            <Link to ='/product/1'>
-            <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
-              <img src={goodImg} style = {{width:'45px',height:'45px'}}/>
-              <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>这是商品的名称占位符占位符占一排<br/>
-              <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
-                <span style = {{color:'red',marginLeft:'25px'}}>价格:183</span>
-                <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
-              </div>
-            </div>
-            </Flex>
-            </Link>
+           { productsItem }
           </div>
           <div>
            <Flex justify = "start" align = "center" style = {{margin:'10px',padding:'15px 10px',fontSize:'14px',backgroundColor:'#fff'}}>
@@ -107,4 +91,10 @@ class Facilitator extends React.Component {
   }
 }
 
-export default Facilitator;
+function mapProducts(state){
+  return {
+    products: state.productShow.products
+  }
+}
+
+export default connect(mapProducts)(Facilitator);

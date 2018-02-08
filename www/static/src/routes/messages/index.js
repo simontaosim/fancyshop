@@ -14,7 +14,8 @@ import {setAppTitle} from '../../actions/app.js';
 import  AwardDetail  from './AwardDetail.js';
 import AwardIncome from './AwardIncome.js';
 import AwardHead from './AwardHead.js';
-import { asteroid } from '../../config/asteroid.config'
+import { asteroid } from '../../config/asteroid.config';
+import { gainBlance,gainGetBalanceIncomesTotal } from '../../actions/balance';
 
 class MessageBox extends React.Component{
   constructor(props) {
@@ -30,36 +31,28 @@ class MessageBox extends React.Component{
   }
 
   componentDidMount() {
-    console.log(`balance`)
+    let { dispatch } = this.props;
     let userId = "ZCFqbZeRpKZge3uGf"
-    asteroid.subscribe("app.get.current.balance",userId);
-    asteroid.connect();
-    let self = this;
-    asteroid.ddp.on("added", ({collection, id, fields}) => {
-     
-        console.log(collection)
-        console.log(id)
-        console.log(fields)
-        self.setState({
-          balance: fields
-        })
-    });
+    dispatch(gainBlance(userId))
+    dispatch(gainGetBalanceIncomesTotal(userId))
   }
 
   render(){
-    let { balance } = this.state;
-    console.log(this.state.balance)
+    let {total,balance} = this.props.balance
     return (
     <div>
-      {/* <WingBlank/> */}
       <AwardHead balance={balance}/>
-      <AwardIncome />
+      <AwardIncome total={total}/>
       <AwardDetail/>
     </div>
 
     )
   }
 }
+function mapBalanceState(state) {
+  return  {
+    balance: state.balance
+  }
+}
 
-
-export default connect(appInfo)(MessageBox);
+export default connect(mapBalanceState)(MessageBox);
