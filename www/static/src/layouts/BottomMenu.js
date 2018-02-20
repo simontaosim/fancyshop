@@ -53,7 +53,7 @@ class BottomMenu extends React.Component{
     const { dispatch, history } = this.props;
 
     return(
-        <div style={{ position: 'fixed', height: '10%', width: '100%', bottom: 0 }}>
+        <div style={{ position: 'fixed', height: '10%', width: '100%', bottom: 0, zIndex: 7777 }}>
 
 
         <TabBar
