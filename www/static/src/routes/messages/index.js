@@ -14,7 +14,7 @@ import {setAppTitle} from '../../actions/app.js';
 import  AwardDetail  from './AwardDetail.js';
 import AwardIncome from './AwardIncome.js';
 import AwardHead from './AwardHead.js';
-import { asteroid } from '../../config/asteroid.config';
+import { MClient } from '../../config/asteroid.config.js';
 import { gainBlance,gainGetBalanceIncomesTotal } from '../../actions/balance';
 
 class MessageBox extends React.Component{
@@ -25,7 +25,7 @@ class MessageBox extends React.Component{
         {name: 'Hiark'},
       ],
       balance: {
-        
+
       },
     }
   }

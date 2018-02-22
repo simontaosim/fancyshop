@@ -1,9 +1,11 @@
-// import {createClass} from "asteroid";
-import {createClass} from "../../../../node_modules/asteroid/src/asteroid";
-
-
-const Asteroid = createClass();
-// Connect to a Meteor backend
-export const asteroid = new Asteroid({
-    endpoint: "ws://localhost:4000/websocket",
+import DDP from "ddp.js";
+const options = {
+    endpoint: "ws://139.198.3.158/websocket",
+    SocketConstructor: WebSocket
+};
+const ddp = new DDP(options);
+ddp.on("connected", () => {
+    console.log("ddp的链接","Connected");
 });
+
+export const MClient = new DDP(options);

@@ -1,5 +1,5 @@
 import history from '../history';
-import { asteroid } from '../config/asteroid.config.js';
+import { MClient } from '../config/asteroid.config.js';
 export const RECEIVEORDERBYID = 'RECEIVEORDERBYID';
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const GET_PAID_ORDERS = "GET_PAID_ORDERS";
@@ -49,9 +49,9 @@ export function getUnPaidOrdersError(error){
 }
 export function  gainAllOrders(userId){
   return dispatch => {
-    asteroid.subscribe("get.allOrders", userId);
-    asteroid.connect();
-    asteroid.call("get.allOrders", userId)
+    MClient.sub("get.allOrders", userId);
+    MClient.connect();
+    MClient.method("get.allOrders", userId)
                   .then(result => {
                     console.log("所有订单")
                     console.log(result)
@@ -66,9 +66,9 @@ export function  gainAllOrders(userId){
 
 export function  gainPaidOrders(userId){
   return dispatch => {
-    asteroid.subscribe("get.paidOrders", userId);
-    asteroid.connect();
-    asteroid.call("get.paidOrders", userId)
+    MClient.sub("get.paidOrders", userId);
+    MClient.connect();
+    MClient.method("get.paidOrders", userId)
                   .then(result => {
                     console.log("所有支付订单")
                     console.log(result)
@@ -83,9 +83,9 @@ export function  gainPaidOrders(userId){
 
 export function  gainUnPaidOrders(userId){
   return dispatch => {
-    asteroid.subscribe("get.unpaidOrders", userId);
-    asteroid.connect();
-    asteroid.call("get.unpaidOrders", userId)
+    MClient.sub("get.unpaidOrders", userId);
+    MClient.connect();
+    MClient.method("get.unpaidOrders", userId)
                   .then(result => {
                     console.log("所有未支付订单")
                     console.log(result)
@@ -109,7 +109,7 @@ function reviceOrderById(order) {
 
 export function loadOrderById(id) {
   return  dispatch => {
-        asteroid.call('app.order.getone',id)
+        MClient.method('app.order.getone',id)
                 .then(result => {
                     console.log(result);
                     dispatch(reviceOrderById(result))
@@ -124,7 +124,7 @@ export function loadOrderById(id) {
 
 export function createOrder(product) {
     return dispatch => {
-      asteroid.call('app.orders.insert',product)
+      MClient.method('app.orders.insert',product)
               .then(result => {
                   if(result){
                     history.push(`/firmorder${result}`)

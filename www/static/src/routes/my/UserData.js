@@ -5,7 +5,7 @@ import { createForm } from 'rc-form';
 import arrayTreeFilter from 'array-tree-filter';
 import { district, provinceLite } from 'antd-mobile-demo-data';
 
-import { asteroid } from '../../config/asteroid.config.js'
+import { MClient } from '../../config/asteroid.config.js'
 import { getCurrentUser,handleNickname } from '../../actions/users.js'
 
 const nowTimeStamp = Date.now();
@@ -55,8 +55,8 @@ class UserData extends React.Component {
   componentDidMount(){
     const { dispatch } = this.props;
     console.log('组件渲染完成');
-    console.log(asteroid)
-    console.log(asteroid.userId)
+    console.log(MClient)
+    console.log(MClient.userId)
     dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
     this.setState({
       nickName:this.props.current_user.nickname

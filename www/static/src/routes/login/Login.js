@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
-import { asteroid } from '../../config/asteroid.config.js'
+import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { login, loginOut } from '../../reducers/user.redux.js'
 import {  Redirect } from 'react-router-dom'
@@ -44,7 +44,7 @@ class Login extends React.Component {
       return
     }
 
-    asteroid.apply("get.phonesms",[mobile])
+    MClient.apply("get.phonesms",[mobile])
     .then(result => {
         console.log("Success");
         console.log(result);

@@ -15,7 +15,7 @@ import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
 import{ loginOut } from '../../reducers/user.redux';
-import { asteroid } from '../../config/asteroid.config.js'
+import { MClient } from '../../config/asteroid.config.js'
 import { getCurrentUser } from '../../actions/users.js'
 
 
@@ -51,9 +51,9 @@ class AppMy extends React.Component{
   componentDidMount(){
     const { dispatch } = this.props;
     console.log('组件渲染完成');
-    console.log(asteroid)
-    console.log(asteroid.userId)
-    // asteroid.ddp.on('result',({id,message,result}) =>{
+    console.log(MClient)
+    console.log(MClient.userId)
+    // MClient.ddp.on('result',({id,message,result}) =>{
     //  console.log(result.id)
     // })
     console.log('userId local', window.localStorage["Meteor.userId"]);

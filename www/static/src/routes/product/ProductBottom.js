@@ -5,7 +5,7 @@ import history from 'react-router-dom';
 import goodImg from '../../assets/img/reward/good.jpg';
 import style from './ProductBottom.css';
 import s from './common.css';
-import { asteroid } from '../../config/asteroid.config';
+import { MClient } from '../../config/asteroid.config.js';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 import { modelInfo } from '../../map_props';
@@ -44,7 +44,7 @@ class ProductBottom extends React.Component {
   AddCart() {
     let product = Object.assign({},this.props.product,{user_id: 1},{count: 1})
     console.log(product);
-    asteroid.call('shop_carts.add_cart',product)
+    MClient.call('shop_carts.add_cart',product)
   }
 
   facilitator () {

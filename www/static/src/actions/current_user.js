@@ -13,11 +13,11 @@ function getLocalCurrentUserId(){
 
 }
 function CurrentUserLoginOut(){
-  
+
 }
 export function checkRemoteCurrentUser(){
   return dispatch => {
-    asteroid.call("user.changeNickname",user,nickname)
+    MClient.method("user.changeNickname",user,nickname)
       .then(result => {
           console.log("Success");
           console.log(result);

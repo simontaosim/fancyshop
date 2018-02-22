@@ -1,4 +1,4 @@
-import { asteroid } from '../config/asteroid.config.js'
+import { MClient } from '../config/asteroid.config.js'
 import { Toast } from 'antd-mobile';
 import {getStore, setStore,removeStore} from '../config/mUtils';
 
@@ -95,7 +95,7 @@ export function login(user,pwd) {
   console.log(pwd)
     return dispatch=>{
       console.log(12314)
-      asteroid.loginWithPassword({username:user,password:pwd})
+      MClient.loginWithPassword({username:user,password:pwd})
       .then(result => {
         console.log(222)
        Toast.success('登陆成功', 1);
@@ -111,12 +111,12 @@ export function login(user,pwd) {
 
 export function loginOut(fn) {
   return dispatch=> {
-     asteroid.logout().then(result => {
+     MClient.logout().then(result => {
          dispatch(loginOutSuccess(result))
 
      }).catch(error => {
       });
-     asteroid.on('loggedOut', function(e){
+     MClient.on('loggedOut', function(e){
        console.log('登出成功', e);
      });
 
@@ -128,15 +128,15 @@ export function register(username,password,mobile,verify) {
   return dispatch=> {
     let code = getStore('verify')
     if(verify===code){
-        asteroid.call('users.mobile.exist',mobile)
+        MClient.method('users.mobile.exist',mobile)
         .then(result => {
           if(result){
-            asteroid.call('createUser',{username,password})
+            MClient.method('createUser',{username,password})
             .then(result => {
                 let userId = result.id
                 let address = JSON.parse(getStore('address'));
                 console.log(address);
-                asteroid.call('users.update',userId,mobile,address)
+                MClient.method('users.update',userId,mobile,address)
                 .then(result => {
                   Toast.success('注册成功',1)
                   dispatch(registerSuccess(result))
@@ -167,7 +167,7 @@ export function mobileRegister(mobile,verify){
     let code = getStore('verify')
     if(verify===code){
       console.log(`mobile: ${mobile} verify: ${verify}`)
-      asteroid.call('login.mobie',mobile)
+      MClient.method('login.mobie',mobile)
       .then(result => {
         removeStore('verify')
         dispatch(loginSuccess(result))
@@ -195,7 +195,7 @@ export function forgotPwd(mobile,verify){
     console.log(code);
     if(verify===code){
       console.log(123)
-      asteroid.call('forgot.mobile',mobile)
+      MClient.method('forgot.mobile',mobile)
       .then(result => {
         // removeStore('verify')
         // console.log(`result: ${result}`)
@@ -216,7 +216,7 @@ export function resetPWd(user,pwd) {
   return dispatch => {
     console.log(user);
     console.log(`pwd: ${pwd}`)
-    asteroid.call('set.password',user,pwd)
+    MClient.method('set.password',user,pwd)
     .then(result => {
       console.log(`result: ${result}`)
       dispatch(resPwd(result))

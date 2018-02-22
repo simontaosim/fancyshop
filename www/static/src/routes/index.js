@@ -47,7 +47,6 @@ import Coupon from './coupon/index';
 import MyBankCard from './wallet/MyBankCard';
 import EditBankCard from './wallet/EditBankCard';
 // import OrderList from './orders/OrderList';
-import { asteroid } from '../config/asteroid.config';
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
@@ -127,12 +126,12 @@ class App extends React.Component {
   render() {
     console.log('每次渲染都要检测');
     const authenticated = getStore('authenticated');
-    // console.log(asteroid)
-    // console.log(asteroid.userId)
-    // asteroid.ddp.on('result',({id,message,result}) =>{
+    // console.log(MClient)
+    // console.log(MClient.userId)
+    // MClient.ddp.on('result',({id,message,result}) =>{
     //   console.log(result.id)
     // })
-  //  asteroid.connected()
+  //  MClient.connected()
     return (
       <Router >
           <MainLayout history={history}>
