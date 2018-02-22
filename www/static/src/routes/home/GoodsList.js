@@ -12,7 +12,7 @@ import { productList, product } from '../../reducers/product.redux';
 import { productinfo } from '../../map_props';
 import { productShow } from '../../reducers/product';
 import { gainRecommandProducts } from '../../actions/products';
-import { asteroid } from '../../config/asteroid.config';
+import { MClient } from '../../config/asteroid.config.js';
 
 
 
@@ -59,10 +59,10 @@ class GoodsList extends React.Component {
     this.setState({
       isLoading: true,
     });
-    // asteroid.subscribe('app.get.recommend.products',page,3);
-    // asteroid.connect();
+    // MClient.subscribe('app.get.recommend.products',page,3);
+    // MClient.connect();
     // let products = [];
-    // asteroid.ddp.on("added", ({collection, id, fields}) => {
+    // MClient.ddp.on("added", ({collection, id, fields}) => {
     //   console.log(fields)
     //   if(collection==='products'){
     //     if(products.length< 3){

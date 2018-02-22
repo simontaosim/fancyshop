@@ -5,7 +5,7 @@ import styles from "./Paid.css";
 import codeImg from '../../assets/img/orders/code.png';
 import payImg from '../../assets/img/orders/pay.png';
 import wechatImg from '../../assets/img/orders/wechat.png';
-import { asteroid } from '../../config/asteroid.config';
+import { MClient } from '../../config/asteroid.config.js';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 const RadioItem = Radio.RadioItem;
@@ -38,7 +38,7 @@ class Paid extends React.Component {
  };
   componentDidMount() {
     let id = this.props.match.params.orderId;
-    asteroid.call('app.order.getone',id)
+    MClient.call('app.order.getone',id)
             .then(result => {
               console.log(result);
               if(result){

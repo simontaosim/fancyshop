@@ -6,7 +6,7 @@ import { getAddress } from '../../service/amap/api/getCurrentLocationByIP'
 import { testPhone, testPassword, testUser} from '../../config/reg'
 import Count from '../login/Count'
 import { setStore } from '../../config/mUtils'
-import { asteroid } from '../../config/asteroid.config'
+import { MClient } from '../../config/asteroid.config.js'
 
 class Register extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class Register extends React.Component {
 
 
 sendCode() {
-  asteroid.call('get.phonesms', this.state.user)
+  MClient.call('get.phonesms', this.state.user)
   .then(result => {
       Toast.info('验证码已发送请查看手机');
       setStore('verify', result)

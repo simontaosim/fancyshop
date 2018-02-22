@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { Flex, Accordion, InputItem, Button, TextareaItem, ImagePicker, WingBlank, SegmentedControl,DatePicker, List, PickerView, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import arrayTreeFilter from 'array-tree-filter';
-import { district, provinceLite } from 'antd-mobile-demo-data';
 
-import { asteroid } from '../../config/asteroid.config.js'
+import { MClient } from '../../config/asteroid.config.js'
 import { getCurrentUser,handleNickname } from '../../actions/users.js'
 
 const nowTimeStamp = Date.now();
@@ -50,13 +49,13 @@ class UserData extends React.Component {
     console.log(this.state.nickName)
     console.log(this.props.current_user)
     dispatch(handleNickname(user,nickName))
-    
+
   }
   componentDidMount(){
     const { dispatch } = this.props;
     console.log('组件渲染完成');
-    console.log(asteroid)
-    console.log(asteroid.userId)
+    console.log(MClient)
+    console.log(MClient.userId)
     dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
     this.setState({
       nickName:this.props.current_user.nickname
@@ -95,7 +94,7 @@ class UserData extends React.Component {
         </Accordion.Panel>
       </Accordion>
          <Picker extra="地区"
-           data={district}
+           data={{}}
            title="地区"
            {...getFieldProps('district', {
              initialValue: ['340000', '341500', '341502'],
@@ -149,4 +148,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(UserDataWrapper);
-
