@@ -144,7 +144,7 @@ export function gainRecommandProducts(page,pagesize,data=[]) {
     // asteroid.subscribe('app.get.recommend.products',page,pagesize);
     // asteroid.connect();
     // let products = [];
-    data = data.slice();
+    // data = data.slice();
     // // console.log(data);
     // // console.log(page);
     // asteroid.ddp.on("added", ({collection, id, fields}) => {
