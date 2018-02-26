@@ -16,7 +16,6 @@ import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
 import{ loginOut } from '../../reducers/user.redux';
 import { MClient } from '../../config/asteroid.config.js'
-import { getCurrentUser } from '../../actions/users.js'
 
 
 
@@ -41,23 +40,14 @@ class AppMy extends React.Component{
     ])
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   console.log(nextProps);
-  //   if(!nextProps.user.authenticated){
-  //       nextProps.history.push('/tablogin');
-  //   }
 
-  // }
   componentDidMount(){
     const { dispatch } = this.props;
     console.log('组件渲染完成');
     console.log(MClient)
     console.log(MClient.userId)
-    // MClient.ddp.on('result',({id,message,result}) =>{
-    //  console.log(result.id)
-    // })
+
     console.log('userId local', window.localStorage["Meteor.userId"]);
-    dispatch(getCurrentUser("fMXAZvFSsfz7KLyNf"));
   }
 
 
