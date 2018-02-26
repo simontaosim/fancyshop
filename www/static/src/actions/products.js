@@ -34,13 +34,16 @@ export function loadRecommandProducts(page, pagesize){
     MClient.sub("home.top.products", page, pagesize);
     let products = [];
     MClient.connect();
-    MClient.on("added", ({collection, id, fields}) => {
-      if (collection === 'products') {
+    MClient.on("added", message => {
+      if (message.collection === 'products') {
+        console.log('首页加载的东西',message);
         if (products.length < pagesize) {
-          products.push({fields, id});
+          products.push({fields: message.fields, id: message.id});
+          console.log(message);
           dispatch(receiveRecommandProduct(products));
         }
       }
+
 
     });
   }
@@ -90,14 +93,15 @@ export function loadProductById(id){
     MClient.sub("get.product.id", id);
     let product = [];
     MClient.connect();
-    MClient.method("get.oneproduct.id", id)
-                  .then(result => {
-                    dispatch(receiveProductById(result));
-                  })
-                  .catch(error => {
-                    dispatch(receiveProductByIdError(error));
+    let methodId = MClient.method("get.oneproduct.id", id);
 
-                  });
+    MClient.on("result", message => {
+      if(message.id === methodId && !message.error){
+        dispatch(receiveProductById(message.result));
+      }else{
+        dispatch(receiveProductByIdError(message.error));
+      }
+    })
   }
 }
 
@@ -154,12 +158,12 @@ export function gainRecommandProducts(page,pagesize,data=[]) {
     // data = data.slice();
     console.log(data);
     console.log(page);
-    MClient.on("added", ({collection, id, fields}) => {
-      console.log(fields)
-      if(collection==='products'){
+    MClient.on("added", message => {
+      console.log(message.fields)
+      if(message.collection==='products'){
         if(products.length< pagesize){
-          fields.id = id
-          products.push(fields)
+          message.fields.id = message.id
+          products.push(message.fields)
         }
         console.log(data.concat(products))
         dispatch(getRecommandProducts(data.concat(products)))

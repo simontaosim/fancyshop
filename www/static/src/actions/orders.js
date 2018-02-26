@@ -51,16 +51,17 @@ export function  gainAllOrders(userId){
   return dispatch => {
     MClient.sub("get.allOrders", userId);
     MClient.connect();
-    MClient.method("get.allOrders", userId)
-                  .then(result => {
-                    console.log("所有订单")
-                    console.log(result)
-                    dispatch(getAllOrders(result));
-                  })
-                  .catch(error => {
-                    dispatch(getAllOrdersError(error));
+    let methodId =  MClient.method("get.allOrders", userId);
 
-                  });
+    MClient.on("result", message=>{
+      if(message.id===methodId && !message.error){
+        console.log("所有订单")
+        console.log(message.result)
+        dispatch(getAllOrders(message.result));
+      }else{
+        dispatch(getAllOrdersError(message.error));
+      }
+    })
   }
 }
 
@@ -68,16 +69,17 @@ export function  gainPaidOrders(userId){
   return dispatch => {
     MClient.sub("get.paidOrders", userId);
     MClient.connect();
-    MClient.method("get.paidOrders", userId)
-                  .then(result => {
-                    console.log("所有支付订单")
-                    console.log(result)
-                    dispatch(getPaidOrders(result));
-                  })
-                  .catch(error => {
-                    dispatch(getPaidOrdersError(error));
-
-                  });
+    let methodId = MClient.method("get.paidOrders", userId);
+               
+    MClient.on("result", message=>{
+      if(message.id === methodId && !message.error){
+        console.log("所有支付订单")
+        console.log(message.result)
+        dispatch(getUnPaidOrders(message.result));
+      }else{
+        dispatch(getUnPaidOrdersError(message.error));
+      }
+    })
   }
 }
 
@@ -85,16 +87,19 @@ export function  gainUnPaidOrders(userId){
   return dispatch => {
     MClient.sub("get.unpaidOrders", userId);
     MClient.connect();
-    MClient.method("get.unpaidOrders", userId)
-                  .then(result => {
-                    console.log("所有未支付订单")
-                    console.log(result)
-                    dispatch(getUnPaidOrders(result));
-                  })
-                  .catch(error => {
-                    dispatch(getUnPaidOrdersError(error));
-                  });
+    let methodId = MClient.method("get.unpaidOrders", userId);
+    
+    MClient.on("result", message=>{
+      if(message.id === methodId && !message.error){
+        console.log("所有未支付订单")
+        console.log(message.result)
+        dispatch(getUnPaidOrders(message.result));
+      }else{
+        dispatch(getUnPaidOrdersError(message.error));
+      }
+    })
   }
+
 }
 
 
@@ -109,14 +114,16 @@ function reviceOrderById(order) {
 
 export function loadOrderById(id) {
   return  dispatch => {
-        MClient.method('app.order.getone',id)
-                .then(result => {
-                    console.log(result);
-                    dispatch(reviceOrderById(result))
-                })
-                .catch(error => {
-
-                })
+      let methodId =  MClient.method('app.order.getone',id);
+      
+      MClient.on('result', message => {
+        if(message.id === methodId && !message.error){
+          console.log(message.result);
+          dispatch(reviceOrderById(message.result))
+        }else{
+          console.error(message.error);
+        }
+      })
     }
 }
 
@@ -124,15 +131,16 @@ export function loadOrderById(id) {
 
 export function createOrder(product) {
     return dispatch => {
-      MClient.method('app.orders.insert',product)
-              .then(result => {
-                  if(result){
-                    history.push(`/firmorder${result}`)
-                  }
-              })
-              .catch(error => {
-                  console.log(error);
-              })
+    let methodId = MClient.method('app.orders.insert',product)
+    MClient.on('result', message=>{
+      if(message.id === methodId && !message.error){
+        if(message.result){
+          history.push(`/firmorder${message.result}`)
+        }else{
+          console.log(message.error);
+        }
+      }
+    })
     }
   }
 
