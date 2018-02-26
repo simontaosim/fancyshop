@@ -128,12 +128,6 @@ export function createOrder(product) {
 
 export function loadShopProductsByShopId(shopId,page,pagesize) {
   return dispatch => {
-<<<<<<< HEAD
-    asteroid.subscribe('app.get.shop.products',shopId,page,pagesize);
-    asteroid.connect();
-    let products = [];
-      asteroid.ddp.on("added", ({collection, id, fields}) => {
-=======
     console.log(`加载店铺商品`)
     console.log(shopId)
     MClient.sub('app.get.shop.products',shopId,page,pagesize);
@@ -143,7 +137,6 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
         console.log(`Element added to collection ${collection}`);
         console.log(id);
         console.log(fields);
->>>>>>> 8f745991325d244f7de8e78bfc4ee972e211ffa6
         if(collection==='products'){
           if(products.length< pagesize){
             products.push({fields,id})
@@ -157,34 +150,6 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
-<<<<<<< HEAD
-    // asteroid.subscribe('app.get.recommend.products',page,pagesize);
-    // asteroid.connect();
-    // let products = [];
-    // data = data.slice();
-    // // console.log(data);
-    // // console.log(page);
-    // asteroid.ddp.on("added", ({collection, id, fields}) => {
-    //   // console.log(fields)
-    //   if(collection==='products'){
-    //     if(products.length< pagesize){
-    //       fields.id = id
-    //       products.push(fields)
-    //     }
-    //     // console.log(data.concat(products))
-    //     dispatch(getRecommandProducts(data.concat(products)))
-    //   }
-    // })
-    asteroid.call('app.get.recommend.products',page,pagesize)
-            .then(result => {
-              console.log(result);
-              console.log(data.concat(result));
-              dispatch(getRecommandProducts(data.concat(result)))
-            })
-            .catch(error => {
-
-            })
-=======
     console.log(`获取推荐商品`)
     MClient.sub('app.get.recommend.products',page,pagesize);
     MClient.connect();
@@ -203,6 +168,5 @@ export function gainRecommandProducts(page,pagesize,data=[]) {
         dispatch(getRecommandProducts(data.concat(products)))
       }
     })
->>>>>>> 8f745991325d244f7de8e78bfc4ee972e211ffa6
   }
 }

@@ -12,13 +12,8 @@ import { productList, product } from '../../reducers/product.redux';
 import { productinfo } from '../../map_props';
 import { productShow } from '../../reducers/product';
 import { gainRecommandProducts } from '../../actions/products';
-<<<<<<< HEAD
-import { asteroid } from '../../config/asteroid.config';
-import history from '../../history'
-=======
 import { MClient } from '../../config/asteroid.config.js';
 
->>>>>>> 8f745991325d244f7de8e78bfc4ee972e211ffa6
 
 
 let page = 1;

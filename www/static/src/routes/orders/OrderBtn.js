@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex } from 'antd-mobile';
-import s from './BtnStyle.css';
+// import s from './BtnStyle.css';
 import styles from './Common.css';
 class OrderBtn extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class OrderBtn extends React.Component {
            switch(this.props.status) {
              case 1:
              return (
-                <Flex justify = "end" className = {s['btn-item']}>
+                <Flex justify = "end" >
                   <button >详情</button>
                   <button >删除订单</button>
                 </Flex>
