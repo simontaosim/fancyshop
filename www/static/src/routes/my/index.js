@@ -62,7 +62,7 @@ class AppMy extends React.Component{
               <img src = {userImg} className = {style['user-img']}/>
           </Flex>
           <Flex justify = "end" className = {style['pencil-position']} >
-            <Link to = "/userdata">
+            <Link to = "/personal">
               <img src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
             </Link>
            </Flex>

@@ -51,6 +51,7 @@ import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
 import Shops from './shops/'
+import Personal from './my/Personal';
 
 // import Orders from './Orders/index';
 // import OrderList from './Orders/OrderList';
@@ -176,6 +177,7 @@ class App extends React.Component {
               <Route path="/editbankcard" component={EditBankCard}/>
               <Route path="/orderlist" component={OrderList}/>
               <Route path = "/orders" component={Orders}/>
+              <Route path = "/personal" component={Personal}/>
               <Route component={NoMatchPage}/>
             </Switch>
 
