@@ -9,8 +9,8 @@ import QrCode from './QrCode.js';
 import { connect } from 'react-redux';
 
 class UnTreated extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.untreated = this.untreated.bind(this)
     this.refund = this.refund.bind(this)
     this.qrcode = this.qrcode.bind(this)

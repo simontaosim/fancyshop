@@ -1,4 +1,4 @@
-import { asteroid } from '../config/asteroid.config.js'
+import { MClient } from '../config/asteroid.config.js'
 
 
 export const SET_APP_TIILE = "SET_APP_TIILE";
@@ -36,10 +36,10 @@ export function setHomeTags(tags){
 
 export function getHomeTags(){
   return dispatch => {
-    asteroid.subscribe("home.tags");
-    asteroid.connect();
+    MClient.sub("home.tags");
+    MClient.connect();
     let tags = [];
-    asteroid.ddp.on("added", ({collection, id, fields}) => {
+    MClient.on("added", ({collection, id, fields}) => {
       if (collection === 'tags') {
         if (tags.length < 5) {
           tags.push({fields, id});

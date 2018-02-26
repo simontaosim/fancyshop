@@ -1,5 +1,5 @@
 import history from '../history';
-import { asteroid } from '../config/asteroid.config.js';
+import { MClient } from '../config/asteroid.config.js';
 import { product } from '../reducers/product.redux';
 
 
@@ -31,10 +31,10 @@ function receiveRecommandProduct(products){
 export function loadRecommandProducts(page, pagesize){
   return dispatch => {
     dispatch(exceptRecommandProduct());
-    asteroid.subscribe("home.top.products", page, pagesize);
+    MClient.sub("home.top.products", page, pagesize);
     let products = [];
-    asteroid.connect();
-    asteroid.ddp.on("added", ({collection, id, fields}) => {
+    MClient.connect();
+    MClient.on("added", ({collection, id, fields}) => {
       if (collection === 'products') {
         if (products.length < pagesize) {
           products.push({fields, id});
@@ -70,7 +70,7 @@ function receiveProductByIdError(error){
 }
 
 function receiveShopProductsByShopId(products) {
-  return { 
+  return {
     type: RECEIVE_SHOP_PRODUCTS_BYSHOPID,
     products
   }
@@ -78,8 +78,8 @@ function receiveShopProductsByShopId(products) {
 
 
 export function addCount(count) {
-  return { 
-    type: ADD_COUNT, 
+  return {
+    type: ADD_COUNT,
     count: count
   }
 }
@@ -87,10 +87,10 @@ export function addCount(count) {
 export function loadProductById(id){
   return dispatch => {
     // dispatch(exceptProductById(id));
-    asteroid.subscribe("get.product.id", id);
+    MClient.sub("get.product.id", id);
     let product = [];
-    asteroid.connect();
-    asteroid.call("get.oneproduct.id", id)
+    MClient.connect();
+    MClient.method("get.oneproduct.id", id)
                   .then(result => {
                     dispatch(receiveProductById(result));
                   })
@@ -109,7 +109,7 @@ export function loadProductList(){
 
 export function createOrder(product) {
   return dispatch => {
-    asteroid.call('app.orders.insert',product)
+    MClient.method('app.orders.insert',product)
             .then(result => {
                 if(result){
                   history.push(`/firmorder/${result}`)
@@ -124,10 +124,22 @@ export function createOrder(product) {
 
 export function loadShopProductsByShopId(shopId,page,pagesize) {
   return dispatch => {
+<<<<<<< HEAD
     asteroid.subscribe('app.get.shop.products',shopId,page,pagesize);
     asteroid.connect();
     let products = [];
       asteroid.ddp.on("added", ({collection, id, fields}) => {
+=======
+    console.log(`加载店铺商品`)
+    console.log(shopId)
+    MClient.sub('app.get.shop.products',shopId,page,pagesize);
+    MClient.connect();
+    let products = [];
+      MClient.on("added", ({collection, id, fields}) => {
+        console.log(`Element added to collection ${collection}`);
+        console.log(id);
+        console.log(fields);
+>>>>>>> 8f745991325d244f7de8e78bfc4ee972e211ffa6
         if(collection==='products'){
           if(products.length< pagesize){
             products.push({fields,id})
@@ -141,6 +153,7 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
+<<<<<<< HEAD
     // asteroid.subscribe('app.get.recommend.products',page,pagesize);
     // asteroid.connect();
     // let products = [];
@@ -167,5 +180,25 @@ export function gainRecommandProducts(page,pagesize,data=[]) {
             .catch(error => {
 
             })
+=======
+    console.log(`获取推荐商品`)
+    MClient.sub('app.get.recommend.products',page,pagesize);
+    MClient.connect();
+    let products = [];
+    // data = data.slice();
+    console.log(data);
+    console.log(page);
+    MClient.on("added", ({collection, id, fields}) => {
+      console.log(fields)
+      if(collection==='products'){
+        if(products.length< pagesize){
+          fields.id = id
+          products.push(fields)
+        }
+        console.log(data.concat(products))
+        dispatch(getRecommandProducts(data.concat(products)))
+      }
+    })
+>>>>>>> 8f745991325d244f7de8e78bfc4ee972e211ffa6
   }
 }

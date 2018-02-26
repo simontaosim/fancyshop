@@ -7,6 +7,8 @@ import {
   BrowserRouter
 } from 'react-router-dom';
 
+
+
 import MainLayout from '../layouts/MainLayout.js'
 import MessageBox from './messages'
 import AppHome from './home';
@@ -45,7 +47,6 @@ import Coupon from './coupon/index';
 import MyBankCard from './wallet/MyBankCard';
 import EditBankCard from './wallet/EditBankCard';
 // import OrderList from './orders/OrderList';
-import { asteroid } from '../config/asteroid.config';
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
@@ -68,6 +69,7 @@ const Home = ({ match }) => (
 const ShopsPage = ({ match }) => (
     <Shops path={match.path}  params={match.params}  />
   )
+
 
 const Messages = ({match}) => (
   <MessageBox path={match.path} />
@@ -109,14 +111,27 @@ const Topics = ({ match }) => (
 )
 
 class App extends React.Component {
+
+  componentDidMount(){
+    console.log('开始进入App');
+    console.log('检查用户状态');
+    console.log('检查当前路由状态');
+    console.log(history);
+
+  }
+
+  routeControl(CurrentUser){
+
+  }
   render() {
+    console.log('每次渲染都要检测');
     const authenticated = getStore('authenticated');
-    // console.log(asteroid)
-    // console.log(asteroid.userId)
-    // asteroid.ddp.on('result',({id,message,result}) =>{
+    // console.log(MClient)
+    // console.log(MClient.userId)
+    // MClient.ddp.on('result',({id,message,result}) =>{
     //   console.log(result.id)
     // })
-  //  asteroid.connected()
+  //  MClient.connected()
     return (
       <Router >
           <MainLayout history={history}>
@@ -125,7 +140,7 @@ class App extends React.Component {
               <Route exact path="/money" component={Home} authenticated={authenticated}/>
               <Route path="/messages" component={Messages} authenticated={authenticated}/>
               <Route path = "/shop_cart" component={ShopCart} />
-              <Route path="/my" component={My} authenticated={authenticated}/>
+              <Route path="/my"  component={My} authenticated={authenticated}/>
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />

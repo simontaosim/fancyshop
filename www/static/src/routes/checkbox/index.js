@@ -1,5 +1,5 @@
 import React from 'react'
-import { asteroid } from '../../config/asteroid.config'
+import { MClient } from '../../config/asteroid.config.js'
 
 // import { saveAs } from 'file-saver';
 
@@ -43,7 +43,7 @@ class Test extends React.Component {
     }
 
     componentDidMount() {
-        asteroid.call('user.test',['123'])
+        MClient.call('user.test',['123'])
     
     }
 

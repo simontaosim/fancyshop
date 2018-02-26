@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
-import { asteroid } from '../../config/asteroid.config'
+import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { mobileRegister } from '../../reducers/user.redux'
 import Count from './Count'
@@ -31,14 +31,18 @@ class MobileLogin extends React.Component {
 
 sendCode() {
     console.log(`发送验证码1:${this.state.user}`)
-    asteroid.call('get.phonesms', this.state.user)
-    .then(result => {
+    let methodId = MClient.method('get.phonesms', [this.state.user]);
+
+    MClient.on("result", message => {
+      if (message.id === methodId && !message.error) {
         Toast.info('验证码已发送请查看手机');
-        setStore('verify', result)
-    })
-    .catch(error => {
-      console.log(error);
-    })
+        // console.log(message);
+        setStore('verify', message.result)
+      }else{
+        console.log(message.error);
+      }
+  });
+
 }
 
 
@@ -69,7 +73,7 @@ sendCode() {
     }
   }
   handleLogout() {
-    asteroid.logout()
+    MClient.logout()
   }
   handlePhone=(event)=>{
     // 倒计时按钮处于倒计时未结束状态时手机号不能修改

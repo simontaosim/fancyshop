@@ -8,8 +8,10 @@ import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
 import {appInfo} from '../map_props.js';
 import {connect} from 'react-redux';
+import {  Redirect } from 'react-router-dom'
 
 import "./common.less";   // 用于覆盖上面定义的变量
+import CurrentUser from '../models/CurrentUser.js';
 
 class MainLayout extends React.Component{
   constructor(props){
@@ -26,11 +28,26 @@ class MainLayout extends React.Component{
   }
 
 
-    componentDidMount() {
-    }
+  componentDidMount() {
+
+
+  }
 
 
   render(){
+
+    console.log("开始构造权限业务逻辑");
+    if ('user.has.role.login_user') {
+
+    }
+    if ('user.has.role.nobody') {
+
+    }
+    CurrentUser.getId();
+    // console.log(CurrentUser.getId());
+    // if(this.props.history.location.pathname === '/my'){
+    //   this.props.history.push('/tablogin');
+    // }
     return(
       <div>
         <AppNavBar history={this.props.history} />

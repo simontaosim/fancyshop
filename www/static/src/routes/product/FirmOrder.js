@@ -7,7 +7,7 @@ import stylec from '../orders/Common.css';
 import { orderInfo} from '../../map_props';
 import { loadOrderById } from '../../actions/orders';
 import { connect } from 'react-redux';
-import { asteroid } from '../../config/asteroid.config'
+import { MClient } from '../../config/asteroid.config.js'
 
 
 class FirmOrder extends React.Component {
@@ -41,7 +41,7 @@ class FirmOrder extends React.Component {
   componentDidMount() {
     let id = this.props.match.params.orderId;
     console.log(`走不走`)
-    asteroid.call('app.order.getone',id)
+    MClient.call('app.order.getone',id)
             .then(result => {
               console.log(result);
               if(result){
@@ -69,7 +69,7 @@ class FirmOrder extends React.Component {
       shop_name: this.state.shop.name,
       address: this.state.shop.address
     }
-    asteroid.call('app.order.update',params)
+    MClient.call('app.order.update',params)
             .then(result => {
                 if(result){
                   this.props.history.push(`/paid/${this.state.order._id}`)
