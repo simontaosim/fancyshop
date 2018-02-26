@@ -31,14 +31,18 @@ class MobileLogin extends React.Component {
 
 sendCode() {
     console.log(`发送验证码1:${this.state.user}`)
-    MClient.call('get.phonesms', this.state.user)
-    .then(result => {
+    let methodId = MClient.method('get.phonesms', [this.state.user]);
+
+    MClient.on("result", message => {
+      if (message.id === methodId && !message.error) {
         Toast.info('验证码已发送请查看手机');
-        setStore('verify', result)
-    })
-    .catch(error => {
-      console.log(error);
-    })
+        // console.log(message);
+        setStore('verify', message.result)
+      }else{
+        console.log(message.error);
+      }
+  });
+
 }
 
 
