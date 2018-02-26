@@ -99,7 +99,7 @@ class FirmOrder extends React.Component {
             </div>
             <div >
               <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
-              <span className = {styles['type-color']}>规格：{product.specifications.name} </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥{product.price} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×{product.count}</span>
+              <span className = {styles['type-color']}>规格：{product.specifications.name} </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥{product.price/100} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×{product.count}</span>
             </div>
           </Flex>
         </div>

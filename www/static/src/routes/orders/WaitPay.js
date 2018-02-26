@@ -24,7 +24,7 @@ class WaitPay extends React.Component {
 
     // console.log('waitpay')
     let {waitpay,shop} = this.props
-    console.log(this.props.waitpay)
+    console.log(waitpay)
    waitpay = waitpay === undefined ? []: waitpay
     // if( waitpay === undefined){
     //   waitpay = []
@@ -47,7 +47,6 @@ class WaitPay extends React.Component {
           <button className = {styles['cancel-btn']}>取消订单</button>
           <button className = {styles['pay-btn']} style = {{marginLeft:'15px'}} onClick = {this.paid}>支付</button>
         </Flex>
-        {/* <Flex justify = "end" className = {styles['red-border']}></Flex> */}
       </div>
     )
   }

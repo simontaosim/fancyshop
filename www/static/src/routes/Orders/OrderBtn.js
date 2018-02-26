@@ -1,88 +1,61 @@
 import React from 'react';
 import { Flex } from 'antd-mobile';
-
-class WaitPayBtn extends Reacr.Component {
-  constructor() {
-    super();
+import s from './BtnStyle.css';
+import styles from './Common.css';
+class OrderBtn extends React.Component {
+  constructor(props) {
+    super(props)
+    this.paid = this.paid.bind(this)
+    this.details = this.details.bind(this)
   }
-  render(){
+
+  paid(){
+    this.props.history.push('/paid')
+  }
+  details(){
+    this.props.history.push(`/order_details/${this.props.orderId}`)
+  }
+
+  render() {
     return (
-      <Flex justify = "end">
-        <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-        <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>取消订单</button>
-        <button type = "ghost" style = {{backgroundColor:'red',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>支付</button>
-      </Flex>
+      <div>
+         {(()=>{
+           switch(this.props.status) {
+             case 1:
+             return (
+                <Flex justify = "end" className = {s['btn-item']}>
+                  <button >详情</button>
+                  <button >删除订单</button>
+                </Flex>
+              );
+             case 2: 
+             return( 
+             <Flex justify = "end" style = {{margin:'10px',paddingBottom:'10px'}}>
+              <button className = {styles['detail-btn']} onClick = {this.details}>详情</button>
+              <button className = {styles['cancel-btn']}>取消订单</button>
+              <button className = {styles['pay-btn']} style = {{marginLeft:'15px'}} >支付</button>
+             </Flex>
+           );
+            case 3: 
+            return(
+              <Flex justify = "end" className = {styles['btn-frame']}>
+                <button className = {styles['detail-btn']} >详情</button>
+                <button className = {styles['delete-btn']}>删除订单</button>
+              </Flex>
+            )
+            case 4:
+            return(
+              <Flex justify = "end" style = {{margin:'10px'}}>
+                <button className = {styles['detail-btn']}>详情</button>
+                <button className = {styles['revoke-btn']}>撤销退款</button>
+              </Flex>
+            )
+           }
+         })()}
+      </div>
     )
   }
 }
-export WaitPayBtn;
 
-class UntreatedBtn extends Reacr.Component {
-  constructor() {
-    super();
-  }
-  render(){
-    return (
-      <Flex justify = "end">
-        <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-        <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>二維碼</button>
-        <button type = "ghost" style = {{backgroundColor:'#fff',color:'#000',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>申请退款</button>
-        {/* <div >{this.state.waitpay}</div>
-        <div>{this.state.untreated}</div> */}
-        {/* if(this.state.waitpay){
-          <Flex justify = "end">
-            <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-            <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>取消订单</button>
-            <button type = "ghost" style = {{backgroundColor:'red',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>支付</button>
-          </Flex>
-        }else if(this.state.untreated) {
-          <Flex justify = "end">
-            <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-            <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>二維碼</button>
-            <button type = "ghost" style = {{backgroundColor:'#fff',color:'#000',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>申请退款</button>
-          </Flex>
-        }else {
-          <Flex justify = "end">
-            <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-            <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>删除订单</button>
-            {/* <button type = "ghost" style = {{backgroundColor:'#fff',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>申请退款</button> *}
-          </Flex>
-        } */}
-        {/* <Flex justify = "end">
-          <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-          <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>取消订单</button>
-          <button type = "ghost" style = {{backgroundColor:'red',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>支付</button>
 
-        </Flex> */}
-        {/* switch () {
-          case 1:
-          <Flex justify = "end">
-            <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-            <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>取消订单</button>
-            <button type = "ghost" style = {{backgroundColor:'red',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>支付</button>
-
-          </Flex>
-            break;
-            case 2:
-            <Flex justify = "end">
-              <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-              <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>取消订单</button>
-              <button type = "ghost" style = {{backgroundColor:'red',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>支付</button>
-
-            </Flex>
-            break;
-            case 6:
-            <Flex justify = "end">
-              <button style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>详情</button>
-              <button type = "ghost" style = {{backgroundColor:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid #333',borderRadius:'8px'}}>取消订单</button>
-              <button type = "ghost" style = {{backgroundColor:'red',color:'#fff',padding:'6px 15px',margin:'0 10px',border:'1px solid red',borderRadius:'8px'}}>支付</button>
-
-            </Flex>
-
-          default:
-        } */}
-      </Flex>
-    )
-  }
-}
-export UntreatedBtn;
+export default OrderBtn;

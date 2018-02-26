@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Flex, Tabs, Button } from 'antd-mobile';
-// import { Goods, ShopName } from './OrdersCommon';
 import ShopName from './ShopName';
 import Goods from './Goods';
 import Paid from './Paid';
@@ -9,10 +8,12 @@ import UnTreated from './UnTreated';
 import WaitPay from './WaitPay';
 import Finish from './Finish';
 import Invalid from './Invalid';
+import OrderBtn from './OrderBtn';
 import styles from './Common.css';
 import '../../service/data/datasource';
 import axios from 'axios';
-import { gainAllOrders, gainPaidOrders,gainUnPaidOrders} from '../../actions/orders'
+import { gainAllOrders, gainPaidOrders,gainUnPaidOrders} from '../../actions/orders';
+import OrderList from './OrderList';
 
 class Orders extends React.Component {
   constructor(props) {  
@@ -36,13 +37,6 @@ class Orders extends React.Component {
         console.log("11111")
       dispatch(gainAllOrders(userId));
       console.log(this.props.orders)
-        // axios.get('/orderlist')
-        // .then(function(data){
-        //   console.log();
-        //   self.setState({
-        //     all: data.data.list
-        //   })
-        // })
         break;
       case '待付款':
       console.log(111);
@@ -58,10 +52,6 @@ class Orders extends React.Component {
       default:
         console.log('无效');
     }
-    // console.log(`tab:${tab},index: ${index}`);
-
-
-
   }
 
 
@@ -73,14 +63,17 @@ class Orders extends React.Component {
       {title:'已完成', status: '已完成'},
       {title:'无效', status: '无效'},
     ]
-    console.log(this.state.waitpay)
+    // console.log(this.state.waitpay)
     let {waitpay,all,untreated,finish}= this.state;
-    console.log(111);
-    console.log(this.state.waitpay)
+    // console.log(111);
+    // console.log(this.state.waitpay)
+    // console.log(waitpay.list)
+    // console.log(untreated)
     return(
     <div className = "all">
       <Tabs tabs = {tabs} initialPage = {5} animated = {false} useOnPan = {false} onChange={this.switchTab}>
         <div style = {{backgroundColor:'#fff',paddingBottom:'10px'}} key = "all">
+        {/* <OrderList /> */}
           {/* <WaitPay waitpay={all}/>
           <UnTreated untreated={all}/>
           <Finish data={all}/>
@@ -89,13 +82,13 @@ class Orders extends React.Component {
 
         </div>
         <div className = "waitpay" style = {{backgroundColor:'#fff'}} key = "waitay">
-          <WaitPay waitpay={waitpay.list} shop={waitpay.shop_name} history = {this.props.history} />
+          <OrderList dataSource={this.props.orders}  history={this.props.history}/>
         </div>
         <div style = {{backgroundColor:'#fff'}}>
-          <UnTreated untreated={untreated} history = {this.props.history}/>
+          <OrderList dataSource={this.props.orders} history={this.props.history} />
         </div>
         <div className = "finish" style = {{backgroundColor:'#fff'}} key = "finish">
-          <Finish finish={finish} history = {this.props.history}/>
+          <OrderList dataSource={this.props.orders}  history={this.props.history}/>
         </div>
       <div className = "invalid">
         <div style = {{backgroundColor:'#fff',paddingBottom:'15px'}} key = "invalid">
@@ -120,7 +113,6 @@ class Orders extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     orders: state.ordersInfo.orders,
     user: state.user

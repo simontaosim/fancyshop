@@ -282,10 +282,9 @@ class ProductModal extends React.Component {
           <Flex>
               <img src = {goodImg} style = {{width:'60px',height:'60px',border:'6px solid #680000'}}/>
               <div style = {{paddingLeft:'10px'}}>
-                <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥{price}</span><br/>
+                <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥{price/100}</span><br/>
                 <span style = {{color:'#666',fontSize:'14px'}}>请选择类型</span>
               </div>
-              {/* <img src = {require('../svg/close_black.svg')} style = {{display:'flex',width:'25px',height:'25px',paddingLeft:'35%',paddingBottom:'44px',alignSelf:'flex-end'}} onClick = {this.Close('modal2')}/><br/> */}
               <img src = {require('../svg/close_black.svg')} style = {{position:'absolute',right:'15px',top:'10px',width:'25px',height:'25px',paddingBottom:'44px'}} onClick = {this.Close('modal2')}/><br/>
           </Flex>
 
