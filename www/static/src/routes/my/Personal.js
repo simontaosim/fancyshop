@@ -1,7 +1,7 @@
 import { List, InputItem,Picker, Button, DatePicker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
-import { district, provinceLite } from 'antd-mobile-demo-data';
+// import { district, provinceLite } from 'antd-mobile-demo-data';
 const gender = [
   {
     label:'未知',
@@ -45,7 +45,7 @@ class Personal extends React.Component {
           <List.Item arrow="horizontal">性别</List.Item>
         </Picker>
         <Picker extra="请选择"
-          data={district}
+          data=''
           title="地区"
           {...getFieldProps('district', {
             

@@ -13,6 +13,8 @@ export const GET_RECOMMAND_PRODUCTS= "GET_RECOMMAND_PRODUCTS"
 // export const RECOMMAND_PRODUCTS_LIST = "RECOMMAND_PRODUCTS_LIST"
 
 
+
+
 function exceptRecommandProduct(){
   return {
     type: EXCEPT_RECOMMAND_PRODUCTS,
@@ -31,9 +33,8 @@ function receiveRecommandProduct(products){
 export function loadRecommandProducts(page, pagesize){
   return dispatch => {
     dispatch(exceptRecommandProduct());
-    MClient.sub("home.top.products", [page, pagesize]);
+    const subId =  MClient.sub("home.top.products", [page, pagesize]);
     let products = [];
-    const subId = MClient.sub("home.top.products");
     MClient.on("ready", message => {
       if (message.subs.includes(subId)) {
           console.log("mySubscription ready");

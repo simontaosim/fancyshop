@@ -9,12 +9,19 @@ import { appInfo } from '../../map_props.js';
 import {setAppTitle} from '../../actions/app.js';
 import MyList from './MyList';
 import { Flex } from 'antd-mobile';
-import { List, Badge,Button,WhiteSpace,WingBlank,Card ,Checkbox,Modal} from 'antd-mobile';
+import { 
+  List, 
+  Badge,
+  Button,
+  WhiteSpace,
+  WingBlank,Card,
+  Checkbox,Modal, 
+  Toast} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
-import{ loginOut } from '../../reducers/user.redux';
+import{ logout } from '../../actions/users';
 import { MClient } from '../../config/asteroid.config.js'
 
 
@@ -24,17 +31,15 @@ const alert = Modal.alert;
 class AppMy extends React.Component{
   constructor(props) {
     super(props);
-    this.ConfirmWindow = this.ConfirmWindow.bind(this);
+    this.confirmWindow = this.confirmWindow.bind(this);
   }
 
-  ConfirmWindow() {
+  confirmWindow() {
     let self = this
     const { dispatch } = this.props;
     alert('退出当前账号','您是否确认推出当前帐号?',[
       { text: '确定', onPress: () => {
-          // console.log(this.props)
-          this.props.history.push('/tablogin')
-          dispatch(loginOut())
+          dispatch(logout());
       }},
       { text: '取消', onPress: () => console.log('取消了') },
     ])
@@ -52,9 +57,19 @@ class AppMy extends React.Component{
 
 
   render(){
-    const { dispatch, current_user } = this.props;
+    const { dispatch, current_user, appUser } = this.props;
     console.log("当前用户", current_user)
-
+    if(appUser.status === 'logouting' ){
+      Toast.loading("正在登出", 3, ()=>{
+        console.log('登出中')
+      });
+    }
+    if(appUser.status === 'offline' ){
+      Toast.info("请先登陆", 2, ()=>{
+        this.props.history.push('/tablogin');
+      });
+    }
+   
     return (
       <div >
         <div className = {style['back-color']}>
@@ -80,7 +95,7 @@ class AppMy extends React.Component{
 
           <MyItem/>
           <WingBlank>
-            <Button className = {style['sign-out-btn']} onClick={this.ConfirmWindow}>退出当前帐号</Button>
+            <Button className = {style['sign-out-btn']} onClick={this.confirmWindow}>退出当前帐号</Button>
           </WingBlank>
         </div>
 
@@ -91,7 +106,8 @@ class AppMy extends React.Component{
 function mapStateToProps(state) {
   return {
     current_user: state.currentUser.current_user,
-    user: state.user
+    user: state.user,
+    appUser: state.AppUser,
   }
 }
 
