@@ -5,7 +5,7 @@ import { createForm } from 'rc-form';
 import arrayTreeFilter from 'array-tree-filter';
 
 import { MClient } from '../../config/asteroid.config.js'
-import { getCurrentUser,handleNickname } from '../../actions/users.js'
+// import { getCurrentUser,handleNickname } from '../../actions/users.js'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
@@ -48,7 +48,7 @@ class UserData extends React.Component {
     let nickName = this.state.nickName
     console.log(this.state.nickName)
     console.log(this.props.current_user)
-    dispatch(handleNickname(user,nickName))
+    // dispatch(handleNickname(user,nickName))
 
   }
   componentDidMount(){
@@ -56,7 +56,7 @@ class UserData extends React.Component {
     console.log('组件渲染完成');
     console.log(MClient)
     console.log(MClient.userId)
-    dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
+    // dispatch(getCurrentUser("rcZ5wnrzYvgDmaYgm"));
     this.setState({
       nickName:this.props.current_user.nickname
     })

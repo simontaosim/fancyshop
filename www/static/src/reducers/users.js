@@ -1,4 +1,4 @@
-import {SET_CURRENT_USER, SET_CURRENT_USER_ERROR } from '../actions/users.js'
+// import {SET_CURRENT_USER, SET_CURRENT_USER_ERROR } from '../actions/users.js'
 
 
 const initialState = {
@@ -20,7 +20,7 @@ const initialState = {
 }
 export function currentUser(state = initialState,action){
   switch (action.type){
-    case SET_CURRENT_USER:
+    case 'SET_CURRENT_USER':
     console.log(action.user);
     return Object.assign({}, state, {
       current_user: action.user,

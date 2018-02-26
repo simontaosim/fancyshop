@@ -1,11 +1,6 @@
 import { MClient } from '../config/asteroid.config.js'
 
 
-export const SET_CURRENT_USER = "SET_CURRENT_USER";
-export const SET_CURRENT_USER_ERROR = "SET_CURRENT_USER_ERROR";
-export const CHANGE_USER_NICKNAME = "CHANGE_USER_NICKNAME";
-
-
 //============== 用户的注册登录 ======================
 
 export function login(loginType, loginParams){
@@ -21,6 +16,12 @@ export function passwordLogin(loingParams){
 }
 
 export function registerLogin(regParams){
+
+}
+export function expectLogout(){
+    
+}
+export function Logout(){
 
 }
 
@@ -55,5 +56,16 @@ export function loadUserInfoError(){
 
 }
 //=========================================================
+//===============载入用户信息==========================================
+export function expectUserById(id){
+
+}
+export function loadUserById(id){
+
+}
+export function expectUsersAsFollows(){
+
+}
+//=======================================
 
 

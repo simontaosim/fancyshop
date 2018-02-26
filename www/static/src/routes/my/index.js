@@ -30,7 +30,7 @@ class AppMy extends React.Component{
   ConfirmWindow() {
     let self = this
     const { dispatch } = this.props;
-    alert('退出当前账号','321',[
+    alert('退出当前账号','您是否确认推出当前帐号?',[
       { text: '确定', onPress: () => {
           // console.log(this.props)
           this.props.history.push('/tablogin')
