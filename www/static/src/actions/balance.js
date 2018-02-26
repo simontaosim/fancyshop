@@ -27,7 +27,7 @@ function getBalanceIncomesTotal(total) {
 
 export function gainBlance(userId) {
   return  dispatch => {
-        MClient.sub("app.get.current.balance",userId);
+        MClient.sub("app.get.current.balance",[userId]);
         MClient.connect();
         MClient.on("added", ({collection, id, fields}) => {
             if(collection==='balances'){

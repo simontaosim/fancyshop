@@ -47,7 +47,6 @@ export function AppInfo(state={
         }
       });
     case SET_HOME_TAGS:
-      console.log(action);
       return Object.assign({}, state, {
         homeTags: action.tags,
       });

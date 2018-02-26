@@ -31,16 +31,27 @@ function receiveRecommandProduct(products){
 export function loadRecommandProducts(page, pagesize){
   return dispatch => {
     dispatch(exceptRecommandProduct());
-    MClient.sub("home.top.products", page, pagesize);
+    MClient.sub("home.top.products", [page, pagesize]);
     let products = [];
-    MClient.connect();
-    MClient.on("added", ({collection, id, fields}) => {
-      if (collection === 'products') {
+    const subId = MClient.sub("home.top.products");
+    MClient.on("ready", message => {
+      if (message.subs.includes(subId)) {
+          console.log("mySubscription ready");
+      }
+    });
+    MClient.on("added", message => {
+      console.log(message.collection);
+    });
+    MClient.on("added", message => {
+      if (message.collection === 'products') {
+        console.log('首页加载的东西',message);
         if (products.length < pagesize) {
-          products.push({fields, id});
+          products.push({fields: message.fields, id: message.id});
+          console.log(message);
           dispatch(receiveRecommandProduct(products));
         }
       }
+
 
     });
   }
@@ -87,17 +98,18 @@ export function addCount(count) {
 export function loadProductById(id){
   return dispatch => {
     // dispatch(exceptProductById(id));
-    MClient.sub("get.product.id", id);
+    MClient.sub("get.product.id", [id]);
     let product = [];
     MClient.connect();
-    MClient.method("get.oneproduct.id", id)
-                  .then(result => {
-                    dispatch(receiveProductById(result));
-                  })
-                  .catch(error => {
-                    dispatch(receiveProductByIdError(error));
+    let methodId = MClient.method("get.oneproduct.id", id);
 
-                  });
+    MClient.on("result", message => {
+      if(message.id === methodId && !message.error){
+        dispatch(receiveProductById(message.result));
+      }else{
+        dispatch(receiveProductByIdError(message.error));
+      }
+    })
   }
 }
 
@@ -109,15 +121,17 @@ export function loadProductList(){
 
 export function createOrder(product) {
   return dispatch => {
-    MClient.method('app.orders.insert',product)
-            .then(result => {
-                if(result){
-                  history.push(`/firmorder/${result}`)
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    let methodId = MClient.method('app.orders.insert',product);
+         
+    MClient.on('result', message => {
+      if(message.id === methodId && !message.error){
+        if(message.result){
+          history.push(`/firmorder/${message.result}`)
+        }else{
+          console.log(message.error);
+        }
+      }
+    })
   }
 }
 
@@ -126,7 +140,7 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
   return dispatch => {
     console.log(`加载店铺商品`)
     console.log(shopId)
-    MClient.sub('app.get.shop.products',shopId,page,pagesize);
+    MClient.sub('app.get.shop.products',[shopId,page,pagesize]);
     MClient.connect();
     let products = [];
       MClient.on("added", ({collection, id, fields}) => {
@@ -137,7 +151,6 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
           if(products.length< pagesize){
             products.push({fields,id})
           }
-          console.log(products);
           dispatch(receiveShopProductsByShopId(products));
         }
       });
@@ -148,18 +161,18 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
     console.log(`获取推荐商品`)
-    MClient.sub('app.get.recommend.products',page,pagesize);
+    MClient.sub('app.get.recommend.products', [page,pagesize]);
     MClient.connect();
     let products = [];
     // data = data.slice();
     console.log(data);
     console.log(page);
-    MClient.on("added", ({collection, id, fields}) => {
-      console.log(fields)
-      if(collection==='products'){
+    MClient.on("added", message => {
+      console.log(message.fields)
+      if(message.collection==='products'){
         if(products.length< pagesize){
-          fields.id = id
-          products.push(fields)
+          message.fields.id = message.id
+          products.push(message.fields)
         }
         console.log(data.concat(products))
         dispatch(getRecommandProducts(data.concat(products)))

@@ -39,6 +39,7 @@ class MessageBox extends React.Component{
 
   render(){
     let {total,balance} = this.props.balance
+    console.log(this.props.balance)
     return (
     <div>
       <AwardHead balance={balance}/>

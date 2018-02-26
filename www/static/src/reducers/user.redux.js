@@ -95,16 +95,23 @@ export function login(user,pwd) {
   console.log(pwd)
     return dispatch=>{
       console.log(12314)
-      MClient.loginWithPassword({username:user,password:pwd})
-      .then(result => {
-        console.log(222)
-       Toast.success('登陆成功', 1);
-       dispatch(loginSuccess(result))
+      const loginParams = {
+        user: {
+            username: user
+        },
+        password: pwd
+    };
+      let methodId = MClient.method('login', [loginParams]);
+      MClient.on("result", message => {
+        if(message.id === methodId && !message.error){
+          console.log(222)
+          Toast.success('登陆成功', 1);
+          dispatch(loginSuccess(message.result))
+        }else{
+          console.log(message.error)
+          Toast.fail('账户或者密码错误', 1);
+        }
       })
-      .catch(error => {
-        console.log(333)
-        Toast.fail('账户或者密码错误', 1);
-      });
   }
 }
 
@@ -151,7 +158,7 @@ export function register(username,password,mobile,verify) {
             })
           }
           else
-          {
+          {parseFloat
             Toast.info("手机已被使用")
           }
         })
@@ -167,14 +174,15 @@ export function mobileRegister(mobile,verify){
     let code = getStore('verify')
     if(verify===code){
       console.log(`mobile: ${mobile} verify: ${verify}`)
-      MClient.method('login.mobie',mobile)
-      .then(result => {
-        removeStore('verify')
-        dispatch(loginSuccess(result))
-      })
-      .catch(error => {
-        if(error.reason==="Username already exists."){
-          Toast.fail("用户名已存在")
+      let methodId = MClient.method('login.mobie',mobile);
+      MClient.on("result", message => {
+        if(methodId = message.id && !message.error){
+          removeStore('verify')
+          dispatch(loginSuccess(message.result))
+        }else{
+          if(message.error.reason==="Username already exists."){
+            Toast.fail("用户名已存在")
+          }
         }
       })
     }else{

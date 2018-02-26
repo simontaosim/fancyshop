@@ -146,7 +146,7 @@ class App extends React.Component {
               <Route path="/test" component={Test}  />
               {/* <Route path = "/orders" component={Orders}/> */}
               <Route path = "/product/:id" component={Goods}/>
-              <Route path = "/details" component={WaitDetails}/>
+              <Route path = "/order_details/:orderId" component={WaitDetails}/>
               <Route path = "/paid/:orderId" component={Paid}/>
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
@@ -176,8 +176,6 @@ class App extends React.Component {
               <Route path="/editbankcard" component={EditBankCard}/>
               <Route path="/orderlist" component={OrderList}/>
               <Route path = "/orders" component={Orders}/>
-
-
               <Route component={NoMatchPage}/>
             </Switch>
 
