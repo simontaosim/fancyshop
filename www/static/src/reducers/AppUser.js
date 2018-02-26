@@ -1,4 +1,4 @@
-import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE, GET_LOGIN_SMS_CODE_SUCCESS } from "../actions/users";
+import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE, GET_LOGIN_SMS_CODE_SUCCESS, GET_LOGIN_SMS_CODE_FAIL } from "../actions/users";
 
 export default function AppUser(state={
     id: '',
@@ -30,7 +30,11 @@ export default function AppUser(state={
         case GET_LOGIN_SMS_CODE_SUCCESS:
             return Object.assign({}, state, {
                     loginSMSCode: action.code,
-            })          
+            })
+        case GET_LOGIN_SMS_CODE_FAIL:
+            return  Object.assign({}, state, {
+                loginSMSCode: "error",
+        })         
         default:
             return state;
     }

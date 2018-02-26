@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { List, InputItem, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
 import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { mobileRegister } from '../../reducers/user.redux'
@@ -36,9 +36,17 @@ class MobileLogin extends React.Component {
 
 
 sendCode() {
-  const {dispatch} = this.props;
+  const {dispatch, appUser} = this.props;
   dispatch(getLoginSMSCode(this.state.user));
-
+  if(appUser.loginSMSCode !=="" && appUser.loginSMSCode !=="loading" && appUser.loginSMSCode !== "error"){
+    Toast.success("验证码发送成功！");
+  }
+  if(appUser.loginSMSCode ==="error"){
+    Toast.offline("验证码发送失败，请检查您的网络链接,或者是您请求过于频繁，过一个小时再试试吧", 3);
+  }
+  if (appUser.loginSMSCode==="loading") {
+    Toast.loading("正在发送验证码");
+  }
 }
 
 
@@ -73,6 +81,7 @@ sendCode() {
   }
   handlePhone=(event)=>{
     // 倒计时按钮处于倒计时未结束状态时手机号不能修改
+    console.log(event);
     var phone = event;
 
     if(this.state.status==='sending')
@@ -101,6 +110,7 @@ sendCode() {
     })
   }
   render() {
+    const { appUser } = this.props;
     
     return (
       <div>

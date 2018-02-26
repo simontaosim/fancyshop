@@ -6,7 +6,7 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 
 export const EXPECT_LOGIN_SMS_CODE = "EXPECT_LOGIN_SMS_CODE";
 export const GET_LOGIN_SMS_CODE_SUCCESS = "GET_LOGIN_SMS_CODE_SUCCESS";
-
+export const GET_LOGIN_SMS_CODE_FAIL="GET_LOGIN_SMS_CODE_FAIL";
 
 const crypto = require('crypto');
 
@@ -26,6 +26,11 @@ export function getLoginSMSCodeSuccess(code){
         code
     }
 }
+export function getLoginSMSCodeFail(){
+    return {
+        type: GET_LOGIN_SMS_CODE_FAIL,
+    }
+}
 export function getLoginSMSCode(mobile){
     return dispatch => {
         dispatch(expectLoginSMSCode());
@@ -37,7 +42,7 @@ export function getLoginSMSCode(mobile){
                 let cryptoCode = hash.update(message.result).digest('hex');
                 dispatch(getLoginSMSCodeSuccess(cryptoCode));
             }else{
-                console.log(message.error);
+                dispatch(getLoginSMSCodeFail());
             }
         });
     }
