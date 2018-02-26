@@ -1,4 +1,4 @@
-import { asteroid } from '../config/asteroid.config.js'
+import { MClient } from '../config/asteroid.config.js'
 import { Toast } from 'antd-mobile';
 
 

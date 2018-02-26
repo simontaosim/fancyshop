@@ -12,8 +12,13 @@ import { productList, product } from '../../reducers/product.redux';
 import { productinfo } from '../../map_props';
 import { productShow } from '../../reducers/product';
 import { gainRecommandProducts } from '../../actions/products';
+<<<<<<< HEAD
 import { asteroid } from '../../config/asteroid.config';
 import history from '../../history'
+=======
+import { MClient } from '../../config/asteroid.config.js';
+
+>>>>>>> 8f745991325d244f7de8e78bfc4ee972e211ffa6
 
 
 let page = 1;
@@ -59,10 +64,10 @@ class GoodsList extends React.Component {
     this.setState({
       isLoading: true,
     });
-    // asteroid.subscribe('app.get.recommend.products',page,3);
-    // asteroid.connect();
+    // MClient.subscribe('app.get.recommend.products',page,3);
+    // MClient.connect();
     // let products = [];
-    // asteroid.ddp.on("added", ({collection, id, fields}) => {
+    // MClient.ddp.on("added", ({collection, id, fields}) => {
     //   console.log(fields)
     //   if(collection==='products'){
     //     if(products.length< 3){

@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import { appInfo } from '../../map_props.js';
 
-import { asteroid } from '../../config/asteroid.config.js'
+import { MClient } from '../../config/asteroid.config.js'
 
 
 import { setAppTitleName } from '../../actions/app.js'
@@ -20,15 +20,14 @@ class Shops extends React.Component {
     console.log(this.props);
     const { dispatch } = this.props;
     dispatch(setAppTitleName("列表载入中..."));
-    asteroid.call("get.tag.id", this.props.params.tagId)
-    .then(result => {
-        console.log("Success");
-        console.log(result);
+    let methodId = MClient.method("get.tag.id", this.props.params.tagId);
+    MClient.on('result', result => {
+      if (methodId === result.id && !result.error) {
         dispatch(setAppTitleName(result.name));
-    })
-    .catch(error => {
-        console.log("Error");
-        console.error(error);
+
+      }else{
+        console.log(result.error);
+      }
     });
   }
 

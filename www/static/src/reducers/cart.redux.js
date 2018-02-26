@@ -1,4 +1,4 @@
-import { asteroid } from '../config/asteroid.config.js'
+import { MClient } from '../config/asteroid.config.js'
 import { Toast } from 'antd-mobile';
 
 
@@ -22,7 +22,7 @@ const initialState = {
         shopsData: [],
      },
     total: 0
-    
+
 }
 export function cart(state=initialState,action) {
   switch(action.type){
@@ -96,13 +96,13 @@ function ProdcutTotal(data) {
   return total;
 }
 
-//删除购物车 
+//删除购物车
 function deleteShopCart(data) {
     let shopsData = data.shopsData;
     let shopDeletData = shopsData.filter(filterByItem);
     for(var i=0;i<shopDeletData.length;i++){
       shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
-    }    
+    }
     console.log(shopDeletData)
      return shopDeletData
 }
@@ -111,8 +111,8 @@ function deleteShopCart(data) {
 function filterByItem(item) {
   if (isCheck(item.checked)) {
     return true;
-  } 
-  return false; 
+  }
+  return false;
 }
 
 function isCheck(obj) {
@@ -156,20 +156,22 @@ export function countProduct(data) {
 //获取购物车
 export function getCart(id) {
   return dispatch => {
-      asteroid.call('shop_carts.get_cart',id)
-              .then(result => {
-                 dispatch(initCartSuccess(result))
-              })
-              .catch(error => {
-                  console.log(error);
-              })
+    let methodId = MClient.method('shop_carts.get_cart',id);
+    MClient.on("result", result =>　{
+      if (result.id == methodId && !result.error) {
+        dispatch(initCartSuccess(result))
+
+      }else{
+        console.log(result.error);
+      }
+    })
   }
 }
 
 
 export function addCart(product) {
   return dispatch => {
-      asteroid.call('shop_carts.add_cart',product)
+      MClient.method('shop_carts.add_cart',product)
               .then(result => {
                   dispatch(addCartSuccess(result))
                   Toast.info('加入购物车成功',1)
@@ -182,7 +184,7 @@ export function addCart(product) {
 
 export function insertCart(product) {
   return dispatch => {
-      asteroid.call('shop_carts.insert_cart',product)
+      MClient.method('shop_carts.insert_cart',product)
               .then(result => {
                  dispatch(initCartSuccess(result))
                   Toast.info('加入购物车成功',1)
@@ -198,7 +200,7 @@ export function removeCart(product) {
   return dispatch => {
     console.log(product)
    console.log(deleteShopCart(product))
-    asteroid.call('shop_carts.add_cart',deleteShopCart(product))
+    MClient.method('shop_carts.add_cart',deleteShopCart(product))
             .then(result => {
                 dispatch(deleteCartSuccess(result))
             })
@@ -207,5 +209,3 @@ export function removeCart(product) {
             })
   }
 }
-
-

@@ -1,5 +1,5 @@
 import history from '../history';
-import { asteroid } from '../config/asteroid.config.js';
+import { MClient } from '../config/asteroid.config.js';
 
 
 export const GET_BALANCE = "GET_BALANCE";
@@ -27,9 +27,9 @@ function getBalanceIncomesTotal(total) {
 
 export function gainBlance(userId) {
   return  dispatch => {
-        asteroid.subscribe("app.get.current.balance",userId);
-        asteroid.connect();
-        asteroid.ddp.on("added", ({collection, id, fields}) => {
+        MClient.sub("app.get.current.balance",userId);
+        MClient.connect();
+        MClient.on("added", ({collection, id, fields}) => {
             if(collection==='balances'){
                 let balance = fields
                 balance.id = id
@@ -41,12 +41,13 @@ export function gainBlance(userId) {
 
 export function gainGetBalanceIncomesTotal(userId) {
     return dispatch => {
-        asteroid.call('app.get.balance_incomes.toady.total',userId)
-                .then(result=> {
-                    dispatch(getBalanceIncomesTotal(result.total));
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+        let methodId = MClient.method('app.get.balance_incomes.toady.total',userId);
+        MClient.on("result", message => {
+            if (message.id === methodId && !message.error) {
+                dispatch(getBalanceIncomesTotal(message.total));
+            }else{
+              console.log(message);
+            }
+        });
     }
 }

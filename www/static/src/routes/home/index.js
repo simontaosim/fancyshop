@@ -22,6 +22,7 @@ import { loadRecommandProducts,gainRecommandProducts } from '../../actions/produ
 import {getHomeTags} from '../../actions/app.js'
 
 
+
 class AppHome extends React.Component{
   constructor(props) {
     super(props);

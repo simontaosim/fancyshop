@@ -4,7 +4,7 @@ import { Flex, Tabs} from 'antd-mobile';
 import style from './Facilitator.css';
 import goodImg from '../../assets/img/reward/good.jpg';
 import userImg from '../../assets/img/timg.jpg';
-import {asteroid} from '../../config/asteroid.config';
+import {MClient} from '../../config/asteroid.config.js';
 import { product } from '../../reducers/product.redux';
 import { connect } from 'react-redux';
 import { loadShopProductsByShopId } from '../../actions/products';
@@ -23,7 +23,7 @@ class Facilitator extends React.Component {
     console.log(dispatch);
     console.log(id);
     dispatch(loadShopProductsByShopId(id,1,10))
-    asteroid.call('shops.findShopById',id)
+    MClient.call('shops.findShopById',id)
             .then(result=> {
               this.setState({
                 shop: result,

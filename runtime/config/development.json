@@ -1,5 +1,5 @@
 {
-  "port": 8360,
+  "port": 8630,
   "workers": 0,
   "stickyCluster": false,
   "startServerTimeout": 3000,
@@ -16,7 +16,7 @@
     "type": "file",
     "file": {
       "timeout": 86400000,
-      "cachePath": "/home/simon/fancyshop/runtime/cache",
+      "cachePath": "/Users/simon/fancyshop/runtime/cache",
       "pathDepth": 1,
       "gcInterval": 86400000
     }
@@ -42,13 +42,13 @@
       "cookie": {
         "name": "thinkjs"
       },
-      "sessionPath": "/home/simon/fancyshop/runtime/session"
+      "sessionPath": "/Users/simon/fancyshop/runtime/session"
     }
   },
   "view": {
     "type": "nunjucks",
     "nunjucks": {
-      "viewPath": "/home/simon/fancyshop/view",
+      "viewPath": "/Users/simon/fancyshop/view",
       "sep": "_",
       "extname": ".html"
     }
@@ -60,14 +60,14 @@
       "backups": 10,
       "absolute": true,
       "maxLogSize": 51200,
-      "filename": "/home/simon/fancyshop/logs/app.log"
+      "filename": "/Users/simon/fancyshop/logs/app.log"
     },
     "dateFile": {
       "level": "ALL",
       "absolute": true,
       "pattern": "-yyyy-MM-dd",
       "alwaysIncludePattern": true,
-      "filename": "/home/simon/fancyshop/logs/app.log"
+      "filename": "/Users/simon/fancyshop/logs/app.log"
     }
   }
 }

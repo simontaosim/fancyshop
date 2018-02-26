@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../service/data/datasource'
 import axios from 'axios';
-import { province } from 'antd-mobile-demo-data';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { ListView, List, SearchBar } from 'antd-mobile';
 
@@ -50,7 +49,7 @@ class PullTest extends React.Component {
     // simulate initial Ajax
     setTimeout(() => {
       this.setState({
-        dataSource: genData(this.state.dataSource, province),
+        dataSource: genData(this.state.dataSource, {}),
         isLoading: false,
       });
     }, 600);

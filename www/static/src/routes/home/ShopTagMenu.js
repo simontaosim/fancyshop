@@ -10,7 +10,7 @@ import beautyImg from '../../assets/img/home/beauty.png'
 import runImg from '../../assets/img/home/run.png'
 import shopImg from '../../assets/img/home/shop.png'
 import styles from './ShopTagMenu.css';
-import { asteroid } from '../../config/asteroid.config.js'
+import { MClient } from '../../config/asteroid.config.js'
 import { Link } from 'react-router-dom';
 
 const icons = [addImg, barImg, beautyImg, runImg, shopImg]
