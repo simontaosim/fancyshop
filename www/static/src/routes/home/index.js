@@ -39,7 +39,7 @@ class AppHome extends React.Component{
     dispatch(loadRecommandProducts(1,3));
     dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
-    dispatch(gainRecommandProducts(1,3));
+    // dispatch(gainRecommandProducts(1,3));
     setTimeout(() => {
      this.setState({
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],

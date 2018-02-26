@@ -31,9 +31,17 @@ function receiveRecommandProduct(products){
 export function loadRecommandProducts(page, pagesize){
   return dispatch => {
     dispatch(exceptRecommandProduct());
-    MClient.sub("home.top.products", page, pagesize);
+    MClient.sub("home.top.products", [page, pagesize]);
     let products = [];
-    MClient.connect();
+    const subId = MClient.sub("home.top.products");
+    MClient.on("ready", message => {
+      if (message.subs.includes(subId)) {
+          console.log("mySubscription ready");
+      }
+    });
+    MClient.on("added", message => {
+      console.log(message.collection);
+    });
     MClient.on("added", message => {
       if (message.collection === 'products') {
         console.log('首页加载的东西',message);
@@ -113,15 +121,17 @@ export function loadProductList(){
 
 export function createOrder(product) {
   return dispatch => {
-    MClient.method('app.orders.insert',product)
-            .then(result => {
-                if(result){
-                  history.push(`/firmorder/${result}`)
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
+    let methodId = MClient.method('app.orders.insert',product);
+         
+    MClient.on('result', message => {
+      if(message.id === methodId && !message.error){
+        if(message.result){
+          history.push(`/firmorder/${message.result}`)
+        }else{
+          console.log(message.error);
+        }
+      }
+    })
   }
 }
 
@@ -152,7 +162,7 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
     console.log(`获取推荐商品`)
-    MClient.sub('app.get.recommend.products',page,pagesize);
+    MClient.sub('app.get.recommend.products', [page,pagesize]);
     MClient.connect();
     let products = [];
     // data = data.slice();
