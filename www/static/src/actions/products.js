@@ -151,7 +151,6 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
           if(products.length< pagesize){
             products.push({fields,id})
           }
-          console.log(products);
           dispatch(receiveShopProductsByShopId(products));
         }
       });

@@ -5,9 +5,6 @@ export function balance(state={
     status: "ready",
     loadingText: "开始加载",
     balance: null,
-    todayTotal: 0,
-    weekTotal: 0,
-    monthTotal: 0,
     total: {
         todayTotal: 0,
         weekTotal: 0,

@@ -101,7 +101,7 @@ class Paid extends React.Component {
           <Flex justify = "center" style = {{marginLeft:'10px',borderBottom:'1px solid #aaa',width:'270px'}}>
           </Flex>
           <Flex style = {{padding:'15px 10px'}}>
-            总价：￥{order.products.length>0 ? order.products[0].price* order.products[0].count : 0}
+            总价：￥{order.products.length>0 ? order.products[0].price/100 * order.products[0].count : 0}
           </Flex>
         </div>
       </Flex>

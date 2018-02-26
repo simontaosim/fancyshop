@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
-import { Flex, WingBlank, WhiteSpace,ListView} from "antd-mobile";
+import { Flex, WingBlank, WhiteSpace,ListView, Icon} from "antd-mobile";
 import styles from './GoodsList.css';
 import goodsImg from '../../assets/img/reward/good.jpg';
 import good2Img from '../../assets/img/timg.jpg';
@@ -17,7 +17,7 @@ import { MClient } from '../../config/asteroid.config.js';
 
 
 let page = 1;
-let data = [];
+// let data = [];
 class GoodsList extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +28,8 @@ class GoodsList extends React.Component {
     this.state = {
       dataSource,
       isLoading: false,
-      data: []
+      data: [],
+      // page: 1,
     };
   }
 
@@ -40,11 +41,11 @@ class GoodsList extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.recommandProducts);
     console.log(this.props.products.products)
-    if (nextProps.prodcuts !== this.props.products.products) {
+    if (nextProps.recommandProducts !== this.props.products.products) {
       console.log(`出来啊`)
-      data = nextProps.recommandProducts
+      // data = nextProps.recommandProducts
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts),
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
         isLoading: false,
       });
     }else{
@@ -53,7 +54,6 @@ class GoodsList extends React.Component {
   }
 
   onEndReached = (event) => {
-    page += 1;
     console.log(page);
     let { dispatch } = this.props;
     this.setState({
@@ -75,12 +75,19 @@ class GoodsList extends React.Component {
     // console.log(products);
     // data = data.slice().concat(products);
     // console.log(data);
-    dispatch(gainRecommandProducts(page,3,this.props.products.products));
+    setTimeout(() => {
+     page += 1;
+      
+     dispatch(gainRecommandProducts(page,10,this.props.products.products));
+      
+    },600)
     console.log('reach end', event);
     // this.setState({ isLoading: false });
   }
 
   render() {
+  // console.log(history)
+    
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -92,12 +99,12 @@ class GoodsList extends React.Component {
         }}
       />
     );
-    const data = this.state
-    let index = data.length - 1;
+    // const data = this.state
+    // let index = data.length - 1;
     const row = (rowData, sectionID, rowID) => {
       return (
         <div key={rowData.id} style={{ padding: '0 15px' }}>
-          <Link to={`/product/${rowData.id}`}>
+          <Link to={`/product/${rowData._id}`}>
             <div
               style={{
                 lineHeight: '50px',
@@ -124,12 +131,12 @@ class GoodsList extends React.Component {
         dataSource={this.state.dataSource}
         // renderHeader={() => <span>header</span>}
         renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-          {this.state.isLoading ? 'Loading...' : '加载完成'}
+          {this.state.isLoading ? <Icon type='loading' /> : null}
         </div>)}
         renderRow={row}
         // renderSeparator={separator}
         className="am-list"
-        pageSize={4}
+        pageSize={1}
         useBodyScroll
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}

@@ -158,7 +158,7 @@ export function register(username,password,mobile,verify) {
             })
           }
           else
-          {
+          {parseFloat
             Toast.info("手机已被使用")
           }
         })
