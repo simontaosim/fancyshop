@@ -98,7 +98,7 @@ export function addCount(count) {
 export function loadProductById(id){
   return dispatch => {
     // dispatch(exceptProductById(id));
-    MClient.sub("get.product.id", id);
+    MClient.sub("get.product.id", [id]);
     let product = [];
     MClient.connect();
     let methodId = MClient.method("get.oneproduct.id", id);
@@ -140,7 +140,7 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
   return dispatch => {
     console.log(`加载店铺商品`)
     console.log(shopId)
-    MClient.sub('app.get.shop.products',shopId,page,pagesize);
+    MClient.sub('app.get.shop.products',[shopId,page,pagesize]);
     MClient.connect();
     let products = [];
       MClient.on("added", ({collection, id, fields}) => {

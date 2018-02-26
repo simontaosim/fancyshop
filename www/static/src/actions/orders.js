@@ -49,9 +49,10 @@ export function getUnPaidOrdersError(error){
 }
 export function  gainAllOrders(userId){
   return dispatch => {
-    MClient.sub("get.allOrders", userId);
+    console.log(`全部`)
+    MClient.sub("get.allOrders", [userId]);
     MClient.connect();
-    let methodId =  MClient.method("get.allOrders", userId);
+    let methodId =  MClient.method("get.allOrders", [userId]);
 
     MClient.on("result", message=>{
       if(message.id===methodId && !message.error){
@@ -67,9 +68,9 @@ export function  gainAllOrders(userId){
 
 export function  gainPaidOrders(userId){
   return dispatch => {
-    MClient.sub("get.paidOrders", userId);
+    MClient.sub("get.paidOrders", [userId]);
     MClient.connect();
-    let methodId = MClient.method("get.paidOrders", userId);
+    let methodId = MClient.method("get.paidOrders", [userId]);
                
     MClient.on("result", message=>{
       if(message.id === methodId && !message.error){
@@ -85,9 +86,9 @@ export function  gainPaidOrders(userId){
 
 export function  gainUnPaidOrders(userId){
   return dispatch => {
-    MClient.sub("get.unpaidOrders", userId);
+    MClient.sub("get.unpaidOrders", [userId]);
     MClient.connect();
-    let methodId = MClient.method("get.unpaidOrders", userId);
+    let methodId = MClient.method("get.unpaidOrders", [userId]);
     
     MClient.on("result", message=>{
       if(message.id === methodId && !message.error){
@@ -114,7 +115,7 @@ function reviceOrderById(order) {
 
 export function loadOrderById(id) {
   return  dispatch => {
-      let methodId =  MClient.method('app.order.getone',id);
+      let methodId =  MClient.method('app.order.getone',[id]);
       
       MClient.on('result', message => {
         if(message.id === methodId && !message.error){
@@ -131,7 +132,7 @@ export function loadOrderById(id) {
 
 export function createOrder(product) {
     return dispatch => {
-    let methodId = MClient.method('app.orders.insert',product)
+    let methodId = MClient.method('app.orders.insert',[product])
     MClient.on('result', message=>{
       if(message.id === methodId && !message.error){
         if(message.result){
