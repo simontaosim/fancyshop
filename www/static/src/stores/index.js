@@ -3,6 +3,7 @@ import {AppInfo} from '../reducers'
 import { ordersInfo } from '../reducers/orders.js'
 import { currentUser } from '../reducers/users.js'
 import CurrentUser from '../reducers/CurrentUser.js'
+import AppUser from '../reducers/AppUser.js'
 import {user} from '../reducers/user.redux';
 import { cart } from '../reducers/cart.redux';
 import { product } from '../reducers/product.redux';
@@ -21,6 +22,7 @@ export default function configureStore() {
   return createStore(
     combineReducers({
       AppInfo,
+      AppUser,
       recommandProducts,
       currentUser,
       CurrentUser,

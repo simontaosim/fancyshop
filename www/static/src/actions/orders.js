@@ -9,7 +9,28 @@ export const GET_ALL_ORDERS_ERROR = "GET_ALL_ORDERS_ERROR";
 export const GET_PAID_ORDERS_ERROR = "GET_PAID_ORDERS_ERROR";
 export const GET_UNPAID_ORDERS_ERROR = "GET_UNPAID_ORDERS_ERROR";
 
+//===============获取登录用户订单================================
+export function expectLoginedUserOrders(status, page, pagesize){
 
+}
+export function loadLoginedUserOrders(status, page, pagesize){
+
+}
+export function loadLoginedUserOrdersError(status, page, pasesize){
+
+}
+//==========================================================
+//================获取单个订单===================================
+export function expectOneOrder(id){
+
+}
+export function loadOneOrder(id){
+
+}
+export function loadOneOrderError(id){
+
+}
+//==========================================================
 
 export function getAllOrders(orders){
   return {

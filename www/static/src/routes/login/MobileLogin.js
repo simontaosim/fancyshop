@@ -1,16 +1,17 @@
 import React from 'react'
-import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { List, InputItem, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
 import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
 import { mobileRegister } from '../../reducers/user.redux'
 import Count from './Count'
 import { setStore } from '../../config/mUtils'
 import { testPhone } from '../../config/reg'
-
+import { getLoginSMSCode } from '../../actions/users.js'
 
 
 class MobileLogin extends React.Component {
   constructor(props) {
+
     super(props)
 
     this.state = {
@@ -26,23 +27,26 @@ class MobileLogin extends React.Component {
     this.handleLogout = this.handleLogout.bind(this)
     this.onChildChange = this.onChildChange.bind(this)
     this.sendCode = this.sendCode.bind(this)
+
+  }
+  componentDidMount(){
+    document.title="登陆万人车汇";
+   
   }
 
 
 sendCode() {
-    console.log(`发送验证码1:${this.state.user}`)
-    let methodId = MClient.method('get.phonesms', [this.state.user]);
-
-    MClient.on("result", message => {
-      if (message.id === methodId && !message.error) {
-        Toast.info('验证码已发送请查看手机');
-        // console.log(message);
-        setStore('verify', message.result)
-      }else{
-        console.log(message.error);
-      }
-  });
-
+  const {dispatch, appUser} = this.props;
+  dispatch(getLoginSMSCode(this.state.user));
+  if(appUser.loginSMSCode !=="" && appUser.loginSMSCode !=="loading" && appUser.loginSMSCode !== "error"){
+    Toast.success("验证码发送成功！");
+  }
+  if(appUser.loginSMSCode ==="error"){
+    Toast.offline("验证码发送失败，请检查您的网络链接,或者是您请求过于频繁，过一个小时再试试吧", 3);
+  }
+  if (appUser.loginSMSCode==="loading") {
+    Toast.loading("正在发送验证码");
+  }
 }
 
 
@@ -77,8 +81,9 @@ sendCode() {
   }
   handlePhone=(event)=>{
     // 倒计时按钮处于倒计时未结束状态时手机号不能修改
+    console.log(event);
     var phone = event;
-    console.log(event)
+
     if(this.state.status==='sending')
         return false;
     // 同步input值
@@ -105,22 +110,24 @@ sendCode() {
     })
   }
   render() {
+    const { appUser } = this.props;
+    
     return (
       <div>
         <WingBlank>
         <List renderHeader={() => '进入万车汇'}>
           <InputItem
             type="text"
-            placeholder="input your phone"
+            placeholder="输入您的手机号"
             onChange={this.handlePhone}
             onErrorClick={this.onErrorClick}
             error={this.state.hasError}
           >手机号码</InputItem>
            <InputItem
             type="password"
-            placeholder="input your phone"
+            placeholder="输入您的验证码"
             onChange={v=>this.handleChange('pwd',v)}
-         >密码
+         >验证码
         <Count status={this.state.status} nums={this.state.count} callback={this.onChildChange} sendCode={this.sendCode}/>
          </InputItem>
         </List>
@@ -134,10 +141,11 @@ sendCode() {
   }
 }
 
-MobileLogin = connect(
- state=> state.user,
- {mobileRegister}
-)(MobileLogin)
+function mapStateToProps(state) {
+  return {
+    appUser: state.AppUser,
+  }
+}
 
+export default connect(mapStateToProps)(MobileLogin);
 
-export default MobileLogin;

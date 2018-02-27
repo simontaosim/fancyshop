@@ -12,6 +12,8 @@ import {  Redirect } from 'react-router-dom'
 
 import "./common.less";   // 用于覆盖上面定义的变量
 import CurrentUser from '../models/CurrentUser.js';
+import configureStore from "../stores/index";
+const store = configureStore();
 
 class MainLayout extends React.Component{
   constructor(props){
@@ -37,13 +39,16 @@ class MainLayout extends React.Component{
   render(){
 
     console.log("开始构造权限业务逻辑");
-    if ('user.has.role.login_user') {
-
-    }
-    if ('user.has.role.nobody') {
-
-    }
+    console.log('redux 仓库',store);
+    console.log('路由地址',this.props.history);
+    //载入当前用户信息
     CurrentUser.getId();
+    let pathname = this.props.history.location.pathname;
+    if (pathname === '/') {
+
+    }
+
+
     // console.log(CurrentUser.getId());
     // if(this.props.history.location.pathname === '/my'){
     //   this.props.history.push('/tablogin');
@@ -62,7 +67,7 @@ class MainLayout extends React.Component{
 }
 
 function mapStateToProps(state) {
-  return {user: state.user}
+  return {allState: state}
 }
 
 export default MainLayout;
