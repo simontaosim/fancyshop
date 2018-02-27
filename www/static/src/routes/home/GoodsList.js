@@ -42,8 +42,6 @@ class GoodsList extends React.Component {
     console.log(nextProps.recommandProducts);
     console.log(this.props.products.products)
     if (nextProps.recommandProducts !== this.props.products.products) {
-      console.log(`出来啊`)
-      // data = nextProps.recommandProducts
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
         isLoading: false,
@@ -104,7 +102,7 @@ class GoodsList extends React.Component {
     const row = (rowData, sectionID, rowID) => {
       return (
         <div key={rowData.id} style={{ padding: '0 15px' }}>
-          <Link to={`/product/${rowData._id}`}>
+          <Link to={`/product/${rowData.id}`}>
             <div
               style={{
                 lineHeight: '50px',
@@ -112,7 +110,7 @@ class GoodsList extends React.Component {
                 fontSize: 18,
                 borderBottom: '1px solid #F6F6F6',
               }}
-            >{rowData.name}</div>
+            >{rowData.name_zh}</div>
             <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
               <img style={{ height: '64px', marginRight: '15px' }} src={rowData.cover} alt="" />
               <div style={{ lineHeight: 1 }}>

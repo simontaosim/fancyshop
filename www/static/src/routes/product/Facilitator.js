@@ -14,24 +14,21 @@ class Facilitator extends React.Component {
     super();
     this.state = {
       shop: [],
-      products: [],
     }
   };
   componentDidMount() {
     let id = this.props.match.params.shopId;
     let { dispatch } = this.props;
-    console.log(dispatch);
-    console.log(id);
     dispatch(loadShopProductsByShopId(id,1,10))
-    MClient.call('shops.findShopById',id)
-            .then(result=> {
-              this.setState({
-                shop: result,
-              })
-            })
-            .catch(error=> {
-
-            })
+    let methodId = MClient.method("shops.findShopById", [id]);
+    MClient.on("result", message => {
+      if(message.id === methodId && !message.error){
+        this.setState({
+          shop: message.result,
+        })
+      }else{
+      }
+    })
   }
 
   render(){
@@ -39,11 +36,11 @@ class Facilitator extends React.Component {
       {title : '商品' },
       {title : '简介' },
     ];
-    let { shop, products }  = this.state
-    // console.log(this.props.products)
+    let { shop }  = this.state
+    console.log(this.props.products)
     let productsItem;
-    if(this.props.products){
-      productsItem = this.props.products.map((product)=>{
+    if(this.props.shopproducts.length>0){
+      productsItem = this.props.shopproducts.map((product)=>{
         return(
           <div key={product.id}>
             <Link to ={`/product/${product.id}`} >
@@ -93,7 +90,7 @@ class Facilitator extends React.Component {
 
 function mapProducts(state){
   return {
-    products: state.productShow.products
+    shopproducts: state.productShow.shopProducts
   }
 }
 

@@ -8,7 +8,7 @@ export function recommandProducts(state={
   switch (action.type) {
     case EXCEPT_RECOMMAND_PRODUCTS:
     if (state.products === null) {
-      return Object.assign(state, {}, {
+      return Object.assign({}, state, {
         status: "loading",
         loadingText: action.text,
         products: []
@@ -18,7 +18,7 @@ export function recommandProducts(state={
     }
 
     case RECEIVE_RECOMMAND_PRODUCTS:
-    return Object.assign(state, {}, {
+    return Object.assign({}, state, {
       status: "loaded",
       loadingText: "加载完毕",
       products: action.products

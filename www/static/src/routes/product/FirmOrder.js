@@ -40,20 +40,28 @@ class FirmOrder extends React.Component {
   }
   componentDidMount() {
     let id = this.props.match.params.orderId;
-    console.log(`走不走`)
-    MClient.call('app.order.getone',id)
-            .then(result => {
-              console.log(result);
-              if(result){
-                this.setState({
-                  order: result.order,
-                  shop: result.shop
-                })
-              }
-            })
-            .catch(error => {
-              console.log(error);
-            })
+    const methodId = MClient.method("app.order.getone", [id]);
+    MClient.on("result",message => {
+      if(message.id === methodId &&  !message.error){
+        this.setState({
+          order: message.result.order,
+          shop: message.result.shop
+        })
+      }
+    })
+    // MClient.call('app.order.getone',[id])
+    //         .then(result => {
+    //           console.log(result);
+    //           if(result){
+    //             this.setState({
+    //               order: result.order,
+    //               shop: result.shop
+    //             })
+    //           }
+    //         })
+    //         .catch(error => {
+    //           console.log(error);
+    //         })
   }
  
   componentWillReceiveProps(nextProps){
@@ -69,15 +77,21 @@ class FirmOrder extends React.Component {
       shop_name: this.state.shop.name,
       address: this.state.shop.address
     }
-    MClient.call('app.order.update',params)
-            .then(result => {
-                if(result){
-                  this.props.history.push(`/paid/${this.state.order._id}`)
-                }
-            })
-            .catch(error => {
+    const methodId = MClient.method("app.order.update", [params]);
+    MClient.on("result",message => {
+      if(message.id === methodId &&  !message.error){
+        this.props.history.push(`/paid/${this.state.order._id}`)
+      }
+    })
+    // MClient.call('app.order.update',params)
+    //         .then(result => {
+    //             if(result){
+    //               this.props.history.push(`/paid/${this.state.order._id}`)
+    //             }
+    //         })
+    //         .catch(error => {
 
-            })
+    //         })
   }
 
   handleChange(key,value){

@@ -12,14 +12,11 @@ import { order } from '../reducers/order';
 import { balance } from '../reducers/balance';
 import { recommandProducts } from '../reducers/recommand_products';
 import thunk from 'redux-thunk'
-// import createHistory from 'history/createBrowserHistory'
-// import logger from 'redux-logger'
-// const history = createHistory()
-// import history from './history';
+import logger from 'redux-logger'
 export default function configureStore() {
   const enhancer = compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    applyMiddleware(thunk,logger),
+    window.devToolsExtension?window.devToolsExtension():f=>f
   );
   return createStore(
     combineReducers({

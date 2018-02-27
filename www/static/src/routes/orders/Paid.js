@@ -38,18 +38,14 @@ class Paid extends React.Component {
  };
   componentDidMount() {
     let id = this.props.match.params.orderId;
-    MClient.call('app.order.getone',id)
-            .then(result => {
-              console.log(result);
-              if(result){
-                this.setState({
-                  order: result.order,
-                })
-              }
-            })
-            .catch(error => {
-              console.log(error);
-            })
+    const methodId = MClient.method("app.order.getone", [id]);
+    MClient.on("result", message => {
+      if (message.id === methodId && !message.error) {
+        this.setState({
+          order: message.result.order,
+        })
+      }
+    });
   }
   render(){
     let {order} = this.state

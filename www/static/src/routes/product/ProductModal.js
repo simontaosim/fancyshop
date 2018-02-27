@@ -250,7 +250,6 @@ class ProductModal extends React.Component {
      let modelStatus = this.props.model.spec_model;
      let product = this.props.productShow.product;
      console.log(this.props.spec.length)
-    //  let spec = this.props.spec
      let spec = this.props.spec.length == 0 ? [{name: '默认规格',price: product.endPrice,isThis: true}] : product.specifications;
      console.log(spec)
      console.log(spec.length)

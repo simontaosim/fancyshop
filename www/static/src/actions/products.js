@@ -48,6 +48,7 @@ export function loadRecommandProducts(page, pagesize){
         if (products.length < pagesize) {
           products.push({fields: message.fields, id: message.id});
           console.log(message);
+          console.log(products)
           dispatch(receiveRecommandProduct(products));
         }
       }
@@ -101,13 +102,15 @@ export function loadProductById(id){
     MClient.sub("get.product.id", [id]);
     let product = [];
     MClient.connect();
-    let methodId = MClient.method("get.oneproduct.id", id);
+    let methodId = MClient.method("get.oneproduct.id", [id]);
 
     MClient.on("result", message => {
       if(message.id === methodId && !message.error){
+        console.log(`gogogo`)
+        console.log(message.result)
         dispatch(receiveProductById(message.result));
       }else{
-        dispatch(receiveProductByIdError(message.error));
+        // dispatch(receiveProductByIdError(message.error));
       }
     })
   }
@@ -121,10 +124,11 @@ export function loadProductList(){
 
 export function createOrder(product) {
   return dispatch => {
-    let methodId = MClient.method('app.orders.insert',product);
+    let methodId = MClient.method('app.orders.insert',[product]);
          
     MClient.on('result', message => {
       if(message.id === methodId && !message.error){
+        console.log(`订单提交成功`)
         if(message.result){
           history.push(`/firmorder/${message.result}`)
         }else{
@@ -144,13 +148,12 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
     MClient.connect();
     let products = [];
       MClient.on("added", ({collection, id, fields}) => {
-        console.log(`Element added to collection ${collection}`);
-        console.log(id);
-        console.log(fields);
         if(collection==='products'){
           if(products.length< pagesize){
             products.push({fields,id})
           }
+          console.log(`~~~~`)
+          console.log(products)
           dispatch(receiveShopProductsByShopId(products));
         }
       });

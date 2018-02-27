@@ -60,7 +60,8 @@ const initState = {
 	"inventory": 39,
 	"sales": 74,
 	"count": 1,
-	products: null
+	products: [],
+	shopProducts: [],
 }
 
 export function productShow(state=initState, action){
@@ -76,7 +77,7 @@ export function productShow(state=initState, action){
 			break;
 			case RECEIVE_SHOP_PRODUCTS_BYSHOPID:
 			return Object.assign({},state,{
-				products: action.products
+				shopProducts: action.products
 			})
 			case GET_RECOMMAND_PRODUCTS:
 			return Object.assign({},state,{
