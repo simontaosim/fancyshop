@@ -6,7 +6,6 @@ import React from 'react'
 
 import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
-import {appInfo} from '../map_props.js';
 import {connect} from 'react-redux';
 import {  Redirect } from 'react-router-dom'
 

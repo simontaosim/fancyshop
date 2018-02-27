@@ -2,22 +2,7 @@ import React from 'react'
 import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
-import { loginOut } from '../../reducers/user.redux.js'
-import {  Redirect } from 'react-router-dom'
-import { Flex } from 'antd-mobile';
-import { Icon, Grid } from 'antd-mobile';
-import { login } from '../../actions/users.js'
-
-// import "./MobileLogin.css"
-// import "./Login.css"
-// import backImg from './back.png'
-// import backgroundImg from './background.jpg'
-// import userImg from './people.png'
-// import validateImg from './validate.png'
-
-const PlaceHolder = ({ className = '', ...restProps }) => (
-  <div className={`${className} placeholder`} {...restProps}>Block</div>
-);
+import { login, expectLoginFinished, loginFail } from '../../actions/users.js';
 
 
 class Login extends React.Component {
@@ -62,18 +47,14 @@ class Login extends React.Component {
   }
 
   handleLogin() {
-    const { appUser, dispatch } = this.props;
+    const { dispatch } = this.props;
     let username = this.state.user
     let password = this.state.pwd
     let loginParams = {
-      user: {
-        username,
-      },
+      username,
       password
     }
     dispatch(login("password", loginParams));
-    
-    // this.props.login(username,password)
   }
   handleForgot() {
     this.props.history.push('/forgotpassword')
@@ -85,16 +66,32 @@ class Login extends React.Component {
     })
   }
   render() {
-    // const authenticated = this.props.user.authenticated
-    // if(authenticated){
-    //   return (
-    //     <Redirect to="/"/>
-    //   );
-    // }
+   
     const { appUser, dispatch} = this.props;
     if(appUser.loginStatus === "logining"){
-      return Toast.loading("登录中，请稍后", 3);
+      Toast.loading("登录中，请稍后", 1, function(){
+        //将登录状态还原为未发起
+        dispatch(expectLoginFinished());
+      });
     }
+    if(appUser.loginFailReason !== ""){
+      Toast.fail(appUser.loginFailReason, 2, function(){
+        //将登录反馈状态还原为未发起
+        dispatch(loginFail(""));
+        dispatch(expectLoginFinished());
+        
+      });
+    }
+    if(appUser.loginStatus === "logined"){
+      Toast.fail("登陆成功！", 2, ()=>{
+        //将登录反馈状态还原为未发起
+        dispatch(loginFail(""));
+        dispatch(expectLoginFinished());
+        this.props.history.push(appUser.pathBeforeLogined);
+      });
+    }
+    Toast.hide();
+
     return(
       <div>
       <WingBlank>

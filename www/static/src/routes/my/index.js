@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
-import{ logout } from '../../actions/users';
+import{ logout, loadLoginedUserInfo, memoryPathBeforeLogined } from '../../actions/users';
 import { MClient } from '../../config/asteroid.config.js'
 
 
@@ -48,11 +48,8 @@ class AppMy extends React.Component{
 
   componentDidMount(){
     const { dispatch } = this.props;
-    console.log('组件渲染完成');
-    console.log(MClient)
-    console.log(MClient.userId)
-
-    console.log('userId local', window.localStorage["Meteor.userId"]);
+    dispatch(memoryPathBeforeLogined('/my'))
+    dispatch(loadLoginedUserInfo());
   }
 
 
