@@ -2,10 +2,11 @@ import React from 'react'
 import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
-import { login, loginOut } from '../../reducers/user.redux.js'
+import { loginOut } from '../../reducers/user.redux.js'
 import {  Redirect } from 'react-router-dom'
 import { Flex } from 'antd-mobile';
 import { Icon, Grid } from 'antd-mobile';
+import { login } from '../../actions/users.js'
 
 // import "./MobileLogin.css"
 // import "./Login.css"
@@ -61,9 +62,18 @@ class Login extends React.Component {
   }
 
   handleLogin() {
+    const { appUser, dispatch } = this.props;
     let username = this.state.user
     let password = this.state.pwd
-    this.props.login(username,password)
+    let loginParams = {
+      user: {
+        username,
+      },
+      password
+    }
+    dispatch(login("password", loginParams));
+    
+    // this.props.login(username,password)
   }
   handleForgot() {
     this.props.history.push('/forgotpassword')
@@ -75,11 +85,15 @@ class Login extends React.Component {
     })
   }
   render() {
-    const authenticated = this.props.user.authenticated
-    if(authenticated){
-      return (
-        <Redirect to="/"/>
-      );
+    // const authenticated = this.props.user.authenticated
+    // if(authenticated){
+    //   return (
+    //     <Redirect to="/"/>
+    //   );
+    // }
+    const { appUser, dispatch} = this.props;
+    if(appUser.loginStatus === "logining"){
+      return Toast.loading("登录中，请稍后", 3);
     }
     return(
       <div>
@@ -87,7 +101,7 @@ class Login extends React.Component {
       <List renderHeader={() => '进入万车汇'}>
         <InputItem
           type="text"
-          placeholder="输入您的账户"
+          placeholder="手机号/用户名"
           onChange={v=>this.handleChange('user',v)}
         >账户</InputItem>
         <InputItem
@@ -117,9 +131,10 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    appUser: state.AppUser
   }
 }
 
 
-export default connect(mapStateToProps,{login,loginOut})(Login);
+export default connect(mapStateToProps)(Login);

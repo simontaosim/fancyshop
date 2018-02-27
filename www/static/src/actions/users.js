@@ -1,5 +1,6 @@
 import { MClient } from '../config/asteroid.config.js'
 
+export const EXPECT_LOGIN = "EXPECT_LOGIN";
 
 export const EXPECT_LOGOUT = "EXPECT_LOGOUT";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
@@ -7,14 +8,12 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const EXPECT_LOGIN_SMS_CODE = "EXPECT_LOGIN_SMS_CODE";
 export const GET_LOGIN_SMS_CODE_SUCCESS = "GET_LOGIN_SMS_CODE_SUCCESS";
 export const GET_LOGIN_SMS_CODE_FAIL="GET_LOGIN_SMS_CODE_FAIL";
+export const LOGIN_SMS_CODE_FEED_BACK="LOGIN_SMS_CODE_FEED_BACK";
 
 const crypto = require('crypto');
 
 //============== 用户的注册登录 ======================
 
-export function login(loginType, loginParams){
-
-}
 export function expectLoginSMSCode(){
     return {
         type: EXPECT_LOGIN_SMS_CODE,
@@ -31,9 +30,18 @@ export function getLoginSMSCodeFail(){
         type: GET_LOGIN_SMS_CODE_FAIL,
     }
 }
+
+export function loginSMSCodeFeedBack(feedBackTimes){
+  return {
+    type: LOGIN_SMS_CODE_FEED_BACK,
+    feedBackTimes
+  }
+}
+
 export function getLoginSMSCode(mobile){
     return dispatch => {
         dispatch(expectLoginSMSCode());
+        dispatch(loginSMSCodeFeedBack(1));
         let methodId = MClient.method('get.phonesms', [mobile]);
         MClient.on("result", message => {
             if (message.id === methodId && !message.error) {
@@ -41,21 +49,57 @@ export function getLoginSMSCode(mobile){
                 let hash = crypto.createHash('sha256');
                 let cryptoCode = hash.update(message.result).digest('hex');
                 dispatch(getLoginSMSCodeSuccess(cryptoCode));
+                dispatch(loginSMSCodeFeedBack(2));
+                
             }else{
                 dispatch(getLoginSMSCodeFail());
+                dispatch(loginSMSCodeFeedBack(2));                
             }
         });
     }
 }
 
-
-
-export function mobileLogin(loginParams){
-
+export function expectLogin(){
+    return {
+        type: EXPECT_LOGIN,
+    }
 }
 
-export function passwordLogin(loingParams){
+export function login(loginType, loginParams){
+    console.log(loginParams);
+    return dispatch => {
+        dispatch(expectLogin());
+        switch (loginType) {
+            case "mobileSMS":
+                dispatch(mobileLogin(loginParams));
+                break;
+            case "password":
+                dispatch(passwordLogin(loginParams));
+            default:
+                break;
+        }
+    }
+}
 
+export function mobileLogin(loginParams){
+    console.log(loginParams);
+    return {
+        loginParams,
+    }
+}
+
+export function passwordLogin(loginParams){
+
+    return dispatch=>{
+      let methodId = MClient.method('login', [loginParams]);
+      MClient.on("result", message => {
+        if(message.id === methodId && !message.error){
+
+        }else{
+
+        }
+      })
+  }
 }
 
 export function registerLogin(regParams){

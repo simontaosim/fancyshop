@@ -11,7 +11,6 @@ import {connect} from 'react-redux';
 import {  Redirect } from 'react-router-dom'
 
 import "./common.less";   // 用于覆盖上面定义的变量
-import CurrentUser from '../models/CurrentUser.js';
 import configureStore from "../stores/index";
 const store = configureStore();
 
@@ -42,7 +41,6 @@ class MainLayout extends React.Component{
     console.log('redux 仓库',store);
     console.log('路由地址',this.props.history);
     //载入当前用户信息
-    CurrentUser.getId();
     let pathname = this.props.history.location.pathname;
     if (pathname === '/') {
 

@@ -49,8 +49,6 @@ export function user(state=initState,action) {
         authenticated,
       });
     case REGISTER_SUCCESS:
-      var userId = action.payload;
-      var authenticated = true;
       return Object.assign({}, state, {
         userId,
         authenticated,
@@ -65,8 +63,6 @@ export function user(state=initState,action) {
 
       });
     case FORGOT_PASSWORD:
-      var userId = action.payload;
-      var authenticated = true;
       setStore('authenticated','true')
       setStore('userId',userId)
       return Object.assign({},state,{

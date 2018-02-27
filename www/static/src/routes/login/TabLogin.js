@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem, Button, WhiteSpace, WingBlank,Tabs } from 'antd-mobile';
+import { List, InputItem, Button, WhiteSpace, WingBlank,Tabs, Toast } from 'antd-mobile';
 import { connect } from 'react-redux'
 import Login from './Login'
 import MobileLogin from './MobileLogin'
@@ -20,13 +20,15 @@ class TabLogin  extends React.Component {
    }
 
    render() {
+    
 
-    const authenticated = this.props.user.authenticated
-    if(authenticated){
-      return (
-        <Redirect to="/"/>
-      );
-    }
+    // const authenticated = this.props.user.authenticated
+    // if(authenticated){
+    //   return (
+    //     <Redirect to="/"/>
+    //   );
+    // }
+    
     return (
       <div >
 

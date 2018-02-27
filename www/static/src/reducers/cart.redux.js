@@ -27,7 +27,7 @@ const initialState = {
 export function cart(state=initialState,action) {
   switch(action.type){
     case INIT_CART:
-    if(action.payload == undefined){
+    if(action.payload === undefined){
       return state
     }else{
     return Object.assign({},state,{goods: action.payload})
