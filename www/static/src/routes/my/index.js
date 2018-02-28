@@ -64,11 +64,11 @@ class AppMy extends React.Component{
         console.log('登出中')
       });
     }
-    if(appUser.status === 'offline' ){
-      Toast.info("请先登陆", 2, ()=>{
-        this.props.history.push('/tablogin');
-      });
-    }
+    // if(appUser.status === 'offline' ){
+    //   Toast.info("请先登陆", 2, ()=>{
+    //     this.props.history.push('/tablogin');
+    //   });
+    // }
    
     return (
       <div >

@@ -1,7 +1,7 @@
 import { List, InputItem,Picker, Button, DatePicker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
-// import { district, provinceLite } from 'antd-mobile-demo-data';
+import { district, provinceLite } from 'antd-mobile-demo-data';
 const gender = [
   {
     label:'未知',
@@ -31,11 +31,14 @@ class Personal extends React.Component {
     return(
         <List renderHeader={() => '个人信息'}>
           <InputItem
+          value = "1212"
             clear
-          >姓名</InputItem>
+          >花名
+          </InputItem>
           <InputItem
             clear
-          >签名</InputItem>
+          >签名
+          </InputItem>
           <InputItem
             {...getFieldProps('phone')}
             type="phone"
@@ -44,26 +47,26 @@ class Personal extends React.Component {
           <Picker data={gender} cols={1} {...getFieldProps('gender')} className="forss">
           <List.Item arrow="horizontal">性别</List.Item>
         </Picker>
-        <Picker extra="请选择"
-          data=''
-          title="地区"
+        <Picker extra="请选择(可选)"
+          data={district}
+          title="Areas"
           {...getFieldProps('district', {
-            
+           
           })}
           onOk={e => console.log('ok', e)}
           onDismiss={e => console.log('dismiss', e)}
         >
           <List.Item arrow="horizontal">地区</List.Item>
         </Picker>
-           <DatePicker
-             style = {{width:'100%'}}
-             mode="date"
-             title="请选择你的出生日期"
-             value={this.state.date}
-             onChange={date => this.setState({ date })}
-           >
-             <List.Item arrow="horizontal">生日</List.Item>
-           </DatePicker>
+        <DatePicker
+          style = {{width:'100%'}}
+          mode="date"
+          title="请选择你的出生日期"
+          value={this.state.date}
+          onChange={date => this.setState({ date })}
+        >
+          <List.Item arrow="horizontal">生日</List.Item>
+        </DatePicker>
         <List.Item align="bottom" className="my-btn">
           <Button type="primary" size="small" inline onClick={this.onSubmit}  >保存</Button>
         </List.Item>
