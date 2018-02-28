@@ -87,8 +87,8 @@ class GoodsList extends React.Component {
     );
     const row = (rowData, sectionID, rowID) => {
       return (
-        <div key={rowData.id} style={{ padding: '0 15px' }}>
-          <Link to={`/product/${rowData.id}`}>
+        <div key={rowData._id} style={{ padding: '0 15px' }}>
+          <Link to={`/product/${rowData._id}`}>
             <div
               style={{
                 lineHeight: '50px',
