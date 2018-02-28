@@ -62,6 +62,7 @@ const initState = {
 	"count": 1,
 	products: [],
 	shopProducts: [],
+	page: 1,
 }
 
 export function productShow(state=initState, action){
@@ -81,7 +82,8 @@ export function productShow(state=initState, action){
 			})
 			case GET_RECOMMAND_PRODUCTS:
 			return Object.assign({},state,{
-				products: action.products
+				products: action.products,
+				page: action.page
 			})
 			break;
       default:

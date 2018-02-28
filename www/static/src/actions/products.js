@@ -63,10 +63,11 @@ function exceptProductById(id){
 
 }
 
-function getRecommandProducts(products){
+function getRecommandProducts(products,page){
   return {
     type: GET_RECOMMAND_PRODUCTS,
-    products
+    products,
+    page
   }
 }
 
@@ -153,8 +154,6 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
           if(products.length< pagesize){
             products.push({fields,id})
           }
-          console.log(`~~~~`)
-          console.log(products)
           dispatch(receiveShopProductsByShopId(products));
         }
       });
@@ -164,22 +163,33 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
 
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
-    console.log(`获取推荐商品`)
-    MClient.sub('app.get.recommend.products', [page,pagesize]);
-    MClient.connect();
-    let products = [];
-    // data = data.slice();
-    console.log(data);
-    console.log(page);
-    MClient.on("added", message => {
-      console.log(message.fields)
-      if(message.collection==='products'){
-        if(products.length< pagesize){
-          message.fields.id = message.id
-          products.push(message.fields)
-        }
-        console.log(data.concat(products))
-        dispatch(getRecommandProducts(data.concat(products)))
+    // console.log(`获取推荐商品`)
+    // MClient.sub('app.get.recommend.products', [page,pagesize]);
+    // MClient.connect();
+    // let products = [];
+    // // data = data.slice();
+    // console.log(data);
+    // console.log(page);
+    // MClient.on("added", message => {
+    //   console.log(message.fields)
+    //   if(message.collection==='products'){
+    //     console.log(`175`)
+    //     if(products.length< pagesize){
+    //       message.fields.id = message.id
+    //       products.push(message.fields)
+    //     }
+    //     console.log(products)
+    //     console.log(data.concat(products))
+    //     dispatch(getRecommandProducts(data.concat(products)))
+    //   }
+    // })
+
+    let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
+    MClient.on('result', message => {
+      if(message.id === methodId && !message.error){
+          console.log(message)
+          console.log(data);
+          dispatch(getRecommandProducts(data.concat(message.result),page))
       }
     })
   }
