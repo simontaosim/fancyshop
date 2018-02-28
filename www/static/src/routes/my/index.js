@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
-import{ logout, loadLoginedUserInfo, memoryPathBeforeLogined } from '../../actions/users';
+import{ logout, memoryPathBeforeLogined, loadLoginedUserInfo } from '../../actions/users';
 import { MClient } from '../../config/asteroid.config.js'
 
 
@@ -32,6 +32,8 @@ class AppMy extends React.Component{
   constructor(props) {
     super(props);
     this.confirmWindow = this.confirmWindow.bind(this);
+    const { dispatch } = this.props;
+    dispatch(memoryPathBeforeLogined('/my'))
   }
 
   confirmWindow() {
@@ -46,26 +48,33 @@ class AppMy extends React.Component{
   }
 
 
-  componentDidMount(){
-    const { dispatch } = this.props;
-    dispatch(memoryPathBeforeLogined('/my'))
-    dispatch(loadLoginedUserInfo());
+  componentWillMount(){
+    document.title = '个人中心';
+   
   }
 
-
-  render(){
-    const { dispatch, current_user, appUser } = this.props;
-    console.log("当前用户", current_user)
+  componentWillReceiveProps(nextProps){
+    const { dispatch, appUser } = nextProps;
+    if(appUser.loading){
+      return Toast.loading("载入中", 1, ()=>{
+        console.log('')
+      });
+    }
     if(appUser.status === 'logouting' ){
       Toast.loading("正在登出", 3, ()=>{
         console.log('登出中')
       });
     }
     if(appUser.status === 'offline' ){
-      Toast.info("请先登陆", 2, ()=>{
+      Toast.info("请登录用户", 1, ()=>{
         this.props.history.push('/tablogin');
       });
     }
+  }
+
+
+  render(){
+    
    
     return (
       <div >

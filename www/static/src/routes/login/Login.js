@@ -65,13 +65,14 @@ class Login extends React.Component {
       [key]:value
     })
   }
-  render() {
-   
-    const { appUser, dispatch} = this.props;
+
+  componentWillReceiveProps(nextProps){
+    const { appUser, dispatch} = nextProps;
     if(appUser.loginStatus === "logining"){
       Toast.loading("登录中，请稍后", 1, function(){
         //将登录状态还原为未发起
         dispatch(expectLoginFinished());
+        
       });
     }
     if(appUser.loginFailReason !== ""){
@@ -85,12 +86,16 @@ class Login extends React.Component {
     if(appUser.loginStatus === "logined"){
       Toast.fail("登陆成功！", 2, ()=>{
         //将登录反馈状态还原为未发起
-        dispatch(loginFail(""));
-        dispatch(expectLoginFinished());
-        this.props.history.push(appUser.pathBeforeLogined);
+        expectLoginFinished();
+        nextProps.history.push(appUser.pathBeforeLogined);
       });
     }
+   
     Toast.hide();
+  }
+  render() {
+   
+   
 
     return(
       <div>

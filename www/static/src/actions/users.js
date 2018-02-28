@@ -17,7 +17,7 @@ export const GET_LOGIN_SMS_CODE_SUCCESS = "GET_LOGIN_SMS_CODE_SUCCESS";
 export const GET_LOGIN_SMS_CODE_FAIL="GET_LOGIN_SMS_CODE_FAIL";
 export const LOGIN_SMS_CODE_FEED_BACK="LOGIN_SMS_CODE_FEED_BACK";
 
-
+export const EXPECT_LOGINED_USER_INFO="EXPECT_LOGINED_USER_INFO";
 export const LOAD_USER_INFO_SUCCESS="LOAD_USER_INFO_SUCCESS";
 const crypto = require('crypto');
 
@@ -104,8 +104,28 @@ export function login(loginType, loginParams){
 
 export function mobileLogin(loginParams){
     console.log(loginParams);
-    return {
-        loginParams,
+    return dispatch=>{
+        let methodId = MClient.method('user.login.from.fancyshop', ['mobileSMS', loginParams]);
+        MClient.on("result", message => {
+          if(message.id === methodId && !message.error){
+              if(message.result === "USER NOT FOUND"){
+                  let reason = "手机号不存在";
+                  return dispatch(loginFail(reason));
+              }
+              if(message.result.error){
+                  if(message.result.error.reason === "Incorrect password"){
+                      let reason = "密码错误！";
+                      return dispatch(loginFail(reason));
+                  }
+              }else{
+                  return dispatch(loginSuccess(message.result.stampedToken, message.result.userId));
+              }
+          }
+          if(message.id===methodId && message.error){
+              console.error("无法链接服务器")
+              return "error";
+          }
+        })
     }
 }
 
@@ -204,8 +224,10 @@ export function acceptUserAccess(userId){
 //===================================================
 
 //===============获取登录用户的信息==========================
-export function expectUserInfo(){
-
+export function expectLoginedUserInfo(){
+    return {
+        type: EXPECT_LOGINED_USER_INFO,
+    }
 }
 
 export function loadUnloginedUserInfo(){
@@ -222,6 +244,7 @@ export function loadUserInfoSuccess(user, userId, stampedToken, expiredLoginTime
 }
 export function loadLoginedUserInfo(){
     return dispatch => {
+        dispatch(expectLoginedUserInfo());
         let userId = getStore("userId");
         let stampedToken = getStore("stampedToken");
         let expiredLoginTime = getStore("stampedTokenExpired");

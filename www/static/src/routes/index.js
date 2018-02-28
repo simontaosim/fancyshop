@@ -50,11 +50,14 @@ import Personal from './my/Personal';
 import Orders from './orders/index';
 import OrderList from './orders/OrderList';
 
+import {  Toast } from 'antd-mobile';
+import{ loadLoginedUserInfo } from '../actions/users';
 
 import createHistory from 'history/createHashHistory';
+import configureStore from "../stores/index";
+
+const store = configureStore();
 const history = createHistory();
-
-
 const Home = ({ match }) => (
     <AppHome path={match.path} />
   )
@@ -70,20 +73,21 @@ const Messages = ({match}) => (
 class App extends React.Component {
 
 
-
+  componentDidMount(){
+    store.dispatch(loadLoginedUserInfo());
+    
+  }
   render() {
-    console.log('每次渲染都要检测');
-    const authenticated = getStore('authenticated');
-   
+    
     return (
       <Router >
           <MainLayout history={history}>
           <Switch>
-              <Route exact path="/" component={Home} authenticated={authenticated}/>
-              <Route exact path="/money" component={Home} authenticated={authenticated}/>
-              <Route path="/messages" component={Messages} authenticated={authenticated}/>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/money" component={Home} />
+              <Route path="/messages" component={Messages} />
               <Route path = "/shop_cart" component={ShopCart} />
-              <Route path="/my"  component={My} authenticated={authenticated}/>
+              <Route path="/my"  component={My} />
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />

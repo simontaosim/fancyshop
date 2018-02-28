@@ -1,7 +1,14 @@
 export function appInfo(state){
   return {
-    AppInfo: state.AppInfo
+    AppInfo: state.AppInfo,
+    appUser: state.AppUser
    };
+}
+
+export function appUser(state){
+  return {
+    appUser: state.AppUser
+  }
 }
 
 

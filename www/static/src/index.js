@@ -4,8 +4,8 @@ import App from './routes/index';
 import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from "./stores/index";
-
 const store = configureStore();
+
 
 ReactDOM.render(
    <Provider store={store}>

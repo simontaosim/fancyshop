@@ -1,12 +1,9 @@
 import React from 'react'
 import { List, InputItem, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
-import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
-import { mobileRegister } from '../../reducers/user.redux'
 import Count from './Count'
-import { setStore } from '../../config/mUtils'
 import { testPhone } from '../../config/reg'
-import { getLoginSMSCode, loginSMSCodeFeedBack, login } from '../../actions/users.js'
+import { getLoginSMSCode, loginSMSCodeFeedBack, login, expectLoginFinished, loginFail } from '../../actions/users.js'
 const crypto = require('crypto');
 
 class MobileLogin extends React.Component {
@@ -64,16 +61,46 @@ class MobileLogin extends React.Component {
     let hash = crypto.createHash('sha256');
     let cryptoCode = hash.update(pwd).digest('hex');
     if(cryptoCode===appUser.loginSMSCode){
-      login('mobileSMS', {
-        user:{
-          mobile: "phone"
-        },
+      dispatch(login('mobileSMS', {
+        mobile: phone,
         sendCode: pwd,
-      })
+      }));
+      
     }else{
+      dispatch(login('mobileSMS', {
+        mobile: phone,
+        sendCode: pwd,
+      }));
       Toast.offline("验证码错误",1);
     }
     
+  }
+  componentWillReceiveProps(nextProps){
+    const { appUser, dispatch} = nextProps;
+    if(appUser.loginStatus === "logining"){
+      Toast.loading("登录中，请稍后", 1, function(){
+        //将登录状态还原为未发起
+        dispatch(expectLoginFinished());
+        
+      });
+    }
+    if(appUser.loginFailReason !== ""){
+      Toast.fail(appUser.loginFailReason, 2, function(){
+        //将登录反馈状态还原为未发起
+        dispatch(loginFail(""));
+        dispatch(expectLoginFinished());
+        
+      });
+    }
+    if(appUser.loginStatus === "logined"){
+      Toast.fail("登陆成功！", 2, ()=>{
+        //将登录反馈状态还原为未发起
+        expectLoginFinished();
+        nextProps.history.push(appUser.pathBeforeLogined);
+      });
+    }
+   
+    Toast.hide();
   }
 
   handlePhone=(event)=>{

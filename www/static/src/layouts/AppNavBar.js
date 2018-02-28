@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {appInfo} from '../map_props.js';
 import { setAppCity } from '../actions/app.js';
 import {getAddress} from '../service/amap/api/getCurrentLocationByIP';
+import{ loadLoginedUserInfo } from '../actions/users.js';
 
 class AppNavBar extends React.Component{
   constructor(props){
@@ -25,6 +26,8 @@ class AppNavBar extends React.Component{
 
 
     const {history} = this.props;
+    const { dispatch } = this.props;
+    dispatch(loadLoginedUserInfo(''))
 
 
 

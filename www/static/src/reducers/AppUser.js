@@ -3,10 +3,12 @@ import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE,
     LOGIN_SMS_CODE_FEED_BACK, EXPECT_LOGIN, EXPECT_LOGIN_FINISHED, 
     LOGIN_SUCCESS, LOGIN_FAIL, LOAD_UNLOGINED_USER_INFO,
     LOAD_USER_INFO_SUCCESS, 
-    MEMORY_PATH_BEFORE_LOGINED} from "../actions/users";
+    MEMORY_PATH_BEFORE_LOGINED,
+    EXPECT_LOGINED_USER_INFO} from "../actions/users";
 
 export default function AppUser(state={
     id: '',
+    loading: true,
     username: "",
     stampedToken: "",
     pathBeforeLogined: "/",    
@@ -25,8 +27,14 @@ export default function AppUser(state={
     products: [],
   }, action){
     switch (action.type) {
+        case EXPECT_LOGINED_USER_INFO:
+            return Object.assign({}, state, {
+                loading: true,
+            })
         case LOAD_UNLOGINED_USER_INFO:
-            return state;
+            return Object.assign({}, state, {
+                loading: false,
+            })
         case LOAD_USER_INFO_SUCCESS:
             return Object.assign({}, state, {
                 stampedToken: action.stampedToken,
@@ -35,6 +43,7 @@ export default function AppUser(state={
                 loginStatus: "logined",
                 status: "online",
                 username: action.user.username,
+                loading: false,
             })
         case MEMORY_PATH_BEFORE_LOGINED:
             return Object.assign({}, state, {
@@ -59,10 +68,12 @@ export default function AppUser(state={
         case LOGIN_FAIL:
             return Object.assign({}, state, {
                 loginFailReason: action.reason,
+                loading: false,
             });
         case EXPECT_LOGOUT:
             return Object.assign({}, state, {
-                status: 'logouting'
+                status: 'logouting',
+                loading: true,
             });
         case LOGOUT_SUCCESS:
             return Object.assign({}, state, {
@@ -70,7 +81,8 @@ export default function AppUser(state={
                 expiredLoginTime: "",
                 id: "",
                 loginStatus: "",
-                status: 'offline'
+                status: 'offline',
+                loading: false,
             });
         case EXPECT_LOGIN_SMS_CODE:
             return Object.assign({}, state, {
