@@ -17,9 +17,10 @@ export default function AppUser(state={
     status: 'offline',
     loginSMSCode: '',
     validSMSCode: "",
-    roleName: 'nobody',
+    roles: ['nobody'],
     loginSMSCodeFeedBackTimes: 0,
     orders: [],
+    card:null,
     balance: {
         incomes: [],
         charges: [],
@@ -76,12 +77,15 @@ export default function AppUser(state={
                 loading: true,
             });
         case LOGOUT_SUCCESS:
+            let roles = state.roles;
+            roles.push("loginedUser");
             return Object.assign({}, state, {
                 stampedToken: "",
                 expiredLoginTime: "",
                 id: "",
                 loginStatus: "",
                 status: 'offline',
+                roles,
                 loading: false,
             });
         case EXPECT_LOGIN_SMS_CODE:

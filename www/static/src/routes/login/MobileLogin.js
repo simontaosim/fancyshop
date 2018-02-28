@@ -67,10 +67,7 @@ class MobileLogin extends React.Component {
       }));
       
     }else{
-      dispatch(login('mobileSMS', {
-        mobile: phone,
-        sendCode: pwd,
-      }));
+     
       Toast.offline("验证码错误",1);
     }
     

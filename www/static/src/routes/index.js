@@ -47,6 +47,7 @@ import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
 import Shops from './shops/'
 import Personal from './my/Personal';
+import ProductListView from './productsListView'
 import Orders from './orders/index';
 import OrderList from './orders/OrderList';
 
@@ -124,6 +125,7 @@ class App extends React.Component {
               <Route path="/orderlist" component={OrderList}/>
               <Route path = "/orders" component={Orders}/>
               <Route path = "/personal" component={Personal}/>
+              <Route path = "/productlist" component={ProductListView}/>
               <Route component={NoMatchPage}/>
             </Switch>
 

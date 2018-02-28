@@ -1,7 +1,6 @@
 import { List, InputItem,Picker, Button, DatePicker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
-// import { district, provinceLite } from 'antd-mobile-demo-data';
 const gender = [
   {
     label:'未知',
@@ -25,6 +24,9 @@ class Personal extends React.Component {
         date: '',
       }
    }
+   componentDidMount(){
+     document.title = "个人资料";
+   }
 
   render() {
     const { getFieldProps } = this.props.form;
@@ -36,6 +38,9 @@ class Personal extends React.Component {
           <InputItem
             clear
           >签名</InputItem>
+          <InputItem
+            clear
+          >花名</InputItem>
           <InputItem
             {...getFieldProps('phone')}
             type="phone"

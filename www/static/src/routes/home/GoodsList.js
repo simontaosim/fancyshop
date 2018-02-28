@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
-import { Flex, WingBlank, WhiteSpace,ListView, Icon} from "antd-mobile";
+import { Flex, PullToRefresh,ListView,Icon} from "antd-mobile";
 import styles from './GoodsList.css';
 import goodsImg from '../../assets/img/reward/good.jpg';
 import good2Img from '../../assets/img/timg.jpg';
@@ -16,7 +16,6 @@ import { MClient } from '../../config/asteroid.config.js';
 
 
 
-let page = 1;
 // let data = [];
 class GoodsList extends React.Component {
   constructor(props) {
@@ -26,7 +25,7 @@ class GoodsList extends React.Component {
     });
 
     this.state = {
-      dataSource,
+      // dataSource,
       isLoading: false,
       data: [],
       // page: 1,
@@ -39,53 +38,42 @@ class GoodsList extends React.Component {
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.recommandProducts);
-    console.log(this.props.products.products)
-    if (nextProps.recommandProducts !== this.props.products.products) {
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
-        isLoading: false,
-      });
-    }else{
-      console.log(1122)
-    }
+    // console.log(nextProps.recommandProducts);
+    // console.log(this.props.products.products)
+    // if (nextProps.recommandProducts !== this.props.products.products) {
+    //   this.setState({
+    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
+    //     isLoading: false,
+    //   });
+    // }
   }
 
+  onRefresh = () => {
+    console.log(1231213123123);
+  };
+
   onEndReached = (event) => {
+    console.log(this.props.products)
+  const page = this.props.products.page+1
+    
     console.log(page);
     let { dispatch } = this.props;
     this.setState({
       isLoading: true,
     });
-    // MClient.subscribe('app.get.recommend.products',page,3);
-    // MClient.connect();
-    // let products = [];
-    // MClient.ddp.on("added", ({collection, id, fields}) => {
-    //   console.log(fields)
-    //   if(collection==='products'){
-    //     if(products.length< 3){
-    //       fields.id = id
-    //       products.push(fields)
-    //     }
-    //   }
-    // })
-    // console.log(data);
-    // console.log(products);
-    // data = data.slice().concat(products);
-    // console.log(data);
     setTimeout(() => {
-     page += 1;
+    //  page += 1;
       
-     dispatch(gainRecommandProducts(page,10,this.props.products.products));
+     dispatch(gainRecommandProducts(page,1,this.props.products.products));
       
-    },600)
+    },1000)
     console.log('reach end', event);
-    // this.setState({ isLoading: false });
   }
 
   render() {
-  // console.log(history)
-    
+    const dataSource = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2
+    }).cloneWithRows(this.props.products.products)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -97,8 +85,6 @@ class GoodsList extends React.Component {
         }}
       />
     );
-    // const data = this.state
-    // let index = data.length - 1;
     const row = (rowData, sectionID, rowID) => {
       return (
         <div key={rowData.id} style={{ padding: '0 15px' }}>
@@ -126,19 +112,23 @@ class GoodsList extends React.Component {
       <div style = {{width:'100%'}}>
       <ListView
         ref={el => this.lv = el}
-        dataSource={this.state.dataSource}
-        // renderHeader={() => <span>header</span>}
+        dataSource={dataSource}
         renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-          {this.state.isLoading ? <Icon type='loading' /> : null}
+          {this.state.isLoading ? '加载中' : null}
         </div>)}
         renderRow={row}
-        // renderSeparator={separator}
         className="am-list"
         pageSize={1}
         useBodyScroll
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={10}
+        pullToRefresh={
+          <PullToRefresh
+            refreshing={false}
+            onRefresh={this.onRefresh}
+          />
+        }
       />
       </div>
     );
