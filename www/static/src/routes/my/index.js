@@ -119,4 +119,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(AppMy);
 
-// export default connect(appInfo)(AppMy);

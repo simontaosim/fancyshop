@@ -16,6 +16,7 @@ export const EXPECT_LOGIN_SMS_CODE = "EXPECT_LOGIN_SMS_CODE";
 export const GET_LOGIN_SMS_CODE_SUCCESS = "GET_LOGIN_SMS_CODE_SUCCESS";
 export const GET_LOGIN_SMS_CODE_FAIL="GET_LOGIN_SMS_CODE_FAIL";
 export const LOGIN_SMS_CODE_FEED_BACK="LOGIN_SMS_CODE_FEED_BACK";
+export const VALID_TOKEN_FAIL="VALID_TOKEN_FAIL";
 
 export const EXPECT_LOGINED_USER_INFO="EXPECT_LOGINED_USER_INFO";
 export const LOAD_USER_INFO_SUCCESS="LOAD_USER_INFO_SUCCESS";
@@ -50,6 +51,32 @@ export function loginSMSCodeFeedBack(feedBackTimes){
     type: LOGIN_SMS_CODE_FEED_BACK,
     feedBackTimes
   }
+}
+
+export function validTokenFail(){
+    return {
+        type: VALID_TOKEN_FAIL,
+    }
+}
+
+export function validLocalToken(token){
+   return dispatch => {
+    if(!token){
+      return  dispatch(validTokenFail)
+    }else{
+
+    }
+    
+   }
+}
+
+export function loadUserCard(userId, token){
+    return dispatch => {
+        dispatch(validLocalToken(token));
+        
+
+        
+    }
 }
 
 export function getLoginSMSCode(mobile){
