@@ -34,7 +34,7 @@ export default function AppUser(state={
     switch (action.type) {
         case VALID_TOKEN_FAIL:
             return Object.assign({}, state, {
-                loading: true,
+                loading: false,
                 card: null,
                 loginStatus: "notWoken",
                 status: 'offline',

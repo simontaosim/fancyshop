@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem, Button, WhiteSpace, WingBlank, Toast } from 'antd-mobile';
+import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { connect } from 'react-redux'
 import Count from './Count'
 import { testPhone } from '../../config/reg'
@@ -72,33 +72,7 @@ class MobileLogin extends React.Component {
     }
     
   }
-  componentWillReceiveProps(nextProps){
-    const { appUser, dispatch} = nextProps;
-    if(appUser.loginStatus === "logining"){
-      Toast.loading("登录中，请稍后", 1, function(){
-        //将登录状态还原为未发起
-        dispatch(expectLoginFinished());
-        
-      });
-    }
-    if(appUser.loginFailReason !== ""){
-      Toast.fail(appUser.loginFailReason, 2, function(){
-        //将登录反馈状态还原为未发起
-        dispatch(loginFail(""));
-        dispatch(expectLoginFinished());
-        
-      });
-    }
-    if(appUser.loginStatus === "logined"){
-      Toast.fail("登陆成功！", 2, ()=>{
-        //将登录反馈状态还原为未发起
-        expectLoginFinished();
-        nextProps.history.push(appUser.pathBeforeLogined);
-      });
-    }
-   
-    Toast.hide();
-  }
+ 
 
   handlePhone=(event)=>{
     // 倒计时按钮处于倒计时未结束状态时手机号不能修改
