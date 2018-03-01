@@ -32,8 +32,7 @@ class AppMy extends React.Component{
   constructor(props) {
     super(props);
     this.confirmWindow = this.confirmWindow.bind(this);
-    const { dispatch } = this.props;
-    dispatch(memoryPathBeforeLogined('/my'))
+    
   }
 
   confirmWindow() {
@@ -50,6 +49,9 @@ class AppMy extends React.Component{
 
   componentWillMount(){
     document.title = '个人中心';
+    const { dispatch } = this.props;
+    dispatch(memoryPathBeforeLogined('/my'));
+    dispatch(loadLoginedUserInfo());
    
   }
 

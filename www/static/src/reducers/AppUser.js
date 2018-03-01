@@ -4,7 +4,11 @@ import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE,
     LOGIN_SUCCESS, LOGIN_FAIL, LOAD_UNLOGINED_USER_INFO,
     LOAD_USER_INFO_SUCCESS, 
     MEMORY_PATH_BEFORE_LOGINED,
-    EXPECT_LOGINED_USER_INFO} from "../actions/users";
+    EXPECT_LOGINED_USER_INFO,
+    expectUserCard,
+    EXPECT_USER_CARD,
+    VALID_TOKEN_FAIL,
+    LOAD_USER_CAED_SUCCESS} from "../actions/users";
 
 export default function AppUser(state={
     id: '',
@@ -28,6 +32,13 @@ export default function AppUser(state={
     products: [],
   }, action){
     switch (action.type) {
+        case VALID_TOKEN_FAIL:
+            return Object.assign({}, state, {
+                loading: true,
+                card: null,
+                loginStatus: "notWoken",
+                status: 'offline',
+            })
         case EXPECT_LOGINED_USER_INFO:
             return Object.assign({}, state, {
                 loading: true,
@@ -46,6 +57,17 @@ export default function AppUser(state={
                 username: action.user.username,
                 loading: false,
             })
+        case EXPECT_USER_CARD:
+            return Object.assign({}, state, {
+                loading: true,
+                card: null,
+            });
+        case LOAD_USER_CAED_SUCCESS:
+            return Object.assign({}, state, {
+                loading: false,
+                card: action.card,
+            });
+        
         case MEMORY_PATH_BEFORE_LOGINED:
             return Object.assign({}, state, {
                 pathBeforeLogined: action.path,

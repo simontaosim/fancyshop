@@ -20,6 +20,9 @@ export const VALID_TOKEN_FAIL="VALID_TOKEN_FAIL";
 
 export const EXPECT_LOGINED_USER_INFO="EXPECT_LOGINED_USER_INFO";
 export const LOAD_USER_INFO_SUCCESS="LOAD_USER_INFO_SUCCESS";
+
+export const EXPECT_USER_CARD="EXPECT_USER_CARD"
+export const LOAD_USER_CAED_SUCCESS="LOAD_USER_CAED_SUCCESS";
 const crypto = require('crypto');
 
 //============== 用户的注册登录 ======================
@@ -64,17 +67,47 @@ export function validLocalToken(token){
     if(!token){
       return  dispatch(validTokenFail)
     }else{
-
+      return 
     }
     
    }
 }
 
-export function loadUserCard(userId, token){
-    return dispatch => {
-        dispatch(validLocalToken(token));
-        
+export function expectUserCard(){
+    return {
+        type: EXPECT_USER_CARD,
+    }
+}
 
+export function loadUserCardSuccess(card){
+    return {
+        type: LOAD_USER_CAED_SUCCESS,
+        card
+    }
+}
+
+export function loadUserCard(userId, token){
+    console.log(userId, token);
+    return dispatch => {
+        dispatch(expectUserCard());
+        dispatch(validLocalToken(token));
+        let methodId = MClient.method("get.user.product.card", [userId, token]);
+        MClient.on("result", message => {
+            console.log(message);
+            if (message.id === methodId && !message.error) {
+               if(!message.result.error){
+                    if(message.result === "ACCESS DENY"){
+                        dispatch(validTokenFail(token));
+                    }else{
+                        dispatch(loadUserCardSuccess(message.result));
+                    }
+               }
+                
+            }
+            if(message.id === methodId && message.error){
+                dispatch(validTokenFail(token));
+            }
+        });
         
     }
 }
