@@ -3,7 +3,7 @@ import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobi
 import { connect } from 'react-redux'
 import Count from './Count'
 import { testPhone } from '../../config/reg'
-import { getLoginSMSCode, loginSMSCodeFeedBack, login, expectLoginFinished, loginFail } from '../../actions/users.js'
+import { getLoginSMSCode, loginSMSCodeFeedBack, login } from '../../actions/users.js'
 const crypto = require('crypto');
 
 class MobileLogin extends React.Component {

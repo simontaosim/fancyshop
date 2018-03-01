@@ -2,24 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Flex } from 'antd-mobile';
-import { Link } from 'react-router-dom';
 import ShopName from './ShopName.js';
 import Goods from './Goods.js';
 import styles from './Common.css';
 
 class Finish extends React.Component {
-
-  constructor(props) {
-    super(props)
-    // this.details = this.details.bind(this)
-  }
-
   render(){ 
     const{ finish} = this.props;
     return (
       <div className = {styles['item-bg']} key = "test">
         <ShopName />
-        {finish .map(v=>(
+        {finish.map(v=>(
            <Goods key = {v.name} name={v.name} spec={v.spec} price={v.price} num={v.count}/>
 							))}
         <Flex justify = "end" className = {styles['total']}>

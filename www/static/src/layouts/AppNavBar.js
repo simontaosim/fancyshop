@@ -1,6 +1,5 @@
 import React from 'react'
 import {Icon, NavBar, Modal, List, Button} from 'antd-mobile';
-import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {appInfo} from '../map_props.js';
 import { setAppCity } from '../actions/app.js';
@@ -25,7 +24,6 @@ class AppNavBar extends React.Component{
   componentDidMount(){
 
 
-    const {history} = this.props;
     const { dispatch } = this.props;
     dispatch(loadLoginedUserInfo(''))
 
@@ -59,7 +57,7 @@ search () {
 }
 
   render(){
-    const { dispatch, history, AppInfo } = this.props;
+    const { dispatch } = this.props;
     const top = this.props.AppInfo.navBarHidden ? "-42px" : "0";
 
 

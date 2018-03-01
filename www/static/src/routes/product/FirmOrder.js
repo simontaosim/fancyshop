@@ -1,11 +1,8 @@
 import React from 'react';
-import { List, Icon, Flex, Button, InputItem, TextareaItem } from 'antd-mobile';
+import { Flex, TextareaItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import goodImg from '../../assets/img/reward/good.jpg';
 import styles from '../orders/WaitDetails.css';
-import stylec from '../orders/Common.css';
 import { orderInfo} from '../../map_props';
-import { loadOrderById } from '../../actions/orders';
 import { connect } from 'react-redux';
 import { MClient } from '../../config/asteroid.config.js'
 
@@ -33,11 +30,7 @@ class FirmOrder extends React.Component {
     this.paid = this.paid.bind(this)
   }
 
-  componentWillMount() {
-    // let id = this.props.match.params.orderId;
-    // let {dispatch} = this.props;
-    // dispatch(loadOrderById(id))
-  }
+
   componentDidMount() {
     let id = this.props.match.params.orderId;
     const methodId = MClient.method("app.order.getone", [id]);
@@ -49,19 +42,7 @@ class FirmOrder extends React.Component {
         })
       }
     })
-    // MClient.call('app.order.getone',[id])
-    //         .then(result => {
-    //           console.log(result);
-    //           if(result){
-    //             this.setState({
-    //               order: result.order,
-    //               shop: result.shop
-    //             })
-    //           }
-    //         })
-    //         .catch(error => {
-    //           console.log(error);
-    //         })
+   
   }
  
   componentWillReceiveProps(nextProps){
@@ -83,15 +64,7 @@ class FirmOrder extends React.Component {
         this.props.history.push(`/paid/${this.state.order._id}`)
       }
     })
-    // MClient.call('app.order.update',params)
-    //         .then(result => {
-    //             if(result){
-    //               this.props.history.push(`/paid/${this.state.order._id}`)
-    //             }
-    //         })
-    //         .catch(error => {
-
-    //         })
+   
   }
 
   handleChange(key,value){
@@ -109,7 +82,7 @@ class FirmOrder extends React.Component {
        <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
          <Flex justify = "center" className = {styles['goods-item']}>
             <div className = {styles['img-border']} >
-              <img src = {product.cover} className = {styles['goods-img']}/>
+              <img alt="" src = {product.cover} className = {styles['goods-img']}/>
             </div>
             <div >
               <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
@@ -124,18 +97,18 @@ class FirmOrder extends React.Component {
     return(
       <div style = {{marginTop:'60px',fontSize:'16px'}}>
         <div className = {styles['item-info']}>
-          <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
+          <div><img alt="" src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
           <div>
           <Link to = "/address">
-            <div style = {{color:'#333',padding:'10px 0'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.address}</span></div>
-            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.phone}</span></div>
+            <div style = {{color:'#333',padding:'10px 0'}}><img alt="" src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.address}</span></div>
+            <div style = {{color:'#333'}}><img alt="" src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.phone}</span></div>
           </Link>
           </div>
         </div>
 
 
         <div className = {styles['item-notice']}>
-          <div><img src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
+          <div><img alt="" src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
           <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'14px',width:'95%',padding:'10px 3px'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈" onChange={v=>this.handleChange('remark',v)}/>
         </div>
         </div>

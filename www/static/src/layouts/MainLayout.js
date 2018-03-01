@@ -8,7 +8,6 @@ import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
 import {connect} from 'react-redux';
 import {  Redirect } from 'react-router-dom'
-import Preload from './Preload.js';
 import "./common.less";   // 用于覆盖上面定义的变量
 
 import {  Toast } from 'antd-mobile';
@@ -46,7 +45,6 @@ class MainLayout extends React.Component{
    
       return(
         <div>
-          <Preload history={this.props.history}/>
           <AppNavBar history={this.props.history} />
           <div style={{marginTop: "11%", marginBottom: "30%"}}>
             {this.props.children}
@@ -66,5 +64,4 @@ function mapStateToProps(state) {
 }
 
 export default MainLayout;
-// export default connect (mapStateToProps)(MainLayout);
 

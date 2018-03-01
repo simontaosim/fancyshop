@@ -1,18 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
-import { Flex, PullToRefresh,ListView,Icon} from "antd-mobile";
-import styles from './GoodsList.css';
-import goodsImg from '../../assets/img/reward/good.jpg';
-import good2Img from '../../assets/img/timg.jpg';
+import { PullToRefresh,ListView} from "antd-mobile";
 import '../../service/data/datasource';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { productList, product } from '../../reducers/product.redux';
-import { productinfo } from '../../map_props';
-import { productShow } from '../../reducers/product';
 import { gainRecommandProducts } from '../../actions/products';
-import { MClient } from '../../config/asteroid.config.js';
 
 
 
@@ -20,9 +11,7 @@ import { MClient } from '../../config/asteroid.config.js';
 class GoodsList extends React.Component {
   constructor(props) {
     super(props);
-    const dataSource = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-    });
+    
 
     this.state = {
       // dataSource,
@@ -33,19 +22,10 @@ class GoodsList extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.productList();
   }
 
-  // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps.recommandProducts);
-    // console.log(this.props.products.products)
-    // if (nextProps.recommandProducts !== this.props.products.products) {
-    //   this.setState({
-    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
-    //     isLoading: false,
-    //   });
-    // }
+   
   }
 
   onRefresh = () => {
@@ -74,17 +54,7 @@ class GoodsList extends React.Component {
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     }).cloneWithRows(this.props.products.products)
-    const separator = (sectionID, rowID) => (
-      <div
-        key={`${sectionID}-${rowID}`}
-        style={{
-          backgroundColor: '#F5F5F9',
-          height: 8,
-          borderTop: '1px solid #ECECED',
-          borderBottom: '1px solid #ECECED',
-        }}
-      />
-    );
+    
     const row = (rowData, sectionID, rowID) => {
       return (
         <div key={rowData.id} style={{ padding: '0 15px' }}>
@@ -97,7 +67,7 @@ class GoodsList extends React.Component {
                 borderBottom: '1px solid #F6F6F6',
               }}
             >{rowData.name_zh}</div>
-            <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
+            <div style={{ display: 'flex', padding: '15px 0' }}>
               <img style={{ height: '64px', marginRight: '15px' }} src={rowData.cover} alt="" />
               <div style={{ lineHeight: 1 }}>
                 <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{rowData.description}</div>

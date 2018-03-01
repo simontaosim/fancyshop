@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Flex, WhiteSpace, WingBlank, Badge} from 'antd-mobile';
+import { Flex} from 'antd-mobile';
 import style from './Recommend.css';
 import goodsImg from '../../assets/img/home/one.jpg';
 
 
 class Recommend extends React.Component {
-  constructor() {
-    super();
-  }
 
   render(){
     return(

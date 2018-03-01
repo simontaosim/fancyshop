@@ -2,17 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { Flex, WhiteSpace, WingBlank, Badge, Toast} from 'antd-mobile';
+import { Flex} from 'antd-mobile';
 import style from './RecommandProducts.css';
-import goodsImg from '../../assets/img/home/one.jpg';
-import { loadRecommandProducts } from '../../actions/products';
-class RecommandProducts extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount(){
 
-  }
+class RecommandProducts extends React.Component {
 
   renderItem(product, index){
     return (
@@ -25,18 +18,11 @@ class RecommandProducts extends React.Component {
       </Link>
     )
   }
-
-  componentWillReceiveProps(nextProps){
-    // console.log(nextProps);
-  }
-
-
-
   render(){
     let products = [];
     if (this.props.recommandProducts.products) {
       this.props.recommandProducts.products.map((product,index)=>{
-        products.push(this.renderItem(product, index));
+        return products.push(this.renderItem(product, index));
       });
     }else{
       products = 	''

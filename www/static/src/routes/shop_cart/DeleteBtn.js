@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button,Flex,Checkbox,Modal} from 'antd-mobile';
-import {Link} from 'react-router-dom';
-import style from './common.css';
+import { Flex,Checkbox,Modal} from 'antd-mobile';
 import { connect } from 'react-redux';
 import { cartInfo } from '../../map_props';
 import { removeCart,shopCheckAll } from '../../reducers/cart.redux';
@@ -19,7 +17,7 @@ class DeleteBtn extends React.Component {
   }
 
   delete() {
-    const alertInstance = alert('', '确认将已选中的商品删除吗?', [
+    alert('', '确认将已选中的商品删除吗?', [
       { text: '取消', onPress: () => console.log('cancel')},
       { text: '删除', onPress: () => this.props.removeCart(this.props.cart.goods)},
     ]);
@@ -52,7 +50,7 @@ class DeleteBtn extends React.Component {
       <CheckboxItem style = {{display:'flex',flexGrow:'1',backgroundColor:'#333',color:'#fff',paddingLeft:'7px',height:'50px'}} onChange={(e)=>this.CheckAll(e)}>
         <span style= {{color:'#fff',lineHeight:'1.95em'}}>全选</span>
       </CheckboxItem>
-      <button style = {{display:'flex',flexGrow:'1',backgroundColor:'red',justifyContent:'center',backgroundColor:'red',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px',lineHeight:'1.95em'}}
+      <button style = {{display:'flex',flexGrow:'1', backgroundColor:'red',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px',lineHeight:'1.95em'}}
          onClick={this.delete}>删除</button>
       </Flex>
     </div>

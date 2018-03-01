@@ -13,12 +13,10 @@ export function balance(state={
 },action){
     switch(action.type) {
         case GET_BALANCE:
-        return  Object.assign({},state,{balance: action.balance})
-            break;
+            return  Object.assign({},state,{balance: action.balance})
         case GET_BALANCE_INCOMES_TOTAL:
-        return Object.assign({},state,{total: action.total})
-            break;
+            return Object.assign({},state,{total: action.total})
         default:
-        return state
+            return state
     }
 }

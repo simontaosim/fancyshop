@@ -2,10 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, Tabs} from 'antd-mobile';
 import style from './Facilitator.css';
-import goodImg from '../../assets/img/reward/good.jpg';
-import userImg from '../../assets/img/timg.jpg';
 import {MClient} from '../../config/asteroid.config.js';
-import { product } from '../../reducers/product.redux';
 import { connect } from 'react-redux';
 import { loadShopProductsByShopId } from '../../actions/products';
 
@@ -45,7 +42,7 @@ class Facilitator extends React.Component {
           <div key={product.id}>
             <Link to ={`/product/${product.id}`} >
             <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
-              <img src={product.fields
+              <img alt="" src={product.fields
   .cover} style = {{width:'45px',height:'45px'}}/>
               <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>{product.fields
   .name_zh}<br/>
@@ -66,11 +63,11 @@ class Facilitator extends React.Component {
     return (
       <div >
         <div className = { style['bg-img']}>
-          <Flex justify = "center" align = "center" className = {style['user']}><img src={shop.cover}/></Flex>
+          <Flex justify = "center" align = "center" className = {style['user']}><img alt="" src={shop.cover}/></Flex>
           <Flex justify = "center" className = {style['distance']}>{shop.name}</Flex>
           <Flex justify = "center" className = {style['distance2']}>
-            <img src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>{shop.address}
-            <img src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
+            <img  alt="" src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>{shop.address}
+            <img alt="" src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
           </Flex>
         </div>
         <Tabs tabs = {tabs} >

@@ -1,11 +1,8 @@
 import React from 'react';
-import { Flex, InputItem, Button } from 'antd-mobile';
+import { InputItem, Button } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
 class EditBankCard extends React.Component {
-  constructor() {
-    super()
-  }
 
   render(){
     const { getFieldProps } = this.props.form;
