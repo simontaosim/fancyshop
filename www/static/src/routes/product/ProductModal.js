@@ -5,8 +5,9 @@ import style from './ProductBottom.css';
 import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
-import { changeProduct } from '../../reducers/product.redux';
+// import { changeProduct } from '../../reducers/product.redux';
 import {  addCount,createOrder } from '../../actions/products';
+import { addProductCount } from '../../actions/productAction';
 import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
 
@@ -34,7 +35,7 @@ class ProductModal extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    this.props.getCart(2)
+    // this.props.getCart(2)
     
   }
 
@@ -57,27 +58,30 @@ class ProductModal extends React.Component {
    onClose = key => (e) => {
     e.preventDefault(); 
     console.log(123)
-    let {cart} = this.props;
-    let product = this.props.productShow.product;
-    let count = this.props.productShow.count
+    let {cart, dispatch} = this.props;
+    // let product = this.props.productShow.product;
+    let {product} = this.props;
+    console.log(`在这里`)
+    console.log(product)
+    let count = product.count;
     // console.log(product)
     // console.log(cart)
-    let spec = this.props.spec.length == 0 ?  '默认规格': product.specifications;
+    let spec = this.props.spec.length == 0 ?  '默认规格': product.product.specifications;
     if(this.props.model.way=="orders"){
       let params = {
         userId: 2,
         status: 'unpay',
-        shopId: product.shopId,
+        shopId: product.product.shopId,
         address: "user.address.id",
         username: "李逍遥",
         mobile: "13751124249",
         products: [
           {
-            price: product.endPrice,
+            price: product.product.endPrice,
             count,
-            cover: product.cover,
-            id: product._id,
-            name: product.name_zh,
+            cover: product.product.cover,
+            id: product.product._id,
+            name: product.product.name_zh,
             specifications: {
               name: spec
             }
@@ -85,8 +89,11 @@ class ProductModal extends React.Component {
         ]
       };
       console.log(`提交订单`)
-      this.props.createOrder(params);
-      this.props.closeSpecModel()
+      console.log(params);
+      dispatch(createOrder(params));
+      dispatch(closeSpecModel());
+    //   this.props.createOrder(params);
+    //   this.props.closeSpecModel()
      }
     // let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
     //    let count =product.count !== undefined ?product.count : 1
@@ -208,7 +215,8 @@ class ProductModal extends React.Component {
 
    onChange = (val) => {
      this.setState({ val },()=>{
-       this.props.addCount(this.state.val)
+      //  this.props.addCount(this.state.val)
+       this.props.dispatch(addProductCount(this.state.val))
      });
 
    }
@@ -241,16 +249,13 @@ class ProductModal extends React.Component {
        }
      }
 
-     renderSpec() {
-
-     }
 
 
    render(){
      let modelStatus = this.props.model.spec_model;
-     let product = this.props.productShow.product;
+     let {product} = this.props
      console.log(this.props.spec.length)
-     let spec = this.props.spec.length == 0 ? [{name: '默认规格',price: product.endPrice,isThis: true}] : product.specifications;
+     let spec = this.props.spec.length == 0 ? [{name: '默认规格',price: product.product.endPrice,isThis: true}] : product.product.specifications;
      console.log(spec)
      console.log(spec.length)
      let specArr = []
@@ -319,4 +324,11 @@ class ProductModal extends React.Component {
    }
  }
 
-   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart,insertCart,createOrder })(ProductModal);
+ function mapStateToProps(state) {
+   return {
+     product: state.productReducer,
+     model: state.model,
+   }
+ }
+
+export default connect(mapStateToProps)(ProductModal);

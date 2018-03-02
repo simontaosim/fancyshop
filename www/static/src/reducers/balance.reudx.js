@@ -18,7 +18,6 @@ export function balanceReducer(state={
                         isFetching: false,
                         list: action.balance,
                     }
-        // Object.assign({},state,{balance: action.balance})
             break;
         case GET_BALANCE_INCOMES_TOTAL_SUCCESS:
             return {
@@ -26,7 +25,6 @@ export function balanceReducer(state={
                     isFetching: false,
                     total: action.total,
                     }
-        // Object.assign({},state,{total: action.total})
             break;
         default:
             return state
