@@ -77,8 +77,8 @@ function receiveProductById(product){
     type: RECEIVE_PRODUCT_BYID,
     product,
   }
-
 }
+
 function receiveProductByIdError(error){
 
 }
