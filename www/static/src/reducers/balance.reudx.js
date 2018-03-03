@@ -18,14 +18,12 @@ export function balanceReducer(state={
                         isFetching: false,
                         list: action.balance,
                     }
-            break;
         case GET_BALANCE_INCOMES_TOTAL_SUCCESS:
             return {
                     ...state,
                     isFetching: false,
                     total: action.total,
                     }
-            break;
         default:
             return state
     }

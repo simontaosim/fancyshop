@@ -19,6 +19,7 @@ import './index.css';
 import axios from 'axios';
 import '../../service/data/datasource'
 import { loadRecommandProducts,gainRecommandProducts } from '../../actions/products';
+import { getRecommandProducts } from '../../actions/productsAction';
 import {getHomeTags} from '../../actions/app.js'
 
 
@@ -36,7 +37,7 @@ class AppHome extends React.Component{
   }
   componentDidMount(){
     const { dispatch } = this.props;
-    dispatch(loadRecommandProducts(1,3));
+    dispatch(getRecommandProducts(1,3))
     dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
     dispatch(gainRecommandProducts(1,1));
@@ -88,11 +89,11 @@ class AppHome extends React.Component{
 
           <WhiteSpace />
           <WhiteSpace />
-          <RecommandProducts products={this.props.recommandProducts} status={this.props.recommandProducts.status} />
+          <RecommandProducts  />
           <WhiteSpace />
             <ShopTagMenu history={this.props.path} />
           <WhiteSpace />
-          <GoodsList recommandProducts={this.props.products} />
+          {/* <GoodsList recommandProducts={this.props.products} /> */}
 
         </Flex>
     )
@@ -101,8 +102,8 @@ class AppHome extends React.Component{
 function indexHome(state){
   return {
     appInfo: state.AppInfo,
-    recommandProducts: state.recommandProducts,
-    products: state.productShow
+    products: state.productShow,
+    recommandProducts: state.recommandProductsReducer
   }
 }
 export default connect(indexHome)(AppHome);

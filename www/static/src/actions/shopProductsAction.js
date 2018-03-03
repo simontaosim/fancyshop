@@ -16,8 +16,6 @@ function getShopProductsSuccess(products) {
 
  export function getShopProducts(shopId,page,pagesize) {
     return dispatch => {
-      console.log(`加载店铺商品`)
-      console.log(shopId)
       MClient.sub('app.get.shop.products',[shopId,page,pagesize]);
       MClient.connect();
       let products = [];
@@ -26,7 +24,6 @@ function getShopProductsSuccess(products) {
             if(products.length< pagesize){
               products.push({fields,id})
             }
-            console.log(products);
             dispatch(getShopProductsSuccess(products));
           }
         });

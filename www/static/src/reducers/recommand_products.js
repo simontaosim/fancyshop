@@ -3,7 +3,6 @@ export function recommandProducts(state={
   status: "ready",
   loadingText: "开始加载",
   products: null,
-  product: null,
 }, action){
   switch (action.type) {
     case EXCEPT_RECOMMAND_PRODUCTS:

@@ -14,6 +14,7 @@ import { balance } from '../reducers/balance';
 import { recommandProducts } from '../reducers/recommand_products';
 import { balanceReducer } from '../reducers/balance.reudx';
 import { shopProductsReducer } from '../reducers/shop.product.redux';
+import { recommandProductsReducer } from '../reducers/products.redux';
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 export default function configureStore() {
@@ -37,7 +38,8 @@ export default function configureStore() {
       order,
       balance,
       balanceReducer,
-      shopProductsReducer 
+      shopProductsReducer ,
+      recommandProductsReducer
     }),
     enhancer);
 }
