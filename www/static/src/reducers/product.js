@@ -5,7 +5,7 @@ const initState = {
   	"isSale" : true,
   	"name_zh" : "",
   	"name" : "",
-  	"price" : NaN,
+  	"price" : "",
   	"description" : "",
   	"brief" : "",
   	"images" : [
