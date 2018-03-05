@@ -1,11 +1,8 @@
 import React from 'react'
-import { List, InputItem, Button, WhiteSpace, WingBlank,Tabs } from 'antd-mobile';
+import { WhiteSpace, Tabs } from 'antd-mobile';
 import { connect } from 'react-redux'
 import Login from './Login'
 import MobileLogin from './MobileLogin'
-import {  Redirect } from 'react-router-dom'
-
-
 
 const tabs = [
   { title: '手机登陆', sub: '1' },
@@ -18,15 +15,12 @@ class TabLogin  extends React.Component {
     super(props)
 
    }
+   componentDidMount(){
+
+   }
 
    render() {
-
-    const authenticated = this.props.user.authenticated
-    if(authenticated){
-      return (
-        <Redirect to="/"/>
-      );
-    }
+    
     return (
       <div >
 
@@ -50,7 +44,8 @@ class TabLogin  extends React.Component {
 
  function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    appUser: state.AppUser,
   }
 }
 

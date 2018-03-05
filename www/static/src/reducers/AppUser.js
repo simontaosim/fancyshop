@@ -1,12 +1,24 @@
-import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE, GET_LOGIN_SMS_CODE_SUCCESS, GET_LOGIN_SMS_CODE_FAIL } from "../actions/users";
+import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE, 
+    GET_LOGIN_SMS_CODE_SUCCESS, GET_LOGIN_SMS_CODE_FAIL, 
+    LOGIN_SMS_CODE_FEED_BACK, EXPECT_LOGIN, EXPECT_LOGIN_FINISHED, 
+    LOGIN_SUCCESS, LOGIN_FAIL, LOAD_UNLOGINED_USER_INFO,
+    LOAD_USER_INFO_SUCCESS, 
+    MEMORY_PATH_BEFORE_LOGINED,
+    EXPECT_LOGINED_USER_INFO} from "../actions/users";
 
 export default function AppUser(state={
     id: '',
+    loading: true,
     username: "",
+    stampedToken: "",
+    pathBeforeLogined: "/",    
+    loginStatus: "notWoken",
+    loginFailReason: "",
     status: 'offline',
     loginSMSCode: '',
     validSMSCode: "",
     roleName: 'nobody',
+    loginSMSCodeFeedBackTimes: 0,
     orders: [],
     balance: {
         incomes: [],
@@ -15,13 +27,62 @@ export default function AppUser(state={
     products: [],
   }, action){
     switch (action.type) {
+        case EXPECT_LOGINED_USER_INFO:
+            return Object.assign({}, state, {
+                loading: true,
+            })
+        case LOAD_UNLOGINED_USER_INFO:
+            return Object.assign({}, state, {
+                loading: false,
+            })
+        case LOAD_USER_INFO_SUCCESS:
+            return Object.assign({}, state, {
+                stampedToken: action.stampedToken,
+                expiredLoginTime: action.expiredLoginTime,
+                id: action.userId,
+                loginStatus: "logined",
+                status: "online",
+                username: action.user.username,
+                loading: false,
+            })
+        case MEMORY_PATH_BEFORE_LOGINED:
+            return Object.assign({}, state, {
+                pathBeforeLogined: action.path,
+            })
+        case EXPECT_LOGIN:
+            return Object.assign({}, state, {
+                loginStatus: "logining",
+            })
+        case EXPECT_LOGIN_FINISHED:
+            return Object.assign({}, state, {
+                loginStatus: "notWoken",
+            })
+        case LOGIN_SUCCESS: 
+            return Object.assign({}, state, {
+                stampedToken: action.stampedToken,
+                expiredLoginTime: action.expiredLoginTime,
+                id: action.userId,
+                loginStatus: "logined",
+                status: "online",
+            })
+        case LOGIN_FAIL:
+            return Object.assign({}, state, {
+                loginFailReason: action.reason,
+                loading: false,
+            });
         case EXPECT_LOGOUT:
             return Object.assign({}, state, {
-                status: 'logouting'
+                status: 'logouting',
+                loading: true,
             });
         case LOGOUT_SUCCESS:
             return Object.assign({}, state, {
-                status: 'offline'
+                stampedToken: "",
+                expiredLoginTime: "",
+                id: "",
+                loginStatus: "",
+                status: 'offline',
+                loading: false,
             });
         case EXPECT_LOGIN_SMS_CODE:
             return Object.assign({}, state, {
@@ -34,7 +95,11 @@ export default function AppUser(state={
         case GET_LOGIN_SMS_CODE_FAIL:
             return  Object.assign({}, state, {
                 loginSMSCode: "error",
-        })         
+            })    
+        case LOGIN_SMS_CODE_FEED_BACK:  
+            return  Object.assign({}, state, {
+                loginSMSCodeFeedBackTimes: action.feedBackTimes,
+            })
         default:
             return state;
     }

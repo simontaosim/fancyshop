@@ -3,8 +3,6 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  Link,
-  BrowserRouter
 } from 'react-router-dom';
 
 
@@ -15,11 +13,9 @@ import AppHome from './home';
 import My from './my';
 import Register from './register/Register';
 import {  connect } from 'react-redux';
-import PrivateRoute from './container/PrivateRoute';
 import TabLogin from './login/TabLogin';
 import { getStore } from '../config/mUtils';
 import Test from './checkbox';
-// import Orders from './orders/index';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
 import WaitDetails from './orders/WaitDetails';
@@ -46,103 +42,53 @@ import VipCard from './vipcard/index';
 import Coupon from './coupon/index';
 import MyBankCard from './wallet/MyBankCard';
 import EditBankCard from './wallet/EditBankCard';
-// import OrderList from './orders/OrderList';
 import ForgotPassword from './password/'
 import ResetPassword from './password/ResetPassword'
 import NoMatchPage from './no_match/'
 import Shops from './shops/'
 import Personal from './my/Personal';
 import ProductListView from './productsListView'
-
-// import Orders from './Orders/index';
-// import OrderList from './Orders/OrderList';
-
 import Orders from './orders/index';
 import OrderList from './orders/OrderList';
 
+import {  Toast } from 'antd-mobile';
+import{ loadLoginedUserInfo } from '../actions/users';
 
 import createHistory from 'history/createHashHistory';
+import configureStore from "../stores/index";
+
+const store = configureStore();
 const history = createHistory();
-
-
 const Home = ({ match }) => (
     <AppHome path={match.path} />
   )
+
 const ShopsPage = ({ match }) => (
     <Shops path={match.path}  params={match.params}  />
   )
-
 
 const Messages = ({match}) => (
   <MessageBox path={match.path} />
 )
 
-
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-)
-
-const Topics = ({ match }) => (
-  <div>
-    <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
-      </li>
-    </ul>
-
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
-  </div>
-)
-
 class App extends React.Component {
 
+
   componentDidMount(){
-    console.log('开始进入App');
-    console.log('检查用户状态');
-    console.log('检查当前路由状态');
-    console.log(history);
-
-  }
-
-  routeControl(CurrentUser){
-
+    store.dispatch(loadLoginedUserInfo());
+    
   }
   render() {
-    console.log('每次渲染都要检测');
-    const authenticated = getStore('authenticated');
-    // console.log(MClient)
-    // console.log(MClient.userId)
-    // MClient.ddp.on('result',({id,message,result}) =>{
-    //   console.log(result.id)
-    // })
-  //  MClient.connected()
+    
     return (
       <Router >
           <MainLayout history={history}>
           <Switch>
-              <Route exact path="/" component={Home} authenticated={authenticated}/>
-              <Route exact path="/money" component={Home} authenticated={authenticated}/>
-              <Route path="/messages" component={Messages} authenticated={authenticated}/>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/money" component={Home} />
+              <Route path="/messages" component={Messages} />
               <Route path = "/shop_cart" component={ShopCart} />
-              <Route path="/my"  component={My} authenticated={authenticated}/>
+              <Route path="/my"  component={My} />
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />
