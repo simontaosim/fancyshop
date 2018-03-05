@@ -21,6 +21,7 @@ import '../../service/data/datasource'
 import { loadRecommandProducts,gainRecommandProducts } from '../../actions/products';
 import { getRecommandProducts } from '../../actions/productsAction';
 import {getHomeTags} from '../../actions/app.js'
+import { getProducts } from '../../actions/productsAction'; 
 
 
 
@@ -41,6 +42,7 @@ class AppHome extends React.Component{
     dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
     dispatch(gainRecommandProducts(1,1));
+    dispatch(getProducts(1,1));
     setTimeout(() => {
      this.setState({
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],
@@ -93,7 +95,7 @@ class AppHome extends React.Component{
           <WhiteSpace />
             <ShopTagMenu history={this.props.path} />
           <WhiteSpace />
-          {/* <GoodsList recommandProducts={this.props.products} /> */}
+          <GoodsList  />
 
         </Flex>
     )

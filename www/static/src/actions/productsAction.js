@@ -3,11 +3,10 @@ import { MClient } from '../config/asteroid.config.js';
 
 
 export const GET_RECOMMAND_PRODUCTS_SUCCESS = 'GET_RECOMMAND_PRODUCTS_SUCCESS';
-export const RECEIVE_RECOMMAND_PRODUCTS = 'RECEIVE_RECOMMAND_PRODUCTS';
-export const RECEIVE_PRODUCT_BYID = 'RECEIVE_PRODUCT_BYID';
-export const ADD_COUNT = "ADD_COUNT";
-export const RECEIVE_SHOP_PRODUCTS_BYSHOPID = "RECEIVE_SHOP_PRODUCTS_BYSHOPID";
-export const GET_RECOMMAND_PRODUCTS= "GET_RECOMMAND_PRODUCTS";
+export const GET_RECOMMAND_PRODUCTS_FAILD = 'GET_RECOMMAND_PRODUCTS_FAILD';
+export const GET_PRODUCTS_SUCCESS= "GET_PRODUCTS_SUCCESS";
+export const GET_PRODUCTS_FAILD= "GET_PRODUCTS_FAILD";
+;
 
 
 function getRecommandProductsSuccess(products) {
@@ -17,6 +16,14 @@ function getRecommandProductsSuccess(products) {
     }
 }
 
+
+function getProductsSuccess(products,page) {
+  return {
+    type: GET_PRODUCTS_SUCCESS,
+    products,
+    page
+  }
+}
 
 export function getRecommandProducts(page, pagesize){
     return dispatch => {
@@ -37,3 +44,20 @@ export function getRecommandProducts(page, pagesize){
       });
     }
   }
+
+
+  export function getProducts(page,pagesize,data=[]) {
+    return dispatch => {
+      let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
+      MClient.on('result', message => {
+        if(message.id === methodId && !message.error){
+          console.log(message.result)
+          console.log(page)
+            dispatch(getProductsSuccess(data.concat(message.result),page))
+        }
+      })
+    }
+  }
+
+
+ 

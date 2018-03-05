@@ -12,6 +12,7 @@ import { productList, product } from '../../reducers/product.redux';
 import { productinfo } from '../../map_props';
 import { productShow } from '../../reducers/product';
 import { gainRecommandProducts } from '../../actions/products';
+import { getProducts } from '../../actions/productsAction';
 import { MClient } from '../../config/asteroid.config.js';
 
 
@@ -53,7 +54,6 @@ class GoodsList extends React.Component {
   };
 
   onEndReached = (event) => {
-    console.log(this.props.products)
   const page = this.props.products.page+1
     
     console.log(page);
@@ -61,19 +61,16 @@ class GoodsList extends React.Component {
     this.setState({
       isLoading: true,
     });
-    setTimeout(() => {
-    //  page += 1;
-      
-     dispatch(gainRecommandProducts(page,1,this.props.products.products));
-      
-    },1000)
-    console.log('reach end', event);
+    dispatch(getProducts(page,1,this.props.products.list));
   }
 
   render() {
+    console.log(this.props.products)
+    let {products} = this.props;
+    
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
-    }).cloneWithRows(this.props.products.products)
+    }).cloneWithRows(products.list)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -136,7 +133,8 @@ class GoodsList extends React.Component {
 }
 function mapProducts(state) {
   return {
-    products: state.productShow
+    // products: state.productShow
+    products: state.ProductsReducer
   }
 }
 

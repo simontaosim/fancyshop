@@ -5,6 +5,8 @@ import { MClient } from '../config/asteroid.config.js';
 export const GET_PRODUCT_SUCCESS = "GET_PRODUCT_SUCCESS";
 export const GET_PRODUCT_FAILD= "GET_PRODUCT_FAILD";
 export const ADD_PRODUCT_COUNT = "ADD_PRODUCT_COUNT";
+export const GET_PRODUCTS_SUCCESS= "GET_PRODUCTS_SUCCESS";
+export const GET_PRODUCTS_FAILD = "GET_PRODUCTS_FAILD";
 
 
 function getProductSuccess(product){
