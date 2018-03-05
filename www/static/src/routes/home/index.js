@@ -4,21 +4,12 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-// import { appInfo } from '../../map_props.js';
-import { Flex, Carousel, WhiteSpace, WingBlank, Grid } from 'antd-mobile';
-import Recommend from "./Recommend";
+import { Flex, Carousel, WhiteSpace } from 'antd-mobile';
 import ShopTagMenu from "./ShopTagMenu";
-
 import RecommandProducts from "./RecommandProducts.js";
-//import ShopTagMenu from "./shoptagmenu";
 import GoodsList from "./GoodsList";
-
-//redux actions
 import {setAppTitle} from '../../actions/app.js';
 import './index.css';
-import axios from 'axios';
-import '../../service/data/datasource'
-import { loadRecommandProducts,gainRecommandProducts } from '../../actions/products';
 import { getRecommandProducts } from '../../actions/productsAction';
 import {getHomeTags} from '../../actions/app.js'
 import { getProducts } from '../../actions/productsAction'; 
