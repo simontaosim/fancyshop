@@ -16,6 +16,7 @@ class Register extends React.Component {
     this.state = {
       user: '',
       pwd: '',
+      pwdRepeat: '',
       mobile: '',
       verify: '',
       count: 60,
@@ -148,6 +149,11 @@ sendCode() {
             placeholder="输入您的密码"
             onChange={v=>this.handleChange('pwd',v)}
           >密码</InputItem>
+           <InputItem
+            type="password"
+            placeholder="输入您的重复密码"
+            onChange={v=>this.handleChange('pwd',v)}
+          >重复密码</InputItem>
         </List>
 
         <WhiteSpace />
