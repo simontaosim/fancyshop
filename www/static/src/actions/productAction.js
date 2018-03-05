@@ -1,4 +1,3 @@
-import history from '../history';
 import { MClient } from '../config/asteroid.config.js';
 
 
@@ -26,7 +25,6 @@ export function addProductCount(num) {
 export function getProduct(id){
   return dispatch => {
     MClient.sub("get.product.id", [id]);
-    let product = [];
     MClient.connect();
     let methodId = MClient.method("get.oneproduct.id", [id]);
 

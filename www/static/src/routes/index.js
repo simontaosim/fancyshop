@@ -14,7 +14,6 @@ import My from './my';
 import Register from './register/Register';
 import {  connect } from 'react-redux';
 import TabLogin from './login/TabLogin';
-import { getStore } from '../config/mUtils';
 import Test from './checkbox';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
@@ -50,10 +49,7 @@ import Personal from './my/Personal';
 import ProductListView from './productsListView'
 import Orders from './orders/index';
 import OrderList from './orders/OrderList';
-
-import {  Toast } from 'antd-mobile';
 import{ loadLoginedUserInfo } from '../actions/users';
-
 import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
 

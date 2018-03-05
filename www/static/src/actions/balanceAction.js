@@ -1,4 +1,3 @@
-import history from '../history';
 import { MClient } from '../config/asteroid.config.js';
 
 

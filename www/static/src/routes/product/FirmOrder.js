@@ -2,8 +2,6 @@ import React from 'react';
 import { Flex, TextareaItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import styles from '../orders/WaitDetails.css';
-import { orderInfo} from '../../map_props';
-import { connect } from 'react-redux';
 import { MClient } from '../../config/asteroid.config.js'
 import MyActivityIndicator  from '../common/MyActivityIndicator';
 
@@ -59,26 +57,7 @@ class FirmOrder extends React.Component {
   }
 
   render(){
-    let {order, shop} = this.state;
-   let productItem;
-   if(order.products.length>0){
-      productItem  = order.products.map((product,index)=> {
-       return(
-       <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
-         <Flex justify = "center" className = {styles['goods-item']}>
-            <div className = {styles['img-border']} >
-              <img alt="" src = {product.cover} className = {styles['goods-img']}/>
-            </div>
-            <div >
-              <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
-              <span className = {styles['type-color']}>规格：{product.specifications.name} </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥{product.price/100} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×{product.count}</span>
-            </div>
-          </Flex>
-        </div>
-       )
-     })
-   }
-
+  let {order, shop} = this.state;
     return(
       <div style = {{marginTop:'60px',fontSize:'16px'}}>
        <MyActivityIndicator isFetching={this.state.isFetching} />
@@ -107,7 +86,7 @@ class FirmOrder extends React.Component {
             <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
               <Flex justify = "center" className = {styles['goods-item']}>
                  <div className = {styles['img-border']} >
-                   <img src = {product.cover} className = {styles['goods-img']}/>
+                   <img src = {product.cover} className = {styles['goods-img']} alt="图片未显示"/>
                  </div>
                  <div >
                    <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
