@@ -4,8 +4,7 @@
 */
 import React from 'react'
 
-import { Link } from 'react-router-dom';
-import { Icon, TabBar } from 'antd-mobile';
+import { TabBar } from 'antd-mobile';
 import { connect } from 'react-redux';
 
 import { appInfo } from '../map_props.js';
@@ -23,7 +22,6 @@ class BottomMenu extends React.Component{
 
   }
   componentDidMount(){
-    // console.log(this.props);
 
     const { history }  = this.props;
     const pathname = history.location.pathname;
@@ -50,7 +48,7 @@ class BottomMenu extends React.Component{
 
   render(){
 
-    const { dispatch, history } = this.props;
+    const {history } = this.props;
 
     return(
         <div style={{ position: 'fixed', height: '10%', width: '100%', bottom: 0, zIndex: 7777 }}>

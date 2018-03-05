@@ -1,12 +1,9 @@
 import React from 'react';
-import { SearchBar, Button, WhiteSpace, WingBlank, Flex} from 'antd-mobile';
+import { SearchBar, Flex} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import s from './ProductSearch.css';
 
 class SearchBox extends React.Component {
-  constructor() {
-    super();
-  }
 
   render(){
     return(

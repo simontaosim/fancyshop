@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 
 class NoMatchPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount(){
 
-  }
   render(){
     return (
       <div　style={{textAlign: 'center'}}>

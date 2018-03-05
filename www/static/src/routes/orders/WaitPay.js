@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Flex } from 'antd-mobile';
-import { Link } from 'react-router-dom';
 import ShopName from './ShopName.js';
 import Goods from './Goods.js';
 import styles from './Common.css';

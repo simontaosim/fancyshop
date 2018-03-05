@@ -4,27 +4,16 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { appInfo } from '../../map_props.js';
-import {setAppTitle} from '../../actions/app.js';
-import MyList from './MyList';
 import { Flex } from 'antd-mobile';
 import { 
-  List, 
-  Badge,
   Button,
-  WhiteSpace,
-  WingBlank,Card,
-  Checkbox,Modal, 
+  WingBlank, Modal, 
   Toast} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
-import{ logout } from '../../actions/users';
-import { MClient } from '../../config/asteroid.config.js'
-
-
+import{ logout, memoryPathBeforeLogined, loadLoginedUserInfo } from '../../actions/users';
 
 const alert = Modal.alert;
 
@@ -32,11 +21,11 @@ class AppMy extends React.Component{
   constructor(props) {
     super(props);
     this.confirmWindow = this.confirmWindow.bind(this);
+    
   }
 
   confirmWindow() {
-    let self = this
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     alert('退出当前账号','您是否确认推出当前帐号?',[
       { text: '确定', onPress: () => {
           dispatch(logout());
@@ -46,39 +35,46 @@ class AppMy extends React.Component{
   }
 
 
-  componentDidMount(){
+  componentWillMount(){
+    document.title = '个人中心';
     const { dispatch } = this.props;
-    console.log('组件渲染完成');
-    console.log(MClient)
-    console.log(MClient.userId)
-
-    console.log('userId local', window.localStorage["Meteor.userId"]);
+    dispatch(memoryPathBeforeLogined('/my'));
+    dispatch(loadLoginedUserInfo());
+   
   }
 
-
-  render(){
-    const { dispatch, current_user, appUser } = this.props;
-    console.log("当前用户", current_user)
+  componentWillReceiveProps(nextProps){
+    const {appUser } = nextProps;
+    if(appUser.loading){
+      return Toast.loading("载入中", 1, ()=>{
+        console.log('')
+      });
+    }
     if(appUser.status === 'logouting' ){
       Toast.loading("正在登出", 3, ()=>{
         console.log('登出中')
       });
     }
     if(appUser.status === 'offline' ){
-      Toast.info("请先登陆", 2, ()=>{
+      Toast.info("请登录用户", 1, ()=>{
         this.props.history.push('/tablogin');
       });
     }
+  }
+
+
+  render(){
+    
    
     return (
       <div >
         <div className = {style['back-color']}>
           <Flex justify = 'center' align = "center">
-              <img src = {userImg} className = {style['user-img']}/>
+              <img alt="" src = {userImg} className = {style['user-img']}/>
           </Flex>
           <Flex justify = "end" className = {style['pencil-position']} >
             <Link to = "/personal">
-              <img src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
+              <img  alt="" src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
             </Link>
            </Flex>
           <Flex justify = "center"  className = {style['nick-name-pos']}>
@@ -113,4 +109,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(AppMy);
 
-// export default connect(appInfo)(AppMy);

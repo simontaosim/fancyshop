@@ -1,12 +1,9 @@
 import React from 'react';
-import { Flex, Button, Tabs } from 'antd-mobile';
+import { Flex } from 'antd-mobile';
 import s from './Withdraw.css';
 import successImg from '../../assets/img/yes.png';
 
 class WithdrawSuccess extends React.Component {
-  constructor() {
-    super();
-  }
 
   render(){
     return(
@@ -21,7 +18,7 @@ class WithdrawSuccess extends React.Component {
           发起时间： 2017年8月3日  23：00<br/>
         </div>
         <Flex justify = "end">
-          <img src = {successImg} className = {s['success-img']}/>
+          <img alt="" src = {successImg} className = {s['success-img']}/>
         </Flex>
       </Flex>
     )

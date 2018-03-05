@@ -6,9 +6,7 @@ import Finish from './Finish';
 import styles from './Common.css';
 
 class Invalid extends React.Component {
-  constructor() {
-    super()
-  }
+ 
 
   render(){
     return(

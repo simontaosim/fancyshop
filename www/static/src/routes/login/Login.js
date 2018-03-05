@@ -1,23 +1,8 @@
 import React from 'react'
-import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { Toast, List, InputItem, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { MClient } from '../../config/asteroid.config.js'
 import { connect } from 'react-redux'
-import { login, loginOut } from '../../reducers/user.redux.js'
-import {  Redirect } from 'react-router-dom'
-import { Flex } from 'antd-mobile';
-import { Icon, Grid } from 'antd-mobile';
-
-// import "./MobileLogin.css"
-// import "./Login.css"
-// import backImg from './back.png'
-// import backgroundImg from './background.jpg'
-// import userImg from './people.png'
-// import validateImg from './validate.png'
-
-const PlaceHolder = ({ className = '', ...restProps }) => (
-  <div className={`${className} placeholder`} {...restProps}>Block</div>
-);
-
+import { login } from "../../actions/users.js"
 
 class Login extends React.Component {
   constructor(props) {
@@ -61,9 +46,14 @@ class Login extends React.Component {
   }
 
   handleLogin() {
+    const { dispatch } = this.props;
     let username = this.state.user
     let password = this.state.pwd
-    this.props.login(username,password)
+    let loginParams = {
+      username,
+      password
+    }
+    dispatch(login("password", loginParams));
   }
   handleForgot() {
     this.props.history.push('/forgotpassword')
@@ -74,20 +64,19 @@ class Login extends React.Component {
       [key]:value
     })
   }
+
+ 
   render() {
-    const authenticated = this.props.user.authenticated
-    if(authenticated){
-      return (
-        <Redirect to="/"/>
-      );
-    }
+   
+   
+
     return(
       <div>
       <WingBlank>
       <List renderHeader={() => '进入万车汇'}>
         <InputItem
           type="text"
-          placeholder="输入您的账户"
+          placeholder="手机号/用户名"
           onChange={v=>this.handleChange('user',v)}
         >账户</InputItem>
         <InputItem
@@ -117,9 +106,10 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    appUser: state.AppUser
   }
 }
 
 
-export default connect(mapStateToProps,{login,loginOut})(Login);
+export default connect(mapStateToProps)(Login);

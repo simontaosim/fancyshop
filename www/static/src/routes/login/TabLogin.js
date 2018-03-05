@@ -1,11 +1,9 @@
 import React from 'react'
-import { List, InputItem, Button, WhiteSpace, WingBlank,Tabs } from 'antd-mobile';
+import { WhiteSpace, Tabs, Toast } from 'antd-mobile';
 import { connect } from 'react-redux'
 import Login from './Login'
 import MobileLogin from './MobileLogin'
-import {  Redirect } from 'react-router-dom'
-
-
+import { login, expectLoginFinished, loginFail } from '../../actions/users.js';
 
 const tabs = [
   { title: '手机登陆', sub: '1' },
@@ -18,15 +16,39 @@ class TabLogin  extends React.Component {
     super(props)
 
    }
+   componentDidMount(){
+
+   }
+   componentWillReceiveProps(nextProps){
+    const { appUser, dispatch} = nextProps;
+    if(appUser.loginStatus === "logining"){
+      Toast.loading("登录中，请稍后", 1, function(){
+        //将登录状态还原为未发起
+        dispatch(expectLoginFinished());
+        
+      });
+    }
+    if(appUser.loginFailReason !== ""){
+      Toast.fail(appUser.loginFailReason, 2, function(){
+        //将登录反馈状态还原为未发起
+        dispatch(loginFail(""));
+        dispatch(expectLoginFinished());
+        
+      });
+    }
+    if(appUser.loginStatus === "logined"){
+      Toast.success("登陆成功！", 2, ()=>{
+        //将登录反馈状态还原为未发起
+        expectLoginFinished();
+        nextProps.history.push(appUser.pathBeforeLogined);
+      });
+    }
+   
+    Toast.hide();
+  }
 
    render() {
-
-    const authenticated = this.props.user.authenticated
-    if(authenticated){
-      return (
-        <Redirect to="/"/>
-      );
-    }
+    
     return (
       <div >
 
@@ -50,7 +72,8 @@ class TabLogin  extends React.Component {
 
  function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    appUser: state.AppUser,
   }
 }
 

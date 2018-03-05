@@ -1,11 +1,8 @@
 import React from 'react';
-import { List, Icon, Flex, Button, InputItem, TextareaItem } from 'antd-mobile';
+import { Flex, TextareaItem } from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import goodImg from '../../assets/img/reward/good.jpg';
 import styles from '../orders/WaitDetails.css';
-import stylec from '../orders/Common.css';
 import { orderInfo} from '../../map_props';
-import { loadOrderById } from '../../actions/orders';
 import { connect } from 'react-redux';
 import { MClient } from '../../config/asteroid.config.js'
 import MyActivityIndicator  from '../common/MyActivityIndicator';
@@ -62,24 +59,42 @@ class FirmOrder extends React.Component {
   }
 
   render(){
-    let {order, shop,  isFetching} = this.state;
+    let {order, shop} = this.state;
+   let productItem;
+   if(order.products.length>0){
+      productItem  = order.products.map((product,index)=> {
+       return(
+       <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
+         <Flex justify = "center" className = {styles['goods-item']}>
+            <div className = {styles['img-border']} >
+              <img alt="" src = {product.cover} className = {styles['goods-img']}/>
+            </div>
+            <div >
+              <Flex style = {{marginBottom:'10px'}}>{product.name}</Flex>
+              <span className = {styles['type-color']}>规格：{product.specifications.name} </span>    <span className = {styles['price-pst']}><span className = {styles['price-color']}>￥{product.price/100} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×{product.count}</span>
+            </div>
+          </Flex>
+        </div>
+       )
+     })
+   }
 
     return(
       <div style = {{marginTop:'60px',fontSize:'16px'}}>
-       <MyActivityIndicator isFetching={isFetching} />
+       <MyActivityIndicator isFetching={this.state.isFetching} />
         <div className = {styles['item-info']}>
-          <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
+          <div><img alt="" src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
           <div>
           <Link to = "/address">
-            <div style = {{color:'#333',padding:'10px 0'}}><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.address}</span></div>
-            <div style = {{color:'#333'}}><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.phone}</span></div>
+            <div style = {{color:'#333',padding:'10px 0'}}><img alt="" src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.address}</span></div>
+            <div style = {{color:'#333'}}><img alt="" src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888',backgroundColor:'#eee'}}>{shop.phone}</span></div>
           </Link>
           </div>
         </div>
 
 
         <div className = {styles['item-notice']}>
-          <div><img src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
+          <div><img alt="" src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
           <TextareaItem rows = "3" style = {{backgroundColor:'#eee',fontSize:'14px',width:'95%',padding:'10px 3px'}} placeholder = "到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈" onChange={v=>this.handleChange('remark',v)}/>
         </div>
         </div>

@@ -14,14 +14,12 @@ const initState = {
 
 export function order(state=initState, action){
     switch (action.type) {
-            case  RECEIVEORDERBYID:
-            console.log(`orderid`)
+		case  RECEIVEORDERBYID:
 			return Object.assign({},state,{
 				...action.order
-            })
-            break;
-      default:
-				return state
+			})
+		default:
+			return state
     }
   }
 

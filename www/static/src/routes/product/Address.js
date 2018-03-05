@@ -33,43 +33,42 @@ class Address extends React.Component {
     return(
     <div>
       <div className = {s['address-item-one']} style={{border: this.state.tagMenuClick[0] ? "2px dashed red" : "2px dashed #aaa"}} onClick={()=>{this.handleTagMenuClick(0)}}>
-        {/* style={{border: this.state.AddressClick ? "2px dashed red" : "2px dashed #aaa"}} onClick={()=>{this.handAddressClick}} */}
         <Flex>
-          <img src={require('../svg/people.svg')} className = {styles['item-icon']}/>店铺名：这是一个好听的名字
+          <img alt="" src={require('../svg/people.svg')} className = {styles['item-icon']}/>店铺名：这是一个好听的名字
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span>成都市金牛区沙湾路63号</span>
+          <img alt="" src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span>成都市金牛区沙湾路63号</span>
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
+          <img alt="" src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
         </Flex>
       </div>
       <div className = {s['address-item']} style={{border: this.state.tagMenuClick[1] ? "2px dashed red" : "2px dashed #aaa"}} onClick={()=>{this.handleTagMenuClick(1)}}>
         <Flex>
-          <img src={require('../svg/people.svg')} className = {styles['item-icon']}/>店铺名：这是一个好听的名字
+          <img alt="" src={require('../svg/people.svg')} className = {styles['item-icon']}/>店铺名：这是一个好听的名字
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span >成都市金牛区沙湾路63号</span>
+          <img alt="" src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span >成都市金牛区沙湾路63号</span>
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
+          <img alt="" src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
         </Flex>
       </div>
       <div className = {s['address-item']} style={{border: this.state.tagMenuClick[2] ? "2px dashed red" : "2px dashed #aaa"}} onClick={()=>{this.handleTagMenuClick(2)}}>
         <Flex>
-          <img src={require('../svg/people.svg')} className = {styles['item-icon']}/>店铺名：这是一个好听的名字
+          <img alt="" src={require('../svg/people.svg')} className = {styles['item-icon']}/>店铺名：这是一个好听的名字
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span>成都市金牛区沙湾路63号</span>
+          <img alt="" src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span>成都市金牛区沙湾路63号</span>
         </Flex>
         <WhiteSpace/>
         <Flex>
-          <img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
+          <img alt="" src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span>123456789</span>
         </Flex>
       </div>
     </div>
