@@ -26,27 +26,16 @@ class GoodsList extends React.Component {
     });
 
     this.state = {
-      // dataSource,
       isLoading: false,
       data: [],
-      // page: 1,
     };
   }
 
   componentDidMount() {
-    // this.props.productList();
   }
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps.recommandProducts);
-    // console.log(this.props.products.products)
-    // if (nextProps.recommandProducts !== this.props.products.products) {
-    //   this.setState({
-    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
-    //     isLoading: false,
-    //   });
-    // }
   }
 
   onRefresh = () => {
@@ -55,8 +44,6 @@ class GoodsList extends React.Component {
 
   onEndReached = (event) => {
   const page = this.props.products.page+1
-    
-    console.log(page);
     let { dispatch } = this.props;
     this.setState({
       isLoading: true,
@@ -65,9 +52,7 @@ class GoodsList extends React.Component {
   }
 
   render() {
-    console.log(this.props.products)
     let {products} = this.props;
-    
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     }).cloneWithRows(products.list)
@@ -133,7 +118,6 @@ class GoodsList extends React.Component {
 }
 function mapProducts(state) {
   return {
-    // products: state.productShow
     products: state.ProductsReducer
   }
 }

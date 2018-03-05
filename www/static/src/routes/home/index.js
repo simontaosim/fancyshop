@@ -41,7 +41,6 @@ class AppHome extends React.Component{
     dispatch(getRecommandProducts(1,3))
     dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
-    dispatch(gainRecommandProducts(1,1));
     dispatch(getProducts(1,1));
     setTimeout(() => {
      this.setState({
@@ -104,7 +103,6 @@ class AppHome extends React.Component{
 function indexHome(state){
   return {
     appInfo: state.AppInfo,
-    products: state.productShow,
     recommandProducts: state.recommandProductsReducer
   }
 }

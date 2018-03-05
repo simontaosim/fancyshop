@@ -38,12 +38,9 @@ class FirmOrder extends React.Component {
   }
  
   componentWillReceiveProps(nextProps){
-    console.log(nextProps)
   }
 
   paid() {
-    console.log(`提交`)
-  console.log(this.state.remark)
     let params = {
       remark: this.state.remark,
       id: this.state.order._id,

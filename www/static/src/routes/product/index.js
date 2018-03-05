@@ -37,9 +37,6 @@ componentDidMount() {
     let id = this.props.match.params.id;
     let { dispatch } = this.props;
     dispatch(getProduct(id))
-    // this.props.loadProductById(id)
-
-    // this.props.getProduct(id)  
  }
 
  componentWillReceiveProps(nextProps) {

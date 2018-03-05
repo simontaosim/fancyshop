@@ -25,7 +25,6 @@ class ShopTagMenu extends React.Component {
 
   }
   componentwillunmount(){
-    console.log('destroy');
   }
 
 
