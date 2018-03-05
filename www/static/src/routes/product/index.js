@@ -6,12 +6,7 @@ import ProductShare from './ProductShare';
 import ProductBottom from './ProductBottom';
 import ProductModal from './ProductModal';
 import style from './common.css'
-import goodImg from '../../assets/img/reward/good.jpg';
 import '../../service/data/datasource';
-import axios from 'axios';
-// import {getProduct} from '../../reducers/product.redux';
-import { getCart } from '../../reducers/cart.redux';
-import { loadProductById } from '../../actions/products';
 import { getProduct } from '../../actions/productAction';
 import { connect } from 'react-redux';
 import 
@@ -97,7 +92,8 @@ render(){
                     onLoad={() => {
                       window.dispatchEvent(new Event('resize'));
                       this.setState({ imgHeight: 'auto' });
-                    }}  
+                    }} 
+                    alt="图片未显示" 
                   />
                 </div>
             )
@@ -122,7 +118,7 @@ render(){
       <Flex justify = "between" className = {style['item']}>
         <Flex > <ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
-        <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px',width:'14px'}}/></Flex>
+        <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px'}}  alt="图片未显示" /></Flex>
       </Flex>
       <Flex justify = "between" className = {style['item-des']}>
         <Flex>配送方式:{product.deliver}</Flex>

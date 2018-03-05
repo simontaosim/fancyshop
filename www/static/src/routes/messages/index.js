@@ -4,8 +4,6 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-import { appInfo } from '../../map_props.js';
-import {setAppTitle} from '../../actions/app.js';
 import  AwardDetail  from './AwardDetail.js';
 import AwardIncome from './AwardIncome.js';
 import AwardHead from './AwardHead.js';
@@ -13,9 +11,7 @@ import { getBalance,getGetBalanceIncomesTotal } from '../../actions/balanceActio
 import MyActivityIndicator  from '../common/MyActivityIndicator';
 
 class MessageBox extends React.Component{
-  constructor(props) {
-    super(props);
-  }
+
 
   componentDidMount() {
     let { dispatch } = this.props;
