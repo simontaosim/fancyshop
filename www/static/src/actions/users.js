@@ -23,6 +23,10 @@ export const LOAD_USER_INFO_SUCCESS="LOAD_USER_INFO_SUCCESS";
 
 export const EXPECT_USER_CARD="EXPECT_USER_CARD"
 export const LOAD_USER_CAED_SUCCESS="LOAD_USER_CAED_SUCCESS";
+export const EXPECT_REG_SMS_CODE="EXPECT_REG_SMS_CODE";
+export const GET_REG_SMS_CODE_FAIL="GET_REG_SMS_CODE_FAIL";
+export const GET_REG_SMS_CODE_SUCCESS="GET_REG_SMS_CODE_SUCCESS";
+
 const crypto = require('crypto');
 
 //============== 用户的注册登录 ======================
@@ -37,6 +41,52 @@ export function expectLoginSMSCode(){
         type: EXPECT_LOGIN_SMS_CODE,
     }
 }
+
+export function expectRegSMSCode(){
+    return {
+        type: EXPECT_REG_SMS_CODE,
+    }
+}
+
+export function getRegSMSCode(mobile){
+
+        return dispatch => {
+            dispatch(expectRegSMSCode());
+            let methodId = MClient.method('get.reg.phonesms', [mobile]);
+            MClient.on("result", message => {
+                if (message.id === methodId && !message.error) {
+                    if(message.result === "MOBILE TAKEN"){
+                        console.error(message.result);
+                        return dispatch(getRegSMSCodeFail(message.result));
+                    }else{
+                    //加密验证码                        
+                        let hash = crypto.createHash('sha256');
+                        let cryptoCode = hash.update(message.result).digest('hex');
+                        return dispatch(getRegSMSCodeSuccess(cryptoCode));
+                    }
+                }
+                if(message.id === methodId && message.error){
+                    console.error(message.error);
+                    dispatch(getRegSMSCodeFail(message.error));
+                }
+            });
+        }
+}
+
+export function getRegSMSCodeSuccess(code){
+    return {
+        type: GET_REG_SMS_CODE_SUCCESS,
+        code,
+    }
+}
+
+export function getRegSMSCodeFail(reason){
+    return {
+        type: GET_REG_SMS_CODE_FAIL,
+        reason,
+    }
+}
+
 export function getLoginSMSCodeSuccess(code){
     return {
         type: GET_LOGIN_SMS_CODE_SUCCESS,
@@ -87,7 +137,6 @@ export function loadUserCardSuccess(card){
 }
 
 export function loadUserCard(userId, token){
-    console.log(userId, token);
     return dispatch => {
         dispatch(expectUserCard());
         dispatch(validLocalToken(token));

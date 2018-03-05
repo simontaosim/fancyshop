@@ -92,7 +92,6 @@ class App extends React.Component {
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />
-              {/* <Route path = "/orders" component={Orders}/> */}
               <Route path = "/product/:id" component={Goods}/>
               <Route path = "/order_details/:orderId" component={WaitDetails}/>
               <Route path = "/paid/:orderId" component={Paid}/>
@@ -104,7 +103,6 @@ class App extends React.Component {
               <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder/:orderId" component = {FirmOrder}/>
-              {/* <Route path = "/firmorder" component = {FirmOrder}/> */}
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />

@@ -7,7 +7,9 @@ import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE,
     EXPECT_LOGINED_USER_INFO,
     EXPECT_USER_CARD,
     VALID_TOKEN_FAIL,
-    LOAD_USER_CAED_SUCCESS} from "../actions/users";
+    LOAD_USER_CAED_SUCCESS,
+    EXPECT_REG_SMS_CODE,
+    GET_REG_SMS_CODE_FAIL} from "../actions/users";
 
 export default function AppUser(state={
     id: '',
@@ -21,6 +23,7 @@ export default function AppUser(state={
     loginSMSCode: '',
     validSMSCode: "",
     roles: ['nobody'],
+    needToResetPassword: false,
     loginSMSCodeFeedBackTimes: 0,
     orders: [],
     card:null,
@@ -37,6 +40,15 @@ export default function AppUser(state={
                 card: null,
                 loginStatus: "notWoken",
                 status: 'offline',
+            })
+        case EXPECT_REG_SMS_CODE:
+            return Object.assign({}, state, {
+                regSMSCode: "loading",
+            })
+        case GET_REG_SMS_CODE_FAIL:
+            return Object.assign({}, state, {
+                regSMSCode: "error",
+                regFailReason: action.reason,
             })
         case EXPECT_LOGINED_USER_INFO:
             return Object.assign({}, state, {
