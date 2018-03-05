@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { Flex, WhiteSpace, WingBlank, Badge, Toast} from 'antd-mobile';
+import { Flex} from 'antd-mobile';
 import style from './RecommandProducts.css';
 import goodsImg from '../../assets/img/home/one.jpg';
 import { loadRecommandProducts } from '../../actions/products';

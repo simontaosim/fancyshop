@@ -49,8 +49,6 @@ export function user(state=initState,action) {
         authenticated,
       });
     case REGISTER_SUCCESS:
-      var userId = action.payload;
-      var authenticated = true;
       return Object.assign({}, state, {
         userId,
         authenticated,
@@ -65,8 +63,6 @@ export function user(state=initState,action) {
 
       });
     case FORGOT_PASSWORD:
-      var userId = action.payload;
-      var authenticated = true;
       setStore('authenticated','true')
       setStore('userId',userId)
       return Object.assign({},state,{
@@ -74,11 +70,9 @@ export function user(state=initState,action) {
         authenticated,
       });
     case RET_PASSWORD:
-     var userId = action.payload;
-     var authenticated = true;
-     setStore('authenticated','true')
-    setStore('userId',userId)
-     return Object.assign({},state,{
+      setStore('authenticated','true')
+      setStore('userId',userId)
+      return Object.assign({},state,{
         userId,
         authenticated,
       });
@@ -158,8 +152,8 @@ export function register(username,password,mobile,verify) {
             })
           }
           else
-          {parseFloat
-            Toast.info("手机已被使用")
+          { 
+            return Toast.info("手机已被使用")
           }
         })
     }else{
@@ -176,7 +170,7 @@ export function mobileRegister(mobile,verify){
       console.log(`mobile: ${mobile} verify: ${verify}`)
       let methodId = MClient.method('login.mobie',mobile);
       MClient.on("result", message => {
-        if(methodId = message.id && !message.error){
+        if(methodId === message.id && !message.error){
           removeStore('verify')
           dispatch(loginSuccess(message.result))
         }else{

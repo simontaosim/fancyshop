@@ -1,11 +1,8 @@
 import React from 'react';
 import { Flex } from 'antd-mobile';
-import { Link } from 'react-router-dom';
 import ShopName from './ShopName.js';
 import Goods from './Goods.js';
 import styles from './Common.css';
-import UntreatedDetail from './UntreatedDetail';
-import QrCode from './QrCode.js';
 import { connect } from 'react-redux';
 
 class UnTreated extends React.Component {

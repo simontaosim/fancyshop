@@ -1,17 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Flex, Tabs, Button } from 'antd-mobile';
+import { Flex, Tabs } from 'antd-mobile';
 import ShopName from './ShopName';
 import Goods from './Goods';
-import Paid from './Paid';
-import UnTreated from './UnTreated';
-import WaitPay from './WaitPay';
-import Finish from './Finish';
-import Invalid from './Invalid';
-import OrderBtn from './OrderBtn';
 import styles from './Common.css';
 import '../../service/data/datasource';
-import axios from 'axios';
 import { gainAllOrders, gainPaidOrders,gainUnPaidOrders} from '../../actions/orders';
 import OrderList from './OrderList';
 
@@ -29,25 +22,19 @@ class Orders extends React.Component {
   switchTab(tab,index) {  
     const { dispatch } = this.props;
     let status = tab.status;
-    let self = this;
     let userId = 'akDYXHWR7wcmzR9rz'
     switch(status){
       case  '全部':
-        console.log(this.state.all)
-        console.log("11111")
-      dispatch(gainAllOrders(userId));
-      console.log(this.props.orders)
+        dispatch(gainAllOrders(userId));
         break;
       case '待付款':
-      console.log(111);
-      dispatch(gainUnPaidOrders(userId));
+        dispatch(gainUnPaidOrders(userId));
         break;
       case '未处理':
-      dispatch(gainUnPaidOrders(userId));
+        dispatch(gainUnPaidOrders(userId));
         break;
       case '已完成':
-      dispatch(gainPaidOrders(userId));
-      // console.log(3333);
+        dispatch(gainPaidOrders(userId));
         break;
       default:
         console.log('无效');
@@ -63,23 +50,11 @@ class Orders extends React.Component {
       {title:'已完成', status: '已完成'},
       {title:'无效', status: '无效'},
     ]
-    // console.log(this.state.waitpay)
-    let {waitpay,all,untreated,finish}= this.state;
-    // console.log(111);
-    // console.log(this.state.waitpay)
-    // console.log(waitpay.list)
-    // console.log(untreated)
+   
     return(
     <div className = "all">
       <Tabs tabs = {tabs} initialPage = {5} animated = {false} useOnPan = {false} onChange={this.switchTab}>
         <div style = {{backgroundColor:'#fff',paddingBottom:'10px'}} key = "all">
-        {/* <OrderList /> */}
-          {/* <WaitPay waitpay={all}/>
-          <UnTreated untreated={all}/>
-          <Finish data={all}/>
-          <Invalid/> 
-          {this.state.all} */}
-
         </div>
         <div className = "waitpay" style = {{backgroundColor:'#fff'}} key = "waitay">
           <OrderList dataSource={this.props.orders}  history={this.props.history}/>

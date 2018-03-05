@@ -1,7 +1,5 @@
 import React from 'react';
 import { Flex, Button, Tabs, WhiteSpace } from 'antd-mobile';
-import { Link } from 'react-router-dom';
-import s from './MyWallet.css';
 
 class MyWallet extends React.Component {
   constructor() {

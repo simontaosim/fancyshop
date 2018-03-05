@@ -3,9 +3,6 @@ import { Flex } from 'antd-mobile';
 import couponImg from '../../assets/img/coupon.png'
 
 class Coupon extends React.Component {
-  constructor() {
-    super();
-  }
 
   render(){
     return (
@@ -17,7 +14,7 @@ class Coupon extends React.Component {
           <span style = {{fontSize:'26px',fontWeight:'700',color:'#ffcf2d',paddingLeft:'-15px'}}>200</span><span style = {{color:'#ffcf2d',fontSize:'12px'}}>元</span><br/><br/>
           <span style= {{color:'#fff',fontSize:'12px'}}>张数： &nbsp;2</span>
         </div>
-        <img src = {couponImg} style = {{width:'100%',height:'100%'}}/>
+        <img alt="" src = {couponImg} style = {{width:'100%',height:'100%'}}/>
         <div style = {{color:'#fff',position:'absolute',left:'30px',top:'100px'}}>
           <span style = {{fontSize:'16px',fontWeight:'700'}}>保养</span><br/>
           <span style = {{fontSize:'12px'}}>有效时长： 2018-02-02</span>

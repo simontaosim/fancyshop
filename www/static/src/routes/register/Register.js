@@ -7,6 +7,7 @@ import { testPhone, testPassword, testUser} from '../../config/reg'
 import Count from '../login/Count'
 import { setStore } from '../../config/mUtils'
 import { MClient } from '../../config/asteroid.config.js'
+import { getRegSMSCode } from '../../actions/users.js';
 
 class Register extends React.Component {
   constructor(props) {
@@ -31,14 +32,8 @@ class Register extends React.Component {
 
 
 sendCode() {
-  MClient.call('get.phonesms', this.state.user)
-  .then(result => {
-      Toast.info('验证码已发送请查看手机');
-      setStore('verify', result)
-  })
-  .catch(error => {
-
-  })
+  const { appUser, dispatch } = this.props;
+  dispatch(getRegSMSCode(this.state.mobile));
 }
 
 
@@ -46,17 +41,29 @@ sendCode() {
 
 
 
-onChildChange(tips,status){
-  if(status)
-    this.setState({
-    status:status
-    })
+  onChildChange(tips,status){
+    if(status)
+      this.setState({
+      status: status
+      })
+  }
+  componentDidMount(){
+    document.title = "注册万车汇帐号"
   }
 
   componentWillReceiveProps(nextProps){
-      if(nextProps.user.authenticated){
-          nextProps.history.push('/');
-      }
+     const { appUser, dispatch } = nextProps;
+     if(appUser.regSMSCode === "loading"){
+       return  Toast.loading("消息发送中.......");
+     }
+     if(appUser.regSMSCode=== "error"){
+       if(appUser.regFailReason ==="MOBILE TAKEN"){
+          return Toast.fail("失败，手机号已经被占用");
+       }else{
+          return Toast.fail("失败，检查您的网络");
+       }
+     }
+
   }
 
   goBack() {
@@ -68,8 +75,6 @@ onChildChange(tips,status){
   register(){
     let self = this;
     let {user, pwd, mobile,verify} = this.state
-    console.log(`mobile`)
-    console.log(mobile)
     if(!testUser(user)){
       Toast.info('账户格式错误')
       return 
@@ -87,15 +92,12 @@ onChildChange(tips,status){
   }
 
   handlePhone=(event)=>{
-    // 倒计时按钮处于倒计时未结束状态时手机号不能修改
     var phone = event;
     if(this.state.status==='sending')
         return false;
-    // 同步input值
     this.setState({
        mobile: phone
     });
-    // 验证手机号
     if(testPhone(phone)){ 
       console.log(`手机验证成功`)
         this.setState({
@@ -149,7 +151,8 @@ onChildChange(tips,status){
         </List>
 
         <WhiteSpace />
-         <Button onClick={this.register} type='primary' >登录</Button>
+         <Button onClick={this.register} type='primary' >同意协议并且注册</Button><br/>
+         <p><a href="#123">查看协议</a></p>
          <WhiteSpace />
          <Button onClick={this.goBack} type='primary' >返回</Button>
           
@@ -163,8 +166,8 @@ onChildChange(tips,status){
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    appUser: state.AppUser
   }
 }
 
-export default connect(mapStateToProps,{register})(Register);
+export default connect(mapStateToProps)(Register);

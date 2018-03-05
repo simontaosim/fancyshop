@@ -50,6 +50,13 @@ class OrderBtn extends React.Component {
                 <button className = {styles['revoke-btn']}>撤销退款</button>
               </Flex>
             )
+            default:
+              return (
+                <Flex justify = "end" >
+                  <button >详情</button>
+                  <button >删除订单</button>
+                </Flex>
+              );
            }
          })()}
       </div>

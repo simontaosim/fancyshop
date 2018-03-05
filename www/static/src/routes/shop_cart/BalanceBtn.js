@@ -1,8 +1,5 @@
 import React from 'react';
-import { Button,Flex,Checkbox } from 'antd-mobile';
-import {Link} from 'react-router-dom';
-import style from './common.css';
-import s from '../product/common.css';
+import { Flex,Checkbox } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { cartInfo } from '../../map_props';
 import { shopCheckAll } from '../../reducers/cart.redux'

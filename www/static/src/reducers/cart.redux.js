@@ -27,44 +27,33 @@ const initialState = {
 export function cart(state=initialState,action) {
   switch(action.type){
     case INIT_CART:
-    if(action.payload == undefined){
-      return state
-    }else{
-    return Object.assign({},state,{goods: action.payload})
-    }
-      break;
+      if(action.payload === undefined){
+        return state
+      }else{
+        return Object.assign({},state,{goods: action.payload})
+      }
     case ADD_CART:
-    return Object.assign({},state,{status: action.payload})
-      break;
+      return Object.assign({},state,{status: action.payload})
     case ADD_SHOP:
-    return Object.assign({},state,{})
-      break;
+      return Object.assign({},state,{})
     case ADD_PRODUCT:
-    return Object.assign({},state,{})
-      break;
+      return Object.assign({},state,{})
     case CUT_CART:
-      break;
     case REMOVE_CART:
-      break;
     case PRODCUT_CHECK_ALL:
-    var total = ProdcutTotal(action.payload)
-    return Object.assign({},state,{goods: action.payload},{total})
-      break;
+      let total1 = ProdcutTotal(action.payload)
+      return Object.assign({},state,{goods: action.payload},{total1})
     case SHOP_CHECK_ALL:
-    var total = ProdcutTotal(action.payload)
-    return Object.assign({},state,{goods: action.payload},{total})
-      break;
+      var total2 = ProdcutTotal(action.payload)
+      return Object.assign({},state,{goods: action.payload},{total2})
     case SINGEL_PRODUCT_CHECK:
-    var total = ProdcutTotal(action.payload)
-    return Object.assign({},state,{goods: action.payload},{total})
-      break;
+      var total3 = ProdcutTotal(action.payload)
+      return Object.assign({},state,{goods: action.payload},{total3})
     case COUNT_PRODUCT:
-    var total = ProdcutTotal(action.payload)
-    return Object.assign({},state,{goods: action.payload},{total})
-      break;
+      var total4 = ProdcutTotal(action.payload)
+      return Object.assign({},state,{goods: action.payload},{total4})
     case DELETE_SHOP_CART:
-    return Object.assign({},state,{goods: action.payload})
-      break;
+      return Object.assign({},state,{goods: action.payload})
     default:
       return state
   }
@@ -88,7 +77,7 @@ function ProdcutTotal(data) {
   var total = 0;
   for(var i=0;i< shopsData.length; i++){
     for(var j=0;j< shopsData[i].productsData.length; j++){
-      if(shopsData[i].productsData[j].checked == true){
+      if(shopsData[i].productsData[j].checked === true){
         total += shopsData[i].productsData[j].prodductSpec.price*1 * shopsData[i].productsData[j].count
       }
     }
@@ -158,7 +147,7 @@ export function getCart(id) {
   return dispatch => {
     let methodId = MClient.method('shop_carts.get_cart',id);
     MClient.on("result", result =>　{
-      if (result.id == methodId && !result.error) {
+      if (result.id === methodId && !result.error) {
         dispatch(initCartSuccess(result))
 
       }else{

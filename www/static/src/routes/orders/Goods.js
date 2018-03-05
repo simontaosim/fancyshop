@@ -3,24 +3,16 @@ import goodImg from '../../assets/img/reward/good.jpg';
 import { Flex } from 'antd-mobile';
 
 class Goods extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-
-
 
   render(){
-    // console.log('goods')
-    // let goods = this.props.goods!=undefined? this.props.goods: []
-    // console.log(goods)
+   
     let {name, price, spec,num} = this.props
     return(
       <div>
         {this.props.goods}
           <Flex justify = "start" style = {{backgroundColor:'#f8f8f8',padding:'15px',height:'auto',margin:'5px 10px 15px 10px'}}>
 
-            <img src = { goodImg } style = {{height:'50px',width:'70px'}}/>
+            <img alt="" src = { goodImg } style = {{height:'50px',width:'70px'}}/>
 
           <div style = {{paddingLeft:'8px'}}>
             <Flex style = {{marginBottom:'10px'}}>

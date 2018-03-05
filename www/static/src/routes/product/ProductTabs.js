@@ -4,9 +4,7 @@ import { Tabs } from 'antd-mobile';
 import style from './ProductTabs.css';
 
 class ProductTabs extends React.Component {
-  constructor() {
-    super()
-  }
+  
 
   render(){
     const tabs = [
