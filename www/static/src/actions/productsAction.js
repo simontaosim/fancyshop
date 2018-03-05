@@ -51,8 +51,6 @@ export function getRecommandProducts(page, pagesize){
       let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
       MClient.on('result', message => {
         if(message.id === methodId && !message.error){
-          console.log(message.result)
-          console.log(page)
             dispatch(getProductsSuccess(data.concat(message.result),page))
         }
       })
