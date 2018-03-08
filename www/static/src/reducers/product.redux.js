@@ -1,4 +1,4 @@
-import { GET_PRODUCT_SUCCESS,ADD_PRODUCT_COUNT} from '../actions/productAction';
+import { GET_PRODUCT_SUCCESS,ADD_PRODUCT_COUNT,CHANGE_SPEC } from '../actions/productAction';
 const initState = {
     product: {
         images: [],
@@ -11,6 +11,7 @@ const initState = {
 	sales: 74,
 	count: 1,
 	page: 1,
+	selected: [],
 }
 
 export function productReducer(state=initState, action){
@@ -19,32 +20,27 @@ export function productReducer(state=initState, action){
             return  {
                 ...state,
                 product: action.product,    
-                isFetching: false,
+				isFetching: false,
+				selected: action.selected,
                 }
             case ADD_PRODUCT_COUNT:
             return {
                 ...state,
                 count: action.num,
                 isFetching: false,
-            }
-            // Object.assign({},state,{
-			// 	product: action.product
-			// })
-			// case ADD_COUNT:
-			// return Object.assign({},state,{ 
-			// 	count: action.count
-			// 	})
-			// break;
-			// case RECEIVE_SHOP_PRODUCTS_BYSHOPID:
-			// return Object.assign({},state,{
-			// 	shopProducts: action.products
-			// })
-			// case GET_RECOMMAND_PRODUCTS:
-			// return Object.assign({},state,{
-			// 	products: action.products,
-			// 	page: action.page
-			// })
-			// break;
+			}
+			case CHANGE_SPEC :
+			let index = action.index;
+			let selected = state.selected
+			console.log(selected);
+			for(var i=0;i< selected.length;i++){
+			  selected[i].isThis = false;
+			  selected[index].isThis = true
+			}
+			return {
+				...state,
+				selected,
+			}
       default:
 				return state
     }

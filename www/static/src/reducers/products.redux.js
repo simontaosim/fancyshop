@@ -28,8 +28,6 @@ export function ProductsReducer(state={
                 list: action.products
             }
         case GET_PRODUCTS_SUCCESS:
-        console.log(`~~~~`)
-        console.log(action.page)
             return {
                 ...state,
                 list: action.products,
