@@ -43,12 +43,15 @@ export function getBalance(userId) {
 
 export function getBalanceIncomesTotal(userId) {
     return dispatch => {
-        let methodId = MClient.method('app.get.balance_incomes.toady.total',userId);
+        let methodId = MClient.method('app.get.balance_incomes.toady.total',[userId]);
         MClient.on("result", message => {
             if (message.id === methodId && !message.error) {
-                dispatch(getBalanceIncomesTotalSuccess(message.total));
+        console.log(`执行一次`)
+        console.log(message.result)
+                
+                dispatch(getBalanceIncomesTotalSuccess(message.result));
             }else{
-              console.log(message);
+              console.log(`失败`);
             }
         });
     }
