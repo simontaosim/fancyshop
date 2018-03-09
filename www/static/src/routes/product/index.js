@@ -9,8 +9,7 @@ import style from './common.css'
 import '../../service/data/datasource';
 import { getProduct } from '../../actions/productAction';
 import { connect } from 'react-redux';
-import 
- MyActivityIndicator  from '../common/MyActivityIndicator';
+import MyActivityIndicator  from '../common/MyActivityIndicator';
 
 
 class Goods extends React.Component {
@@ -35,35 +34,14 @@ componentDidMount() {
  }
 
  componentWillReceiveProps(nextProps) {
-   if(nextProps.reviceProduce) {
-    //  let tagMenuArr = [];
-    //  let spec = nextProps.productShow.specifications
-    //  for(var i=0;i<spec.length;i++){
-    //     tagMenuArr.push(false)
-    //  }
-    //  tagMenuArr[0] = true
-    //  console.log(tagMenuArr)
-    //  this.setState({
-    //   tagMenuClick: tagMenuArr
-    //  })
+   let tagMenuArr = [];
+   let spec = nextProps.product.selected
+   for(var i=0;i<spec.length;i++){
+    tagMenuArr.push(spec[i].isThis)
    }
-    // if(nextProps.product.good){
-    //   let spec = nextProps.product.good.spec
-    //   let tagMenuArr = [];
-    //   for(var i=0;i<spec.length;i++){
-    //     if(spec[i].isThis == true){
-    //       tagMenuArr.push(true)
-    //     }else{
-    //       tagMenuArr.push(false)
-    //     }
-    //   }
-    //   this.setState({
-    //     // product: nextProps.product.good,
-    //     tagMenuClick: tagMenuArr
-    //   })
-    // }else{
-    //   console.log('no')
-    // }
+   this.setState({
+    tagMenuClick: tagMenuArr
+   })
  }
 
 render(){
@@ -103,8 +81,8 @@ render(){
       </div>
 
       <div  className = {style['describe']}>
-      <Flex className = {style['describe-font']}>
-        {product.product.description}
+      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} >
+      
       </Flex>
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center" >

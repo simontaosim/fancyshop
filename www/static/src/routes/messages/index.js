@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import  AwardDetail  from './AwardDetail.js';
 import AwardIncome from './AwardIncome.js';
 import AwardHead from './AwardHead.js';
-import { getBalance,getGetBalanceIncomesTotal } from '../../actions/balanceAction';
+import { getBalance,getBalanceIncomesTotal } from '../../actions/balanceAction';
 import MyActivityIndicator  from '../common/MyActivityIndicator';
 
 class MessageBox extends React.Component{
@@ -17,7 +17,7 @@ class MessageBox extends React.Component{
     let { dispatch } = this.props;
     let userId = "ZCFqbZeRpKZge3uGf"
     dispatch(getBalance(userId))
-    dispatch(getGetBalanceIncomesTotal(userId))
+    dispatch(getBalanceIncomesTotal(userId))
   }
 
   render(){

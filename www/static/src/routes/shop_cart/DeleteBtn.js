@@ -2,7 +2,8 @@ import React from 'react';
 import { Flex,Checkbox,Modal} from 'antd-mobile';
 import { connect } from 'react-redux';
 import { cartInfo } from '../../map_props';
-import { removeCart,shopCheckAll } from '../../reducers/cart.redux';
+// import { removeCart,shopCheckAll } from '../../reducers/cart.redux';
+import { removeCart,shopCheckAll } from  '../../actions/cartAction';
 
 
 const CheckboxItem = Checkbox.CheckboxItem;
@@ -19,27 +20,26 @@ class DeleteBtn extends React.Component {
   delete() {
     alert('', '确认将已选中的商品删除吗?', [
       { text: '取消', onPress: () => console.log('cancel')},
-      { text: '删除', onPress: () => this.props.removeCart(this.props.cart.goods)},
+      { text: '删除', onPress: () => this.props.dispatch(removeCart(this.props.cart.list))},
     ]);
   }
 
   deleteProduct() {
-    console.log(this.props.cart.goods)
-    let shopsData = this.props.cart.goods.shopsData;
-    console.log(shopsData)
+    let shopsData = this.props.cart.list.shopsData;
   }
 
 
 
   CheckAll(e) {
-    let data = this.props.cart.goods
+    let { cart,dispatch } = this.props;
+    let data = this.props.cart.list
     for(var i=0;i<data.shopsData.length;i++){
       data.shopsData[i].checked = e.target.checked;
       for(var j=0;j<data.shopsData[i].productsData.length;j++){
         data.shopsData[i].productsData[j].checked = e.target.checked;
       }
     }
-    this.props.shopCheckAll(data)
+    dispatch(shopCheckAll(data))
   }
 
 
@@ -60,4 +60,11 @@ class DeleteBtn extends React.Component {
   }
 }
 
-export default connect(cartInfo,{removeCart,shopCheckAll})(DeleteBtn);
+function mapStateToProps(state) {
+  return {
+    cart: state.cartReducer
+  }
+}
+
+
+export default connect(mapStateToProps)(DeleteBtn);
