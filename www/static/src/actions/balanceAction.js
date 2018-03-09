@@ -45,14 +45,22 @@ export function getBalanceIncomesTotal(userId) {
     return dispatch => {
         let methodId = MClient.method('app.get.balance_incomes.toady.total',[userId]);
         MClient.on("result", message => {
-            if (message.id === methodId && !message.error) {
-        console.log(`执行一次`)
-        console.log(message.result)
-                
-                dispatch(getBalanceIncomesTotalSuccess(message.result));
-            }else{
-              console.log(`失败`);
-            }
+            console.log('result');
+            console.log(message);
+            // if(message.result.total){
+            //     dispatch(getBalanceIncomesTotalSuccess(message.result));
+            //     console.log(`执行一次`)
+            // }
+            // if (message.id === methodId && !message.error) {
+            // console.log("执行一次")
+            // console.log(message.result)
+            //     dispatch(getBalanceIncomesTotalSuccess(message.result));
+            // }else{
+            //   console.log(message);
+            //   console.log(methodId)
+            //   console.log(message.id);
+            //   console.log("发生错误")
+            // }
         });
     }
 }

@@ -65,6 +65,7 @@ class AppMy extends React.Component{
 
   render(){
     
+
    
     return (
       <div >
@@ -78,13 +79,13 @@ class AppMy extends React.Component{
             </Link>
            </Flex>
           <Flex justify = "center"  className = {style['nick-name-pos']}>
-            <span>{this.props.current_user.nickname}</span>
+            <span>{11}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['user-name-span']}>{this.props.current_user.username}</span>
+            <span className = {style['user-name-span']}>{11}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['slogan-span']}>{this.props.current_user.dataAutograph}</span>
+            <span className = {style['slogan-span']}>{11}</span>
           </Flex>
         </div>
         <div className = {style['item-position']} >
@@ -101,7 +102,6 @@ class AppMy extends React.Component{
 }
 function mapStateToProps(state) {
   return {
-    current_user: state.currentUser.current_user,
     user: state.user,
     appUser: state.AppUser,
   }
