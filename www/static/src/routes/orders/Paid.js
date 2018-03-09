@@ -6,6 +6,7 @@ import codeImg from '../../assets/img/orders/code.png';
 import payImg from '../../assets/img/orders/pay.png';
 import wechatImg from '../../assets/img/orders/wechat.png';
 import { MClient } from '../../config/asteroid.config.js';
+import MyActivityIndicator  from '../common/MyActivityIndicator';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 const RadioItem = Radio.RadioItem;
@@ -22,16 +23,15 @@ class Paid extends React.Component {
        "userId" : "",
        "status" : "",
        "shopId" : "",
-       "products" : [
-       ],
+       "products" : [],
        "username" : "",
        "address" : null,
         },
+        isFetching: true,
         value: 0,
     }
   }
   onChange = (value) => {
-   console.log('checkbox');
    this.setState({
      value,
    });
@@ -43,12 +43,13 @@ class Paid extends React.Component {
       if (message.id === methodId && !message.error) {
         this.setState({
           order: message.result.order,
+          isFetching: false,
         })
       }
     });
   }
   render(){
-    let {order} = this.state
+    let {order,isFetching} = this.state
 
     const { value, value2, value3, value4 } = this.state;
 
@@ -84,6 +85,7 @@ class Paid extends React.Component {
     ];
     return(
     <div style = {{marginTop:'46px',backgroundColor:'#fff'}}>
+     <MyActivityIndicator isFetching={isFetching} />
       <Flex className = {styles["letter-box"]}>
         <div className = {styles["letter-border"]}>
           <Flex style = {{padding:'15px 10px'}}>

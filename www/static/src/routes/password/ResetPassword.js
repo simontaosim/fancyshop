@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, InputItem, Toast, Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { List, InputItem, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { resetPWd } from '../../reducers/user.redux'
 import { connect } from 'react-redux'
 import {getStore} from '../../config/mUtils'

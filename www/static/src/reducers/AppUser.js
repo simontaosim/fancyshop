@@ -4,7 +4,12 @@ import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE,
     LOGIN_SUCCESS, LOGIN_FAIL, LOAD_UNLOGINED_USER_INFO,
     LOAD_USER_INFO_SUCCESS, 
     MEMORY_PATH_BEFORE_LOGINED,
-    EXPECT_LOGINED_USER_INFO} from "../actions/users";
+    EXPECT_LOGINED_USER_INFO,
+    EXPECT_USER_CARD,
+    VALID_TOKEN_FAIL,
+    LOAD_USER_CAED_SUCCESS,
+    EXPECT_REG_SMS_CODE,
+    GET_REG_SMS_CODE_FAIL} from "../actions/users";
 
 export default function AppUser(state={
     id: '',
@@ -17,9 +22,11 @@ export default function AppUser(state={
     status: 'offline',
     loginSMSCode: '',
     validSMSCode: "",
-    roleName: 'nobody',
+    roles: ['nobody'],
+    needToResetPassword: false,
     loginSMSCodeFeedBackTimes: 0,
     orders: [],
+    card:null,
     balance: {
         incomes: [],
         charges: [],
@@ -27,6 +34,22 @@ export default function AppUser(state={
     products: [],
   }, action){
     switch (action.type) {
+        case VALID_TOKEN_FAIL:
+            return Object.assign({}, state, {
+                loading: false,
+                card: null,
+                loginStatus: "notWoken",
+                status: 'offline',
+            })
+        case EXPECT_REG_SMS_CODE:
+            return Object.assign({}, state, {
+                regSMSCode: "loading",
+            })
+        case GET_REG_SMS_CODE_FAIL:
+            return Object.assign({}, state, {
+                regSMSCode: "error",
+                regFailReason: action.reason,
+            })
         case EXPECT_LOGINED_USER_INFO:
             return Object.assign({}, state, {
                 loading: true,
@@ -45,6 +68,17 @@ export default function AppUser(state={
                 username: action.user.username,
                 loading: false,
             })
+        case EXPECT_USER_CARD:
+            return Object.assign({}, state, {
+                loading: true,
+                card: null,
+            });
+        case LOAD_USER_CAED_SUCCESS:
+            return Object.assign({}, state, {
+                loading: false,
+                card: action.card,
+            });
+        
         case MEMORY_PATH_BEFORE_LOGINED:
             return Object.assign({}, state, {
                 pathBeforeLogined: action.path,
@@ -76,12 +110,15 @@ export default function AppUser(state={
                 loading: true,
             });
         case LOGOUT_SUCCESS:
+            let roles = state.roles;
+            roles.push("loginedUser");
             return Object.assign({}, state, {
                 stampedToken: "",
                 expiredLoginTime: "",
                 id: "",
                 loginStatus: "",
                 status: 'offline',
+                roles,
                 loading: false,
             });
         case EXPECT_LOGIN_SMS_CODE:

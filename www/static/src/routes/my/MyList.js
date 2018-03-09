@@ -2,10 +2,8 @@ import React from 'react';
 import { List, Button, WhiteSpace, Modal} from 'antd-mobile';
 import{ loginOut } from '../../reducers/user.redux'
 import { connect } from 'react-redux'
-import { log } from 'util';
 
 const Item = List.Item;
-const Brief = Item.Brief;
 
 const alert = Modal.alert;
 class MyList extends React.Component {

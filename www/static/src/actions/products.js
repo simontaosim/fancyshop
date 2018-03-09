@@ -1,6 +1,5 @@
 import history from '../history';
 import { MClient } from '../config/asteroid.config.js';
-import { product } from '../reducers/product.redux';
 
 
 export const EXCEPT_RECOMMAND_PRODUCTS = 'EXCEPT_RECOMMAND_PRODUCTS';
@@ -9,11 +8,6 @@ export const RECEIVE_PRODUCT_BYID = 'RECEIVE_PRODUCT_BYID';
 export const ADD_COUNT = "ADD_COUNT";
 export const RECEIVE_SHOP_PRODUCTS_BYSHOPID = "RECEIVE_SHOP_PRODUCTS_BYSHOPID";
 export const GET_RECOMMAND_PRODUCTS= "GET_RECOMMAND_PRODUCTS"
-
-// export const RECOMMAND_PRODUCTS_LIST = "RECOMMAND_PRODUCTS_LIST"
-
-
-
 
 function exceptRecommandProduct(){
   return {
@@ -59,9 +53,6 @@ export function loadRecommandProducts(page, pagesize){
   }
 }
 
-function exceptProductById(id){
-
-}
 
 function getRecommandProducts(products,page){
   return {
@@ -77,11 +68,11 @@ function receiveProductById(product){
     type: RECEIVE_PRODUCT_BYID,
     product,
   }
-
 }
+
 function receiveProductByIdError(error){
-
 }
+
 
 function receiveShopProductsByShopId(products) {
   return {
@@ -100,19 +91,14 @@ export function addCount(count) {
 
 export function loadProductById(id){
   return dispatch => {
-    // dispatch(exceptProductById(id));
     MClient.sub("get.product.id", [id]);
-    let product = [];
     MClient.connect();
     let methodId = MClient.method("get.oneproduct.id", [id]);
 
     MClient.on("result", message => {
       if(message.id === methodId && !message.error){
-        console.log(`gogogo`)
-        console.log(message.result)
         dispatch(receiveProductById(message.result));
       }else{
-        // dispatch(receiveProductByIdError(message.error));
       }
     })
   }

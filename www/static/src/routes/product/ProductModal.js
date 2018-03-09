@@ -1,22 +1,15 @@
 import React from 'react';
-import { Flex, Button, Modal, WhiteSpace, List, Stepper, Carousel} from 'antd-mobile';
+import { Flex, Button, Modal, WhiteSpace, List, Stepper} from 'antd-mobile';
 import goodImg from '../../assets/img/reward/good.jpg';
 import style from './ProductBottom.css';
-import s from './ProductModal.css';
 import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
-import { changeProduct } from '../../reducers/product.redux';
+// import { changeProduct } from '../../reducers/product.redux';
 import {  addCount,createOrder } from '../../actions/products';
+import { addProductCount } from '../../actions/productAction';
 import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
 
-const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
-let wrapProps;
-if (isIPhone) {
-  wrapProps = {
-    onTouchStart: e => e.preventDefault(),
-  };
-}
 
 class ProductModal extends React.Component {
   constructor(props) {
@@ -34,7 +27,7 @@ class ProductModal extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    this.props.getCart(2)
+    // this.props.getCart(2)
     
   }
 
@@ -57,27 +50,30 @@ class ProductModal extends React.Component {
    onClose = key => (e) => {
     e.preventDefault(); 
     console.log(123)
-    let {cart} = this.props;
-    let product = this.props.productShow.product;
-    let count = this.props.productShow.count
+    let {cart, dispatch} = this.props;
+    // let product = this.props.productShow.product;
+    let {product} = this.props;
+    console.log(`在这里`)
+    console.log(product)
+    let count = product.count;
     // console.log(product)
     // console.log(cart)
-    let spec = this.props.spec.length == 0 ?  '默认规格': product.specifications;
+    let spec = this.props.spec.length == 0 ?  '默认规格': product.product.specifications;
     if(this.props.model.way=="orders"){
       let params = {
         userId: 2,
         status: 'unpay',
-        shopId: product.shopId,
+        shopId: product.product.shopId,
         address: "user.address.id",
         username: "李逍遥",
         mobile: "13751124249",
         products: [
           {
-            price: product.endPrice,
+            price: product.product.endPrice,
             count,
-            cover: product.cover,
-            id: product._id,
-            name: product.name_zh,
+            cover: product.product.cover,
+            id: product.product._id,
+            name: product.product.name_zh,
             specifications: {
               name: spec
             }
@@ -85,119 +81,13 @@ class ProductModal extends React.Component {
         ]
       };
       console.log(`提交订单`)
-      this.props.createOrder(params);
-      this.props.closeSpecModel()
+      console.log(params);
+      dispatch(createOrder(params));
+      dispatch(closeSpecModel());
+    //   this.props.createOrder(params);
+    //   this.props.closeSpecModel()
      }
-    // let selected =product.selected !== undefined ?product.selected :product.good.spec[0]
-    //    let count =product.count !== undefined ?product.count : 1
-    //    let productId =product.good.id
-    //    let shopId =product.good.shop_id
-    //    let shopIds = [];
-    //    let goodIds = [];
-    //    var ShopReplaceData;
-    //    var ProductReplaceData;
-    // if(this.props.model.way=="orders"){
-    //  let params = {
-    //    shop_id: product.good.shop_id,
-    //    prodductSpec: selected,
-    //    product_id: product.good.id,
-    //    count: count,
-    //  }
-    //  console.log(params)
-    // }else{
-    //   if(cart.goods.user_id == ''){
-    //     console.log(`购物车不存在`)
-    //     let params = {
-    //       user_id: 2,
-    //       shopsData: [
-    //         {
-    //           shop_name: product.good.shop_name,
-    //           checked: false,
-    //           shop_id: product.good.shop_id,
-    //             productsData: [
-    //               {
-    //                 shop_id: product.good.shop_id,
-    //                 checked: false, 
-    //                 name: product.good.name,
-    //                 status: 1,
-    //                 count: count,
-    //                 prodductSpec: selected,
-    //                 product_id: product.good.id
-    //               }
-    //             ]
-    //         }
-    //       ]
-    //     }
-    //     console.log(params)
-    //     this.props.insertCart(params)
-    //     this.props.closeSpecModel()
-    //     return
-    //   }
-    //    for(var i = 0;i < cart.goods.shopsData.length;i++){
-    //       shopIds.push(cart.goods.shopsData[i].shop_id);
-    //       for(var j=0;j<cart.goods.shopsData[i].productsData.length;j++){
-    //         goodIds.push(cart.goods.shopsData[i].productsData[j].product_id)
-    //       }
-       
-    //    }
-    //    if(goodIds.includes(product.good.id) && shopIds.includes(product.good.shop_id)){
-    //      for(var i = 0;i < cart.goods.shopsData.length;i++){
-    //       for(var j=0;j<cart.goods.shopsData[i].productsData.length;j++){
-    //         if(cart.goods.shopsData[i].productsData[j].product_id==productId){
-    //           if(cart.goods.shopsData[i].productsData[j].prodductSpec.name==selected.name){
-    //             cart.goods.shopsData[i].productsData[j].count = cart.goods.shopsData[i].productsData[j].count*1+count
-    //           }else{
-    //             console.log(`生成新的规格商品`)
-    //             cart.goods.shopsData[i].productsData.push({
-    //               shop_id: product.good.shop_id,
-    //               checked: false, 
-    //               name:  product.good.name,
-    //               status: 1,
-    //               count: count,
-    //               prodductSpec: selected,
-    //               product_id: product.good.id
-    //             })
-    //           }
-    //         }
-    //       }
-    //      }
-    //    }else if(shopIds.includes(product.good.shop_id)){
-    //     for(var i = 0;i < cart.goods.shopsData.length;i++){
-    //         if(cart.goods.shopsData[i].shop_id == product.good.shop_id){
-    //           cart.goods.shopsData[i].productsData.push({
-    //             shop_id: product.good.shop_id,
-    //             checked: false, 
-    //             name:  product.good.name,
-    //             status: 1,
-    //             count: count,
-    //             prodductSpec: selected,
-    //             product_id: product.good.id
-    //           })
-    //         }
-    //      }
-    //    }else{
-    //       cart.goods.shopsData.push({
-    //           shop_name: product.good.shop_name,
-    //           checked: false,
-    //           shop_id: product.good.shop_id,
-    //             productsData: [
-    //               {
-    //                 shop_id: product.good.shop_id,
-    //                 checked: false, 
-    //                 name: product.good.name,
-    //                 status: 1,
-    //                 count: count,
-    //                 prodductSpec: selected,
-    //                 product_id: product.good.id
-    //               }
-    //             ]
-    //       })
-    //    }
-    //    this.props.addCart(cart.goods.shopsData);
-    //    this.props.closeSpecModel()
-
-    // }
-      
+    
    
    }
 
@@ -208,7 +98,8 @@ class ProductModal extends React.Component {
 
    onChange = (val) => {
      this.setState({ val },()=>{
-       this.props.addCount(this.state.val)
+      //  this.props.addCount(this.state.val)
+       this.props.dispatch(addProductCount(this.state.val))
      });
 
    }
@@ -241,28 +132,26 @@ class ProductModal extends React.Component {
        }
      }
 
-     renderSpec() {
-
-     }
 
 
    render(){
      let modelStatus = this.props.model.spec_model;
-     let product = this.props.productShow.product;
+     let {product} = this.props
      console.log(this.props.spec.length)
-     let spec = this.props.spec.length == 0 ? [{name: '默认规格',price: product.endPrice,isThis: true}] : product.specifications;
+     let spec = this.props.spec.length == 0 ? [{name: '默认规格',price: product.product.endPrice,isThis: true}] : product.product.specifications;
      console.log(spec)
      console.log(spec.length)
      let specArr = []
      let price = [];
-     for(var i=0; i<spec.length;i++){
-       console.log(123);
-      specArr.push(
-      <div className = {style['color-div']} style={{background: this.state.tagMenuClick[i] ? "#e85839" : "#e5e5e5"}} key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
-          {spec[i].name}
-      </div>
+     for(var i=0; i<spec.length; i++){
+        specArr.push(
+        <div className = {style['color-div']} style={{background: this.state.tagMenuClick[i] ? "#e85839" : "#e5e5e5"}} key={i} onClick={this.handleSelectedSpec.bind(this,i)}>
+            {spec[i].name}
+        </div>
        )
-       {spec[i].isThis===true ? price.push(`${spec[i].price}`) : null }
+       if(spec[i].isThis === true){
+        price.push(`${spec[i].price}`);
+       }
      }
 
      
@@ -279,12 +168,12 @@ class ProductModal extends React.Component {
        >
         <div style = {{margin:'10px'}}>
           <Flex>
-              <img src = {goodImg} style = {{width:'60px',height:'60px',border:'6px solid #680000'}}/>
+              <img alt="" src = {goodImg} style = {{width:'60px',height:'60px',border:'6px solid #680000'}}/>
               <div style = {{paddingLeft:'10px'}}>
                 <span style = {{color:'red',fontSize:'22px',paddingRight:'10px'}}>￥{price/100}</span><br/>
                 <span style = {{color:'#666',fontSize:'14px'}}>请选择类型</span>
               </div>
-              <img src = {require('../svg/close_black.svg')} style = {{position:'absolute',right:'15px',top:'10px',width:'25px',height:'25px',paddingBottom:'44px'}} onClick = {this.Close('modal2')}/><br/>
+              <img alt="" src = {require('../svg/close_black.svg')} style = {{position:'absolute',right:'15px',top:'10px',width:'25px',height:'25px',paddingBottom:'44px'}} onClick = {this.Close('modal2')}/><br/>
           </Flex>
 
 
@@ -319,4 +208,11 @@ class ProductModal extends React.Component {
    }
  }
 
-   export default connect(modelInfo,{changeProduct,addCart,addCount,openSpecModel,closeSpecModel,getCart,insertCart,createOrder })(ProductModal);
+ function mapStateToProps(state) {
+   return {
+     product: state.productReducer,
+     model: state.model,
+   }
+ }
+
+export default connect(mapStateToProps)(ProductModal);

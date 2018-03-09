@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Button, Tabs, WhiteSpace, Modal} from 'antd-mobile';
+import { Flex, Modal} from 'antd-mobile';
 import s from './MyBankCard.css';
 
 const alert = Modal.alert;
@@ -33,7 +33,7 @@ class MyBankCard extends React.Component {
         </Flex>
         <Flex justify = "around" className = {s['username']}>
           <span onClick = {this.editbankcard}>解除绑定</span>
-          <img src = {require('../svg/delete.svg')} className = {s['delete-svg']}
+          <img alt="" src = {require('../svg/delete.svg')} className = {s['delete-svg']}
           onClick={() => alert('Delete', '确定要删除这张银行卡吗？', [
            { text: 'Cancel', onPress: () => console.log('cancel') },
            { text: 'Ok', onPress: () => console.log('ok') },])}

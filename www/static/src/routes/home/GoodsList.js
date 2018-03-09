@@ -1,17 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
-import { Flex, PullToRefresh,ListView,Icon} from "antd-mobile";
-import styles from './GoodsList.css';
-import goodsImg from '../../assets/img/reward/good.jpg';
-import good2Img from '../../assets/img/timg.jpg';
+import { PullToRefresh,ListView} from "antd-mobile";
 import '../../service/data/datasource';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { productList, product } from '../../reducers/product.redux';
-import { productinfo } from '../../map_props';
-import { productShow } from '../../reducers/product';
 import { gainRecommandProducts } from '../../actions/products';
+import { getProducts } from '../../actions/productsAction';
 import { MClient } from '../../config/asteroid.config.js';
 
 
@@ -20,32 +13,18 @@ import { MClient } from '../../config/asteroid.config.js';
 class GoodsList extends React.Component {
   constructor(props) {
     super(props);
-    const dataSource = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-    });
+    
 
     this.state = {
-      // dataSource,
       isLoading: false,
       data: [],
-      // page: 1,
     };
   }
 
   componentDidMount() {
-    // this.props.productList();
   }
 
-  // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps.recommandProducts);
-    // console.log(this.props.products.products)
-    // if (nextProps.recommandProducts !== this.props.products.products) {
-    //   this.setState({
-    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.recommandProducts.products),
-    //     isLoading: false,
-    //   });
-    // }
   }
 
   onRefresh = () => {
@@ -53,27 +32,19 @@ class GoodsList extends React.Component {
   };
 
   onEndReached = (event) => {
-    console.log(this.props.products)
   const page = this.props.products.page+1
-    
-    console.log(page);
     let { dispatch } = this.props;
     this.setState({
       isLoading: true,
     });
-    setTimeout(() => {
-    //  page += 1;
-      
-     dispatch(gainRecommandProducts(page,1,this.props.products.products));
-      
-    },1000)
-    console.log('reach end', event);
+    dispatch(getProducts(page,1,this.props.products.list));
   }
 
   render() {
+    let {products} = this.props;
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
-    }).cloneWithRows(this.props.products.products)
+    }).cloneWithRows(products.list)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -87,8 +58,8 @@ class GoodsList extends React.Component {
     );
     const row = (rowData, sectionID, rowID) => {
       return (
-        <div key={rowData.id} style={{ padding: '0 15px' }}>
-          <Link to={`/product/${rowData.id}`}>
+        <div key={rowData._id} style={{ padding: '0 15px' }}>
+          <Link to={`/product/${rowData._id}`}>
             <div
               style={{
                 lineHeight: '50px',
@@ -97,7 +68,7 @@ class GoodsList extends React.Component {
                 borderBottom: '1px solid #F6F6F6',
               }}
             >{rowData.name_zh}</div>
-            <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
+            <div style={{ display: 'flex', padding: '15px 0' }}>
               <img style={{ height: '64px', marginRight: '15px' }} src={rowData.cover} alt="" />
               <div style={{ lineHeight: 1 }}>
                 <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{rowData.description}</div>
@@ -136,7 +107,7 @@ class GoodsList extends React.Component {
 }
 function mapProducts(state) {
   return {
-    products: state.productShow
+    products: state.ProductsReducer
   }
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex, Button, Tabs, InputItem, WhiteSpace, Picker, List} from 'antd-mobile';
-import { Link } from 'react-router-dom';
+import { Flex, Button, InputItem, WhiteSpace, Picker, List} from 'antd-mobile';
 
 const bankcard = [
   {
@@ -48,9 +47,7 @@ class Withdraw extends React.Component {
       <Flex justify = "start" style = {{borderBottom:'1px solid #ccc'}}>
         <label style = {{fontSize:'17px',paddingLeft:'15px'}}>提现</label><InputItem placeholder = "请输入提现余额" style = {{width:'80%',paddingLeft:'10px'}}></InputItem>
       </Flex>
-      {/* <Flex>
-        选择银行卡：<InputItem placeholder = "请输入银行卡号" style = {{border:'1px solid #aaa'}}></InputItem>
-      </Flex> */}
+     
       <Picker data={bankcard} cols={1} >
          <List.Item arrow="horizontal">银行卡</List.Item>
       </Picker>
@@ -63,35 +60,6 @@ class Withdraw extends React.Component {
       </div>
       </div>
       <Flex justify = "around" style = {{border:'1px solid #aaa',borderRadius:'5px',margin:'10px',backgroundColor:'#fff'}}>
-        {/* <table cellpadding="15px" cellspacing="">
-          <tr align = "left">
-            <th>提现记录</th>
-          </tr>
-          <tr align = "center">
-            <th>提现现金</th>
-            <th>到账金额</th>
-            <th>时间</th>
-            <th>状态</th>
-          </tr>
-          <tr align = "center">
-            <td>100.00</td>
-            <td>99.95</td>
-            <td>170802</td>
-            <Link to = "/withdrawsuccess">
-            <td align = "left"><span>成功&nbsp;<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span></td>
-            </Link>
-            {/* <img src = {require('../svg/arrow-right.svg')} style = {{width:'10px',height:'10px'}}/> *}
-          </tr>
-          <tr align = "center">
-            <td>100.00</td>
-            <td>99.95</td>
-            <td>170802</td>
-            <Link to = "/withdrawwait">
-            <td align = "left">等待</td>
-            <img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px',position:'absolute',right:'15px',bottom:'-26px'}}/>
-            </Link>
-          </tr>
-        </table> */}
 
           <Flex direction = "column" justify = "around" align = "center"  style = {{margin:'7px 0'}}>
             <span align = 'center' style = {{fontWeight:'600'}} >提现金额</span>
@@ -120,9 +88,9 @@ class Withdraw extends React.Component {
           <Flex direction = "column" justify = "center"  style = {{padding:'7px 0'}}>
             <span align = 'center' style = {{fontWeight:'600'}}>状态</span>
             <WhiteSpace/>
-            <span align = 'center' onClick={this.withdrawsuccess}>成功<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span>
+            <span align = 'center' onClick={this.withdrawsuccess}>成功<img alt="" src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span>
             <WhiteSpace/>
-            <span align = 'center'  onClick={this.withdrawwait}>等待<img src = {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span>
+            <span align = 'center'  onClick={this.withdrawwait}>等待<img alt="" src= {require('../svg/arrow-right.svg')} style = {{width:'14px',height:'14px'}}/></span>
             <WhiteSpace/>
           </Flex>
         </Flex>

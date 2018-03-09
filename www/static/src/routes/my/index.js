@@ -4,27 +4,16 @@
 */
 import React from 'react'
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { appInfo } from '../../map_props.js';
-import {setAppTitle} from '../../actions/app.js';
-import MyList from './MyList';
 import { Flex } from 'antd-mobile';
 import { 
-  List, 
-  Badge,
   Button,
-  WhiteSpace,
-  WingBlank,Card,
-  Checkbox,Modal, 
+  WingBlank, Modal, 
   Toast} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
 import{ logout, memoryPathBeforeLogined, loadLoginedUserInfo } from '../../actions/users';
-import { MClient } from '../../config/asteroid.config.js'
-
-
 
 const alert = Modal.alert;
 
@@ -32,13 +21,11 @@ class AppMy extends React.Component{
   constructor(props) {
     super(props);
     this.confirmWindow = this.confirmWindow.bind(this);
-    const { dispatch } = this.props;
-    dispatch(memoryPathBeforeLogined('/my'))
+    
   }
 
   confirmWindow() {
-    let self = this
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     alert('退出当前账号','您是否确认推出当前帐号?',[
       { text: '确定', onPress: () => {
           dispatch(logout());
@@ -50,11 +37,14 @@ class AppMy extends React.Component{
 
   componentWillMount(){
     document.title = '个人中心';
+    const { dispatch } = this.props;
+    dispatch(memoryPathBeforeLogined('/my'));
+    dispatch(loadLoginedUserInfo());
    
   }
 
   componentWillReceiveProps(nextProps){
-    const { dispatch, appUser } = nextProps;
+    const {appUser } = nextProps;
     if(appUser.loading){
       return Toast.loading("载入中", 1, ()=>{
         console.log('')
@@ -81,21 +71,21 @@ class AppMy extends React.Component{
       <div >
         <div className = {style['back-color']}>
           <Flex justify = 'center' align = "center">
-              <img src = {userImg} className = {style['user-img']}/>
+              <img alt="" src = {userImg} className = {style['user-img']}/>
           </Flex>
           <Flex justify = "end" className = {style['pencil-position']} >
             <Link to = "/personal">
-              <img src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
+              <img  alt="" src = {require('../svg/pencil.svg')} className = {style['pencil-svg']} />
             </Link>
            </Flex>
           <Flex justify = "center"  className = {style['nick-name-pos']}>
-            <span>{this.props.current_user.nickname}</span>
+            <span>{11}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['user-name-span']}>{this.props.current_user.username}</span>
+            <span className = {style['user-name-span']}>{11}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['slogan-span']}>{this.props.current_user.dataAutograph}</span>
+            <span className = {style['slogan-span']}>{11}</span>
           </Flex>
         </div>
         <div className = {style['item-position']} >
@@ -112,7 +102,6 @@ class AppMy extends React.Component{
 }
 function mapStateToProps(state) {
   return {
-    current_user: state.currentUser.current_user,
     user: state.user,
     appUser: state.AppUser,
   }
@@ -120,4 +109,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(AppMy);
 
-// export default connect(appInfo)(AppMy);

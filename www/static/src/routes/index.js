@@ -25,7 +25,6 @@ import UntreatedDetail from './orders/UntreatedDetail';
 import QrCode from './orders/QrCode';
 import CartNull from './shop_cart/CartNull';
 import CartTest from './checkbox/cart'
-import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
 import Facilitator from './product/Facilitator';
 import FirmOrder from './product/FirmOrder';
@@ -92,7 +91,6 @@ class App extends React.Component {
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
               <Route path="/test" component={Test}  />
-              {/* <Route path = "/orders" component={Orders}/> */}
               <Route path = "/product/:id" component={Goods}/>
               <Route path = "/order_details/:orderId" component={WaitDetails}/>
               <Route path = "/paid/:orderId" component={Paid}/>
@@ -100,11 +98,9 @@ class App extends React.Component {
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
               <Route path = "/nullcart" component={ CartNull }/>
-              <Route path = "/userdata" component={ UserData }/>
               <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder/:orderId" component = {FirmOrder}/>
-              {/* <Route path = "/firmorder" component = {FirmOrder}/> */}
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
