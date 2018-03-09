@@ -1,4 +1,3 @@
-import history from '../history';
 import { MClient } from '../config/asteroid.config.js';
 
 
@@ -42,7 +41,7 @@ export function getBalance(userId) {
     }
 }
 
-export function getGetBalanceIncomesTotal(userId) {
+export function getBalanceIncomesTotal(userId) {
     return dispatch => {
         let methodId = MClient.method('app.get.balance_incomes.toady.total',[userId]);
         MClient.on("result", message => {

@@ -14,8 +14,6 @@ import My from './my';
 import Register from './register/Register';
 import {  connect } from 'react-redux';
 import TabLogin from './login/TabLogin';
-import { getStore } from '../config/mUtils';
-import Test from './checkbox';
 import Goods from './product/index';
 import ShopCart from './shop_cart/index';
 import WaitDetails from './orders/WaitDetails';
@@ -24,7 +22,6 @@ import Refund from './orders/Refund';
 import UntreatedDetail from './orders/UntreatedDetail';
 import QrCode from './orders/QrCode';
 import CartNull from './shop_cart/CartNull';
-import CartTest from './checkbox/cart'
 import ProductModal from './product/ProductModal';
 import Facilitator from './product/Facilitator';
 import FirmOrder from './product/FirmOrder';
@@ -32,7 +29,6 @@ import PaySuccess from './product/PaySuccess';
 import Address from './product/Address';
 import SearchBox from './search/ProductSearch';
 import SearchResult from './search/SearchResult';
-import Cart from './checkbox/cart';
 import Wallet from './wallet/index';
 import Withdraw from './wallet/Withdraw';
 import WithdrawSuccess from './wallet/WithdrawSuccess';
@@ -49,10 +45,7 @@ import Personal from './my/Personal';
 import ProductListView from './productsListView'
 import Orders from './orders/index';
 import OrderList from './orders/OrderList';
-
-import {  Toast } from 'antd-mobile';
 import{ loadLoginedUserInfo } from '../actions/users';
-
 import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
 
@@ -90,7 +83,6 @@ class App extends React.Component {
               <Route path="/my"  component={My} />
               <Route path="/register" component={Register}/>
               <Route path="/tablogin" component={TabLogin} />
-              <Route path="/test" component={Test}  />
               <Route path = "/product/:id" component={Goods}/>
               <Route path = "/order_details/:orderId" component={WaitDetails}/>
               <Route path = "/paid/:orderId" component={Paid}/>
@@ -104,12 +96,10 @@ class App extends React.Component {
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
-              <Route path="/carttest" component={CartTest}  />
               <Route path="/address" component={Address}  />
               <Route path="/searchbar" component={SearchBox}  />
               <Route path="/searchresult" component={SearchResult}/>
               <Route path="/shops/:tagId" component={ShopsPage}/>
-              <Route path="/pull" component={Cart}/>
               <Route path="/wallet" component={Wallet}/>
               <Route path="/withdraw" component={Withdraw}/>
               <Route path="/withdrawsuccess" component={WithdrawSuccess}/>

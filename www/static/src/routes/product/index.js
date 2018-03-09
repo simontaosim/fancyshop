@@ -6,16 +6,10 @@ import ProductShare from './ProductShare';
 import ProductBottom from './ProductBottom';
 import ProductModal from './ProductModal';
 import style from './common.css'
-import goodImg from '../../assets/img/reward/good.jpg';
 import '../../service/data/datasource';
-import axios from 'axios';
-// import {getProduct} from '../../reducers/product.redux';
-import { getCart } from '../../reducers/cart.redux';
-import { loadProductById } from '../../actions/products';
 import { getProduct } from '../../actions/productAction';
 import { connect } from 'react-redux';
-import 
- MyActivityIndicator  from '../common/MyActivityIndicator';
+import MyActivityIndicator  from '../common/MyActivityIndicator';
 
 
 class Goods extends React.Component {
@@ -40,35 +34,14 @@ componentDidMount() {
  }
 
  componentWillReceiveProps(nextProps) {
-   if(nextProps.reviceProduce) {
-    //  let tagMenuArr = [];
-    //  let spec = nextProps.productShow.specifications
-    //  for(var i=0;i<spec.length;i++){
-    //     tagMenuArr.push(false)
-    //  }
-    //  tagMenuArr[0] = true
-    //  console.log(tagMenuArr)
-    //  this.setState({
-    //   tagMenuClick: tagMenuArr
-    //  })
+   let tagMenuArr = [];
+   let spec = nextProps.product.selected
+   for(var i=0;i<spec.length;i++){
+    tagMenuArr.push(spec[i].isThis)
    }
-    // if(nextProps.product.good){
-    //   let spec = nextProps.product.good.spec
-    //   let tagMenuArr = [];
-    //   for(var i=0;i<spec.length;i++){
-    //     if(spec[i].isThis == true){
-    //       tagMenuArr.push(true)
-    //     }else{
-    //       tagMenuArr.push(false)
-    //     }
-    //   }
-    //   this.setState({
-    //     // product: nextProps.product.good,
-    //     tagMenuClick: tagMenuArr
-    //   })
-    // }else{
-    //   console.log('no')
-    // }
+   this.setState({
+    tagMenuClick: tagMenuArr
+   })
  }
 
 render(){
@@ -97,7 +70,8 @@ render(){
                     onLoad={() => {
                       window.dispatchEvent(new Event('resize'));
                       this.setState({ imgHeight: 'auto' });
-                    }}  
+                    }} 
+                    alt="图片未显示" 
                   />
                 </div>
             )
@@ -107,8 +81,8 @@ render(){
       </div>
 
       <div  className = {style['describe']}>
-      <Flex className = {style['describe-font']}>
-        {product.product.description}
+      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} >
+      
       </Flex>
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center" >
@@ -122,7 +96,7 @@ render(){
       <Flex justify = "between" className = {style['item']}>
         <Flex > <ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
-        <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px',width:'14px'}}/></Flex>
+        <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px'}}  alt="图片未显示" /></Flex>
       </Flex>
       <Flex justify = "between" className = {style['item-des']}>
         <Flex>配送方式:{product.deliver}</Flex>

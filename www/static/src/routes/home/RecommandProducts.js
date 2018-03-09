@@ -4,13 +4,8 @@ import { connect } from 'react-redux';
 
 import { Flex} from 'antd-mobile';
 import style from './RecommandProducts.css';
-import goodsImg from '../../assets/img/home/one.jpg';
-import { loadRecommandProducts } from '../../actions/products';
 import MyActivityIndicator  from '../common/MyActivityIndicator';
 class RecommandProducts extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
     let { recommandProducts } = this.props;
     return(

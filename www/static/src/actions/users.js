@@ -408,7 +408,7 @@ export function getUserbyId(id){
         MClient.on('result', message => {
             console.log(message.result)
             console.log("执行getUserbyId")
-            // dispatch(setCurrentUser(message.result))
+            dispatch(setCurrentUser(message.result))
             if(message.id === methodId && !message.error){
               console.log(message.result)
               console.log("获取到了当前用户对象")
@@ -442,7 +442,7 @@ export function updateNickname(value){
         const methodId = MClient.method('user.changeNickname',[userId,value])
         MClient.on('result', message => {
             console.log(message.result)
-            // dispatch(setCurrentUser(message.result))
+            dispatch(setCurrentUser(message.result))
             // if(message.id === methodId && !message.error){
             //   console.log("更新花名成功")
             // }else{

@@ -4,7 +4,7 @@ import { ordersInfo } from '../reducers/orders.js'
 import CurrentUser from '../reducers/CurrentUser.js'
 import AppUser from '../reducers/AppUser.js'
 import {user} from '../reducers/user.redux';
-import { cart } from '../reducers/cart.redux';
+import { cartReducer } from '../reducers/cart.redux';
 import { productReducer } from '../reducers/product.redux';
 import { model } from '../reducers/model.redux';
 import { productShow } from '../reducers/product';
@@ -30,7 +30,7 @@ export default function configureStore() {
       CurrentUser,
       ordersInfo,
       user,
-      cart,
+      cartReducer,
       productReducer,
       model,
       productShow,

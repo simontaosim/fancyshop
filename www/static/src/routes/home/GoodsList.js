@@ -3,9 +3,7 @@ import {Link} from 'react-router-dom';
 import { PullToRefresh,ListView} from "antd-mobile";
 import '../../service/data/datasource';
 import { connect } from 'react-redux';
-import { gainRecommandProducts } from '../../actions/products';
 import { getProducts } from '../../actions/productsAction';
-import { MClient } from '../../config/asteroid.config.js';
 
 
 
@@ -45,17 +43,6 @@ class GoodsList extends React.Component {
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     }).cloneWithRows(products.list)
-    const separator = (sectionID, rowID) => (
-      <div
-        key={`${sectionID}-${rowID}`}
-        style={{
-          backgroundColor: '#F5F5F9',
-          height: 8,
-          borderTop: '1px solid #ECECED',
-          borderBottom: '1px solid #ECECED',
-        }}
-      />
-    );
     const row = (rowData, sectionID, rowID) => {
       return (
         <div key={rowData._id} style={{ padding: '0 15px' }}>

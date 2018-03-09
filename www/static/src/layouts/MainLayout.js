@@ -6,14 +6,8 @@ import React from 'react'
 
 import AppNavBar from './AppNavBar';
 import BottomMenu from './BottomMenu';
-import {connect} from 'react-redux';
-import {  Redirect } from 'react-router-dom'
 import "./common.less";   // 用于覆盖上面定义的变量
-
-import {  Toast } from 'antd-mobile';
 import{ loadLoginedUserInfo } from '../actions/users';
-
-import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
 const store = configureStore();
 class MainLayout extends React.Component{
@@ -59,9 +53,7 @@ class MainLayout extends React.Component{
   }
 }
 
-function mapStateToProps(state) {
-  return {allState: state}
-}
+
 
 export default MainLayout;
 
