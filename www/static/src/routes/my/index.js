@@ -14,6 +14,8 @@ import MyItem from './MyItem';
 import style from './common.css';
 import userImg from '../../assets/img/timg.jpg';
 import{ logout, memoryPathBeforeLogined, loadLoginedUserInfo } from '../../actions/users';
+import { getStore} from '../../config/mUtils.js';
+import { getUserbyId,getUserbyName} from '../../actions/users'; 
 
 const alert = Modal.alert;
 
@@ -40,6 +42,15 @@ class AppMy extends React.Component{
     const { dispatch } = this.props;
     dispatch(memoryPathBeforeLogined('/my'));
     dispatch(loadLoginedUserInfo());
+    const {appUser,loading} = this.props
+    console.log(this.props.appUser)
+    let userId = getStore("userId");
+    if (userId == undefined){
+      let username = this.props.appUser.username 
+      dispatch(getUserbyName(username))
+    }
+    console.log(userId)
+    dispatch(getUserbyId(userId))
    
   }
 
@@ -65,7 +76,7 @@ class AppMy extends React.Component{
 
   render(){
     
-
+    const { currentUser } =  this.props
    
     return (
       <div >
@@ -79,13 +90,13 @@ class AppMy extends React.Component{
             </Link>
            </Flex>
           <Flex justify = "center"  className = {style['nick-name-pos']}>
-            <span>{11}</span>
+            <span>{currentUser.nickname}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['user-name-span']}>{11}</span>
+            <span className = {style['user-name-span']}>{("(用户名:"+ currentUser.username +")")}</span>
           </Flex>
           <Flex justify = "center">
-            <span className = {style['slogan-span']}>{11}</span>
+            <span className = {style['slogan-span']}>{currentUser.dataAutograph}</span>
           </Flex>
         </div>
         <div className = {style['item-position']} >
@@ -102,6 +113,7 @@ class AppMy extends React.Component{
 }
 function mapStateToProps(state) {
   return {
+    currentUser: state.CurrentUser,
     user: state.user,
     appUser: state.AppUser,
   }

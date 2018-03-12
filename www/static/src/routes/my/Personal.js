@@ -4,11 +4,9 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { district, provinceLite } from 'antd-mobile-demo-data';
 import { setStore, getStore, removeStore } from '../../config/mUtils.js';
-import { getUserbyId,getUserbyName,updateNickname, updateDataAutograph} from '../../actions/users'; 
+import { getUserbyId,getUserbyName,updateNickname, updateDataAutograph,updateSex,updateArea,updateBirthday} from '../../actions/users'; 
 import MyActivityIndicator  from '../common/MyActivityIndicator';
-
-
-
+var moment = require('moment');
 const Item = List.Item;
 const prompt = Modal.prompt;
 const gender = [
@@ -26,12 +24,14 @@ const gender = [
     value:'女',
   },
 ] 
-
+const nowTimeStamp = Date.now();
+const now = new Date(nowTimeStamp);
 class Personal extends React.Component {
    constructor() {
       super();
       this.state = {
-        isFetching:true
+        isFetching:true,
+        date:now
       }
    }
 
@@ -54,19 +54,31 @@ class Personal extends React.Component {
      
    }
    updateNickname(value){
-    console.log(value)
     const { dispatch } = this.props
     dispatch(updateNickname(value))
    }
    updateDataAutograph(value){
-    console.log("value")
     const { dispatch } = this.props
     dispatch(updateDataAutograph(value))
+   }
+   updateSex(value){
+    let sex = value[0]
+    const { dispatch } = this.props
+    dispatch(updateSex(sex))
+   }
+   updateArea(value){
+    const { dispatch } = this.props
+    dispatch(updateArea(value))
+   }
+   updateBirthday(value){
+    const { dispatch } = this.props
+    let data =moment(new Date(value)).format('L')
+    dispatch(updateBirthday(data))
    }
 
   render() {
     const { getFieldProps } = this.props.form;
-    const { currentUser,loading } =  this.props
+    const { currentUser } =  this.props
     return(
         <List renderHeader={() => '个人信息'}>
 
@@ -84,39 +96,33 @@ class Personal extends React.Component {
             { text: '确定', onPress: value => this.updateDataAutograph(value) },
           ], 'default', this.props.currentUser.dataAutograph?this.props.currentUser.dataAutograph:"未设置个性签名")}
           >签名</Item>
-                    {/* <Item 
-          extra="extra content" arrow="horizontal" 
-          onClick={() => prompt('车牌号', '修改车牌号', [
-            { text: '取消' },
-            { text: '确定', onPress: value => console.log(`输入的内容:${value}`) },
-          ], 'default', '100')}
-          >车牌号</Item> */}
           <Item extra={this.props.currentUser.profile.mobile}  onClick={() => {}}>手机号码</Item>
           <Picker data={gender} cols={1} 
           {...getFieldProps('district', {
             initialValue: [this.props.currentUser.sex],
-          })}  className="forss">
+          })}  onChange={value => this.updateSex(value)}
+           className="forss">
           <List.Item arrow="horizontal">性别</List.Item>
           </Picker>
         <Picker extra="请选择(可选)"
           data={district}
-          title="Areas"
+          title="请选择地区"
           {...getFieldProps('area', {
-            initialValue: [this.props.currentUser.area?this.props.currentUser.area:"未设置地区"],
+            initialValue: this.props.currentUser.area?this.props.currentUser.area:['340000', '340800', '340822'],
           })}
-          onOk={e => console.log('ok', e)}
-          onDismiss={e => console.log('dismiss', e)}
+          onOk={value => this.updateArea(value)}
         >
           <List.Item arrow="horizontal">地区</List.Item>
         </Picker>
         <DatePicker
              style = {{width:'100%'}}
              mode="date"
-             extra={this.props.currentUser.changebirth?this.props.currentUser.changebirth:"未设置生日"}
+            //  {...getFieldProps('birthday', {
+            //   initialValue: new Date(this.props.currentUser.birthday)?new Date(this.props.currentUser.birthday):"未设置生日",
+            // })}
              title="请选择你的出生日期"
-             value={this.props.currentUser.changebirth}
-             onChange={date => console.log(`date:${date}`)}
-             
+             value={new Date(this.props.currentUser.birthday)}
+             onChange={value => this.updateBirthday(value)}
            >
              <List.Item arrow="horizontal">生日</List.Item>
            </DatePicker>
@@ -130,7 +136,6 @@ class Personal extends React.Component {
 const PersonalWrapper = createForm()(Personal)
 function mapStateToProps(state) {
   return {
-    loading:state.CurrentUser.loading,
     currentUser: state.CurrentUser,
     user: state.user,
     appUser: state.AppUser,
