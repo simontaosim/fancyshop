@@ -37,6 +37,7 @@ export function loadRecommandProducts(page, pagesize){
     MClient.on("added", message => {
       console.log(message.collection);
     });
+    console.log(`妈妈`)
     MClient.on("added", message => {
       if (message.collection === 'products') {
         console.log('首页加载的东西',message);

@@ -29,15 +29,70 @@ function getBalanceIncomesTotalSuccess(total) {
 
 export function getBalance(userId) {
   return  dispatch => {
-        MClient.sub("app.get.current.balance",[userId]);
-        MClient.connect();
-        MClient.on("added", ({collection, id, fields}) => {
-            if(collection==='balances'){
-                let balance = fields
-                balance.id = id
-                dispatch(getBalanceSuccess(balance))
-            }
-        });
+      MClient.method('app.get.current.balance',[userId])
+      MClient.on('result', message => {
+          console.log(message.result)
+          if (message.result.formMethod === 'app.get.current.balance'){
+             dispatch(getBalanceSuccess(message.result))
+          }
+      })
+    //   MClient.sub("app.get.current.balance", [userId]);
+    //   MClient.connect();
+    // //   let tags = [];
+    // console.log(`123123`)
+
+    //   MClient.on("added", ({ collection, id, fields }) => {
+    //       console.log(collection)
+    //     //   if (collection === 'balances') {
+    //     //     //   if (tags.length < 5) {
+    //     //     //       tags.push({ fields, id });
+    //     //     //   }
+    //     //       console.log(collection);
+    //     //     //   dispatch(setHomeTags(tags));
+    //     //   }
+
+    //   });
+    //   console.log(`获取Id`);
+    //   console.log(userId);
+    //     MClient.sub("app.get.current.balance",[userId]);
+    //     MClient.connect();
+    // //     MClient.on("added", message => {
+    // //   console.log(`获取Id`);
+    // //       console.log(message.collection);
+    // //     });
+    //        console.log(`获取Id`);
+    // //   MClient.on("ready", message => {
+    // //       if (message.subs.includes(subId)) {
+    // //           console.log("mySubscription ready");
+    // //       }
+    // //   });
+    // //   MClient.on("added", message => {
+    // //       console.log(message);
+    // //       if (message.collection === 'balances') {
+    // //           console.log(`输出`)
+    // //           console.log(message)
+    // //       }
+    // //   });
+
+    //   MClient.on("added", ({ collection, id, fields }) => {
+    //       if (collection === 'balances') {
+           
+    //         console.log(`出来吧`)
+    //         //   dispatch(setHomeTags(tags));
+    //       }else{
+    //           console.log(`被甩了`)
+    //       }
+
+    //   });
+
+        // MClient.on("added", ({collection, id, fields}) => {
+        //     if(collection==='balances'){
+        //         let balance = fields
+        //         balance.id = id
+        //         console.log(`成功`)
+        //         dispatch(getBalanceSuccess(balance))
+        //     }
+        // });
     }
 }
 

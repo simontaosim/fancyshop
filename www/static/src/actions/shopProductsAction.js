@@ -15,17 +15,12 @@ function getShopProductsSuccess(products) {
 
  export function getShopProducts(shopId,page,pagesize) {
     return dispatch => {
-      MClient.sub('app.get.shop.products',[shopId,page,pagesize]);
-      MClient.connect();
-      let products = [];
-        MClient.on("added", ({collection, id, fields}) => {
-          if(collection==='products'){
-            if(products.length< pagesize){
-              products.push({fields,id})
-            }
-            dispatch(getShopProductsSuccess(products));
-          }
-        });
+      MClient.method("app.get.shop.products",[shopId])
+      MClient.on("result", message => {
+        if (message.result.formMethod === 'app.get.shop.products'){
+          dispatch(getShopProductsSuccess(message.result.list));
+        }
+      });
     }   
  }
 

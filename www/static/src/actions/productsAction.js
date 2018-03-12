@@ -35,6 +35,7 @@ export function getRecommandProducts(page, pagesize){
       });
       MClient.on("added", message => {
         if (message.collection === 'products') {
+          console.log(`走走走走走走走`)
           if (products.length < pagesize) {
             products.push({fields: message.fields, id: message.id});
             dispatch(getRecommandProductsSuccess(products));

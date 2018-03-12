@@ -57,12 +57,12 @@ class Facilitator extends React.Component {
                     <div key={product.id}>
                       <Link to ={`/product/${product.id}`} >
                       <Flex style = {{backgroundColor:'#fff',border:'1px solid #eee',borderRadius:'5px',margin:'10px',padding:'15px',paddingLeft:'20px'}}>
-                        <img src={product.fields
+                        <img src={product
             .cover} style = {{width:'45px',height:'45px'}}  alt="图片未显示" />
-                        <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>{product.fields
+                        <div style = {{marginLeft:'15px',marginTop:'10px',color:'#000'}}>{product
             .name_zh}<br/>
                         <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
-                          <span style = {{color:'red',marginLeft:'25px'}}>价格:{product.fields
+                          <span style = {{color:'red',marginLeft:'25px'}}>价格:{product
             .price}</span>
                           <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
                         </div>

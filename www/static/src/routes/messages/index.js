@@ -9,13 +9,14 @@ import AwardIncome from './AwardIncome.js';
 import AwardHead from './AwardHead.js';
 import { getBalance,getBalanceIncomesTotal } from '../../actions/balanceAction';
 import MyActivityIndicator  from '../common/MyActivityIndicator';
+import { getStore } from '../../config/mUtils';
 
 class MessageBox extends React.Component{
 
 
   componentDidMount() {
     let { dispatch } = this.props;
-    let userId = "ZCFqbZeRpKZge3uGf"
+    let userId = getStore('userId');
     dispatch(getBalance(userId))
     dispatch(getBalanceIncomesTotal(userId))
   }
