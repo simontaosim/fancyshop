@@ -404,16 +404,19 @@ export function getUserbyId(id){
     return dispatch => {
         const methodId = MClient.method("user.findUserById",[id])
         MClient.on('result', message => {
-            console.log(message.result)
-            console.log("执行getUserbyId")
-            dispatch(setCurrentUser(message.result))
-            if(message.id === methodId && !message.error){
-              console.log(message.result)
-              console.log("获取到了当前用户对象")
+            if(message.result == undefined){
+                return
             }else{
-                console.log(message.error)
-                console.log("发生错误")
+                dispatch(setCurrentUser(message.result))
             }
+            // 
+            // if(message.id === methodId && !message.error){
+            //   console.log(message.result)
+            //   console.log("获取到了当前用户对象")
+            // }else{
+            //     console.log(message.error)
+            //     console.log("发生错误")
+            // }
           })
     }
 }
@@ -421,8 +424,11 @@ export function getUserbyName(username){
     return dispatch => {
         const methodId = MClient.method("user.findUserByName",[username])
         MClient.on('result', message => {
-            console.log(message.result)
-            dispatch(setCurrentUser(message.result))
+            if(message.result == undefined){
+                return
+            }else{
+                dispatch(setCurrentUser(message.result))
+            }
             // if(message.id === methodId && !message.error){
             //   console.log(message.result)
             //   console.log("获取到了当前用户对象")
@@ -435,35 +441,58 @@ export function getUserbyName(username){
 }
 export function updateNickname(value){
     return dispatch => {
-        console.log("获取到了当前用户对象")
         let userId = getStore("userId");
         const methodId = MClient.method('user.changeNickname',[userId,value])
         MClient.on('result', message => {
-            console.log(message.result)
-            dispatch(setCurrentUser(message.result))
-            // if(message.id === methodId && !message.error){
-            //   console.log("更新花名成功")
-            // }else{
-            //     console.log(message.error)
-            //     console.log("发生错误")
-            // }
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
           })
     }
 }
 export function updateDataAutograph(value){
-    // return dispatch => {
-    //     console.log("获取到了当前用户对象")
-    //     const methodId = MClient.method("user.findUserById",[value])
-    //     MClient.on('result', message => {
-    //         if(message.id === methodId && !message.error){
-    //           console.log(message.result)
-    //           console.log("更新个性签名成功")
-    //         }else{
-    //             console.log(message.error)
-    //             console.log("发生错误")
-    //         }
-    //       })
-    // }
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method("user.changeDataAutograph",[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateSex(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeSex',[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateArea(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeArea',[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateBirthday(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeBirthday',[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
 }
 // export function getUserbyIdName(username){
 //     return dispatch => {
