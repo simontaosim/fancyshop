@@ -445,6 +445,8 @@ export function updateNickname(value){
         const methodId = MClient.method('user.changeNickname',[userId,value])
         MClient.on('result', message => {
             if(message.result!== undefined){
+                console.log(`多次调用查看`)
+                console.log(message.result);
                 dispatch(setCurrentUser(message.result))
             }
           })

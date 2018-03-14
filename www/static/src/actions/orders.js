@@ -80,8 +80,6 @@ export function  gainAllOrders(userId){
         console.log("所有订单")
         console.log(message.result)
         dispatch(getAllOrders(message.result));
-      }else{
-        dispatch(getAllOrdersError(message.error));
       }
     })
   }

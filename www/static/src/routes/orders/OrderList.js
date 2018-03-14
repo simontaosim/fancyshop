@@ -32,7 +32,7 @@ class OrderList extends React.Component {
               </div>
             </Flex>
           </Flex>
-          <OrderBtn status={2} history={this.props.history} orderId={v._id}/>
+          <OrderBtn status={v.status} history={this.props.history} orderId={v._id}/>
        </div>
        )
       })}
