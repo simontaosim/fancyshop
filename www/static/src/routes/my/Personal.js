@@ -37,7 +37,6 @@ class Personal extends React.Component {
 
    componentWillMount(){
 
-     console.log("获取当前用户")
      const {dispatch} = this.props
      const {appUser,loading} = this.props
      console.log(this.props.appUser)

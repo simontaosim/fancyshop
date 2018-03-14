@@ -7,7 +7,8 @@ import styles from './Common.css';
 import '../../service/data/datasource';
 import { gainAllOrders, gainPaidOrders,gainUnPaidOrders} from '../../actions/orders';
 import OrderList from './OrderList';
-
+import { getStore} from '../../config/mUtils.js';
+import { getUserbyId,getUserbyName} from '../../actions/users'; 
 class Orders extends React.Component {
   constructor(props) {  
     super(props)
@@ -22,7 +23,8 @@ class Orders extends React.Component {
   switchTab(tab,index) {  
     const { dispatch } = this.props;
     let status = tab.status;
-    let userId = 'akDYXHWR7wcmzR9rz'
+    let userId = getStore("userId");
+    console.log(userId)
     switch(status){
       case  '全部':
         dispatch(gainAllOrders(userId));
@@ -31,7 +33,7 @@ class Orders extends React.Component {
         dispatch(gainUnPaidOrders(userId));
         break;
       case '未处理':
-        dispatch(gainUnPaidOrders(userId));
+        dispatch(gainPaidOrders(userId));
         break;
       case '已完成':
         dispatch(gainPaidOrders(userId));
@@ -39,6 +41,18 @@ class Orders extends React.Component {
       default:
         console.log('无效');
     }
+  }
+  componentWillMount(){
+    const { dispatch } = this.props;
+    const {appUser,loading} = this.props
+    let userId = getStore("userId");
+    console.log(userId)
+    if (userId == undefined){
+      let username = this.props.appUser.username 
+      dispatch(getUserbyName(username))
+    }
+    dispatch(gainAllOrders(userId));
+    
   }
 
 
@@ -48,13 +62,14 @@ class Orders extends React.Component {
       {title:'待付款', status: '待付款'},
       {title:'未处理', status: '未处理'},
       {title:'已完成', status: '已完成'},
-      {title:'无效', status: '无效'},
+      // {title:'无效', status: '无效'},
     ]
    
     return(
     <div className = "all">
-      <Tabs tabs = {tabs} initialPage = {5} animated = {false} useOnPan = {false} onChange={this.switchTab}>
+      <Tabs tabs = {tabs} initialPage = {0} animated = {false} useOnPan = {false} onChange={this.switchTab}>
         <div style = {{backgroundColor:'#fff',paddingBottom:'10px'}} key = "all">
+        <OrderList dataSource={this.props.orders}  history={this.props.history}/>
         </div>
         <div className = "waitpay" style = {{backgroundColor:'#fff'}} key = "waitay">
           <OrderList dataSource={this.props.orders}  history={this.props.history}/>
@@ -65,9 +80,8 @@ class Orders extends React.Component {
         <div className = "finish" style = {{backgroundColor:'#fff'}} key = "finish">
           <OrderList dataSource={this.props.orders}  history={this.props.history}/>
         </div>
-      <div className = "invalid">
+      {/* <div className = "invalid">
         <div style = {{backgroundColor:'#fff',paddingBottom:'15px'}} key = "invalid">
-          {/* <Finish/> */}
           </div>
           <div style = {{backgroundColor:'#fff'}} >
           <ShopName/>
@@ -80,7 +94,7 @@ class Orders extends React.Component {
             <button className = {styles['revoke-btn']}>撤销退款</button>
           </Flex>
           </div>
-      </div>
+      </div> */}
       </Tabs>
     </div>
     )

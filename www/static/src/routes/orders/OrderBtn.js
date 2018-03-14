@@ -28,7 +28,7 @@ class OrderBtn extends React.Component {
                   <button >删除订单</button>
                 </Flex>
               );
-             case 2: 
+             case "unpaid": 
              return( 
              <Flex justify = "end" style = {{margin:'10px',paddingBottom:'10px'}}>
               <button className = {styles['detail-btn']} onClick = {this.details}>详情</button>
@@ -36,14 +36,15 @@ class OrderBtn extends React.Component {
               <button className = {styles['pay-btn']} style = {{marginLeft:'15px'}} >支付</button>
              </Flex>
            );
-            case 3: 
+            case "paid": 
             return(
               <Flex justify = "end" className = {styles['btn-frame']}>
                 <button className = {styles['detail-btn']} >详情</button>
-                <button className = {styles['delete-btn']}>删除订单</button>
+                <button className = {styles['delete-btn']}>二维码</button>
+                <button className = {styles['delete-btn']}>申请退款</button>
               </Flex>
             )
-            case 4:
+            case "done":
             return(
               <Flex justify = "end" style = {{margin:'10px'}}>
                 <button className = {styles['detail-btn']}>详情</button>
