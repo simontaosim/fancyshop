@@ -12,6 +12,8 @@ import { getCart } from '../../actions/cartAction';
 // import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
 import { modelInfo } from '../../map_props';
 import { addCart, insertCart } from '../../actions/cartAction';
+import { getStore } from '../../config/mUtils';
+import { getUserbyId } from '../../actions/users';
 
 
 class ProductModal extends React.Component {
@@ -29,7 +31,9 @@ class ProductModal extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    this.props.dispatch(getCart(2))
+    let userId = getStore('userId');
+    this.props.dispatch(getCart(userId))
+    this.props.dispatch(getUserbyId(userId))
     
   }
 
@@ -56,14 +60,15 @@ class ProductModal extends React.Component {
    onClose = key => (e) => {
     e.preventDefault(); 
     console.log(123)
-    let {cart, dispatch,product} = this.props;
+     let { cart, dispatch, product, currentUser} = this.props;
     console.log(`在这里`)
     console.log(product)
+    let userId = getStore('userId');
     let count = product.count;
     let spec = product.selected == 0 ?  '默认规格': product.selected;
     if(this.props.model.way=="orders"){
       let params = {
-        userId: 2,
+        userId,
         status: 'unpay',
         shopId: product.product.shopId,
         address: "user.address.id",
@@ -96,10 +101,10 @@ class ProductModal extends React.Component {
        let ProductReplaceData;
   
    
-      if(cart.list.user_id === ''){
+      if (cart.list.userId === ''){
         console.log(`购物车不存在`)
         let params = {
-          user_id: 2,
+          userId,
           shopsData: [
             {
               shop_name: product.product.shop_name,
@@ -145,6 +150,7 @@ class ProductModal extends React.Component {
               // console.log(selected.spec_name);
               if(specIds.includes(selected.spec_name)){
                 console.log(`存在规格`)
+                console.log(count)
                 if(cart.list.shopsData[i].productsData[j].prodductSpec.spec_name===selected.spec_name){
                   cart.list.shopsData[i].productsData[j].count = cart.list.shopsData[i].productsData[j].count*1+count
                 }
@@ -184,6 +190,9 @@ class ProductModal extends React.Component {
          }
        }else{
          console.log(`更新`)
+         console.log(cart.list);
+         console.log(`数量`)
+         console.log(count);
           cart.list.shopsData.push({
               shop_name: product.product.shop_name,
               checked: false,
@@ -335,6 +344,7 @@ class ProductModal extends React.Component {
 
  function mapStateToProps(state) {
    return {
+     currentUser: state.CurrentUser,
      product: state.productReducer,
      cart: state.cartReducer,
      model: state.model,

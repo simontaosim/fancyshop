@@ -3,7 +3,7 @@ import { INSERT_CART_SUCCESS,GET_CART_SUCCESS,PRODCUT_CHECK_ALL,COUNT_PRODUCT,SH
 export function cartReducer(state={
     list: {
         shopsData: [],
-        user_id: '',
+        userId: '',
     },
     total: 0,
     isFetching: true,

@@ -404,11 +404,15 @@ export function getUserbyId(id){
     return dispatch => {
         const methodId = MClient.method("user.findUserById",[id])
         MClient.on('result', message => {
-            if(message.result == undefined){
-                return
-            }else{
+            if (message.id === methodId && !message.error &&  message.result.formMethod ==='user.findUserById'){
                 dispatch(setCurrentUser(message.result))
             }
+            // if(message.result == undefined){
+            //     return
+            // }else{
+            //     console.log(message.result)
+            //     dispatch(setCurrentUser(message.result))
+            // }
             // 
             // if(message.id === methodId && !message.error){
             //   console.log(message.result)
@@ -429,21 +433,16 @@ export function getUserbyName(username){
             }else{
                 dispatch(setCurrentUser(message.result))
             }
-            // if(message.id === methodId && !message.error){
-            //   console.log(message.result)
-            //   console.log("获取到了当前用户对象")
-            // }else{
-            //     console.log(message.error)
-            //     console.log("发生错误")
-            // }
           })
     }
 }
 export function updateNickname(value){
     return dispatch => {
+        console.log(`有没跑`)
         let userId = getStore("userId");
         const methodId = MClient.method('user.changeNickname',[userId,value])
         MClient.on('result', message => {
+            console.log(message);
             if(message.result!== undefined){
                 console.log(`多次调用查看`)
                 console.log(message.result);

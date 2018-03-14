@@ -26,22 +26,13 @@ function getProductsSuccess(products,page) {
 
 export function getRecommandProducts(page, pagesize){
     return dispatch => {
-      const subId =  MClient.sub("home.top.products", [page, pagesize]);
-      let products = [];
-      MClient.on("ready", message => {
-        if (message.subs.includes(subId)) {
-            console.log("mySubscription ready");
+      let methodId = MClient.method('home.top.products', [page, pagesize]);
+      MClient.on('result', message => {
+        if (message.id === methodId && !message.error &&  message.result.formMethod === 'home.top.products') {
+          console.log(`获取所有热门商品是否加载一次`)
+          dispatch(getRecommandProductsSuccess(message.result.list))
         }
-      });
-      MClient.on("added", message => {
-        if (message.collection === 'products') {
-          console.log(`走走走走走走走`)
-          if (products.length < pagesize) {
-            products.push({fields: message.fields, id: message.id});
-            dispatch(getRecommandProductsSuccess(products));
-          }
-        }
-      });
+      })
     }
   }
 
@@ -50,8 +41,9 @@ export function getRecommandProducts(page, pagesize){
     return dispatch => {
       let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
       MClient.on('result', message => {
-        if(message.id === methodId && !message.error){
-            dispatch(getProductsSuccess(data.concat(message.result),page))
+        console.log(`获取所有商品是否加载一次`)
+        if (message.id === methodId && !message.error && message.result.formMethod === 'app.get.recommend.products'){
+          dispatch(getProductsSuccess(data.concat(message.result.list),page))
         }
       })
     }

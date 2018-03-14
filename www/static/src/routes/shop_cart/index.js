@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import DeleteBtn from './DeleteBtn';
 import BalanceBtn from './BalanceBtn';
 import CartNull from './CartNull';
+import { getStore } from '../../config/mUtils';
 
 
 const CheckboxItem = Checkbox.CheckboxItem;
@@ -23,7 +24,8 @@ class ShopCart extends React.Component{
   }
 
   componentDidMount() {
-    this.props.dispatch(getCart(2))
+    let userId = getStore('userId')
+    this.props.dispatch(getCart(userId))
   }
 
 

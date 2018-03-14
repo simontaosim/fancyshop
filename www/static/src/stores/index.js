@@ -16,10 +16,10 @@ import { shopProductsReducer } from '../reducers/shop.product.redux';
 import { recommandProductsReducer } from '../reducers/products.redux';
 import { ProductsReducer } from '../reducers/products.redux';
 import thunk from 'redux-thunk'
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 export default function configureStore() {
   const enhancer = compose(
-    applyMiddleware(thunk,logger),
+    applyMiddleware(thunk),
     window.devToolsExtension?window.devToolsExtension():f=>f
   );
   return createStore(
