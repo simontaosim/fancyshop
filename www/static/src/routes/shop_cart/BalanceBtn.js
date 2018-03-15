@@ -3,7 +3,8 @@ import { Flex,Checkbox } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { cartInfo } from '../../map_props';
 // import { shopCheckAll } from '../../reducers/cart.redux'
-import { shopCheckAll } from '../../actions/cartAction';
+import { shopCheckAll, cartCreatOrder } from '../../actions/cartAction';
+
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
@@ -14,7 +15,12 @@ class BalanceBtn extends React.Component {
   }
 
   firmorder(){
-    this.props.history.push('/firmorder')
+    let { cart, dispatch } = this.props;
+    console.log(cart);
+    
+    dispatch(cartCreatOrder(cart.list))
+    console.log('创建订单')
+    // this.props.history.push('/firmorder')
   }
   CheckAll(e) {
     let { cart,dispatch } = this.props;

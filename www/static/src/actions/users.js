@@ -406,6 +406,7 @@ export function getUserbyId(id){
         MClient.on('result', message => {
             if (message.id === methodId && !message.error &&  message.result.formMethod ==='user.findUserById'){
                 dispatch(setCurrentUser(message.result))
+                setStore('userInfo',message.result)
             }
             // if(message.result == undefined){
             //     return

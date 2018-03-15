@@ -29,7 +29,6 @@ export function getRecommandProducts(page, pagesize){
       let methodId = MClient.method('home.top.products', [page, pagesize]);
       MClient.on('result', message => {
         if (message.id === methodId && !message.error &&  message.result.formMethod === 'home.top.products') {
-          console.log(`获取所有热门商品是否加载一次`)
           dispatch(getRecommandProductsSuccess(message.result.list))
         }
       })
@@ -41,7 +40,6 @@ export function getRecommandProducts(page, pagesize){
     return dispatch => {
       let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
       MClient.on('result', message => {
-        console.log(`获取所有商品是否加载一次`)
         if (message.id === methodId && !message.error && message.result.formMethod === 'app.get.recommend.products'){
           dispatch(getProductsSuccess(data.concat(message.result.list),page))
         }

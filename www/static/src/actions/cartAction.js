@@ -73,6 +73,15 @@ function deleteShopCart(data) {
      return shopDeletData
 }
 //结算购物车
+function notDeleteShopCart(data) {
+  let shopsData = data.shopsData;
+  let shopDeletData = shopsData.filter(notFilterByItem);
+  for (var i = 0; i < shopDeletData.length; i++) {
+    shopDeletData[i].productsData = shopDeletData[i].productsData.filter(notFilterByItem)
+  }
+  console.log(shopDeletData)
+  return shopDeletData
+}
 
 function filterByItem(item) {
   if (isCheck(item.checked)) {
@@ -81,9 +90,18 @@ function filterByItem(item) {
   return false;
 }
 
+function notFilterByItem(item) {
+  if (isCheck(item.checked)) {
+    return false;
+  }
+  return true;
+}
+
 function isCheck(obj) {
   return  obj!== true
 }
+
+
 export function deleteProduct(data){
   return { type: DELETE_SHOP_CART}
 }
@@ -140,7 +158,8 @@ export function countProduct(payload) {
 
 export function addCart(product) {
   return dispatch => {
-    let methodId = MClient.method("shop_carts.add_cart", [product]);
+    let userId = getStore('userId')
+    let methodId = MClient.method("shop_carts.add_cart", [product,userId]);
     MClient.on("result", message => {
       if (message.id === methodId && !message.error) {
         dispatch(addCartSuccess(message.result))
@@ -158,7 +177,8 @@ export function insertCart(product) {
   return dispatch => {
     let methodId = MClient.method("shop_carts.insert_cart", [product]);
     MClient.on("result", message => {
-      if (message.id === methodId && !message.error) {
+      if (message.id === methodId && !message.error ) {
+        
         dispatch(insertCartSuccess(message.result))
         dispatch(addProductCount(1))
         //   Toast.info('加入购物车成功',1)
@@ -172,11 +192,10 @@ export function insertCart(product) {
 
 export function getCart(id) {
   return dispatch => {
-    console.log(`获取购物车`)
-    console.log(id)
     let methodId = MClient.method('shop_carts.get_cart',[id]);
     MClient.on("result", message =>　{
-      if (message.id === methodId && !message.error) {
+      console.log(message.result)
+      if ( message.result.formMethod==='shop_carts.get_cart') {
         console.log(message.result)
         dispatch(getCartSuccess(message.result))
       }else{
@@ -188,14 +207,28 @@ export function getCart(id) {
 
 export function removeCart(product) {
   return dispatch => {
-    let methodId = MClient.method('shop_carts.add_cart',[deleteShopCart(product)]);
+    console.log(`调用了乜`)
+    let userId = getStore('userId')
+    let methodId = MClient.method('shop_carts.add_cart',[deleteShopCart(product),userId]);
     MClient.on("result", message => {
-      if (message.id === methodId && !message.error) {
+      if (message.result.formMethod === 'shop_carts.add_cart') {
+      //   console.log(`删除成功`);
+      //   console.log(message.result);
         dispatch(removeCartSuccess(message.result))
-        //   Toast.info('加入购物车成功',1)
+      //   //   Toast.info('加入购物车成功',1)
       } else {
-        // dispatch(receiveProductByIdError(message.error));
+      //   // dispatch(receiveProductByIdError(message.error));
       }
     })
+  }
+}
+
+export function cartCreatOrder(product) {
+  return dispatch => {
+    let userId = getStore('userId')
+    console.log(product)
+    console.log(notDeleteShopCart(product))
+    // console.log(deleteShopCart(product))
+    // let methodId = MClient.method('app.shop_carts.orders', [notDeleteShopCart(product), userId]);
   }
 }

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styles from '../orders/WaitDetails.css';
 import { MClient } from '../../config/asteroid.config.js'
 import MyActivityIndicator  from '../common/MyActivityIndicator';
+import { getStore } from '../../config/mUtils'
+
 
 class FirmOrder extends React.Component {
   constructor(props) {
@@ -32,16 +34,16 @@ class FirmOrder extends React.Component {
     })
   }
  
-  componentWillReceiveProps(nextProps){
-  }
+
 
   paid() {
     let params = {
       remark: this.state.remark,
       id: this.state.order._id,
-      shop_name: this.state.shop.name,
+      shopName: this.state.shop.name,
       address: this.state.shop.address
     }
+    console.log(params);
     const methodId = MClient.method("app.order.update", [params]);
     MClient.on("result",message => {
       if(message.id === methodId &&  !message.error){
@@ -113,5 +115,13 @@ class FirmOrder extends React.Component {
   }
 
 }
+
+
+function mapStateToProps(state) {
+  return {
+    currentuser: state.CurrentUser
+  }
+}
+
 
 export default FirmOrder;

@@ -91,7 +91,7 @@ render(){
         </Flex.Item>
         <span align = "right" style = {{color:'#7b7b7b'}}>{product.product.address}</span>
       </Flex>
-        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥{product.product.price}</span>
+        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥{product.product.price/100}</span>
       </div>
       <Flex justify = "between" className = {style['item']}>
         <Flex > <ProductShare/></Flex>

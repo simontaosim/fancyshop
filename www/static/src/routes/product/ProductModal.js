@@ -65,15 +65,20 @@ class ProductModal extends React.Component {
     console.log(product)
     let userId = getStore('userId');
     let count = product.count;
-    let spec = product.selected == 0 ?  '默认规格': product.selected;
+    let selected = this.filterSpce(product.selected)
+    // let spec = product.selected == 0 ?  '默认规格': product.selected;
+     let userInfo = JSON.parse(getStore('userInfo'));
+    console.log(`用户信息`);
+    console.log(userInfo);
     if(this.props.model.way=="orders"){
       let params = {
         userId,
-        status: 'unpay',
+        status: 'unpaid',
         shopId: product.product.shopId,
         address: "user.address.id",
-        username: "李逍遥",
-        mobile: "13751124249",
+        username: userInfo.username,
+        nickname: userInfo.nickname,
+        mobile: userInfo.profile.mobile,
         products: [
           {
             price: product.product.endPrice,
@@ -82,23 +87,22 @@ class ProductModal extends React.Component {
             id: product.product._id,
             name: product.product.name_zh,
             specifications: {
-              name: spec
+              name: selected
             }
           },
         ]
       };
+      console.log(params);
       dispatch(createOrder(params));
       dispatch(closeSpecModel());
      }else{
-     let selected =product.selected !== undefined ? this.filterSpce(product.selected) :product.good.spec[0]
+    //  let selected =product.selected !== undefined ? this.filterSpce(product.selected) :product.good.spec[0]
      let count =product.count !== undefined ?product.count : 1
        let productId =product.product._id
        let shopId =product.product.shop_id
        let shopIds = [];
        let goodIds = [];
        let specIds = [];
-       let ShopReplaceData;
-       let ProductReplaceData;
   
    
       if (cart.list.userId === ''){
@@ -123,7 +127,6 @@ class ProductModal extends React.Component {
             }
           ]
         }
-        console.log(params)
         dispatch(insertCart(params))
         dispatch(closeSpecModel())
     //     this.props.insertCart(params)
