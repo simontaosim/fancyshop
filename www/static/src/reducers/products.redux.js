@@ -21,15 +21,13 @@ export function ProductsReducer(state={
     page: 1,
 },action){
     switch (action.type) {
-        case GET_RECOMMAND_PRODUCTS_SUCCESS:
-            return {
-                ...state,
-                isFetching: false,
-                list: action.products
-            }
+        // case GET_RECOMMAND_PRODUCTS_SUCCESS:
+        //     return {
+        //         ...state,
+        //         isFetching: false,
+        //         list: action.products
+        //     }
         case GET_PRODUCTS_SUCCESS:
-        console.log(`~~~~`)
-        console.log(action.page)
             return {
                 ...state,
                 list: action.products,

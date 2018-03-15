@@ -22,7 +22,6 @@ import Refund from './orders/Refund';
 import UntreatedDetail from './orders/UntreatedDetail';
 import QrCode from './orders/QrCode';
 import CartNull from './shop_cart/CartNull';
-import UserData from './my/UserData';
 import ProductModal from './product/ProductModal';
 import Facilitator from './product/Facilitator';
 import FirmOrder from './product/FirmOrder';
@@ -91,7 +90,6 @@ class App extends React.Component {
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
               <Route path = "/nullcart" component={ CartNull }/>
-              <Route path = "/userdata" component={ UserData }/>
               <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
               <Route path = "/firmorder/:orderId" component = {FirmOrder}/>

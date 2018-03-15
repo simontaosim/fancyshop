@@ -22,7 +22,7 @@ export function balanceReducer(state={
             return {
                     ...state,
                     isFetching: false,
-                    total: action.total,
+                    total: action.total.total,
                     }
         default:
             return state

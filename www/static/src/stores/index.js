@@ -1,11 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import {AppInfo} from '../reducers'
 import { ordersInfo } from '../reducers/orders.js'
-import { currentUser } from '../reducers/users.js'
 import CurrentUser from '../reducers/CurrentUser.js'
 import AppUser from '../reducers/AppUser.js'
 import {user} from '../reducers/user.redux';
-import { cart } from '../reducers/cart.redux';
+import { cartReducer } from '../reducers/cart.redux';
 import { productReducer } from '../reducers/product.redux';
 import { model } from '../reducers/model.redux';
 import { productShow } from '../reducers/product';
@@ -17,10 +16,10 @@ import { shopProductsReducer } from '../reducers/shop.product.redux';
 import { recommandProductsReducer } from '../reducers/products.redux';
 import { ProductsReducer } from '../reducers/products.redux';
 import thunk from 'redux-thunk'
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 export default function configureStore() {
   const enhancer = compose(
-    applyMiddleware(thunk,logger),
+    applyMiddleware(thunk),
     window.devToolsExtension?window.devToolsExtension():f=>f
   );
   return createStore(
@@ -28,11 +27,10 @@ export default function configureStore() {
       AppInfo,
       AppUser,
       recommandProducts,
-      currentUser,
       CurrentUser,
       ordersInfo,
       user,
-      cart,
+      cartReducer,
       productReducer,
       model,
       productShow,

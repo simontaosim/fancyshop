@@ -27,6 +27,9 @@ export const EXPECT_REG_SMS_CODE="EXPECT_REG_SMS_CODE";
 export const GET_REG_SMS_CODE_FAIL="GET_REG_SMS_CODE_FAIL";
 export const GET_REG_SMS_CODE_SUCCESS="GET_REG_SMS_CODE_SUCCESS";
 
+export const SET_CURRENT_USER="SET_CURRENT_USER";
+export const SET_CURRENT_USER_ERROR="SET_CURRENT_USER_ERROR";
+
 const crypto = require('crypto');
 
 //============== 用户的注册登录 ======================
@@ -370,8 +373,6 @@ export function loadLoginedUserInfo(){
                     }else{
                         return  dispatch(loadUnloginedUserInfo());
                     }
-                }else{
-                    return dispatch(loadUnloginedUserInfo());
                 }
             });
         }
@@ -384,6 +385,12 @@ export function loadLoginedUserInfo(){
 }
 //=========================================================
 //===============载入用户信息==========================================
+export function setCurrentUser(user){
+    return {
+        type: SET_CURRENT_USER,
+        user
+    } 
+}
 export function expectUserById(id){
 
 }
@@ -393,6 +400,106 @@ export function loadUserById(id){
 export function expectUsersAsFollows(){
 
 }
+export function getUserbyId(id){
+    return dispatch => {
+        const methodId = MClient.method("user.findUserById",[id])
+        MClient.on('result', message => {
+            if (message.id === methodId && !message.error &&  message.result.formMethod ==='user.findUserById'){
+                dispatch(setCurrentUser(message.result))
+            }
+            // if(message.result == undefined){
+            //     return
+            // }else{
+            //     console.log(message.result)
+            //     dispatch(setCurrentUser(message.result))
+            // }
+            // 
+            // if(message.id === methodId && !message.error){
+            //   console.log(message.result)
+            //   console.log("获取到了当前用户对象")
+            // }else{
+            //     console.log(message.error)
+            //     console.log("发生错误")
+            // }
+          })
+    }
+}
+export function getUserbyName(username){
+    return dispatch => {
+        const methodId = MClient.method("user.findUserByName",[username])
+        MClient.on('result', message => {
+            if(message.result == undefined){
+                return
+            }else{
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateNickname(value){
+    return dispatch => {
+        console.log(`有没跑`)
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeNickname',[userId,value])
+        MClient.on('result', message => {
+            console.log(message);
+            if(message.result!== undefined){
+                console.log(`多次调用查看`)
+                console.log(message.result);
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateDataAutograph(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method("user.changeDataAutograph",[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateSex(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeSex',[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateArea(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeArea',[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+export function updateBirthday(value){
+    return dispatch => {
+        let userId = getStore("userId");
+        const methodId = MClient.method('user.changeBirthday',[userId,value])
+        MClient.on('result', message => {
+            if(message.result!== undefined){
+                dispatch(setCurrentUser(message.result))
+            }
+          })
+    }
+}
+// export function getUserbyIdName(username){
+//     return dispatch => {
+
+//     }
+// }
 //=======================================
 
 
