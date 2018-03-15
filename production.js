@@ -17,7 +17,7 @@ instance.run();
 //启动ipfs节点
 const IPFSFactory = require('ipfsd-ctl')
 const f = IPFSFactory.create({type: 'js'})
-const HOST_IP ="192.168.43.228";
+const HOST_IP ="139.198.12.188";
 
 f.spawn(
       {
@@ -40,10 +40,10 @@ f.spawn(
           },
           "Addresses": {
             "Swarm": [
-              "/ip4/192.168.43.228/tcp/4403"
+              "/ip4/"+HOST_IP+"/tcp/4403"
             ],
-            "API": "/ip4/192.168.43.228/tcp/5002",
-            "Gateway": "/ip4/192.168.43.228/tcp/8787"
+            "API": "/ip4/"+HOST_IP+"/tcp/5002",
+            "Gateway": "/ip4/"+HOST_IP+"/tcp/8787"
           },
           "Discovery": {
             "MDNS": {
