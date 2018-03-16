@@ -28,7 +28,7 @@ export function getRecommandProducts(page, pagesize){
     return dispatch => {
       let methodId = MClient.method('home.top.products', [page, pagesize]);
       MClient.on('result', message => {
-        if (message.id === methodId && !message.error &&  message.result.formMethod === 'home.top.products') {
+        if (message.result.formMethod === 'home.top.products') {
           dispatch(getRecommandProductsSuccess(message.result.list))
         }
       })
@@ -40,7 +40,7 @@ export function getRecommandProducts(page, pagesize){
     return dispatch => {
       let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
       MClient.on('result', message => {
-        if (message.id === methodId && !message.error && message.result.formMethod === 'app.get.recommend.products'){
+        if (message.result.formMethod === 'app.get.recommend.products'){
           dispatch(getProductsSuccess(data.concat(message.result.list),page))
         }
       })

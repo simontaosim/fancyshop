@@ -71,7 +71,8 @@ class App extends React.Component {
     store.dispatch(loadLoginedUserInfo());
     
   }
-  render() {    let { appUser }  = this.props;
+  render() {   
+    let { appUser }  = this.props;
     let authenticated = appUser.loginStatus === 'logined' ? true : false
     return (
       <Router >

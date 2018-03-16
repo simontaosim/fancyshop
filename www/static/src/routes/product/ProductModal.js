@@ -87,7 +87,7 @@ class ProductModal extends React.Component {
             id: product.product._id,
             name: product.product.name_zh,
             specifications: {
-              name: selected
+              ...selected
             }
           },
         ]
@@ -277,8 +277,6 @@ class ProductModal extends React.Component {
      let modelStatus = this.props.model.spec_model;
      let {product} = this.props
      let spec = product.selected
-     console.log(spec)
-     console.log(spec.length)
      let specArr = []
      let price = [];
      for(var i=0; i<spec.length; i++){
