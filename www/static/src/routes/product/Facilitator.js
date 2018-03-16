@@ -63,7 +63,7 @@ class Facilitator extends React.Component {
             .name_zh}<br/>
                         <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
                           <span style = {{color:'red',marginLeft:'25px'}}>价格:{product
-            .price}</span>
+            .price/100}</span>
                           <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
                         </div>
                       </div>

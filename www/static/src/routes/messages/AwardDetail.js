@@ -21,7 +21,7 @@ class AwardDetail extends React.Component {
         </Flex>
         <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
           <div style = {{backgroundColor:'#fff',width:'100%',padding:'15px 0'}}>
-            <Flex style = {{padding:'18px 10px 10px 5px',width:'100%'}}>
+            {/* <Flex style = {{padding:'18px 10px 10px 5px',width:'100%'}}>
               <img alt="" src = {goodsImg} style = {{height:'80px',width:'80px',border:'1px solid #ccc',borderRadius:'5px',marginRight:'10px',marginTop:'-15px'}}/>
               <Flex direction = "column" jusitify = "start" align = "start" style= {{}}>
                 <span style = {{fontSize:'16px',overflow:'hidden',whiteSpace:'nowrap',textOverflow:'ellipsis'}}>我叫商品的名字是是占位符只能是一行</span>
@@ -36,7 +36,7 @@ class AwardDetail extends React.Component {
             </Flex>
             <span style = {{float:'right',color:'#aaa',paddingBottom:'15px'}}>
               2017.08.22 13:39
-            </span>
+            </span> */}
           </div>
           <div style = {{ display:'flex',alignItems:'center',justifyContent:'center',height:'250px',backgroundColor:'#fff'}}>
             已结算

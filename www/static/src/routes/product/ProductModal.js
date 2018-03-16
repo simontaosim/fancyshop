@@ -61,13 +61,11 @@ class ProductModal extends React.Component {
     e.preventDefault(); 
     console.log(123)
      let { cart, dispatch, product, currentUser} = this.props;
-    console.log(`在这里`)
-    console.log(product)
     let userId = getStore('userId');
     let count = product.count;
     let selected = this.filterSpce(product.selected)
     // let spec = product.selected == 0 ?  '默认规格': product.selected;
-     let userInfo = JSON.parse(getStore('userInfo'));
+    let userInfo = JSON.parse(getStore('userInfo'));
     console.log(`用户信息`);
     console.log(userInfo);
     if(this.props.model.way=="orders"){
