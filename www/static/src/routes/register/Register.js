@@ -89,7 +89,7 @@ sendCode() {
       return
     }
     getAddress()
-    this.props.register(user,pwd,mobile,verify)
+    this.props.dispatch(register(user,pwd,mobile,verify))
   }
 
   handlePhone=(event)=>{

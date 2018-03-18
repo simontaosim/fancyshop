@@ -1,19 +1,19 @@
 .bg-img {
   margin-top: 48px;
-  background-image: url(../../assets/img/background3.jpg);
+  background-image: url(../../assets/img/facilitator.png);
   background-size: cover;
   color: #fff;
-  font-size: 16px;
-  padding-bottom: 15px;
+  font-size: 14px;
+  padding-bottom: 25px;
 }
 .user {
-  padding-top: 30px;
+  padding-top: 50px;
 }
 .user img {
-  height: 60px;
-  width: 60px;
-  border-radius: 30px;
-  border: 1px solid #eee;
+  height: 56px;
+  width: 56px;
+  border-radius: 28px;
+  /* border: 1px solid #eee; */
 }
 .distance {
   padding: 8px 0 0 0;
@@ -21,4 +21,33 @@
 .distance2 {
   padding: 0 0 15px 0;
   font-size: 14px;
+}
+.shop-details {
+  padding: 15px 10px;
+  font-size: 14px;
+  background-color: #f6f6f6;
+}
+.details-item ,.details-itemred{
+  background-color: #fff;
+  padding: 10px;
+  color: #ababab;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 15px;
+}
+.details-item p {
+  font-size: 14px;
+}
+.details-item span {
+  color: #333;
+  font-size: 14px;
+  padding-left: 10px;
+}
+.details-itemred p {
+  font-size: 14px;
+}
+.details-itemred span {
+  color: red;
+  font-size: 14px;
+  padding-left: 10px;
 }
