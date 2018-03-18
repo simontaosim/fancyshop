@@ -7,7 +7,9 @@ import payImg from '../../assets/img/orders/pay.png';
 import wechatImg from '../../assets/img/orders/wechat.png';
 import { MClient } from '../../config/asteroid.config.js';
 import MyActivityIndicator  from '../common/MyActivityIndicator';
-
+import urlencode from 'urlencode';
+import { getStore } from '../../config/mUtils'
+import history from '../../history';
 const CheckboxItem = Checkbox.CheckboxItem;
 const RadioItem = Radio.RadioItem;
 const AgreeItem = Checkbox.AgreeItem;
@@ -31,6 +33,20 @@ class Paid extends React.Component {
         value: 0,
     }
   }
+  Paid = (orderId) => {
+    let userId = getStore('userId')
+    let data = {
+      "method": "wechat.mp", //支付方式
+      "data": {
+        out_trade_no: orderId, //订单ID号
+        user_id: userId , //用户ID
+        super_agency_id:  null //上级代理ID，若是没，则写null
+      }
+    }
+    console.log(`http://bills.cosgoal.com/order/s?pdata="${urlencode(JSON.stringify(data))}`)
+    window.location.href = `http://bills.cosgoal.com/order/s?pdata="${urlencode(JSON.stringify(data))}`
+
+  }
   onChange = (value) => {
    this.setState({
      value,
@@ -49,6 +65,7 @@ class Paid extends React.Component {
     });
   }
   render(){
+    console.log(urlencode('苏千'));
     let {order,isFetching} = this.state
 
     const { value, value2, value3, value4 } = this.state;
@@ -111,9 +128,9 @@ class Paid extends React.Component {
        ))}
      </List>
         <Flex justify = "center">
-          <Link to="./paysuccess">
-            <button style = {{backgroundColor:'#ea4b4b',color:'#fff',borderRadius:'5px',border:'1px solid #ea4b4b',width:'200px',padding:'8px 0'}}>立即支付</button>
-          </Link>
+          {/* <Link to="./paysuccess"> */}
+            <button style = {{backgroundColor:'#ea4b4b',color:'#fff',borderRadius:'5px',border:'1px solid #ea4b4b',width:'200px',padding:'8px 0'}} onClick={()=> this.Paid(order._id)}>立即支付</button>
+          {/* </Link> */}
         </Flex>
     </div>
     )
