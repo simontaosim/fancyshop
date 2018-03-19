@@ -47,7 +47,7 @@ class Facilitator extends React.Component {
           <Flex justify = "center" className = {style['distance']}>{shop.name}</Flex>
           <Flex justify = "center" className = {style['distance2']}>
             <img  alt="" src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>{shop.address}
-            <img alt="" src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
+            <a href={"tel: "+ shop.phone }><img alt="" src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/></a>
           </Flex>
         </div>
         <Tabs tabs = {tabs} >
@@ -76,21 +76,9 @@ class Facilitator extends React.Component {
            }
           </div>
           <div>
-           <Flex direction = "column" align = "start" className = {style['shop-details']}>
-              <Flex  direction = "column"  align ='start' className = {style['details-item']}>
-                <Flex><p>好评率</p><span>99%</span></Flex>
-                <Flex><p>所在地</p><span>四川成都</span></Flex>
-                <Flex><p>开店时间</p><span>2018-02-28</span></Flex>
-              </Flex>
-              <Flex  direction = "column"  align ='start' className = {style['details-itemred']}>
-                <Flex><p>描述相符</p><span> 4.7高于同行2.25%</span></Flex>
-                <Flex><p>服务态度</p><span> 4.8高于同行8.32%</span></Flex>
-                <Flex><p>物流服务</p><span> 4.7 持平--</span></Flex>
-              </Flex>
-              <Flex  direction = "column"  align ='start' className = {style['details-item']}>
-                <Flex><p>掌柜名</p><span>佟湘玉</span></Flex>
-              </Flex>
-            </Flex>
+            <Flex direction="column" align="start" style={{ margin: '10px', padding: '15px 10px', fontSize: '14px', backgroundColor: '#fff' }}>
+              {shop.description}
+          </Flex>
           </div>
         </Tabs>
       </div>
