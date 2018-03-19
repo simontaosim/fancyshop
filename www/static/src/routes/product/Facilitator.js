@@ -78,7 +78,7 @@ class Facilitator extends React.Component {
           <div>
             <Flex direction="column" align="start" style={{ margin: '10px', padding: '15px 10px', fontSize: '14px', backgroundColor: '#fff' }}>
               {shop.description}
-          </Flex>
+            </Flex>
           </div>
         </Tabs>
       </div>

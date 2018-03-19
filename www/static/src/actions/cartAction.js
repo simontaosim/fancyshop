@@ -66,16 +66,16 @@ function ProdcutTotal(data) {
 function deleteShopCart(data) {
     let shopsData = data.shopsData;
     let shopDeletData = shopsData.filter(filterByItem);
-    for(var i=0;i<shopDeletData.length;i++){
-      shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
-    }
-    console.log(shopDeletData)
+      for(var i=0;i<shopDeletData.length;i++){
+        shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
+      }
      return shopDeletData
 }
 //结算购物车
 function notDeleteShopCart(data) {
   let shopsData = data.shopsData;
-  let shopDeletData = shopsData.filter(notFilterByItem);
+  let shopDeletData = shopsData
+  // .filter(notFilterByItem);
   for (var i = 0; i < shopDeletData.length; i++) {
     shopDeletData[i].productsData = shopDeletData[i].productsData.filter(notFilterByItem)
   }
@@ -91,14 +91,18 @@ function filterByItem(item) {
 }
 
 function notFilterByItem(item) {
-  if (isCheck(item.checked)) {
-    return false;
+  if (notisCheck(item.checked)) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 function isCheck(obj) {
   return  obj!== true
+}
+
+function notisCheck(obj) {
+  return obj === true
 }
 
 
@@ -209,7 +213,9 @@ export function removeCart(product) {
   return dispatch => {
     console.log(`调用了乜`)
     let userId = getStore('userId')
-    let methodId = MClient.method('shop_carts.add_cart',[deleteShopCart(product),userId]);
+    let deleteProducts = deleteShopCart(product)
+    console.log(deleteProduct)
+    let methodId = MClient.method('shop_carts.add_cart', [deleteProducts,userId]);
     MClient.on("result", message => {
       if (message.result.formMethod === 'shop_carts.add_cart') {
       //   console.log(`删除成功`);
