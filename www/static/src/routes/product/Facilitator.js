@@ -6,6 +6,7 @@ import {MClient} from '../../config/asteroid.config.js';
 import { connect } from 'react-redux';
 import { getShopProducts } from '../../actions/shopProductsAction'
 import MyActivityIndicator  from '../common/MyActivityIndicator';
+import Shop from '../../assets/img/facilitator.png';
 
 class Facilitator extends React.Component {
   constructor() {
@@ -75,8 +76,20 @@ class Facilitator extends React.Component {
            }
           </div>
           <div>
-           <Flex justify = "start" align = "center" style = {{margin:'10px',padding:'15px 10px',fontSize:'14px',backgroundColor:'#fff'}}>
-              {shop.description}
+           <Flex direction = "column" align = "start" className = {style['shop-details']}>
+              <Flex  direction = "column"  align ='start' className = {style['details-item']}>
+                <Flex><p>好评率</p><span>99%</span></Flex>
+                <Flex><p>所在地</p><span>四川成都</span></Flex>
+                <Flex><p>开店时间</p><span>2018-02-28</span></Flex>
+              </Flex>
+              <Flex  direction = "column"  align ='start' className = {style['details-itemred']}>
+                <Flex><p>描述相符</p><span> 4.7高于同行2.25%</span></Flex>
+                <Flex><p>服务态度</p><span> 4.8高于同行8.32%</span></Flex>
+                <Flex><p>物流服务</p><span> 4.7 持平--</span></Flex>
+              </Flex>
+              <Flex  direction = "column"  align ='start' className = {style['details-item']}>
+                <Flex><p>掌柜名</p><span>佟湘玉</span></Flex>
+              </Flex>
             </Flex>
           </div>
         </Tabs>

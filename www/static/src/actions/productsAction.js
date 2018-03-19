@@ -16,7 +16,7 @@ function getRecommandProductsSuccess(products) {
 }
 
 
-function getProductsSuccess(products,page) {
+ function getProductsSuccess(products,page) {
   return {
     type: GET_PRODUCTS_SUCCESS,
     products,
