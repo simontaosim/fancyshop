@@ -28,6 +28,7 @@ export function getRecommandProducts(page, pagesize){
     return dispatch => {
       let methodId = MClient.method('home.top.products', [page, pagesize]);
       MClient.on('result', message => {
+        console.log(message);
         if (message.result.formMethod === 'home.top.products') {
           dispatch(getRecommandProductsSuccess(message.result.list))
         }

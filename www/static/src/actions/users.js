@@ -298,12 +298,16 @@ export function expectLogout(){
 }
 export function logout(){
     return dispatch => {
+        console.log(`退出登陆`)
         dispatch(expectLogout());
         let methodId = MClient.method('logout');
+        console.log(`退出登陆id:`+ methodId)
         MClient.on('result', message=>{
             if(message.id === methodId && !message.error){
+                console.log(`执行退出登陆`)
                 dispatch(logoutSuccess());
             }else{
+                console.log(`退出登陆失败`)
                 console.error(message.error);
             }
         });

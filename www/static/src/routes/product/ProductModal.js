@@ -30,7 +30,6 @@ class ProductModal extends React.Component {
 
 
   componentDidMount() {
-    console.log(this.props)
     let userId = getStore('userId');
     this.props.dispatch(getCart(userId))
     this.props.dispatch(getUserbyId(userId))
@@ -94,7 +93,6 @@ class ProductModal extends React.Component {
       dispatch(createOrder(params));
       dispatch(closeSpecModel());
      }else{
-    //  let selected =product.selected !== undefined ? this.filterSpce(product.selected) :product.good.spec[0]
      let count =product.count !== undefined ?product.count : 1
        let productId =product.product._id
        let shopId =product.product.shop_id
@@ -234,7 +232,6 @@ class ProductModal extends React.Component {
 
    onChange = (val) => {
      this.setState({ val },()=>{
-      //  this.props.addCount(this.state.val)
        this.props.dispatch(addProductCount(this.state.val))
      });
 

@@ -24,7 +24,9 @@ class FirmOrder extends React.Component {
     let id = this.props.match.params.orderId;
     const methodId = MClient.method("app.order.getone", [id]);
     MClient.on("result",message => {
-      if(message.id === methodId &&  !message.error){
+      console.log(message.result)
+      if ( message.result.formMethod === 'app.order.getone'){
+        console.log(message.result)
         this.setState({
           order: message.result.order,
           shop: message.result.shop,
@@ -60,6 +62,7 @@ class FirmOrder extends React.Component {
 
   render(){
   let {order, shop} = this.state;
+  console.log(order);
     return(
       <div style = {{marginTop:'60px',fontSize:'16px'}}>
        <MyActivityIndicator isFetching={this.state.isFetching} />

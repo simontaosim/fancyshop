@@ -2,7 +2,8 @@ import { Modal,List, InputItem,Picker, Button, DatePicker,Toast } from 'antd-mob
 import { createForm } from 'rc-form';
 import { connect } from 'react-redux';
 import React from 'react';
-import { district, provinceLite } from 'antd-mobile-demo-data';
+// import { district, provinceLite } from 'antd-mobile-demo-data';
+import  options  from '../common/Options';
 import { setStore, getStore, removeStore } from '../../config/mUtils.js';
 import { getUserbyId,getUserbyName,updateNickname, updateDataAutograph,updateSex,updateArea,updateBirthday} from '../../actions/users'; 
 import MyActivityIndicator  from '../common/MyActivityIndicator';
@@ -78,6 +79,7 @@ class Personal extends React.Component {
   render() {
     const { getFieldProps } = this.props.form;
     const { currentUser } =  this.props
+    console.log(options);
     return(
         <List renderHeader={() => '个人信息'}>
 
@@ -104,10 +106,10 @@ class Personal extends React.Component {
           <List.Item arrow="horizontal">性别</List.Item>
           </Picker>
         <Picker extra="请选择(可选)"
-          data={district}
+          data={options }
           title="请选择地区"
           {...getFieldProps('area', {
-            initialValue: this.props.currentUser.area?this.props.currentUser.area:['340000', '340800', '340822'],
+            // initialValue: this.props.currentUser.area?this.props.currentUser.area:['340000', '340800', '340822'],
           })}
           onOk={value => this.updateArea(value)}
         >
