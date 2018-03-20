@@ -19,8 +19,8 @@ class ProductTabs extends React.Component {
       <div className = {style['tab-height']}>
         <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
           <div className = {style['tab-first']}>
-             <img src = {deoneImg}/>
-             <img src = {detwoImg}/>
+             <img src = {deoneImg} alt="图片未显示"/>
+            <img src={detwoImg}  alt="图片未显示"/>
            </div>
            <Flex direction = "column" align = 'start' className = {style['tab-second']}>
              <p>品牌：Shell/壳牌</p>

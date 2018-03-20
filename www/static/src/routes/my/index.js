@@ -8,7 +8,7 @@ import { Flex } from 'antd-mobile';
 import { 
   Button,
   WingBlank, Modal, 
-  Toast} from 'antd-mobile';
+  } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
@@ -64,10 +64,9 @@ class AppMy extends React.Component{
     const { dispatch } = this.props;
     dispatch(memoryPathBeforeLogined('/my'));
     dispatch(loadLoginedUserInfo());
-    const {appUser,loading} = this.props
     console.log(this.props.appUser)
     let userId = getStore("userId");
-    if (userId == undefined){
+    if (userId === undefined){
       let username = this.props.appUser.username 
       dispatch(getUserbyName(username))
     }

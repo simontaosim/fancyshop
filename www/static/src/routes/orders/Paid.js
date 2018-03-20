@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex,Checkbox, List, InputItem, Radio, WhiteSpace} from 'antd-mobile';
-import { Link } from 'react-router-dom';
+import { Flex,List, InputItem, Radio } from 'antd-mobile';
 import styles from "./Paid.css";
 import codeImg from '../../assets/img/orders/code.png';
 import payImg from '../../assets/img/orders/pay.png';
@@ -9,10 +8,7 @@ import { MClient } from '../../config/asteroid.config.js';
 import MyActivityIndicator  from '../common/MyActivityIndicator';
 import urlencode from 'urlencode';
 import { getStore } from '../../config/mUtils'
-import history from '../../history';
-const CheckboxItem = Checkbox.CheckboxItem;
 const RadioItem = Radio.RadioItem;
-const AgreeItem = Checkbox.AgreeItem;
 
 
 class Paid extends React.Component {
@@ -26,7 +22,7 @@ class Paid extends React.Component {
        "status" : "",
        "shopId" : "",
        "products" : [],
-       "username" : "",
+       "username" : "", 
        "address" : null,
         },
         isFetching: true,
@@ -68,21 +64,21 @@ class Paid extends React.Component {
     console.log(urlencode('苏千'));
     let {order,isFetching} = this.state
 
-    const { value, value2, value3, value4 } = this.state;
+    const { value} = this.state;
 
     const wechat = <div>
-      <img src = {wechatImg} style = {{width:'23px',height:'22px',marginRight:'3px'}}/>
+      <img src={wechatImg} style={{ width: '23px', height: '22px', marginRight: '3px' }} alt="图片未显示"/>
       <span style = {{color:'#bbb',fontSize:'14px'}}>微信支付</span>
     </div>
 
     const alipay =  <div>
-        <img src = {payImg} style = {{width:'26px',height:'18px'}}/>
+        <img src = {payImg} style = {{width:'26px',height:'18px'}} alt="图片未显示"/>
         <span style = {{color:'#bbb',fontSize:'14px'}}>支付宝支付</span>
       </div>
 
     const payment = <div style = {{backgroundColor:'#eee'}}>
       <div>
-        <img src = {codeImg} style = {{width:'26px',height:'18px'}}/>
+        <img src = {codeImg} style = {{width:'26px',height:'18px'}} alt="图片未显示"/>
         <span style = {{color:'#333',fontSize:'14px'}}>支付码支付</span>
       </div>
       <div style = {{backgroundColor:'#eee',borderTop:'1px solid #aaa',borderBottom:'1px solid #aaa',width:'90%',margin:'15px auto 0 auto'}} className = {styles['am-list-item']}>

@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 // import { changeProduct } from '../../reducers/product.redux';
 import { changeSpce } from '../../actions/productAction';
-import {  addCount,createOrder } from '../../actions/products';
+import {  createOrder } from '../../actions/products';
 import { addProductCount } from '../../actions/productAction';
 import { getCart } from '../../actions/cartAction';
 // import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
-import { modelInfo } from '../../map_props';
+// import { modelInfo } from '../../map_props';
 import { addCart, insertCart } from '../../actions/cartAction';
 import { getStore } from '../../config/mUtils';
 import { getUserbyId } from '../../actions/users';
@@ -59,7 +59,7 @@ class ProductModal extends React.Component {
    onClose = key => (e) => {
     e.preventDefault(); 
     console.log(123)
-     let { cart, dispatch, product, currentUser} = this.props;
+     let { cart, dispatch, product } = this.props;
     let userId = getStore('userId');
     let count = product.count;
     let selected = this.filterSpce(product.selected)
@@ -67,7 +67,7 @@ class ProductModal extends React.Component {
     let userInfo = JSON.parse(getStore('userInfo'));
     console.log(`用户信息`);
     console.log(userInfo);
-    if(this.props.model.way=="orders"){
+    if(this.props.model.way==="orders"){
       let params = {
         userId,
         status: 'unpaid',
@@ -144,7 +144,7 @@ class ProductModal extends React.Component {
          console.log(`重复店铺重复商品`)
          for(var i = 0;i < cart.list.shopsData.length;i++){
           for(var j=0;j<cart.list.shopsData[i].productsData.length;j++){
-            if(cart.list.shopsData[i].productsData[j].product_id==productId){
+            if(cart.list.shopsData[i].productsData[j].product_id===productId){
               // console.log(cart.list.shopsData[i].productsData[j].prodductSpec.spec_name);
               // console.log(selected.spec_name);
               if(specIds.includes(selected.spec_name)){
@@ -175,7 +175,7 @@ class ProductModal extends React.Component {
        }else if(shopIds.includes(product.product.shopId)){
          console.log(`重复店铺`);
         for(var i = 0;i < cart.list.shopsData.length;i++){
-            if(cart.list.shopsData[i].shop_id == product.product.shopId){
+            if(cart.list.shopsData[i].shop_id === product.product.shopId){
               cart.list.shopsData[i].productsData.push({
                 shop_id: product.product.shopId,
                 checked: false, 

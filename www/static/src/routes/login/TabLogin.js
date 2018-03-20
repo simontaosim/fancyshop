@@ -3,7 +3,7 @@ import { WhiteSpace, Tabs, Toast } from 'antd-mobile';
 import { connect } from 'react-redux'
 import Login from './Login'
 import MobileLogin from './MobileLogin'
-import { login, expectLoginFinished, loginFail } from '../../actions/users.js';
+import {  expectLoginFinished, loginFail } from '../../actions/users.js';
 
 const tabs = [
   { title: '手机登陆', sub: '1' },
@@ -12,10 +12,7 @@ const tabs = [
 
 
 class TabLogin  extends React.Component {
-  constructor(props) {
-    super(props)
 
-   }
    componentDidMount(){
 
    }

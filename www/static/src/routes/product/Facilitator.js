@@ -6,7 +6,6 @@ import {MClient} from '../../config/asteroid.config.js';
 import { connect } from 'react-redux';
 import { getShopProducts } from '../../actions/shopProductsAction'
 import MyActivityIndicator  from '../common/MyActivityIndicator';
-import Shop from '../../assets/img/facilitator.png';
 
 class Facilitator extends React.Component {
   constructor() {

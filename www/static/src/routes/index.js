@@ -48,7 +48,6 @@ import OrderList from './orders/OrderList';
 import{ loadLoginedUserInfo } from '../actions/users';
 import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
-import { getStore } from '../config/mUtils';
 import  PrivateRoute  from './container/PrivateRoute'
 const store = configureStore();
 const history = createHistory();

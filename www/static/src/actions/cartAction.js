@@ -196,7 +196,7 @@ export function insertCart(product) {
 
 export function getCart(id) {
   return dispatch => {
-    let methodId = MClient.method('shop_carts.get_cart',[id]);
+    MClient.method('shop_carts.get_cart',[id]);
     MClient.on("result", message =>　{
       console.log(message.result)
       if ( message.result.formMethod==='shop_carts.get_cart') {
@@ -211,11 +211,9 @@ export function getCart(id) {
 
 export function removeCart(product) {
   return dispatch => {
-    console.log(`调用了乜`)
     let userId = getStore('userId')
     let deleteProducts = deleteShopCart(product)
-    console.log(deleteProduct)
-    let methodId = MClient.method('shop_carts.add_cart', [deleteProducts,userId]);
+    MClient.method('shop_carts.add_cart', [deleteProducts,userId]);
     MClient.on("result", message => {
       if (message.result.formMethod === 'shop_carts.add_cart') {
       //   console.log(`删除成功`);

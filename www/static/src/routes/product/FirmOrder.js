@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styles from '../orders/WaitDetails.css';
 import { MClient } from '../../config/asteroid.config.js'
 import MyActivityIndicator  from '../common/MyActivityIndicator';
-import { getStore } from '../../config/mUtils'
 
 
 class FirmOrder extends React.Component {
@@ -22,7 +21,7 @@ class FirmOrder extends React.Component {
 
   componentDidMount() {
     let id = this.props.match.params.orderId;
-    const methodId = MClient.method("app.order.getone", [id]);
+    MClient.method("app.order.getone", [id]);
     MClient.on("result",message => {
       console.log(message.result)
       if ( message.result.formMethod === 'app.order.getone'){
@@ -120,11 +119,7 @@ class FirmOrder extends React.Component {
 }
 
 
-function mapStateToProps(state) {
-  return {
-    currentuser: state.CurrentUser
-  }
-}
+
 
 
 export default FirmOrder;

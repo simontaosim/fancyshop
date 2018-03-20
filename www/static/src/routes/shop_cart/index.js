@@ -1,6 +1,5 @@
 import React from 'react';
-import { Flex, Button, Checkbox } from 'antd-mobile';
-import goodsImg from '../../assets/img/reward/good.jpg';
+import { Flex} from 'antd-mobile';
 import ShopCartList from './ShopCartList';
 import style from './common.css';
 // import ShopCartList from './test';
@@ -14,7 +13,6 @@ import CartNull from './CartNull';
 import { getStore } from '../../config/mUtils';
 
 
-const CheckboxItem = Checkbox.CheckboxItem;
 class ShopCart extends React.Component{
   constructor() {
     super()
