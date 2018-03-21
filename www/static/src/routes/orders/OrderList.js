@@ -1,10 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Flex } from 'antd-mobile';
 import shopImg from '../../assets/img/timg.jpg';
 import goodImg from '../../assets/img/reward/good.jpg';
 import OrderBtn from './OrderBtn';
+import {getShopNameById} from '../../actions/orders'
 
 class OrderList extends React.Component {
+
+  getShopNameById(shopId){
+    const { dispatch } = this.props;
+    dispatch(getShopNameById(shopId))
+  }
 
 
   render(){
@@ -17,7 +24,7 @@ class OrderList extends React.Component {
        <div key={index}>
           <Flex justify = "start">
             <img alt="" src = {shopImg} style = {{width:'38px',height:'38px',borderRadius:'19px',marginRight:'10px'}}/>
-            <span style = {{color:'#333',fontSize:'16px',fontWeight:'600'}}>店铺名字</span>
+            <span style = {{color:'#333',fontSize:'16px',fontWeight:'600'}}>{this.getShopNameById(v.shopId)}</span>
           </Flex>
           <Flex justify = "start" style = {{backgroundColor:'#eee',padding:'10px',marginTop:'10px'}}>
             <Flex style = {{width:'70px'}}>
@@ -41,4 +48,11 @@ class OrderList extends React.Component {
   }
 }
 
-export default OrderList;
+function mapStateToProps(state) {
+  return {
+    orders: state.ordersInfo.orders,
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(OrderList);

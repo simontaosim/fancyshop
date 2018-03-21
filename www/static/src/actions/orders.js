@@ -8,6 +8,8 @@ export const GET_UNPAID_ORDERS = "GET_UNPAID_ORDERS";
 export const GET_ALL_ORDERS_ERROR = "GET_ALL_ORDERS_ERROR";
 export const GET_PAID_ORDERS_ERROR = "GET_PAID_ORDERS_ERROR";
 export const GET_UNPAID_ORDERS_ERROR = "GET_UNPAID_ORDERS_ERROR";
+export const GET_SHOP_NAME = "GET_SHOP_NAME";
+
 
 //===============获取登录用户订单================================
 export function expectLoginedUserOrders(status, page, pagesize){
@@ -66,6 +68,12 @@ export function getUnPaidOrdersError(error){
   return {
     type: GET_UNPAID_ORDERS_ERROR,
     error
+  }
+}
+export function getShopName(shopName){
+  return {
+    type: GET_SHOP_NAME,
+    shopName
   }
 }
 export function  gainAllOrders(userId){
@@ -161,6 +169,25 @@ export function createOrder(product) {
         }
       }
     })
+    }
+  }
+
+  export function getShopNameById(shopId){
+    return dispatch => {
+      let methodId = MClient.method("shops.findShopById",[shopId])
+      MClient.on('result',message=>{
+        if(message.id === methodId && !message.error){
+          if(message.result){
+            console.log("获得店铺信息")
+            console.log(message.result)
+            return message.result.name
+            // dispatch(getShopName(message.result.name))
+          }else{
+            return "未知店铺"
+            console.log(message.error);
+          }
+        }
+      })
     }
   }
 
