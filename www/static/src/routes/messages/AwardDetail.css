@@ -39,7 +39,7 @@
   font-size: 14px;
 }
 .income-money-border {
-  border-right: 1px dashed #e8e8e8;
+  /* border-right: 1px dashed #e8e8e8; */
   text-align: center;
   padding-right: 2rem;
 }

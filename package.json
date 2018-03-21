@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node ./development.js",
-    "gun-server": "node ./gunServer.js",
     "compile": "babel --no-babelrc src/ --presets think-node --out-dir app/",
     "lint": "eslint src/",
     "lint-fix": "eslint --fix src/",
@@ -19,13 +18,17 @@
     "antd": "^2.13.11",
     "antd-mobile": "^2.1.4",
     "asteroid": "^2.0.3",
+    "async-series": "0.0.1",
     "axios": "^0.17.1",
+    "china-division": "^2.0.0",
     "crypto-browserify": "^3.12.0",
     "ddp.js": "^2.2.1",
     "file-saver": "^1.3.3",
     "gun": "^0.8.9",
     "gun-server": "^1.0.0",
     "history": "^4.7.2",
+    "ipfs": "^0.28.2",
+    "ipfsd-ctl": "^0.30.1",
     "mockjs": "^1.0.1-beta3",
     "moment": "^2.21.0",
     "rc-form": "^2.1.7",
@@ -50,6 +53,7 @@
     "think-view": "^1.0.0",
     "think-view-nunjucks": "^1.0.1",
     "thinkjs": "^3.2.5",
+    "urlencode": "^1.1.0",
     "xlsx": "^0.11.18"
   },
   "devDependencies": {

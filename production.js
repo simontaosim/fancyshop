@@ -2,7 +2,8 @@ const Application = require('thinkjs');
 const babel = require('think-babel');
 const watcher = require('think-watcher');
 const notifier = require('node-notifier');
-
+require('ipfs');
+const series = require('async-series');
 const instance = new Application({
   ROOT_PATH: __dirname,
   watcher: watcher,

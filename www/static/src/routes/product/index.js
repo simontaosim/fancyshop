@@ -81,9 +81,7 @@ render(){
       </div>
 
       <div  className = {style['describe']}>
-      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} >
-      
-      </Flex>
+      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} ></Flex>
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center" >
           <span className = {style['price-font']}>￥{product.product.endPrice/100}</span>
@@ -91,7 +89,7 @@ render(){
         </Flex.Item>
         <span align = "right" style = {{color:'#7b7b7b'}}>{product.product.address}</span>
       </Flex>
-        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥{product.product.price}</span>
+        <span style = {{ textDecoration:'line-through',color:'#aaa',paddingTop:'3px',lineHeight:'1.8em'}}>￥{product.product.price/100}</span>
       </div>
       <Flex justify = "between" className = {style['item']}>
         <Flex > <ProductShare/></Flex>

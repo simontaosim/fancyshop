@@ -66,13 +66,34 @@ function ProdcutTotal(data) {
 function deleteShopCart(data) {
     let shopsData = data.shopsData;
     let shopDeletData = shopsData.filter(filterByItem);
-    for(var i=0;i<shopDeletData.length;i++){
-      shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
-    }
-    console.log(shopDeletData)
+      for(var i=0;i<shopDeletData.length;i++){
+        shopDeletData[i].productsData =shopDeletData[i].productsData.filter(filterByItem)
+      }
      return shopDeletData
 }
 //结算购物车
+function notDeleteShopCart(data) {
+  let shopsData = data.shopsData;
+  let shopDeletData = shopsData
+  // .filter(notFilterByItem);
+  // .filter(notFilterByItem);
+  console.log(`checked`)
+  console.log(shopDeletData);
+  shopDeletData = loop(shopDeletData)
+  // for (var i = 0; i < shopDeletData.length; i++) {
+  //   shopDeletData[i].productsData = shopDeletData[i].productsData.filter(notFilterByItem)
+  // }
+  console.log(shopDeletData)
+  return shopDeletData
+}
+
+//循环
+function loop(shopDeletData) {
+  for (var i = 0; i < shopDeletData.length; i++) {
+    shopDeletData[i].productsData = shopDeletData[i].productsData.filter(notFilterByItem)
+  }
+  return shopDeletData
+}
 
 function filterByItem(item) {
   if (isCheck(item.checked)) {
@@ -81,9 +102,24 @@ function filterByItem(item) {
   return false;
 }
 
+function notFilterByItem(item) {
+  if (notisCheck(item.checked)) {
+    return true;
+  }
+  return false;
+}
+
 function isCheck(obj) {
   return  obj!== true
 }
+
+function notisCheck(obj) {
+  console.log(`obj`)
+  console.log(obj)
+  return obj !== false
+}
+
+
 export function deleteProduct(data){
   return { type: DELETE_SHOP_CART}
 }
@@ -140,7 +176,8 @@ export function countProduct(payload) {
 
 export function addCart(product) {
   return dispatch => {
-    let methodId = MClient.method("shop_carts.add_cart", [product]);
+    let userId = getStore('userId')
+    let methodId = MClient.method("shop_carts.add_cart", [product,userId]);
     MClient.on("result", message => {
       if (message.id === methodId && !message.error) {
         dispatch(addCartSuccess(message.result))
@@ -158,7 +195,8 @@ export function insertCart(product) {
   return dispatch => {
     let methodId = MClient.method("shop_carts.insert_cart", [product]);
     MClient.on("result", message => {
-      if (message.id === methodId && !message.error) {
+      if (message.id === methodId && !message.error ) {
+        
         dispatch(insertCartSuccess(message.result))
         dispatch(addProductCount(1))
         //   Toast.info('加入购物车成功',1)
@@ -172,11 +210,10 @@ export function insertCart(product) {
 
 export function getCart(id) {
   return dispatch => {
-    console.log(`获取购物车`)
-    console.log(id)
-    let methodId = MClient.method('shop_carts.get_cart',[id]);
+    MClient.method('shop_carts.get_cart',[id]);
     MClient.on("result", message =>　{
-      if (message.id === methodId && !message.error) {
+      console.log(message.result)
+      if ( message.result.formMethod==='shop_carts.get_cart') {
         console.log(message.result)
         dispatch(getCartSuccess(message.result))
       }else{
@@ -188,14 +225,31 @@ export function getCart(id) {
 
 export function removeCart(product) {
   return dispatch => {
-    let methodId = MClient.method('shop_carts.add_cart',[deleteShopCart(product)]);
+    let userId = getStore('userId')
+    let deleteProducts = deleteShopCart(product)
+    MClient.method('shop_carts.add_cart', [deleteProducts,userId]);
     MClient.on("result", message => {
-      if (message.id === methodId && !message.error) {
+      if (message.result.formMethod === 'shop_carts.add_cart') {
+      //   console.log(`删除成功`);
+      //   console.log(message.result);
         dispatch(removeCartSuccess(message.result))
-        //   Toast.info('加入购物车成功',1)
+      //   //   Toast.info('加入购物车成功',1)
       } else {
-        // dispatch(receiveProductByIdError(message.error));
+      //   // dispatch(receiveProductByIdError(message.error));
       }
     })
+  }
+}
+
+export function cartCreatOrder(product) {
+  return dispatch => {
+    let userId = getStore('userId')
+    let productJson = JSON.stringify(product)
+    let productData = JSON.parse(productJson)
+    console.log(JSON.stringify(notDeleteShopCart(product)))
+    console.log(deleteShopCart(productData))
+    
+    // console.log(product)
+    MClient.method('app.shop_carts.orders',  [notDeleteShopCart(product), deleteShopCart(productData),userId]);
   }
 }

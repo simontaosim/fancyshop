@@ -48,7 +48,7 @@ import OrderList from './orders/OrderList';
 import{ loadLoginedUserInfo } from '../actions/users';
 import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
-
+import  PrivateRoute  from './container/PrivateRoute'
 const store = configureStore();
 const history = createHistory();
 const Home = ({ match }) => (
@@ -70,29 +70,29 @@ class App extends React.Component {
     store.dispatch(loadLoginedUserInfo());
     
   }
-  render() {
-    
+  render() {   
+    let { appUser }  = this.props;
+    let authenticated = appUser.loginStatus === 'logined' ? true : false
     return (
       <Router >
           <MainLayout history={history}>
           <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/money" component={Home} />
-              <Route path="/messages" component={Messages} />
-              <Route path = "/shop_cart" component={ShopCart} />
-              <Route path="/my"  component={My} />
-              <Route path="/register" component={Register}/>
+              <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
+              <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
+              <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
+              <Route path="/shop_cart" component={ShopCart}  authenticated={authenticated}/>
+              <Route path="/register" component={Register} />
               <Route path="/tablogin" component={TabLogin} />
               <Route path = "/product/:id" component={Goods}/>
-              <Route path = "/order_details/:orderId" component={WaitDetails}/>
-              <Route path = "/paid/:orderId" component={Paid}/>
+              <PrivateRoute path="/order_details/:orderId" component={WaitDetails} authenticated={authenticated}/>
+              <PrivateRoute path="/paid/:orderId" component={Paid} authenticated={authenticated}/>
               <Route path = "/refund" component={Refund}/>
               <Route path = "/untreated" component={UntreatedDetail}/>
               <Route path = "/qrcode" component={QrCode}/>
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
-              <Route path = "/firmorder/:orderId" component = {FirmOrder}/>
+              <Route path="/firmorder/:orderId" component={FirmOrder} authenticated={authenticated}/>
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />
@@ -108,9 +108,9 @@ class App extends React.Component {
               <Route path="/coupon" component={Coupon}/>
               <Route path="/bankcard" component={MyBankCard}/>
               <Route path="/editbankcard" component={EditBankCard}/>
-              <Route path="/orderlist" component={OrderList}/>
-              <Route path = "/orders" component={Orders}/>
-              <Route path = "/personal" component={Personal}/>
+              <PrivateRoute path="/orderlist" component={OrderList} authenticated={authenticated}/>
+              <PrivateRoute path = "/orders" component={Orders} authenticated={authenticated}/>
+              <PrivateRoute path = "/personal" component={Personal} authenticated={authenticated}/>
               <Route path = "/productlist" component={ProductListView}/>
               <Route component={NoMatchPage}/>
             </Switch>
@@ -125,7 +125,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    appUser: state.AppUser,
   }
 }
 

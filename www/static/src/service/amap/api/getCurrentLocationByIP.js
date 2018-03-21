@@ -34,7 +34,7 @@ export function getAddress(props=null) {
 }
 
 function onComplete(props=null, data) {
-
+    console.log(data);
     getDetailAddress(props, data.position.getLng(),data.position.getLat())
 
 }

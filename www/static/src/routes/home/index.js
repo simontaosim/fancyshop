@@ -28,11 +28,11 @@ class AppHome extends React.Component{
 
   }
   componentDidMount(){
-    const { dispatch } = this.props;
+    const { dispatch,products } = this.props;
     dispatch(getRecommandProducts(1,3))
     dispatch(getHomeTags());
     dispatch(setAppTitle(this.props.path));
-    dispatch(getProducts(1,1));
+    dispatch(getProducts(1, products.pagesize));
     setTimeout(() => {
      this.setState({
        data: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg'],
@@ -94,7 +94,8 @@ class AppHome extends React.Component{
 function indexHome(state){
   return {
     appInfo: state.AppInfo,
-    recommandProducts: state.recommandProductsReducer
+    recommandProducts: state.recommandProductsReducer,
+    products: state.ProductsReducer
   }
 }
 export default connect(indexHome)(AppHome);

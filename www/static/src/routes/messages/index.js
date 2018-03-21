@@ -20,6 +20,7 @@ class MessageBox extends React.Component{
     dispatch(getBalance(userId))
     dispatch(getBalanceIncomesTotal(userId))
   }
+ 
 
   render(){
     let {balance} = this.props

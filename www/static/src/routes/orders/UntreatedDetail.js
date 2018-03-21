@@ -1,9 +1,8 @@
 import React from "react";
-import { List, Icon, Flex, Button } from 'antd-mobile';
+import {  Flex } from 'antd-mobile';
 import goodImg from '../../assets/img/reward/good.jpg';
 import styles from './WaitDetails.css';
 import stylec from './Common.css';
-import QrCode from './QrCode.js';
 
 
 class UntreatedDetail extends React.Component {
@@ -20,25 +19,25 @@ render(){
   return(
     <div style = {{marginTop:'60px'}}>
       <div className = {styles['item-info']}>
-        <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
-        <div><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span></div>
-        <div><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123456789</span></div>
+        <div><img src={require('../svg/send.svg')} className={styles['item-icon']} alt="图片未显示"/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
+        <div><img src={require('../svg/location.svg')} className = {styles['item-icon']} alt="图片未显示"/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span></div>
+        <div><img src={require('../svg/phone.svg')} className = {styles['item-icon']} alt="图片未显示"/>电话：<span style = {{color:'#888'}}>123456789</span></div>
       </div>
 
       <div className = {styles['item-user']}>
-        <div><img src={require('../svg/people.svg')} className = {styles['item-icon']}/>左婷——18324190947——川A777777
+        <div><img src={require('../svg/people.svg')} className={styles['item-icon']} alt="图片未显示"/>左婷——18324190947——川A777777
         </div>
       </div>
 
       <div className = {styles['item-notice']}>
-        <div><img src={require('../svg/notice.svg')} className = {styles['item-icon']}/>备注：<br/>
+        <div><img src={require('../svg/notice.svg')} className={styles['item-icon']} alt="图片未显示"/>备注：<br/>
         <div className = {styles['notice-text']}>到店自提这是占位符占位符请不要介意如此粗糙的占位符哈哈哈哈</div>
       </div>
       </div>
       <div className = {styles['goods-frame']}>
         <Flex justify = "center" className = {styles['goods-item']}>
           <div className = {styles['img-border']} >
-            <img src = {goodImg} className = {styles['goods-img']}/>
+            <img src={goodImg} className={styles['goods-img']} alt="图片未显示"/>
           </div>
           <div >
             <Flex style = {{marginBottom:'10px'}}>我是商品的长名字占位符占位符占位符哈哈哈哈哈哈</Flex>
@@ -48,7 +47,7 @@ render(){
 
         <Flex justify = "center" style = {{backgroundColor:'#f6f6f6',height:'auto',margin:'15px 10px'}}>
           <div style = {{backgroundColor:'#5e0f0f',padding:'2px 8px 8px 3px'}}>
-            <img src = {goodImg} style = {{height:'50px',width:'50px'}}/>
+            <img src={goodImg} style={{ height: '50px', width: '50px' }} alt="图片未显示"/>
           </div>
           <div style ={{paddingLeft:'10px'}}>
             我是商品的长名字占位符占位符占位符哈哈哈哈哈哈<br/>

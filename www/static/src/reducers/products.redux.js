@@ -19,14 +19,9 @@ export function ProductsReducer(state={
     isFetching: true,
     list: [],
     page: 1,
+    pagesize: 10,
 },action){
     switch (action.type) {
-        // case GET_RECOMMAND_PRODUCTS_SUCCESS:
-        //     return {
-        //         ...state,
-        //         isFetching: false,
-        //         list: action.products
-        //     }
         case GET_PRODUCTS_SUCCESS:
             return {
                 ...state,

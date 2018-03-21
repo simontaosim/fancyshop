@@ -8,7 +8,7 @@ import { Flex } from 'antd-mobile';
 import { 
   Button,
   WingBlank, Modal, 
-  Toast} from 'antd-mobile';
+  } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import MyItem from './MyItem';
 import style from './common.css';
@@ -16,13 +16,35 @@ import userImg from '../../assets/img/timg.jpg';
 import{ logout, memoryPathBeforeLogined, loadLoginedUserInfo } from '../../actions/users';
 import { getStore} from '../../config/mUtils.js';
 import { getUserbyId,getUserbyName} from '../../actions/users'; 
+import options from '../common/Options';
 
 const alert = Modal.alert;
+const hostName = "139.198.12.188";
+const hostPort = "5002";
+const ipfs = window.IpfsApi({host: hostName, port: hostPort, protocol: 'http'});
+
+let saveImageOnIpfs = (reader) => {
+  return new Promise(function(resolve, reject) {
+    const buffer = Buffer.from(reader.result);
+    ipfs.add(buffer).then((response) => {
+      console.log(response)
+      resolve(response[0].hash);
+    }).catch((err) => {
+      console.error(err)
+      reject(err);
+    })
+  })
+}
 
 class AppMy extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      userImg,
+    }
     this.confirmWindow = this.confirmWindow.bind(this);
+    this.userImgChange = this.userImgChange.bind(this);
+    
     
   }
 
@@ -42,10 +64,9 @@ class AppMy extends React.Component{
     const { dispatch } = this.props;
     dispatch(memoryPathBeforeLogined('/my'));
     dispatch(loadLoginedUserInfo());
-    const {appUser,loading} = this.props
     console.log(this.props.appUser)
     let userId = getStore("userId");
-    if (userId == undefined){
+    if (userId === undefined){
       let username = this.props.appUser.username 
       dispatch(getUserbyName(username))
     }
@@ -55,34 +76,54 @@ class AppMy extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    const {appUser } = nextProps;
-    if(appUser.loading){
-      return Toast.loading("载入中", 1, ()=>{
-        console.log('')
-      });
-    }
-    if(appUser.status === 'logouting' ){
-      Toast.loading("正在登出", 3, ()=>{
-        console.log('登出中')
-      });
-    }
-    if(appUser.status === 'offline' ){
-      Toast.info("请登录用户", 1, ()=>{
-        this.props.history.push('/tablogin');
+    // const {appUser } = nextProps;
+    // if(appUser.loading){
+    //   return Toast.loading("载入中", 1, ()=>{
+    //     console.log('')
+    //   });
+    // }
+    // if(appUser.status === 'logouting' ){
+    //   Toast.loading("正在登出", 3, ()=>{
+    //     console.log('登出中')
+    //   });
+    // }
+    // if(appUser.status === 'offline' ){
+    //   Toast.info("请登录用户", 1, ()=>{
+    //     this.props.history.push('/tablogin');
+    //   });
+    // }
+  }
+
+  userImgChange(){
+    let file =  this.refs.userImgInput.files[0];
+    var reader = new FileReader();
+    reader.readAsArrayBuffer(file)
+    reader.onloadend = (e) => {
+      console.log(reader);
+      // 上传数据到IPFS
+      saveImageOnIpfs(reader).then((hash) => {
+        console.log(hash);
+        this.setState({userImg: "http://"+hostName+":8630"+"/ipfs/" + hash})
       });
     }
   }
 
 
   render(){
-    
+    console.log(options)
     const { currentUser } =  this.props
-   
+    const {userImg} = this.state;
     return (
       <div >
         <div className = {style['back-color']}>
           <Flex justify = 'center' align = "center">
               <img alt="" src = {userImg} className = {style['user-img']}/>
+              <input type='file' ref="userImgInput" onChange={this.userImgChange} style={{
+                    opacity: 0,
+                    position: "absolute",
+                    left: "41%",
+                    height: "59px"
+              }}/>
           </Flex>
           <Flex justify = "end" className = {style['pencil-position']} >
             <Link to = "/personal">

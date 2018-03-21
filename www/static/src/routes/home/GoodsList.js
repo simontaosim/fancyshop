@@ -26,16 +26,16 @@ class GoodsList extends React.Component {
   }
 
   onRefresh = () => {
-    console.log(1231213123123);
   };
 
   onEndReached = (event) => {
-  const page = this.props.products.page+1
-    let { dispatch } = this.props;
+    let { dispatch,products} = this.props;
+    const page = products.page + 1
     this.setState({
       isLoading: true,
     });
-    dispatch(getProducts(page,1,this.props.products.list));
+    console.log(page);
+    dispatch(getProducts(page, products.pagesize,this.props.products.list));
   }
 
   render() {

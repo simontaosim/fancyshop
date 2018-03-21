@@ -46,7 +46,7 @@ class Facilitator extends React.Component {
           <Flex justify = "center" className = {style['distance']}>{shop.name}</Flex>
           <Flex justify = "center" className = {style['distance2']}>
             <img  alt="" src = {require('../svg/location-white.svg')} style = {{width:'12px',height:'12px',color:'#fff',letterSpacing:'1px',padding:'0 5px'}}/>{shop.address}
-            <img alt="" src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/>
+            <a href={"tel: "+ shop.phone }><img alt="" src = {require('../../assets/svg/phone-blue.svg')} style= {{backgroundColor:'#00b7ee',borderRadius:'14px',width:'16px',height:'16px',padding:'6px',alignSelf:'flex-end',marginLeft:'10px'}}/></a>
           </Flex>
         </div>
         <Tabs tabs = {tabs} >
@@ -63,7 +63,7 @@ class Facilitator extends React.Component {
             .name_zh}<br/>
                         <div style = {{display:'flex',justifyContent:'around',padding:'5px'}}>
                           <span style = {{color:'red',marginLeft:'25px'}}>价格:{product
-            .price}</span>
+            .price/100}</span>
                           <span style = {{color:'#fc65e4',marginLeft:'25px'}}>销量:18</span>
                         </div>
                       </div>
@@ -75,7 +75,7 @@ class Facilitator extends React.Component {
            }
           </div>
           <div>
-           <Flex justify = "start" align = "center" style = {{margin:'10px',padding:'15px 10px',fontSize:'14px',backgroundColor:'#fff'}}>
+            <Flex direction="column" align="start" style={{ margin: '10px', padding: '15px 10px', fontSize: '14px', backgroundColor: '#fff' }}>
               {shop.description}
             </Flex>
           </div>

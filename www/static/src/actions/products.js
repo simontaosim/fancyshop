@@ -116,13 +116,9 @@ export function createOrder(product) {
     let methodId = MClient.method('app.orders.insert',[product]);
          
     MClient.on('result', message => {
-      if(message.id === methodId && !message.error){
-        console.log(`订单提交成功`)
-        if(message.result){
-          history.push(`/firmorder/${message.result}`)
-        }else{
-          console.log(message.error);
-        }
+      console.log(message.result);
+      if (message.result.formMethod ==='app.orders.insert'){
+        history.push(`/firmorder/${message.result.orderCode}`)
       }
     })
   }
@@ -131,8 +127,6 @@ export function createOrder(product) {
 
 export function loadShopProductsByShopId(shopId,page,pagesize) {
   return dispatch => {
-    console.log(`加载店铺商品`)
-    console.log(shopId)
     MClient.sub('app.get.shop.products',[shopId,page,pagesize]);
     MClient.connect();
     let products = [];

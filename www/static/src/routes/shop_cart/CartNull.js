@@ -1,19 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Button, Radio} from 'antd-mobile';
+import { Flex, Button} from 'antd-mobile';
 import cartnullImg from '../../assets/img/cartnull.jpg';
 
-const RadioItem = Radio.RadioItem;
 class CartNull extends React.Component{
-  constructor() {
-    super()
-  }
+
 
   render(){
     return (
       <div style = {{marginTop:'150px'}}>
         <Flex justify = 'center' >
-          <img src = {cartnullImg} style = {{width:'150px',height:'150px',marginBottom:'60px'}}/>
+          <img src={cartnullImg} style={{ width: '150px', height: '150px', marginBottom: '60px' }} alt="图片未显示"/>
         </Flex>
 
           <Flex justify = 'center'>

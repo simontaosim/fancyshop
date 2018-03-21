@@ -11,12 +11,14 @@ const initState = {
 	sales: 74,
 	count: 1,
 	page: 1,
+	pagesize: 10,
 	selected: [],
 }
 
 export function productReducer(state=initState, action){
     switch (action.type) {
 			case  GET_PRODUCT_SUCCESS:
+			console.log(action.product)
             return  {
                 ...state,
                 product: action.product,    
@@ -32,7 +34,6 @@ export function productReducer(state=initState, action){
 			case CHANGE_SPEC :
 			let index = action.index;
 			let selected = state.selected
-			console.log(selected);
 			for(var i=0;i< selected.length;i++){
 			  selected[i].isThis = false;
 			  selected[index].isThis = true

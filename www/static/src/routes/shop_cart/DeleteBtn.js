@@ -1,8 +1,6 @@
 import React from 'react';
 import { Flex,Checkbox,Modal} from 'antd-mobile';
 import { connect } from 'react-redux';
-import { cartInfo } from '../../map_props';
-// import { removeCart,shopCheckAll } from '../../reducers/cart.redux';
 import { removeCart,shopCheckAll } from  '../../actions/cartAction';
 
 
@@ -24,14 +22,14 @@ class DeleteBtn extends React.Component {
     ]);
   }
 
-  deleteProduct() {
-    let shopsData = this.props.cart.list.shopsData;
-  }
+  // deleteProduct() {
+  //   let shopsData = this.props.cart.list.shopsData;
+  // }
 
 
 
   CheckAll(e) {
-    let { cart,dispatch } = this.props;
+    let { dispatch } = this.props;
     let data = this.props.cart.list
     for(var i=0;i<data.shopsData.length;i++){
       data.shopsData[i].checked = e.target.checked;
