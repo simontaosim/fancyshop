@@ -71,17 +71,20 @@ class ProductModal extends React.Component {
       let params = {
         userId,
         status: 'unpaid',
-        shopId: product.product.shopId,
-        address: "user.address.id",
+        shop_id: product.product.shopId,
         username: userInfo.username,
         nickname: userInfo.nickname,
         mobile: userInfo.profile.mobile,
+        shopAddress: product.product.shop_address,
+        shopName: product.product.shop_name,
+        shopCover: product.product.shop_cover,
+        remark: '',
         products: [
           {
             price: product.product.endPrice,
             count,
             cover: product.product.cover,
-            id: product.product._id,
+            product_id: product.product._id,
             name: product.product.name_zh,
             specifications: {
               ...selected
@@ -110,6 +113,11 @@ class ProductModal extends React.Component {
               shop_name: product.product.shop_name,
               checked: false,
               shop_id: product.product.shopId,
+              status: 'unpaid',
+              address: "user.address.id",
+              username: userInfo.username,
+              nickname: userInfo.nickname,
+              mobile: userInfo.profile.mobile,
                 productsData: [
                   {
                     shop_id: product.product.shopId,
@@ -117,6 +125,7 @@ class ProductModal extends React.Component {
                     name: product.product.name_zh,
                     count: count,
                     prodductSpec: selected,
+                    cover: product.product.cover,
                     product_id: product.product._id
                   }
                 ]
@@ -163,6 +172,7 @@ class ProductModal extends React.Component {
                   status: 1,
                   count: count,
                   prodductSpec: selected,
+                cover: product.product.cover,
                   product_id: product.product._id
                 })
                 dispatch(addCart(cart.list.shopsData))
@@ -183,6 +193,7 @@ class ProductModal extends React.Component {
                 status: 1,
                 count: count,
                 prodductSpec: selected,
+                cover: product.product.cover,
                 product_id: product.product._id
               })
             }
@@ -196,6 +207,11 @@ class ProductModal extends React.Component {
               shop_name: product.product.shop_name,
               checked: false,
               shop_id: product.product.shopId,
+              status: 'unpaid',
+              address: "user.address.id",
+              username: userInfo.username,
+              nickname: userInfo.nickname,
+              mobile: userInfo.profile.mobile,
                 productsData: [
                   {
                     shop_id: product.product.shopId,
@@ -204,6 +220,7 @@ class ProductModal extends React.Component {
                     status: 1,
                     count: count,
                     prodductSpec: selected,
+                    cover: product.product.cover,
                     product_id: product.product._id
                   }
                 ]

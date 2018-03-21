@@ -4,13 +4,23 @@ import { Link } from 'react-router-dom';
 import s from './ProductSearch.css';
 
 class SearchBox extends React.Component {
-
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleEnterKey);
+  }
+  componentWillUmount() {
+    document.removeEventListener("keydown", this.handleEenterKey);
+  }
+  handleEnterKey = (e) => {
+    if (e.keyCode === 13) {
+      console.log(123);
+    }
+  }
   render(){
     return(
       <div>
-        <Link to = "/searchresult">
+        {/* <Link to = "/searchresult"> */}
           <SearchBar placeholder="Search" maxLength={8} />
-        </Link>
+        {/* </Link> */}
         <div className = {s['search-item']}>
           <span className = {s['search-title']}>热门搜索</span><br/>
         <Flex justify = "start" wrap="wrap">

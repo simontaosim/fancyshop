@@ -78,7 +78,7 @@ class Paid extends React.Component {
 
     const payment = <div style = {{backgroundColor:'#eee'}}>
       <div>
-        <img src = {codeImg} style = {{width:'26px',height:'18px'}} alt="图片未显示"/>
+        <img src={codeImg} style={{ width: '26px', height: '18px' }} alt="图片未显示"/>
         <span style = {{color:'#333',fontSize:'14px'}}>支付码支付</span>
       </div>
       <div style = {{backgroundColor:'#eee',borderTop:'1px solid #aaa',borderBottom:'1px solid #aaa',width:'90%',margin:'15px auto 0 auto'}} className = {styles['am-list-item']}>

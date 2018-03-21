@@ -10,9 +10,7 @@ class FirmOrder extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        order:  {
-          products : [],
-        },
+        order: [],
        shop: {},
        isFetching: true,
     }
@@ -21,13 +19,15 @@ class FirmOrder extends React.Component {
 
   componentDidMount() {
     let id = this.props.match.params.orderId;
+    console.log(id)
+    
     MClient.method("app.order.getone", [id]);
     MClient.on("result",message => {
       console.log(message.result)
       if ( message.result.formMethod === 'app.order.getone'){
         console.log(message.result)
         this.setState({
-          order: message.result.order,
+          order: message.result.orders,
           shop: message.result.shop,
           isFetching: false,
         })
@@ -42,7 +42,6 @@ class FirmOrder extends React.Component {
       remark: this.state.remark,
       id: this.state.order._id,
       shopName: this.state.shop.name,
-      address: this.state.shop.address
     }
     console.log(params);
     const methodId = MClient.method("app.order.update", [params]);
@@ -61,7 +60,7 @@ class FirmOrder extends React.Component {
 
   render(){
   let {order, shop} = this.state;
-  console.log(order);
+  console.log(order)
     return(
       <div style = {{marginTop:'60px',fontSize:'16px'}}>
        <MyActivityIndicator isFetching={this.state.isFetching} />
@@ -84,7 +83,7 @@ class FirmOrder extends React.Component {
 
 
 
-        {
+        {/* {
           order.products.map((product,index)=> {
             return(
             <div className = {styles['goods-frame']} style = {{border:'1px dashed red'}} key={index}>
@@ -100,17 +99,39 @@ class FirmOrder extends React.Component {
              </div>
             )
           })
+        } */}
+
+        {
+          order.map((orderItem,index)=>{
+            return(
+              orderItem.products.map((product,productIndex)=>{
+                return(
+                  <div className={styles['goods-frame']} style={{ border: '1px dashed red' }} key={index}>
+                    <Flex justify="center" className={styles['goods-item']}>
+                      <div className={styles['img-border']} >
+                        <img src={product.cover} className={styles['goods-img']} alt="图片未显示" />
+                      </div>
+                      <div >
+                        <Flex style={{ marginBottom: '10px' }}>{product.name}</Flex>
+                        <span className={styles['type-color']}>规格：{product.specifications.spec_name} </span>    <span className={styles['price-pst']}><span className={styles['price-color']}>￥{product.price / 100} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>×{product.count}</span>
+                      </div>
+                    </Flex>
+                  </div>
+                )
+              })
+            )
+          })
         }
 
 
 
 
-        <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%',flexGrow:'1'}}>
+        {/* <Flex style = {{position:'fixed',bottom:'50px',marginTop:'20px',width:'100%',flexGrow:'1'}}>
           <Flex justify="start" style= {{backgroundColor:'#333',color:'#fff',lineHeight:'3.4em',padding:'0 15px',flexGrow:'2',height:'50px',fontSize:'14px'}}>合计：<span style = {{color:'red',paddingLeft:'5px',fontSize:'16px'}}>￥{order.products.length>0? order.products[0].price*order.products[0].count/100 : 0}</span></Flex>
           <button style = {{display:'flex',flexGrow:'1',backgroundColor:'#ffcf2d',justifyContent:'center',color:'#fff',borderRadius:'0',border:'none',height:'50px',fontSize:'17px'}} onClick={this.paid}>
             <span style= {{textAlign:'center',color:'#fff',lineHeight:'1.95em'}} >提交订单</span>
           </button>
-        </Flex>
+        </Flex> */}
 
       </div>
     )

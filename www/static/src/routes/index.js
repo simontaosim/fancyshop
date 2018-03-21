@@ -80,7 +80,7 @@ class App extends React.Component {
               <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
-              <PrivateRoute path="/shop_cart" component={ShopCart}  authenticated={authenticated}/>
+              <Route path="/shop_cart" component={ShopCart}  authenticated={authenticated}/>
               <Route path="/register" component={Register} />
               <Route path="/tablogin" component={TabLogin} />
               <Route path = "/product/:id" component={Goods}/>
@@ -92,7 +92,7 @@ class App extends React.Component {
               <Route path = "/nullcart" component={ CartNull }/>
               <Route path = "/facilitator/:shopId" component = { Facilitator }/>
               <Route path = "/productmodal" component={ ProductModal }/>
-              <PrivateRoute path="/firmorder/:orderId" component={FirmOrder} authenticated={authenticated}/>
+              <Route path="/firmorder/:orderId" component={FirmOrder} authenticated={authenticated}/>
               <Route path = "/paysuccess" component = {PaySuccess}/>
               <Route path="/forgotpassword" component={ForgotPassword}  />
               <Route path="/resetpassword" component={ResetPassword}  />

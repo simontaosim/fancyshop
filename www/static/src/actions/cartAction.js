@@ -76,10 +76,22 @@ function notDeleteShopCart(data) {
   let shopsData = data.shopsData;
   let shopDeletData = shopsData
   // .filter(notFilterByItem);
+  // .filter(notFilterByItem);
+  console.log(`checked`)
+  console.log(shopDeletData);
+  shopDeletData = loop(shopDeletData)
+  // for (var i = 0; i < shopDeletData.length; i++) {
+  //   shopDeletData[i].productsData = shopDeletData[i].productsData.filter(notFilterByItem)
+  // }
+  console.log(shopDeletData)
+  return shopDeletData
+}
+
+//循环
+function loop(shopDeletData) {
   for (var i = 0; i < shopDeletData.length; i++) {
     shopDeletData[i].productsData = shopDeletData[i].productsData.filter(notFilterByItem)
   }
-  console.log(shopDeletData)
   return shopDeletData
 }
 
@@ -102,7 +114,9 @@ function isCheck(obj) {
 }
 
 function notisCheck(obj) {
-  return obj === true
+  console.log(`obj`)
+  console.log(obj)
+  return obj !== false
 }
 
 
@@ -230,9 +244,12 @@ export function removeCart(product) {
 export function cartCreatOrder(product) {
   return dispatch => {
     let userId = getStore('userId')
-    console.log(product)
-    console.log(notDeleteShopCart(product))
-    // console.log(deleteShopCart(product))
-    // let methodId = MClient.method('app.shop_carts.orders', [notDeleteShopCart(product), userId]);
+    let productJson = JSON.stringify(product)
+    let productData = JSON.parse(productJson)
+    console.log(JSON.stringify(notDeleteShopCart(product)))
+    console.log(deleteShopCart(productData))
+    
+    // console.log(product)
+    MClient.method('app.shop_carts.orders',  [notDeleteShopCart(product), deleteShopCart(productData),userId]);
   }
 }
