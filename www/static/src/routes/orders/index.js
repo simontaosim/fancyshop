@@ -5,7 +5,7 @@ import ShopName from './ShopName';
 import Goods from './Goods';
 import styles from './Common.css';
 import '../../service/data/datasource';
-import { gainAllOrders, gainPaidOrders,gainUnPaidOrders} from '../../actions/orders';
+import { gainAllOrders, gainPaidOrders,gainUnPaidOrders,gainCancelOrders} from '../../actions/orders';
 import OrderList from './OrderList';
 import { getStore} from '../../config/mUtils.js';
 import { getUserbyId,getUserbyName} from '../../actions/users'; 
@@ -38,6 +38,9 @@ class Orders extends React.Component {
       case '已完成':
         dispatch(gainPaidOrders(userId));
         break;
+      case '无效':
+      dispatch(gainCancelOrders(userId));
+      break;
       default:
         console.log('无效');
     }
@@ -62,7 +65,7 @@ class Orders extends React.Component {
       {title:'待付款', status: '待付款'},
       {title:'未处理', status: '未处理'},
       {title:'已完成', status: '已完成'},
-      // {title:'无效', status: '无效'},
+      {title:'无效', status: '无效'},
     ]
    
     return(
@@ -80,21 +83,9 @@ class Orders extends React.Component {
         <div className = "finish" style = {{backgroundColor:'#fff'}} key = "finish">
           <OrderList dataSource={this.props.orders}  history={this.props.history}/>
         </div>
-      {/* <div className = "invalid">
-        <div style = {{backgroundColor:'#fff',paddingBottom:'15px'}} key = "invalid">
-          </div>
-          <div style = {{backgroundColor:'#fff'}} >
-          <ShopName/>
-          <Goods/>
-          <Flex justify = "end" style = {{marginRight:'10px'}}>
-            合计：<span className = {styles['total']}> ￥500</span>
-          </Flex>
-          <Flex justify = "end" style = {{margin:'10px'}}>
-            <button className = {styles['detail-btn']}>详情</button>
-            <button className = {styles['revoke-btn']}>撤销退款</button>
-          </Flex>
-          </div>
-      </div> */}
+        <div className = "invalid" style = {{backgroundColor:'#fff'}} key = "finish">
+          <OrderList dataSource={this.props.orders}  history={this.props.history}/>
+        </div>
       </Tabs>
     </div>
     )
