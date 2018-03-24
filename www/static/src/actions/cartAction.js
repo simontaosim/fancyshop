@@ -213,6 +213,9 @@ export function getCart(id) {
     MClient.method('shop_carts.get_cart',[id]);
     MClient.on("result", message =>　{
       console.log(message.result)
+      if(!message.result){
+        return ;
+      }
       if ( message.result.formMethod==='shop_carts.get_cart') {
         console.log(message.result)
         dispatch(getCartSuccess(message.result))
