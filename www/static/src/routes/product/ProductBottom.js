@@ -13,6 +13,7 @@ class ProductBottom extends React.Component {
     super(props);
     this.facilitator = this.facilitator.bind(this)
     this.firmorder = this.firmorder.bind(this)
+    this.firmtest = this.firmtest.bind(this)
     this.AddCart = this.AddCart.bind(this)
   }
 
@@ -42,6 +43,9 @@ class ProductBottom extends React.Component {
   firmorder() {
     this.props.dispatch(openSpecModel(true,'orders'))
     // this.props.history.push('/firmorder')
+  }
+  firmtest() {
+    this.props.history.push('/firmtest')
   }
 
   render(){
