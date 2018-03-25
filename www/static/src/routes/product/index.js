@@ -81,9 +81,7 @@ render(){
       </div>
 
       <div  className = {style['describe']}>
-      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} >
-      
-      </Flex>
+      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} ></Flex>
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center" >
           <span className = {style['price-font']}>￥{product.product.endPrice/100}</span>

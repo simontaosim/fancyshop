@@ -5,7 +5,7 @@ import userImg from '../../assets/img/timg.jpg'
 import { getStore } from '../../config/mUtils'
 
 class AwardHead extends React.Component {
-
+ 
 
   render(){
     let userInfo = JSON.parse(getStore('userInfo'));

@@ -29,18 +29,6 @@ class ShopTagMenu extends React.Component {
   componentwillunmount(){
   }
 
-
-renderTagItem(tagId, tagName, index){
-
-  return (
-    <Link  key={index}  to={'/shops/'+tagId.toString()}>
-    <Flex direction = "column" justify = "center">
-      <img src = {icons[index]} alt = "标签{tagName}" className = {styles['Img-size']}/>
-      <p>{tagName}</p>
-    </Flex>
-    </Link>
-  )
-}
 render(){
   let tags =null;
   if (this.props.AppInfo.homeTags.length >= 0) {

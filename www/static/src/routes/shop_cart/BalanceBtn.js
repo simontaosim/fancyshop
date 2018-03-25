@@ -1,8 +1,6 @@
 import React from 'react';
 import { Flex,Checkbox } from 'antd-mobile';
 import { connect } from 'react-redux';
-import { cartInfo } from '../../map_props';
-// import { shopCheckAll } from '../../reducers/cart.redux'
 import { shopCheckAll, cartCreatOrder } from '../../actions/cartAction';
 
 

@@ -34,7 +34,7 @@ export function addProductCount(num) {
 export function getProduct(id){
   return dispatch => {
     let token = getStore('stampedToken')
-    let methodId = MClient.method("get.oneproduct.id", [id,token]);
+    MClient.method("get.oneproduct.id", [id,token]);
     MClient.on("result", message => {
       if (message.result.formMethod === 'get.oneproduct.id'){
         let selected =   message.result.specifications.length === 0 ?[{spec_name: '默认规格',spec_value: message.result.endPrice,isThis: true}] :  message.result.specifications;

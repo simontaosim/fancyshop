@@ -116,12 +116,9 @@ export function createOrder(product) {
     let methodId = MClient.method('app.orders.insert',[product]);
          
     MClient.on('result', message => {
-      if(message.id === methodId && !message.error){
-        if(message.result){
-          history.push(`/firmorder/${message.result}`)
-        }else{
-          console.log(message.error);
-        }
+      console.log(message.result);
+      if (message.result.formMethod ==='app.orders.insert'){
+        history.push(`/firmorder/${message.result.orderCode}`)
       }
     })
   }

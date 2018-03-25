@@ -1,12 +1,10 @@
 import React from 'react'
 import { List, InputItem, Toast ,WingBlank, Button, WhiteSpace} from 'antd-mobile';
-import { register,getLocation } from '../../reducers/user.redux.js'
+import { register } from '../../reducers/user.redux.js'
 import { connect } from 'react-redux'
 import { getAddress } from '../../service/amap/api/getCurrentLocationByIP'
 import { testPhone, testPassword, testUser} from '../../config/reg'
 import Count from '../login/Count'
-import { setStore } from '../../config/mUtils'
-import { MClient } from '../../config/asteroid.config.js'
 import { getRegSMSCode } from '../../actions/users.js';
 
 class Register extends React.Component {
@@ -33,7 +31,7 @@ class Register extends React.Component {
 
 
 sendCode() {
-  const { appUser, dispatch } = this.props;
+  const { dispatch } = this.props;
   dispatch(getRegSMSCode(this.state.mobile));
 }
 
@@ -53,7 +51,7 @@ sendCode() {
   }
 
   componentWillReceiveProps(nextProps){
-     const { appUser, dispatch } = nextProps;
+     const { appUser } = nextProps;
      if(appUser.regSMSCode === "loading"){
        return  Toast.loading("消息发送中.......");
      }
@@ -74,7 +72,6 @@ sendCode() {
   
 
   register(){
-    let self = this;
     let {user, pwd, mobile,verify} = this.state
     if(!testUser(user)){
       Toast.info('账户格式错误')

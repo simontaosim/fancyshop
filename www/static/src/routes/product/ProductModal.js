@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import { openSpecModel, closeSpecModel } from '../../reducers/model.redux';
 // import { changeProduct } from '../../reducers/product.redux';
 import { changeSpce } from '../../actions/productAction';
-import {  addCount,createOrder } from '../../actions/products';
+import {  createOrder } from '../../actions/products';
 import { addProductCount } from '../../actions/productAction';
 import { getCart } from '../../actions/cartAction';
 // import { addCart, getCart, insertCart  } from '../../reducers/cart.redux';
-import { modelInfo } from '../../map_props';
+// import { modelInfo } from '../../map_props';
 import { addCart, insertCart } from '../../actions/cartAction';
 import { getStore } from '../../config/mUtils';
 import { getUserbyId } from '../../actions/users';
@@ -30,7 +30,6 @@ class ProductModal extends React.Component {
 
 
   componentDidMount() {
-    console.log(this.props)
     let userId = getStore('userId');
     this.props.dispatch(getCart(userId))
     this.props.dispatch(getUserbyId(userId))
@@ -60,7 +59,7 @@ class ProductModal extends React.Component {
    onClose = key => (e) => {
     e.preventDefault(); 
     console.log(123)
-     let { cart, dispatch, product, currentUser} = this.props;
+     let { cart, dispatch, product } = this.props;
     let userId = getStore('userId');
     let count = product.count;
     let selected = this.filterSpce(product.selected)
@@ -68,21 +67,24 @@ class ProductModal extends React.Component {
     let userInfo = JSON.parse(getStore('userInfo'));
     console.log(`用户信息`);
     console.log(userInfo);
-    if(this.props.model.way=="orders"){
+    if(this.props.model.way==="orders"){
       let params = {
         userId,
         status: 'unpaid',
-        shopId: product.product.shopId,
-        address: "user.address.id",
+        shop_id: product.product.shopId,
         username: userInfo.username,
         nickname: userInfo.nickname,
         mobile: userInfo.profile.mobile,
+        shopAddress: product.product.shop_address,
+        shopName: product.product.shop_name,
+        shopCover: product.product.shop_cover,
+        remark: '',
         products: [
           {
             price: product.product.endPrice,
             count,
             cover: product.product.cover,
-            id: product.product._id,
+            product_id: product.product._id,
             name: product.product.name_zh,
             specifications: {
               ...selected
@@ -94,7 +96,6 @@ class ProductModal extends React.Component {
       dispatch(createOrder(params));
       dispatch(closeSpecModel());
      }else{
-    //  let selected =product.selected !== undefined ? this.filterSpce(product.selected) :product.good.spec[0]
      let count =product.count !== undefined ?product.count : 1
        let productId =product.product._id
        let shopId =product.product.shop_id
@@ -112,6 +113,11 @@ class ProductModal extends React.Component {
               shop_name: product.product.shop_name,
               checked: false,
               shop_id: product.product.shopId,
+              status: 'unpaid',
+              address: "user.address.id",
+              username: userInfo.username,
+              nickname: userInfo.nickname,
+              mobile: userInfo.profile.mobile,
                 productsData: [
                   {
                     shop_id: product.product.shopId,
@@ -119,6 +125,7 @@ class ProductModal extends React.Component {
                     name: product.product.name_zh,
                     count: count,
                     prodductSpec: selected,
+                    cover: product.product.cover,
                     product_id: product.product._id
                   }
                 ]
@@ -146,7 +153,7 @@ class ProductModal extends React.Component {
          console.log(`重复店铺重复商品`)
          for(var i = 0;i < cart.list.shopsData.length;i++){
           for(var j=0;j<cart.list.shopsData[i].productsData.length;j++){
-            if(cart.list.shopsData[i].productsData[j].product_id==productId){
+            if(cart.list.shopsData[i].productsData[j].product_id===productId){
               // console.log(cart.list.shopsData[i].productsData[j].prodductSpec.spec_name);
               // console.log(selected.spec_name);
               if(specIds.includes(selected.spec_name)){
@@ -165,6 +172,7 @@ class ProductModal extends React.Component {
                   status: 1,
                   count: count,
                   prodductSpec: selected,
+                cover: product.product.cover,
                   product_id: product.product._id
                 })
                 dispatch(addCart(cart.list.shopsData))
@@ -177,7 +185,7 @@ class ProductModal extends React.Component {
        }else if(shopIds.includes(product.product.shopId)){
          console.log(`重复店铺`);
         for(var i = 0;i < cart.list.shopsData.length;i++){
-            if(cart.list.shopsData[i].shop_id == product.product.shopId){
+            if(cart.list.shopsData[i].shop_id === product.product.shopId){
               cart.list.shopsData[i].productsData.push({
                 shop_id: product.product.shopId,
                 checked: false, 
@@ -185,6 +193,7 @@ class ProductModal extends React.Component {
                 status: 1,
                 count: count,
                 prodductSpec: selected,
+                cover: product.product.cover,
                 product_id: product.product._id
               })
             }
@@ -198,6 +207,11 @@ class ProductModal extends React.Component {
               shop_name: product.product.shop_name,
               checked: false,
               shop_id: product.product.shopId,
+              status: 'unpaid',
+              address: "user.address.id",
+              username: userInfo.username,
+              nickname: userInfo.nickname,
+              mobile: userInfo.profile.mobile,
                 productsData: [
                   {
                     shop_id: product.product.shopId,
@@ -206,6 +220,7 @@ class ProductModal extends React.Component {
                     status: 1,
                     count: count,
                     prodductSpec: selected,
+                    cover: product.product.cover,
                     product_id: product.product._id
                   }
                 ]
@@ -234,7 +249,6 @@ class ProductModal extends React.Component {
 
    onChange = (val) => {
      this.setState({ val },()=>{
-      //  this.props.addCount(this.state.val)
        this.props.dispatch(addProductCount(this.state.val))
      });
 

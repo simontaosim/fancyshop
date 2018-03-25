@@ -5,16 +5,14 @@ import styles from './WaitDetails.css';
 import goodImg from '../../assets/img/reward//good.jpg';
 
 class Refund extends React.Component {
-  constructor() {
-    super();
-  }
+
   render(){
     return(
       <div style = {{backgroundColor:'#333',marginTop:'60px'}}>
         <div style = {{backgroundColor:'#fff',margin:'8px',paddingBottom:'10px'}}>
         <Flex justify = "center" className = {styles['goods-item']}>
           <div className = {styles['img-border']} >
-            <img src = {goodImg} className = {styles['goods-img']}/>
+            <img src = {goodImg} className = {styles['goods-img']} alt="图片未显示"/>
           </div>
           <div >
             <Flex style = {{marginBottom:'10px'}}>我是商品的长名字占位符占位符占位符哈哈哈哈哈哈</Flex>
@@ -23,7 +21,7 @@ class Refund extends React.Component {
         </Flex>
         <Flex justify = "center" className = {styles['goods-item']}>
           <div className = {styles['img-border']} >
-            <img src = {goodImg} className = {styles['goods-img']}/>
+              <img src={goodImg} className={styles['goods-img']} alt="图片未显示"/>
           </div>
           <div >
             <Flex style = {{marginBottom:'10px'}}>我是商品的长名字占位符占位符占位符哈哈哈哈哈哈</Flex>

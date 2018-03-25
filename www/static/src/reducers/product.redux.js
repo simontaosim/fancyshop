@@ -18,6 +18,7 @@ const initState = {
 export function productReducer(state=initState, action){
     switch (action.type) {
 			case  GET_PRODUCT_SUCCESS:
+			console.log(action.product)
             return  {
                 ...state,
                 product: action.product,    
