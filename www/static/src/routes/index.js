@@ -49,6 +49,7 @@ import{ loadLoginedUserInfo } from '../actions/users';
 import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
 import  PrivateRoute  from './container/PrivateRoute'
+import SearchResultt from './search/SearchResult'
 const store = configureStore();
 const history = createHistory();
 const Home = ({ match }) => (
@@ -121,6 +122,7 @@ class App extends React.Component {
               <PrivateRoute path = "/orders" component={Orders} authenticated={authenticated}/>
               <PrivateRoute path = "/personal" component={Personal} authenticated={authenticated}/>
               <Route path = "/productlist" component={ProductListView}/>
+              <Route path="/produchtResult" component={SearchResult} />
               <Route component={NoMatchPage}/>
             </Switch>
 
