@@ -26,6 +26,15 @@ export default function AppCart
             }
             if(shops ===[]){
                 shop.id = shopId;
+                shops.push(shop);
+                products.push(product);
+            }else{
+                let thereShop = false;
+                shops.forEach(shop=>{
+                    if(shop.id === shopId){
+                        thereShop =true;
+                    }
+                });
             }
            
             return Object.assign({}, state, {
