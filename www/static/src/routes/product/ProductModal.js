@@ -86,7 +86,7 @@ class ProductModal extends React.Component {
             cover: product.product.cover,
             product_id: product.product._id,
             name: product.product.name_zh,
-            specifications: {
+            prodductSpec: {
               ...selected
             }
           },
