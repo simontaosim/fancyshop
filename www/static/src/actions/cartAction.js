@@ -2,6 +2,7 @@ import { MClient } from '../config/asteroid.config.js';
 import { addProductCount } from './productAction';
 // import { Toast } from 'antd-design-mobile';
 import { getStore } from '../config/mUtils';
+import history from '../history';
 export const ADD_CART_SUCCESS = "ADD_CAR_SUCCESS";
 export const ADD_CART_FAILD = "ADD_CAR_FAILD";
 export const INSERT_CART_SUCCESS = "INSERT_CART_SUCCESS";
@@ -248,5 +249,10 @@ export function cartCreatOrder(product) {
     
     // console.log(product)
     MClient.method('app.shop_carts.orders',  [notDeleteShopCart(product), deleteShopCart(productData),userId]);
+    MClient.on("result", message => {
+      if (message.result.formMethod === 'app.shop_carts.orders'){
+        history.push(`/firmorder/${message.result.orderCode}`)
+      }
+    })
   }
 }
