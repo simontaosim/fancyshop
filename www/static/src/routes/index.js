@@ -49,7 +49,7 @@ import{ loadLoginedUserInfo } from '../actions/users';
 import createHistory from 'history/createHashHistory';
 import configureStore from "../stores/index";
 import  PrivateRoute  from './container/PrivateRoute'
-import SearchResultt from './search/SearchResult'
+// import SearchResult from './search/SearchResult'
 const store = configureStore();
 const history = createHistory();
 const Home = ({ match }) => (

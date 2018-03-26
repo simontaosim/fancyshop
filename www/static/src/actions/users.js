@@ -438,9 +438,9 @@ export function getUserbyId(id){
 }
 export function getUserbyName(username){
     return dispatch => {
-        const methodId = MClient.method("user.findUserByName",[username])
+        MClient.method("user.findUserByName",[username])
         MClient.on('result', message => {
-            if(message.result == undefined){
+            if(message.result === undefined){
                 return
             }else{
                 dispatch(setCurrentUser(message.result))
@@ -451,7 +451,7 @@ export function getUserbyName(username){
 export function updateNickname(value){
     return dispatch => {
         let userId = getStore("userId");
-        const methodId = MClient.method('user.changeNickname',[userId,value])
+        MClient.method('user.changeNickname',[userId,value])
         MClient.on('result', message => {
             console.log(message);
             if(message.result!== undefined){
@@ -464,7 +464,7 @@ export function updateNickname(value){
 export function updateDataAutograph(value){
     return dispatch => {
         let userId = getStore("userId");
-        const methodId = MClient.method("user.changeDataAutograph",[userId,value])
+        MClient.method("user.changeDataAutograph",[userId,value])
         MClient.on('result', message => {
             if(message.result!== undefined){
                 dispatch(setCurrentUser(message.result))
@@ -475,7 +475,7 @@ export function updateDataAutograph(value){
 export function updateSex(value){
     return dispatch => {
         let userId = getStore("userId");
-        const methodId = MClient.method('user.changeSex',[userId,value])
+        MClient.method('user.changeSex',[userId,value])
         MClient.on('result', message => {
             if(message.result!== undefined){
                 dispatch(setCurrentUser(message.result))
@@ -486,7 +486,7 @@ export function updateSex(value){
 export function updateArea(value){
     return dispatch => {
         let userId = getStore("userId");
-        const methodId = MClient.method('user.changeArea',[userId,value])
+        MClient.method('user.changeArea',[userId,value])
         MClient.on('result', message => {
             if(message.result!== undefined){
                 dispatch(setCurrentUser(message.result))
@@ -497,7 +497,7 @@ export function updateArea(value){
 export function updateBirthday(value){
     return dispatch => {
         let userId = getStore("userId");
-        const methodId = MClient.method('user.changeBirthday',[userId,value])
+        MClient.method('user.changeBirthday',[userId,value])
         MClient.on('result', message => {
             if(message.result!== undefined){
                 dispatch(setCurrentUser(message.result))
