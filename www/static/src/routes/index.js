@@ -78,10 +78,10 @@ class App extends React.Component {
       <Router >
           <MainLayout history={history}>
           <Switch>
-              <PrivateRoute exact path="/" component={Home} authenticated={authenticated}/>
+              <Route exact path="/" component={Home} authenticated={authenticated}/>
               <PrivateRoute path="/messages" component={Messages} authenticated={authenticated}/>
               <PrivateRoute path="/my" component={My} authenticated={authenticated}/>
-              <Route path="/shop_cart" component={ShopCart}  authenticated={authenticated}/>
+              <PrivateRoute path="/shop_cart" component={ShopCart}  authenticated={authenticated}/>
               <Route path="/register" component={Register} />
               <Route path="/tablogin" component={TabLogin} />
               <Route path = "/product/:id" component={Goods}/>
