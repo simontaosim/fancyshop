@@ -3,6 +3,7 @@ import { List, Icon, Flex, Button } from 'antd-mobile';
 import goodImg from '../../assets/img/reward/good.jpg';
 import styles from './WaitDetails.css';
 import stylec from './Common.css';
+import { connect } from 'react-redux';
 
 
 class SubscribeDetail extends React.Component {
@@ -11,11 +12,12 @@ class SubscribeDetail extends React.Component {
   }
 
 render(){
+  const { order } = this.props.order
   return(
     <div style = {{marginTop:'60px'}}>
       <div className = {styles['item-info']}>
         <div><img src={require('../svg/send.svg')} className = {styles['item-icon']}/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
-        <div><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span></div>
+        <div><img src={require('../svg/location.svg')} className = {styles['item-icon']}/>地址：<span style = {{color:'#888'}}>{order.address}</span></div>
         <div><img src={require('../svg/phone.svg')} className = {styles['item-icon']}/>电话：<span style = {{color:'#888'}}>123456789</span></div>
         <div><img src={require('../svg/subscribe.svg')} className = {styles['item-icon']}/>预约时间:<span style = {{color:'#888'}}>2018年1月4日&nbsp;15:00</span></div>
       </div>
@@ -59,4 +61,10 @@ render(){
 }
 }
 
-export default SubscribeDetail;
+function mapStateToProps(state) {
+  return {
+    order: state.ordersInfo.orders,
+  }
+}
+
+export default connect(mapStateToProps)(SubscribeDetail);

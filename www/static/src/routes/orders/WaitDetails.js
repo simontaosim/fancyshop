@@ -3,17 +3,23 @@ import {   Flex } from 'antd-mobile';
 import goodImg from '../../assets/img/reward/good.jpg';
 import styles from './WaitDetails.css';
 import stylec from './Common.css';
-
+import { connect } from 'react-redux';
 
 class WaitDetails extends React.Component {
 
+componentDidMount(){
+  console.log("12129939139")
+  const {order} = this.props.order
+  console.log(order)
+}
 
 render(){
+  const {order} = this.props
   return(
     <div style = {{marginTop:'60px'}}>
       <div className = {styles['item-info']}>
         <div><img src={require('../svg/send.svg')} className={styles['item-icon']} alt="图片未显示"/>配送方式：<span style = {{color:'#888'}}>到店自提</span></div>
-        <div><img src={require('../svg/location.svg')} className={styles['item-icon']} alt="图片未显示"/>地址：<span style = {{color:'#888'}}>成都市金牛区沙湾路63号</span></div>
+        <div><img src={require('../svg/location.svg')} className={styles['item-icon']} alt="图片未显示"/>地址：<span style = {{color:'#888'}}>ddd</span></div>
         <div><img src={require('../svg/phone.svg')} className = {styles['item-icon']} alt="图片未显示"/>电话：<span style = {{color:'#888'}}>123456789</span></div>
       </div>
 
@@ -66,4 +72,10 @@ render(){
 }
 }
 
-export default WaitDetails;
+function mapStateToProps(state) {
+  return {
+    order: state.order.order,
+  }
+}
+
+export default connect(mapStateToProps)(WaitDetails);
