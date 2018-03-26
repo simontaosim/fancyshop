@@ -33,7 +33,7 @@ export function getBalance(userId) {
       let token = getStore('stampedToken')
       let methodId  = MClient.method('app.get.current.balance',[userId,token])
       MClient.on('result', message => {
-          if (message.id === methodId && !message.error && message.result.formMethod === 'app.get.current.balance'){
+          if (message.result && message.id === methodId && !message.error && message.result.formMethod === 'app.get.current.balance'){
              dispatch(getBalanceSuccess(message.result))
           }
       })
@@ -45,7 +45,7 @@ export function getBalanceIncomesTotal(userId) {
         let token = getStore('stampedToken')
         let methodId = MClient.method('app.get.balance_incomes.toady.total',[userId,token]);
         MClient.on("result", message => {
-            if (message.id === methodId && !message.error && message.result.formMethod === 'app.get.balance_incomes.toady.total') {
+            if (message.result && message.id === methodId && !message.error && message.result.formMethod === 'app.get.balance_incomes.toady.total') {
                 dispatch(getBalanceIncomesTotalSuccess(message.result));
             }
         });

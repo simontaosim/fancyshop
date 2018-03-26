@@ -115,34 +115,7 @@ class BottomMenu extends React.Component{
             data-seed="logId1"
           >
           </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                // background: 'url(../../svg/shopcart.svg) center center /  21px 21px no-repeat' }}
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="购物车"
-            key="Friend"
-            dot
-            selected={this.state.selectedTab === 'greenTab'}
-            onPress={() => {
-              history.push("/shop_cart");
-              this.setState({
-                selectedTab: 'greenTab',
-              });
-            }}
-          >
-          </TabBar.Item>
+
           <TabBar.Item
             icon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom44.png' }}
             selectedIcon={{ uri: 'http://wanchehui.oss-cn-qingdao.aliyuncs.com/static/bottom4.png' }}

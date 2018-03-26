@@ -17,7 +17,7 @@ function getShopProductsSuccess(products) {
     return dispatch => {
       MClient.method("app.get.shop.products",[shopId])
       MClient.on("result", message => {
-        if (message.result.formMethod === 'app.get.shop.products'){
+        if (message.result && message.result.formMethod === 'app.get.shop.products'){
           dispatch(getShopProductsSuccess(message.result.list));
         }
       });

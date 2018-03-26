@@ -1,10 +1,16 @@
 import React from 'react'
-import {Icon, NavBar, Modal, List, Button} from 'antd-mobile';
+import {NavBar, Modal, List, Button, Badge} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {appInfo} from '../map_props.js';
 import { setAppCity } from '../actions/app.js';
 import {getAddress} from '../service/amap/api/getCurrentLocationByIP';
-import{ loadLoginedUserInfo } from '../actions/users.js';
+import { Link } from 'react-router-dom';
+
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/fontawesome-free-solid';
+
+fontawesome.library.add(faShoppingCart);
 
 class AppNavBar extends React.Component{
   constructor(props){
@@ -21,21 +27,17 @@ class AppNavBar extends React.Component{
 
   }
 
-  componentDidMount(){
-
-
-    const { dispatch } = this.props;
-    dispatch(loadLoginedUserInfo(''))
-
-
-
-  }
-
   renderLeft(){
-    const {history} = this.props;
-    const pathname = history.location.pathname;
-    if (pathname === '/') {
-    return <Button onClick={this.showModal('modal2')} >{this.props.AppInfo.location.city}</Button>
+   
+    const {AppInfo} = this.props;
+    
+    if (AppInfo.leftBackPath === '') {
+    return <Button onClick={this.showModal('modal2')} >{AppInfo.location.city}</Button>
+    }
+    if (AppInfo.leftBackPath === "/") {
+      return  <Button icon="left" onClick={()=>this.props.history.replace(AppInfo.leftBackPath)}>返回</Button>
+    } else {
+      
     }
 
   }
@@ -57,12 +59,12 @@ search () {
 }
 
   render(){
-    const { dispatch } = this.props;
+    const { cart, dispatch } = this.props;
     const top = this.props.AppInfo.navBarHidden ? "-42px" : "0";
 
 
     return(
-      <div style={{ position: 'fixed', width: '100%', top: top }}>
+      <div style={{ position: 'fixed', width: '100%', top: top, zIndex: 9999999 }}>
         <NavBar
             mode="light"
 
@@ -70,8 +72,10 @@ search () {
               this.renderLeft()
             }
             rightContent={[
-                <Icon key="0" type="search" style={{ marginRight: '16px' }} onClick = {this.search} />,
-                <Icon key="1" type="ellipsis" />,
+              <Link to="/shop_cart" key="1">
+              <Badge text={cart.list.shopsData.length} />
+              <FontAwesomeIcon icon="shopping-cart" size="lg" />
+              </Link>,
             ]}
           >
           {this.props.AppInfo.title}

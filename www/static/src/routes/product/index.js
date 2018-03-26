@@ -11,6 +11,7 @@ import { getProduct } from '../../actions/productAction';
 import { connect } from 'react-redux';
 import MyActivityIndicator  from '../common/MyActivityIndicator';
 import { loadAccessForCurrentUser } from '../../actions/access';
+import { setLeftBackTo } from '../../actions/app';
 
 
 class Goods extends React.Component {
@@ -32,6 +33,7 @@ componentDidMount() {
     let id = this.props.match.params.id;
     let { dispatch } = this.props;
     dispatch(loadAccessForCurrentUser(id));
+    dispatch(setLeftBackTo("/"));
     dispatch(getProduct(id))
  }
 
@@ -49,6 +51,7 @@ componentDidMount() {
 
 render(){
   let { product } = this.props
+  document.title = product.product.name_zh;
   return (
     <div className = {style['product-frame']}>
      <MyActivityIndicator isFetching={product.isFetching} />
@@ -84,7 +87,6 @@ render(){
       </div>
 
       <div  className = {style['describe']}>
-      <Flex className = {style['describe-font']} dangerouslySetInnerHTML={{ __html: product.product.description}} ></Flex>
       <Flex style = {{marginBottom:'-10px'}}>
         <Flex.Item justify = "center" >
           <span className = {style['price-font']}>￥{product.product.endPrice/100}</span>
@@ -97,7 +99,7 @@ render(){
       <Flex justify = "between" className = {style['item']}>
         <Flex > <ProductShare/></Flex>
         <Flex>一级奖励:<span style= {{color:'#ffcf2d'}}>￥20</span></Flex>
-        <Flex>二级奖励:<span style= {{color:'#ffcf2 d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px'}}  alt="图片未显示" /></Flex>
+        <Flex>二级奖励:<span style= {{color:'#ffcf2d'}}>￥10</span><img src={require('../svg/no.svg')} style = {{paddingLeft:'10px',width:'14px'}}  alt="图片未显示" /></Flex>
       </Flex>
       <Flex justify = "between" className = {style['item-des']}>
         <Flex>配送方式:{product.deliver}</Flex>
@@ -107,7 +109,7 @@ render(){
       <Flex className = {style['item-type']}>
         <ProductModal spec={product.product.specifications} tagMenuClick={this.state.tagMenuClick} history={this.props.history}/>
       </Flex>
-      <ProductTabs/>
+      <ProductTabs des={product.product.description}/>
       <ProductBottom history={this.props.history} shopId={product.product.shopId} />
     </div>
     )

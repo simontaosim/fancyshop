@@ -212,12 +212,10 @@ export function getCart(id) {
   return dispatch => {
     MClient.method('shop_carts.get_cart',[id]);
     MClient.on("result", message =>　{
-      console.log(message.result)
       if(!message.result){
         return ;
       }
       if ( message.result.formMethod==='shop_carts.get_cart') {
-        console.log(message.result)
         dispatch(getCartSuccess(message.result))
       }else{
         console.log(`获取失败`)
@@ -232,13 +230,9 @@ export function removeCart(product) {
     let deleteProducts = deleteShopCart(product)
     MClient.method('shop_carts.add_cart', [deleteProducts,userId]);
     MClient.on("result", message => {
-      if (message.result.formMethod === 'shop_carts.add_cart') {
-      //   console.log(`删除成功`);
-      //   console.log(message.result);
+      if (message.result && message.result.formMethod === 'shop_carts.add_cart') {
         dispatch(removeCartSuccess(message.result))
-      //   //   Toast.info('加入购物车成功',1)
       } else {
-      //   // dispatch(receiveProductByIdError(message.error));
       }
     })
   }

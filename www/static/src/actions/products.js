@@ -8,7 +8,8 @@ export const RECEIVE_PRODUCT_BYID = 'RECEIVE_PRODUCT_BYID';
 export const ADD_COUNT = "ADD_COUNT";
 export const RECEIVE_SHOP_PRODUCTS_BYSHOPID = "RECEIVE_SHOP_PRODUCTS_BYSHOPID";
 export const GET_RECOMMAND_PRODUCTS= "GET_RECOMMAND_PRODUCTS"
-
+export const EXPECT_PRODUCT_BY_ZHNAME = "EXPECT_PRODUCT_BY_ZHNAME";
+export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
 function exceptRecommandProduct(){
   return {
     type: EXCEPT_RECOMMAND_PRODUCTS,
@@ -117,7 +118,7 @@ export function createOrder(product) {
          
     MClient.on('result', message => {
       console.log(message.result);
-      if (message.result.formMethod ==='app.orders.insert'){
+      if (message.result && message.result.formMethod ==='app.orders.insert'){
         history.push(`/firmorder/${message.result.orderCode}`)
       }
     })
@@ -141,29 +142,38 @@ export function loadShopProductsByShopId(shopId,page,pagesize) {
   }
 }
 
+export function expectProductByZhName(){
+  return {
+    type: EXPECT_PRODUCT_BY_ZHNAME,
+  }
+}
+
+export function loadProductZhName(zhName) {
+  return dispatch => {
+    dispatch(expectProductByZhName());
+    let methodStr = 'fancyshop.getProductByZhName'
+    let methodId = MClient.method(methodStr,[zhName])
+      MClient.connect();
+      MClient.on("result", message => {
+        if(message.id ===methodId && !message.error && message.result){
+          if(message.result.formMethod === methodStr){
+            dispatch(receiveProduct(message.result.product));
+          }
+        }
+      });
+  }
+}
+
+export function receiveProduct(product){ 
+  return {
+    type: RECEIVE_PRODUCT,
+  }
+
+}
+
 
 export function gainRecommandProducts(page,pagesize,data=[]) {
   return dispatch => {
-    // console.log(`获取推荐商品`)
-    // MClient.sub('app.get.recommend.products', [page,pagesize]);
-    // MClient.connect();
-    // let products = [];
-    // // data = data.slice();
-    // console.log(data);
-    // console.log(page);
-    // MClient.on("added", message => {
-    //   console.log(message.fields)
-    //   if(message.collection==='products'){
-    //     console.log(`175`)
-    //     if(products.length< pagesize){
-    //       message.fields.id = message.id
-    //       products.push(message.fields)
-    //     }
-    //     console.log(products)
-    //     console.log(data.concat(products))
-    //     dispatch(getRecommandProducts(data.concat(products)))
-    //   }
-    // })
 
     let methodId = MClient.method('app.get.recommend.products',[page,pagesize]);
     MClient.on('result', message => {

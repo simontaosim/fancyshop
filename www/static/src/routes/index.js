@@ -70,8 +70,17 @@ class App extends React.Component {
     store.dispatch(loadLoginedUserInfo());
     
   }
+
+  componentWillReceiveProps(nextProps){
+    console.log("主要布局渲染")
+    
+    console.log(history.location);
+  }
   render() {   
     let { appUser }  = this.props;
+
+    
+
     let authenticated = appUser.loginStatus === 'logined' ? true : false
     return (
       <Router >

@@ -6,6 +6,8 @@ export const SET_APP_TIILE = "SET_APP_TIILE";
 export const SET_APP_CITY = "SET_APP_CITY";
 export const SET_HOME_TAGS = "SET_HOME_TAGS";
 export const SET_APP_TITLE_NAME = "SET_APP_TITLE_NAME";
+export const HIDE_BOTTOME_MENU = "HIDE_BOTTOME_MENU";
+export const SET_LEFT_BACK_TO = "SET_LEFT_BACK_TO";
 export function setAppTitle(path){
   return {
     type: SET_APP_TIILE,
@@ -48,6 +50,19 @@ export function getHomeTags(){
       }
 
     });
+  }
+}
+
+export function hideBottomMenu(){
+  return {
+    type: HIDE_BOTTOME_MENU,
+  }
+}
+
+export function setLeftBackTo(path){
+  return {
+    type: SET_LEFT_BACK_TO,
+    path,
   }
 }
 

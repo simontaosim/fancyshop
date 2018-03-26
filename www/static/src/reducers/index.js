@@ -1,10 +1,11 @@
-import {SET_APP_TIILE, SET_APP_CITY, SET_HOME_TAGS, SET_APP_TITLE_NAME } from '../actions/app.js'
+import {SET_APP_TIILE, SET_APP_CITY, SET_HOME_TAGS, SET_APP_TITLE_NAME, SET_LEFT_BACK_TO } from '../actions/app.js'
 
 export function AppInfo(state={
   title: "万人车汇",
   appName: "万人车汇",
   navBarHidden: false,
   path: "/",
+  leftBackPath: "",
   homeTags: [],
   location: {
     planet: "地球",
@@ -18,6 +19,10 @@ export function AppInfo(state={
   }
 },action){
   switch (action.type) {
+    case SET_LEFT_BACK_TO:
+      return Object.assign({}, state, {
+        leftBackPath: action.path,
+      })
     case SET_APP_TIILE:
       let title = state.title;
       let navBarHidden = false;

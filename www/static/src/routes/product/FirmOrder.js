@@ -9,8 +9,7 @@ import goodImg from '../../assets/img/reward/good.jpg';
 
 
 class FirmOrder extends React.Component {
-    constructor(){
-        super()
+    
     render(){
         return (
             <div style = {{marginTop:'50px',backgroundColor:'#f6f6f6'}}>

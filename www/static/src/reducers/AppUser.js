@@ -9,7 +9,8 @@ import { EXPECT_LOGOUT, LOGOUT_SUCCESS, EXPECT_LOGIN_SMS_CODE,
     VALID_TOKEN_FAIL,
     LOAD_USER_CAED_SUCCESS,
     EXPECT_REG_SMS_CODE,
-    GET_REG_SMS_CODE_FAIL} from "../actions/users";
+    GET_REG_SMS_CODE_FAIL,
+    SHOW_LOGIN_PAGE} from "../actions/users";
 
 export default function AppUser(state={
     id: '',
@@ -34,6 +35,10 @@ export default function AppUser(state={
     products: [],
   }, action){
     switch (action.type) {
+        case SHOW_LOGIN_PAGE: 
+            return Object.assign({}, state, {
+                loginPageShow: action.msg,
+            })
         case VALID_TOKEN_FAIL:
             return Object.assign({}, state, {
                 loading: false,

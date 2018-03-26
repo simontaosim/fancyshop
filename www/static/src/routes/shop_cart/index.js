@@ -11,6 +11,7 @@ import DeleteBtn from './DeleteBtn';
 import BalanceBtn from './BalanceBtn';
 import CartNull from './CartNull';
 import { getStore } from '../../config/mUtils';
+import { setLeftBackTo } from '../../actions/app';
 
 
 class ShopCart extends React.Component{
@@ -22,7 +23,10 @@ class ShopCart extends React.Component{
   }
 
   componentDidMount() {
+    const {dispatch} = this.props;
     let userId = getStore('userId')
+    dispatch(setLeftBackTo("/"));
+    
     this.props.dispatch(getCart(userId))
   }
 

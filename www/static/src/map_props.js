@@ -1,7 +1,8 @@
 export function appInfo(state){
   return {
     AppInfo: state.AppInfo,
-    appUser: state.AppUser
+    appUser: state.AppUser,
+    cart: state.cartReducer,
    };
 }
 

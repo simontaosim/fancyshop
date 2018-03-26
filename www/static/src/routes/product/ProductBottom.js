@@ -55,7 +55,12 @@ class ProductBottom extends React.Component {
 
   render(){
     return(
-      <div>
+      <div style={{
+        position: "fixed",
+        width: "100%",
+        bottom: "0px",
+        zIndex: "99999"
+      }}>
        
         <div className = {s['container']}>
         

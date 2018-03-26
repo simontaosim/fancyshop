@@ -4,10 +4,12 @@ import { Tabs, Flex } from 'antd-mobile';
 import style from './ProductTabs.css';
 import deoneImg from '../../assets/img/deone.jpeg';
 import detwoImg from '../../assets/img/detwo.jpeg';
-
+import renderHTML from 'react-render-html';
+const HtmlToReactParser = require('html-to-react').Parser;
+ 
+const htmlToReactParser = new HtmlToReactParser();
 
 class ProductTabs extends React.Component {
-  
 
   render(){
     const tabs = [
@@ -17,10 +19,9 @@ class ProductTabs extends React.Component {
 
     return(
       <div className = {style['tab-height']}>
-        <Tabs tabs = {tabs} initialPage = {2} animated = {false} useOnPan = {false}>
-          <div className = {style['tab-first']}>
-             <img src = {deoneImg} alt="图片未显示"/>
-            <img src={detwoImg}  alt="图片未显示"/>
+        <Tabs tabs = {tabs} initialPage = {0} animated = {true} useOnPan = {false}>
+          <div className = {style['tab-first']}><br/>
+              { htmlToReactParser.parse(this.props.des)}
            </div>
            <Flex direction = "column" align = 'start' className = {style['tab-second']}>
              <p>品牌：Shell/壳牌</p>

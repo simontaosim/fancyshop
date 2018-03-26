@@ -29,10 +29,17 @@ export const GET_REG_SMS_CODE_SUCCESS="GET_REG_SMS_CODE_SUCCESS";
 
 export const SET_CURRENT_USER="SET_CURRENT_USER";
 export const SET_CURRENT_USER_ERROR="SET_CURRENT_USER_ERROR";
+export const SHOW_LOGIN_PAGE ="SHOW_LOGIN_PAGE";
 
 const crypto = require('crypto');
 
 //============== 用户的注册登录 ======================
+export function showLoginPage(msg){
+    return {
+        type: SHOW_LOGIN_PAGE,
+        msg
+    }
+}
 export function memoryPathBeforeLogined(path){
     return {
         type: MEMORY_PATH_BEFORE_LOGINED,

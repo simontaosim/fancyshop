@@ -34,8 +34,8 @@ class MainLayout extends React.Component{
 
   render(){
 
-    console.log("主要布局渲染")
-   
+
+    
    
       return(
         <div>

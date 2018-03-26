@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import Home from '../reducers/Home';
 import {AppInfo} from '../reducers'
 import { ordersInfo } from '../reducers/orders.js'
 import CurrentUser from '../reducers/CurrentUser.js'
@@ -24,6 +25,7 @@ export default function configureStore() {
   );
   return createStore(
     combineReducers({
+      Home,
       AppInfo,
       AppUser,
       recommandProducts,
