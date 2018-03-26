@@ -13,7 +13,11 @@ export const REMOVE_CART_SUCCESS = "REMOVE_CART_SUCCESS";
 export const REMOVE_CART_FAILD = "REMOVE_CART_FAILD";
 
 
-export const DELETE_SHOP_CART = "DELETE_SHOP_CART";
+export const DELETE_SHOP_CART = "DELETE_SHOP_CART"
+
+
+
+
 export const SHOP_CHECK_ALL = "SHOP_CHECK_ALL";
 export const ADD_SHOP = "ADD_SHOP";
 export const ADD_PRODUCT= "ADD_PRODUCT";

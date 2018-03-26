@@ -9,10 +9,6 @@ import goodImg from '../../assets/img/reward/good.jpg';
 
 
 class FirmOrder extends React.Component {
-<<<<<<< HEAD
-    
-    render(){
-=======
   constructor(props) {
     super(props)
     this.state = {
@@ -66,7 +62,6 @@ class FirmOrder extends React.Component {
 
   render(){
     let { order, shop } = this.state;
->>>>>>> f41dcd3af4cc56ac58c4283bd0ad8c8f2c3f2de4
         return (
             <div style = {{marginTop:'50px',backgroundColor:'#f6f6f6'}}>
             {order.map((orderItem,index)=>{
