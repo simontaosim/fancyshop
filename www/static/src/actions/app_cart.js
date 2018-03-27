@@ -9,9 +9,10 @@ export const RESET_APP_CART = "RESET_APP_CART";
 export const SUBMIT_SELECTED_PRODUCTS = "SUBMIT_SELECTED_PRODUCTS";
 
 
-export function addProductsToAppCart(product, count){
+export function addProductsToAppCart(product, count, shopName){
     return {
         type: ADD_PRODUCTS_TO_APP_CART,
         count,
+        shopName
     }
 }

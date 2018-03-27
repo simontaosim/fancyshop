@@ -26,8 +26,7 @@ class ShopCart extends React.Component{
     const {dispatch} = this.props;
     let userId = getStore('userId')
     dispatch(setLeftBackTo("/"));
-    
-    this.props.dispatch(getCart(userId))
+    dispatch(getCart(userId))
   }
 
 

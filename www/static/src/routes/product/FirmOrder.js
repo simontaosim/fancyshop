@@ -23,7 +23,9 @@ class FirmOrder extends React.Component {
 
     MClient.method("app.order.getone", [id]);
     MClient.on("result", message => {
-      console.log(message.result)
+      if (!message.result) {
+        return
+      }
       if (message.result.formMethod === 'app.order.getone') {
         console.log(message.result)
         this.setState({

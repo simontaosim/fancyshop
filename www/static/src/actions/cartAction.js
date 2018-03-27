@@ -26,6 +26,8 @@ export const COUNT_PRODUCT = "COUNT_PRODUCT";
 export const REMOVE_CART = "REMOVE_CART";
 
 
+export const EXPECT_CART_CREATE_ORDER = "EXPECT_CART_CREATE_ORDER";
+
 function addCartSuccess(payload) {
   return {
     type: ADD_CART_SUCCESS,
@@ -243,17 +245,28 @@ export function removeCart(product) {
   }
 }
 
-export function cartCreatOrder(product) {
+function expectCartCreateOrder(){
+  return {
+    type: EXPECT_CART_CREATE_ORDER,
+
+  }
+}
+
+export function cartCreateOrder(product) {
+  console.log(product);
   return dispatch => {
     let userId = getStore('userId')
     let productJson = JSON.stringify(product)
     let productData = JSON.parse(productJson)
-    console.log(JSON.stringify(notDeleteShopCart(product)))
-    console.log(deleteShopCart(productData))
-    MClient.method('app.shop_carts.orders',  [notDeleteShopCart(product), deleteShopCart(productData),userId]);
+     MClient.method('app.shop_carts.orders',  [notDeleteShopCart(product), deleteShopCart(productData),userId]);
     MClient.on("result", message => {
+      if (!message.result) {
+        return 
+      }
       if (message.result.formMethod === 'app.shop_carts.orders'){
-        history.push(`/firmorder/${message.result.orderCode}`)
+        // history.push(`/firmorder/${message.result.orderCode}`)
+        console.log(message.result);
+        
       }
     })
   }

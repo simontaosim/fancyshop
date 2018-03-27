@@ -1,14 +1,14 @@
 import React from 'react';
 import { Flex,Checkbox } from 'antd-mobile';
 import { connect } from 'react-redux';
-import { shopCheckAll, cartCreatOrder } from '../../actions/cartAction';
+import { shopCheckAll, cartCreateOrder } from '../../actions/cartAction';
 
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
 class BalanceBtn extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.firmorder = this.firmorder.bind(this)
   }
 
@@ -16,7 +16,7 @@ class BalanceBtn extends React.Component {
     let { cart, dispatch } = this.props;
     console.log(cart);
     
-    dispatch(cartCreatOrder(cart.list))
+    dispatch(cartCreateOrder(cart.list))
   }
   CheckAll(e) {
     let { cart,dispatch } = this.props;
