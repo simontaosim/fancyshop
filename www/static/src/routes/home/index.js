@@ -11,6 +11,7 @@ import {getHomeTags} from '../../actions/app.js'
 import { getProducts } from '../../actions/productsAction'; 
 import { Link } from 'react-router-dom';
 import { loadHomeContent } from '../../actions/home.js';
+import RecommandProducts from './RecommandProducts.js';
 
 
 
@@ -99,6 +100,7 @@ class AppHome extends React.Component{
           </Flex>
 
           <WhiteSpace />
+              <RecommandProducts />
           <WhiteSpace />
           <WhiteSpace />
           <WhiteSpace />

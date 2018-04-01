@@ -11,9 +11,11 @@
   justify-content: center;
 }
 .good-img {
-  width:70%;
-  height: 60%;
+  width:150px;
+  height: 80px;
   align-self: center;
+  position: relative;
+  left: 20px;
   margin-bottom: 5px;
   margin-top: 10px;
   border-radius: 5px;
